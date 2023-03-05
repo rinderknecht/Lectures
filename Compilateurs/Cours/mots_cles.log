@@ -1,0 +1,409 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2018.8.6)  6 AUG 2018 15:15
+entering extended mode
+ \write18 enabled.
+ %&-line parsing enabled.
+**\batchmode\listfiles\input mots_cles.tex
+(./mots_cles.tex (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/share/texlive/texmf-dist/tex/generic/vaucanson-g/vaucanson-g.sty
+Package: vaucanson-g 2008/10/27 package wrapper for VauCanSon-G v. 0.4
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Package option `pst' ignored on input line 216.
+Package xcolor Info: Driver file: dvips.def on input line 225.
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (/usr/share/texlive/texmf-dist/tex/generic/vaucanson-g/VCColor-names.def) (/u
+sr/share/texlive/texmf-dist/tex/latex/pstricks/pstricks.sty
+Package: pstricks 2018/01/06 v0.67 LaTeX wrapper for `PSTricks' (RN,HV)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, 
+and LuaTeX
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 67.
+) (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texl
+ive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks14
+\XKV@tempa@toks=\toks15
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count87
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.tex (/usr/shar
+e/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex `pst-fp' v0.05, 2010/01/17
+ (hv)
+\pstFP@xs=\count88
+\pstFP@xia=\count89
+\pstFP@xib=\count90
+\pstFP@xfa=\count91
+\pstFP@xfb=\count92
+\pstFP@rega=\count93
+\pstFP@regb=\count94
+\pstFP@regs=\count95
+\pstFP@times=\count96
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks16
+\pgfutil@tempdima=\dimen103
+\pgfutil@tempdimb=\dimen104
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks17
+\pgfkeys@temptoks=\toks18
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex
+\pgfkeys@tmptoks=\toks19
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex (/u
+sr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/t
+exlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/share/texlive
+/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+\pgf@x=\dimen105
+\pgf@xa=\dimen106
+\pgf@xb=\dimen107
+\pgf@xc=\dimen108
+\pgf@y=\dimen109
+\pgf@ya=\dimen110
+\pgf@yb=\dimen111
+\pgf@yc=\dimen112
+\c@pgf@counta=\count97
+\c@pgf@countb=\count98
+\c@pgf@countc=\count99
+\c@pgf@countd=\count100
+\pgfutil@tempcnta=\count101
+\pgfutil@tempcntb=\count102
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen113
+\pgfmath@count=\count103
+\pgfmath@box=\box26
+\pgfmath@toks=\toks20
+\pgfmath@stack@operand=\toks21
+\pgfmath@stack@operation=\toks22
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmat
+hfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count104
+))
+\pgffor@iter=\dimen114
+\pgffor@skip=\dimen115
+\pgffor@stack=\toks23
+\pgffor@toks=\toks24
+)
+\psLoopIndex=\count105
+`PSTricks' v2.82  <2018/01/06> (tvz,hv)
+\pst@dima=\dimen116
+\pst@dimb=\dimen117
+\pst@dimc=\dimen118
+\pst@dimd=\dimen119
+\pst@dimg=\dimen120
+\pst@dimh=\dimen121
+\pst@dimm=\dimen122
+\pst@dimn=\dimen123
+\pst@dimo=\dimen124
+\pst@dimp=\dimen125
+\pst@hbox=\box27
+\pst@ibox=\box28
+\pst@boxg=\box29
+\pst@cnta=\count106
+\pst@cntb=\count107
+\pst@cntc=\count108
+\pst@cntd=\count109
+\pst@cntg=\count110
+\pst@cnth=\count111
+\pst@cntm=\count112
+\pst@cntn=\count113
+\pst@cnto=\count114
+\pst@cntp=\count115
+\@zero=\count116
+\pst@toks=\toks25
+(/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.con)
+\psunit=\dimen126
+\psxunit=\dimen127
+\psyunit=\dimen128
+\pst@C@@rType=\count117
+\pslinewidth=\dimen129
+\psk@startLW=\dimen130
+\psk@endLW=\dimen131
+\pst@customdefs=\toks26
+\pslinearc=\dimen132
+\pst@symbolStep=\dimen133
+\pst@symbolWidth=\dimen134
+\pst@symbolLinewidth=\dimen135
+\everypsbox=\toks27
+\psframesep=\dimen136
+\pslabelsep=\dimen137
+\sh@wgridXunit=\dimen138
+\sh@wgridYunit=\dimen139
+\pst@shift=\dimen140
+)
+File: pstricks.tex 2018/01/06 v2.82 `PSTricks' (tvz,hv)
+(/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex)
+File: pst-fp.tex 2018/01/06 v2.82 `PST-fp' (hv)
+) (/usr/share/texlive/texmf-dist/tex/latex/pst-node/pst-node.sty
+Package: pst-node 2012/09/18 v1.01 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pst-node/pst-node.tex  v1.41, 2017/1
+2/30
+\psrow=\count118
+\pscol=\count119
+\psmatrixcnt=\count120
+\psrowsep=\skip43
+\pscolsep=\skip44
+\pst@args=\count121
+\num@pts=\count122
+\pst@argcnt=\count123
+)
+File: pst-node.tex 2017/12/30 1.41 `pst-node' (tvz,hv)
+) (/usr/share/texlive/texmf-dist/tex/latex/pst-plot/pst-plot.sty
+Package: pst-plot 2011/06/05 v1.00 LaTeX wrapper for `pst-plot' (HV)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/pst-xkey.sty
+Package: pst-xkey 2005/11/25 v1.6 package wrapper for pst-xkey.tex (HA)
+) (/usr/share/texlive/texmf-dist/tex/latex/multido/multido.sty
+Package: multido 2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
+
+(/usr/share/texlive/texmf-dist/tex/generic/multido/multido.tex  v1.42, 2010/05/
+14 <tvz>
+\multido@count=\count124
+\multidocount=\count125
+\multido@stuff=\toks28
+)
+File: multido.tex 2010/05/14 v1.42 `multido' (tvz,hv)
+)
+Package: pst-plot 2011/04/13 package wrapper for pst-plot.tex (hv)
+(/usr/share/texlive/texmf-dist/tex/generic/pst-plot/pst-plot.tex (/usr/share/te
+xlive/texmf-dist/tex/generic/pst-tools/pst-tools.tex `PST-tools' v0.09b, 2017/1
+2/03 (hv)) (/usr/share/texlive/texmf-dist/tex/generic/pstricks-add/pstricks-add
+.tex (/usr/share/texlive/texmf-dist/tex/generic/pst-arrow/pst-arrow.tex `pst-ar
+row' v0.01, 2016/09/01 (dr,hv)
+\pshooklength=\dimen141
+\pshookwidth=\dimen142
+) (/usr/share/texlive/texmf-dist/tex/generic/pst-3d/pst-3d.tex `PST-3d' v1.11, 
+2010/02/14 (tvz)) (/usr/share/texlive/texmf-dist/tex/generic/pst-math/pst-math.
+tex `pst-math' v0.63 , (CJ,hv)) `pstricks-add' v3.85a, 2018/02/03 (dr,hv)
+\psparallelogramsep=\dimen143
+\pst@cntC=\count126
+\pst@stepcount=\count127
+\chart@ColorIndex=\dimen144
+\chart@ColorStep=\dimen145
+\pst@chartHeight=\dimen146
+\pst@chartStackDepth=\dimen147
+\pst@chartStackWidth=\dimen148
+\chart@Toggle=\count128
+\psVectorCtr=\count129
+)  v1.89, 2018/02/18 (tvz,hv)
+\pstRadUnit=\dimen149
+\pstRadUnitInv=\dimen150
+\pst@linecnt=\count130
+\RCD@file=\read1
+\psxlabelsep=\dimen151
+\psylabelsep=\dimen152
+\psk@subticksize=\dimen153
+\pst@xticksizeA=\dimen154
+\pst@xticksizeB=\dimen155
+\pst@xticksizeC=\dimen156
+\pst@yticksizeA=\dimen157
+\pst@yticksizeB=\dimen158
+\pst@yticksizeC=\dimen159
+\@digitcounter=\count131
+\psk@llx=\dimen160
+\psk@lly=\dimen161
+\psk@urx=\dimen162
+\psk@ury=\dimen163
+\pst@xunit=\dimen164
+\pst@yunit=\dimen165
+)
+File: pst-plot.tex 2018/02/18 1.89 `pst-plot' (tvz,hv)
+) (/usr/share/texlive/texmf-dist/tex/latex/pst-coil/pst-coil.sty
+Package: pst-coil 2010/02/01 package wrapper for pst-coil.tex (hv)
+(/usr/share/texlive/texmf-dist/tex/generic/pst-coil/pst-coil.tex  v1.89, 2018/0
+2/18 (/usr/share/texlive/texmf-dist/tex/generic/pst-node/pst-node.tex))
+File: pst-coil.tex 2015/05/13 v1.07 `PST-coil' (tvz,hv)
+) (/usr/share/texlive/texmf-dist/tex/latex/pst-3d/pst-3d.sty
+Package: pst-3d 2009/07/28 package wrapper for pst-3d.tex (hv)
+(/usr/share/texlive/texmf-dist/tex/generic/pst-3d/pst-3d.tex)
+File: pst-3d.tex 2015/05/13 v1.07 `PST-3d' (hv)
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count132
+\calc@Bcount=\count133
+\calc@Adimen=\dimen166
+\calc@Bdimen=\dimen167
+\calc@Askip=\skip45
+\calc@Bskip=\skip46
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count134
+\calc@Cskip=\skip47
+) (/usr/share/texlive/texmf-dist/tex/generic/vaucanson-g/Vaucanson-G.tex
+\MediumStateDiameter=\skip48
+\SmallStateDiameter=\skip49
+\LargeStateDiameter=\skip50
+\VerySmallStateDiameter=\skip51
+\StateLineWidth=\skip52
+\EdgeLineWidth=\skip53
+\EdgeArrowWidth=\skip54
+\EdgeDblArrowWidth=\skip55
+\ZZSize=\skip56
+\EdgeOffset=\skip57
+\EdgeNodeSep=\skip58
+\VaucArcOffset=\skip59
+\LoopOffset=\skip60
+\LoopVarOffset=\skip61
+\TransLabelSep=\skip62
+\VertShiftH=\skip63
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 206.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 206.
+\VertShiftD=\skip64
+\VertShift=\skip65
+\StateLineWid=\skip66
+\StateDiam=\skip67
+\VaucAOS=\skip68
+\VaucAOSdiag=\skip69
+\VariableStateIntDiam=\skip70
+\VariableStateWidth=\skip71
+\VariableStateITPos=\skip72
+\ExtraSpace=\skip73
+\EdgeLineWid=\skip74
+\EdgeArrowSZDim=\skip75
+\EdgeLineBord=\skip76
+\ZZSiZ=\skip77
+\EdgeOff=\skip78
+\VaucArcOff=\skip79
+\LoopOff=\skip80
+\LoopVarOff=\skip81
+\EdgeNodeSP=\skip82
+\TransLabelSP=\skip83
+\c@anglea=\count135
+\c@angleb=\count136
+)
+\VaucMinHeight=\skip84
+\VaucMaxHeight=\skip85
+(/usr/share/texlive/texmf-dist/tex/generic/vaucanson-g/VCPref-default.tex)) (/u
+sr/share/texlive/texmf-dist/tex/latex/pst-eps/pst-eps.sty
+Package: pst-eps 2005/05/20 package wrapper for pst-eps.tex (hv)
+(/usr/share/texlive/texmf-dist/tex/generic/pst-eps/pst-eps.tex  v1.00, 2006/11/
+04
+\pst@epsout=\write3
+\pst@tempout=\write4
+)
+File: pst-eps.tex 2006/11/04 1.00 `pst-eps' (tvz)
+) (./ocaml_syntax.tex)
+No file mots_cles.aux.
+\openout1 = `mots_cles.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+[1
+
+]
+PSTricks: Converting TeX box to EPS.
+          With dvips, use -E option.
+(./mots_cles.aux)
+
+ *File List*
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+vaucanson-g.sty    2008/10/27 package wrapper for VauCanSon-G v. 0.4
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+  xcolor.sty    2016/05/11 v2.12 LaTeX color extensions (UK)
+   color.cfg    2016/01/02 v1.6 sample color configuration
+   dvips.def    2017/06/20 v3.1d Graphics/color driver for dvips
+VCColor-names.def
+pstricks.sty    2018/01/06 v0.67 LaTeX wrapper for `PSTricks' (RN,HV)
+   iftex.sty    2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX,
+ and LuaTeX
+shellesc.sty    2016/06/07 v0.02a unified shell escape interface for LaTeX
+pst-xkey.tex    2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+pst-xkey.tex    2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+ xkeyval.sty    2014/12/03 v2.7a package option processing (HA)
+ xkeyval.tex    2014/12/03 v2.7a key=value parser (HA)
+pstricks.tex    2018/01/06 v2.82 `PSTricks' (tvz,hv)
+  pst-fp.tex    2018/01/06 v2.82 `PST-fp' (hv)
+pst-node.sty    2010/04/22 package wrapper for pst-node.tex
+pst-node.tex    2017/12/30 1.41 `pst-node' (tvz,hv)
+pst-plot.sty    2011/04/13 package wrapper for pst-plot.tex (hv)
+pst-xkey.sty    2005/11/25 v1.6 package wrapper for pst-xkey.tex (HA)
+ multido.sty    2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
+ multido.tex    2010/05/14 v1.42 `multido' (tvz,hv)
+pst-plot.tex    2018/02/18 1.89 `pst-plot' (tvz,hv)
+pst-coil.sty    2010/02/01 package wrapper for pst-coil.tex (hv)
+pst-coil.tex    2015/05/13 v1.07 `PST-coil' (tvz,hv)
+  pst-3d.sty    2009/07/28 package wrapper for pst-3d.tex (hv)
+  pst-3d.tex    2015/05/13 v1.07 `PST-3d' (hv)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+ pst-eps.sty    2005/05/20 package wrapper for pst-eps.tex (hv)
+ pst-eps.tex    2006/11/04 1.00 `pst-eps' (tvz)
+ocaml_syntax.tex
+ ***********
+
+ ) 
+Here is how much of TeX's memory you used:
+ 10242 strings out of 492983
+ 181240 string characters out of 6134923
+ 303354 words of memory out of 5000000
+ 13696 multiletter control sequences out of 15000+600000
+ 4113 words of font info for 16 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 44i,9n,59p,617b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on mots_cles.dvi (1 page, 20164 bytes).

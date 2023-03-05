@@ -1,0 +1,11 @@
+$HOME/Makefiles/LaTeX/alt/Makefile
+
+$HOME/LaTeX/TeX/commands.tex
+$HOME/LaTeX/TeX/ocaml_syntax.tex
+$HOME/LaTeX/TeX/ocw-redef.tex
+
+../../Sujet/doc/tp1-questions.tex
+../eval.ml
+../main.ml
+
+$HOME/LaTeX/TeX/trace.tex
