@@ -1,7 +1,4 @@
-$HOME/Makefiles/LaTeX/alt/Makefile
-
-$HOME/LaTeX/TeX/trace.tex
-$HOME/LaTeX/TeX/prolog.tex
+$HOME/git/LaTeX-build/Makefile
 
 ../Questions/question_01.tex
 ../Questions/question_02.tex

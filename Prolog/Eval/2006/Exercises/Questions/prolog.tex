@@ -1,0 +1,26 @@
+%% This TeX file expects
+%%
+%% macro \prlscr be the path to the Prolog sources,
+%% macro \prlurl be the URL to the Prolog sources.
+
+\RequirePackage{verbatim}
+
+\newcommand\PrologHREF[2]{\href{\prlurl/#1}{#2}}
+
+\newcommand\prlcomp[2]{%
+\immediate\write18{\prolog -q -o #2.out -c #1/#2.pl 2> #2.err}%
+\immediate\write18{rm -f #2.out}%
+\immediate\write18{if test ! -s #2.err; then rm -f #2.err; fi}%
+\IfFileExists{#2.err}%
+  {\errmessage{Prolog compiler: Error in file #2.pl => Check #2.err}}%
+  {}
+}
+
+\newcommand\PrologIn[1]{
+  \prlcomp{\prlsrc}{#1}
+  {\small\verbatiminput{\prlsrc/#1.pl}}
+}
+
+\newcommand\PrologNoCheck[1]{
+  {\small\verbatiminput{\prlsrc/#1.pl}}
+}

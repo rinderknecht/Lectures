@@ -1,0 +1,11 @@
+\newcommand{\xinclude}[2]{%
+\typeout{<part basename="#1" title="#2">}%
+\include{#1}%
+\typeout{</part>}%
+}
+
+\let\oldtitle\title
+\renewcommand\title[1]{%
+\typeout{<doc name="#1">}%
+\oldtitle{#1}%
+}
