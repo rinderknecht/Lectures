@@ -1,4 +1,1 @@
 $HOME/git/LaTeX-build/Makefile
-
-../../article_mode.tex article.ai.tex
-../../slide_mode.tex ai.tex
