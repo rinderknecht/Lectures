@@ -187,9 +187,9 @@ Now the defining equations of the stack:
 \begin{align*}
 \proc{Pop}  \circ \proc{Push} &= \id{id}\\
 \proc{Append} (\proc{Empty}, \proc{Empty}) &= \proc{Empty}\\
-  \proc{Append} (\proc{Empty}, \proc{Push} (e, s)) 
+  \proc{Append} (\proc{Empty}, \proc{Push} (e, s))
    &= \proc{Push} (e, s)\\
-\proc{Append} (\proc{Push} (e, s), \proc{Empty}) 
+\proc{Append} (\proc{Push} (e, s), \proc{Empty})
    &= \proc{Push} (e, s)\\
 \proc{Append} (\proc{Push} (e_1, s_1), \proc{Push}
      (e_2, s_2))
@@ -262,18 +262,18 @@ Only the notation differs. The meaning is the same.
 
 We can ease the notation by omitting the quantifiers \(\forall\) in
 equations. Also, we can simplify a little the equations for
-\proc{Append} by noting that if one of the stack is empty, then the
+\proc{Append} by noting that if one of the stacks is empty, then the
 result is always the other stack:
 \[
 \left\{
 \begin{aligned}
-   \proc{Append} (\proc{Empty}, \proc{Empty}) 
+   \proc{Append} (\proc{Empty}, \proc{Empty})
 &= \proc{Empty}\\
    \forall e, s \quad \proc{Append} (\proc{Empty},
-   \proc{Push} (e, s)) 
+   \proc{Push} (e, s))
 &= \proc{Push} (e, s)\\
    \forall e, s \quad \proc{Append} (\proc{Push}
-   (e, s), \proc{Empty}) 
+   (e, s), \proc{Empty})
 &= \proc{Push} (e, s)
 \end{aligned}
 \right.
@@ -326,10 +326,10 @@ the original one.
 \begin{frame}
 \frametitle{Stacks/Orienting the equations}
 
-Let us call \textbf{term} the objects constructed using the functions
-of the specification, e.g., \proc{Empty} and \(\proc{Push} (\id{e},
-\proc{Empty})\) are terms. The \(e\) in the latter term is called a
-\textbf{variable} (and is a special case of term).
+Let us call \textbf{terms} the objects constructed using the functions
+of the specification, and \textbf{variables} ranging over terms, e.g.,
+\proc{Empty} and \(\proc{Push} (\id{e}, \proc{Empty})\), where \(e\)
+is a variable.
 
 \bigskip
 
@@ -361,11 +361,11 @@ How do we orient
 \begin{align*}
    \proc{Pop} (\proc{Push} (\id{x}))
 &= \id{x}\\
-   \proc{Append} (\proc{Empty}, \id{s}) 
+   \proc{Append} (\proc{Empty}, \id{s})
 &= \id{s}\\
-   \proc{Append} (\id{s}, \proc{Empty}) 
+   \proc{Append} (\id{s}, \proc{Empty})
 &= \id{s}\\
-   \proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2}) 
+   \proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2})
 &= \proc{Push} (\id{e}, \proc{Append} (\id{s_1}, \id{s_2}))
 \end{align*}
 
@@ -374,18 +374,18 @@ How do we orient
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Stacks/Orienting the equations (cont)} 
+\frametitle{Stacks/Orienting the equations (cont)}
 
 The first three ones are easy to orient since no function call of the
 defined function appear on both sides:
 \begin{align*}
    \proc{Pop} (\proc{Push} (\id{x}))
 &\rightarrow \id{x}\\
-   \proc{Append} (\proc{Empty}, \id{s}) 
+   \proc{Append} (\proc{Empty}, \id{s})
 &\rightarrow_1 \id{s}\\
-   \proc{Append} (\id{s}, \proc{Empty}) 
+   \proc{Append} (\id{s}, \proc{Empty})
 &\rightarrow_2 \id{s}\\
-   \proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2}) 
+   \proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2})
 &= \proc{Push} (\id{e}, \proc{Append} (\id{s_1}, \id{s_2}))
 \end{align*}
 The last equation is a recursive equation, i.e., there is a function
@@ -397,17 +397,17 @@ we orient it?
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Stacks/Orienting the equations (cont)} 
+\frametitle{Stacks/Orienting the equations (cont)}
 
-Let us colour both calls to \proc{Append}:
+Let us underline both calls to \proc{Append}:
 \[
-\textbf{\proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2})}
-= \proc{Push} (\id{e}, \textbf{\proc{Append} (\id{s_1}, \id{s_2})})
+\underline{\proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2})}
+= \proc{Push} (\id{e}, \underline{\proc{Append} (\id{s_1}, \id{s_2})})
 \]
-Let us colour only the differences between the two:
+Let us now underline only the differences between the two:
 \[
-\proc{Append} (\textbf{\proc{Push} (\id{e}, \id{s_1})}, \id{s_2})
-= \proc{Push} (\id{e}, \proc{Append} (\textbf{\id{s_1}}, \id{s_2}))
+\proc{Append} (\underline{\proc{Push} (\id{e}, \id{s_1})}, \id{s_2})
+= \proc{Push} (\id{e}, \proc{Append} (\underline{\id{s_1}}, \id{s_2}))
 \]
 Obviously, \id{s_1} is a \emph{proper} subterm of \(\proc{Push}
 (\id{e}, \id{s_1})\), so the value of \(s_1\) is included in the value
@@ -422,7 +422,7 @@ left to right.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Stacks/Orienting the equations (cont)} 
+\frametitle{Stacks/Orienting the equations (cont)}
 
 What is the use of \(\proc{Append} (\id{s}, \proc{Empty})
 \rightarrow_2 \id{s}\)?
@@ -435,7 +435,7 @@ subterm at each rewriting, the second rewriting rule \(\proc{Append}
 (\proc{Empty}, \id{s}) \rightarrow_1 \id{s}\) always applies at the
 end. So we only need:
 \begin{align*}
-   \proc{Append} (\proc{Empty}, \id{s}) 
+   \proc{Append} (\proc{Empty}, \id{s})
 &\rightarrow \id{s}\\
    \proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2})
 &\rightarrow \proc{Push} (\id{e}, \proc{Append} (\id{s_1}, \id{s_2}))
@@ -458,7 +458,7 @@ Let us find a model which clarifies these ideas: the concept of
 
 \bigskip
 
-A tree is either 
+A tree is either
 \begin{itemize}
 
   \item the empty set
@@ -546,7 +546,7 @@ corresponds to a subtree. By definition:
 & \text{Tree}
 & \text{Height}\\
 \hline\hline
-  \proc{Empty} 
+  \proc{Empty}
 & \proc{Empty}
 & 0\\
 \hline
@@ -563,13 +563,13 @@ corresponding tree}.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Stacks/Height of terms (cont)} 
+\frametitle{Stacks/Height of terms (cont)}
 
 Let us define a function, called \textbf{height} and written \({\cal
  H}\), for each term denoting a stack in the following way:
 \[
 \begin{aligned}
-&                       &    {\cal H} (\proc{Empty}) 
+&                       &    {\cal H} (\proc{Empty})
                           &= 0\\
 &\forall \id{e}, \id{s} &    {\cal H} (\proc{Push} (\id{e}, \id{s}))
                           &= {\cal H} (\id{s}) + 1

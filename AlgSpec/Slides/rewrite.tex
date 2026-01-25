@@ -5,7 +5,7 @@
 \begin{frame}
 \frametitle{From specifications to algorithms}
 
-Now, how do we go from a specification to an \textbf{algorithm}? 
+Now, how do we go from a specification to an \textbf{algorithm}?
 
 \bigskip
 
@@ -111,12 +111,12 @@ algebraic specifications.
 
 The general approach consists in finding a \textbf{computation scheme}
 instead of relying on a \textbf{reasoning}, as we did for the
-sequence. 
+sequence.
 
 \bigskip
 
 This is achieved by looking at the equations in the specification and
-\textbf{orienting them}. 
+\textbf{orienting them}.
 
 \bigskip
 
@@ -131,7 +131,7 @@ step}, from the left side to the right side, or the reverse way.
 \frametitle{From specifications to algorithms (cont)}
 
 Assume we have an equation \(A = B\), where \(A\) and \(B\) are
-expressions. 
+expressions.
 
 \bigskip
 
@@ -178,7 +178,7 @@ A value is made of constructors only, whilst an \textbf{expression} is
 made of constructors and other functions. For example,
 
 \begin{itemize}
- 
+
   \item \(\proc{True}\) is a value;
 
   \item \(\proc{Or} (\proc{True}, \proc{Not} (\proc{False}))\) is an
@@ -236,7 +236,7 @@ the latter:
 \frametitle{Booleans/Orienting the equations (cont)}
 
 \noindent For example, here is a terminating chain for the expression
-\(\proc{Or} (\proc{True}, \proc{True})\): {\footnotesize
+\(\proc{Or} (\proc{True}, \proc{And} (\proc{True}, \proc{False}))\): {\footnotesize
 \begin{align*}
 \proc{Or} (\proc{True}, \underline{\proc{And} (\proc{True}, \proc{False})})
 &\rightarrow_4 \proc{Or} (\proc{True}, \underline{\proc{False}})\\

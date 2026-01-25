@@ -46,13 +46,13 @@ or
 \frametitle{Search algorithms (cont)}
 
 It is possible to constrain the situation where the rules are
-applied. This is called a \textbf{strategy}. 
+applied. This is called a \textbf{strategy}.
 
 \bigskip
 
 For instance, one common strategy, called \textbf{call by value},
 consists in rewriting the arguments of a function call into values
-before rewriting the function call itself. 
+before rewriting the function call itself.
 
 \bigskip
 
@@ -71,7 +71,7 @@ if we want.
 \frametitle{Search algorithms (cont)}
 
 The language we introduce now for expressing algorithms is different
-from a programming language, in the sense that it is less detailed. 
+from a programming language, in the sense that it is less detailed.
 
 \bigskip
 
@@ -218,7 +218,7 @@ compute the \textbf{body} of the (called) function.
       \zi	\Else \(\kw{result} \gets \textbf{???}\)
       \zi	\End
     \end{codebox}
-    What is the problem here? 
+    What is the problem here?
 
     \bigskip
 
@@ -269,9 +269,9 @@ left to the algorithm to provide error detection and basic handling.
 \bigskip
 
 Note that in algorithms, we do not provide a sophisticated error
-handling: we just use a magic keyword \kw{error}. This is because we
-leave for the program to detail what to do and maybe use some
-specific features of its language, like exceptions.
+handling: we just use the magic keyword \kw{error}. This is because we
+leave for the program to detail what to do and maybe use some specific
+features of its language, like exceptions.
 
 \end{frame}
 
@@ -282,9 +282,9 @@ specific features of its language, like exceptions.
 
 So let us consider the remaining function \proc{Append}:
 \begin{align*}
-   \proc{Append} (\proc{Empty}, \id{s}) 
+   \proc{Append} (\proc{Empty}, \id{s})
 &\rightarrow_1 \id{s}\\
-   \proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2}) 
+   \proc{Append} (\proc{Push} (\id{e}, \id{s_1}), \id{s_2})
 &\rightarrow_2 \proc{Push} (\id{e}, \proc{Append} (\id{s_1},
    \id{s_2}))
 \end{align*}
@@ -299,7 +299,7 @@ rule \(\rightarrow_1\)
                   \RComment This means \(\proc{Push} (\id{e},
                   \id{s_1}) = \id{s_3}\)
 \zi		\(\kw{result} \gets \proc{Push} (\id{e},
-                   \proc{Append} (\id{s_1}, \id{s_2}))\) 
+                   \proc{Append} (\id{s_1}, \id{s_2}))\)
                    \RComment This is rule \(\rightarrow_2\)
 \zi	\End
 \end{codebox}
@@ -332,21 +332,21 @@ Let us come back to the \proc{Queue} specification:
 We can write the corresponding algorithmic function as
 \begin{codebox}
 \(\proc{Dequeue} (\textbf{\id{q_2}})\)\\
-\zi	\If \id{q_2} = \proc{Empty}
-\zi	\Then \Error
-\zi	\Else   \((\id{e}, \id{q}) \gets \proc{Enqueue}^{-1}(\id{q_2})\)
-\zi		\If \(\id{q} = \proc{Empty}\)
-\zi		\Then \(\kw{result} \gets (\id{q}, \id{e})\)
+\zi  \If \id{q_2} = \proc{Empty}
+\zi  \Then \Error
+\zi  \Else   \((\id{e}, \id{q}) \gets \proc{Enqueue}^{-1}(\id{q_2})\)
+\zi    \If \(\id{q} = \proc{Empty}\)
+\zi    \Then \(\kw{result} \gets (\id{q}, \id{e})\)
 \RComment Rule \(\rightarrow_1\)
-\zi		\Else \((\id{q_1}, \id{e_1}) \gets
+\zi    \Else \((\id{q_1}, \id{e_1}) \gets
                          \proc{Dequeue} (\textbf{\id{q}})\) \RComment
                          Rule \(\rightarrow_3\)
-\zi		      \(\kw{result} \gets (\proc{Enqueue}
-(\id{e},\id{q_1}), \id{e_1})\) \RComment Rrule \(\rightarrow_2\)
-\zi		\End
-\zi	\End
+\zi          \(\kw{result} \gets (\proc{Enqueue}
+(\id{e},\id{q_1}), \id{e_1})\) \RComment Rule \(\rightarrow_2\)
+\zi    \End
+\zi  \End
 \end{codebox}
-Termination is due to \((\id{e}, \id{q}) =
+Termination ensues from \((\id{e}, \id{q}) =
 \proc{Enqueue}^{-1}(\id{q_2}) \Rightarrow {\cal H} (\id{q_2}) = {\cal H}
 (\id{q}) + 1 > {\cal H} (\id{q})\).
 
@@ -361,9 +361,9 @@ Let us come back to the \proc{Bin-tree} specification and the left
 prefix traversal:
 {\small
 \begin{align*}
-   \proc{Lpref} (\proc{Empty}) 
+   \proc{Lpref} (\proc{Empty})
 &\rightarrow \proc{Stack}(\type{node}).\proc{Empty}\\
-   \proc{Lpref} (\proc{Make} (\id{e}, \id{t_1}, \id{t_2})) 
+   \proc{Lpref} (\proc{Make} (\id{e}, \id{t_1}, \id{t_2}))
 &\rightarrow \proc{Push} (\id{e}, \proc{Append} (\proc{Lpref}
    (\id{t_1}), \proc{Lpref} (\id{t_2})))
 \end{align*}
@@ -371,16 +371,16 @@ prefix traversal:
 We get the corresponding algorithmic function
 \begin{codebox}
 \(\proc{Lpref} (\id{t})\)\\
-\zi	\If \id{t} = \proc{Empty}
-\zi	\Then \(\kw{result} \gets \proc{Stack}(\type{node}).\proc{Empty}\)
-\zi	\Else \((\id{e}, \id{t_1}, \id{t_2}) \gets
+\zi  \If \id{t} = \proc{Empty}
+\zi  \Then \(\kw{result} \gets \proc{Stack}(\type{node}).\proc{Empty}\)
+\zi  \Else \((\id{e}, \id{t_1}, \id{t_2}) \gets
                 \proc{Make}^{-1}(\id{t})\)
-\zi	      \(\kw{result} \gets \proc{Push} (\id{e},
+\zi        \(\kw{result} \gets \proc{Push} (\id{e},
                                                 \proc{Append}
-                                                  (\proc{Lpref} (\id{t_1}), 
+                                                  (\proc{Lpref} (\id{t_1}),
                                                    \proc{Lpref}
                                                    (\id{t_2})))\)
-\zi	\End
+\zi  \End
 \end{codebox}
 
 \end{frame}
@@ -394,20 +394,20 @@ Similarly, we can consider again the left infix traversal:
 \begin{align*}
    \proc{Linf} (\proc{Empty})
 &\rightarrow \proc{Stack}(\type{node}).\proc{Empty}\\
-   \proc{Linf} (\proc{Make} (\id{e}, \id{t_1}, \id{t_2})) 
-&\rightarrow \proc{Append} (\proc{Linf} (\id{t_1}), 
+   \proc{Linf} (\proc{Make} (\id{e}, \id{t_1}, \id{t_2}))
+&\rightarrow \proc{Append} (\proc{Linf} (\id{t_1}),
    \proc{Push} (\id{e}, \proc{Linf} (\id{t_2})))
 \end{align*}
 Hence
 \begin{codebox}
 \(\proc{Linf} (\id{t})\)\\
-\zi	\If \id{t} = \proc{Empty}
-\zi	\Then \(\kw{result} \gets \proc{Stack}(\type{node}).\proc{Empty}\)
-\zi	\Else \((\id{e}, \id{t_1}, \id{t_2}) \gets
+\zi  \If \id{t} = \proc{Empty}
+\zi  \Then \(\kw{result} \gets \proc{Stack}(\type{node}).\proc{Empty}\)
+\zi  \Else \((\id{e}, \id{t_1}, \id{t_2}) \gets
                 \proc{Make}^{-1}(\id{t})\)
-\zi	        \(\kw{result} \gets \proc{Append} (\proc{Linf} (\id{t_1}),
+\zi          \(\kw{result} \gets \proc{Append} (\proc{Linf} (\id{t_1}),
                   \proc{Push} (\id{e}, \proc{Linf} (\id{t_2})))\)
-\zi	\End
+\zi  \End
 \end{codebox}
 
 \end{frame}
@@ -420,9 +420,9 @@ Hence
 Similarly, we can consider again the left postfix traversal:
 {\small
 \begin{align*}
-   \proc{Lpost} (\proc{Empty}) 
+   \proc{Lpost} (\proc{Empty})
 &\rightarrow \proc{Stack}(\type{node}).\proc{Empty}\\
-   \proc{Lpost} (\proc{Make} (\id{e}, \id{t_1}, \id{t_2})) 
+   \proc{Lpost} (\proc{Make} (\id{e}, \id{t_1}, \id{t_2}))
 &\rightarrow
 \intertext{\(\proc{Append} (\proc{Lpost} (\id{t_1}),
    \proc{Append} (\proc{Lpost} (\id{t_2}), \proc{Push} (\id{e},
@@ -431,14 +431,14 @@ Similarly, we can consider again the left postfix traversal:
 }
 \begin{codebox}
 \Procname{\(\proc{Lpost} (\id{t})\)}
-\zi	\If \id{t} = \proc{Empty}
-\zi	\Then \(\kw{result} \gets \proc{Stack}(\type{node}).\proc{Empty}\)
-\zi	\Else \((\id{e}, \id{t_1}, \id{t_2}) \gets
+\zi  \If \id{t} = \proc{Empty}
+\zi  \Then \(\kw{result} \gets \proc{Stack}(\type{node}).\proc{Empty}\)
+\zi  \Else \((\id{e}, \id{t_1}, \id{t_2}) \gets
                 \proc{Make}^{-1}(\id{t})\)
-\zi        \(n \gets                   \proc{Append} (\proc{Lpost} (\id{t_2}), 
+\zi        \(n \gets                   \proc{Append} (\proc{Lpost} (\id{t_2}),
                                  \proc{Push} (\id{e}, \proc{Empty}))\)
-\zi	        \(\kw{result} \gets \proc{Append} (\proc{Lpost} (\id{t_1}), n)\)
-\zi	\End
+\zi          \(\kw{result} \gets \proc{Append} (\proc{Lpost} (\id{t_1}), n)\)
+\zi  \End
 \end{codebox}
 
 \end{frame}
@@ -450,7 +450,7 @@ Similarly, we can consider again the left postfix traversal:
 
 Let us recall the rewrite system of \proc{Roots} (see page~\pageref{roots}):
 \begin{align*}
-   \proc{Roots} (\proc{Forest}(\type{node}).\proc{Empty}) 
+   \proc{Roots} (\proc{Forest}(\type{node}).\proc{Empty})
 &\rightarrow_1 \proc{Stack} (\type{node}).\proc{Empty}\\
    \proc{Roots} (\proc{Push} (\proc{Empty}, \,\id{f}))
 &\rightarrow_2 \proc{Roots} (\,\id{f})\\
@@ -471,21 +471,21 @@ The corresponding algorithmic definition is
 {\small
 \begin{codebox}
 \Procname{\(\proc{Roots} (\,\id{f_1})\)}
-\zi	\If \,\id{f_1} = \proc{Forest}(\type{node}).\proc{Empty}
-\zi	\Then \(\kw{result} \gets
-                \proc{Stack}(\type{node}).\proc{Empty}\) 
+\zi  \If \,\id{f_1} = \proc{Forest}(\type{node}).\proc{Empty}
+\zi  \Then \(\kw{result} \gets
+                \proc{Stack}(\type{node}).\proc{Empty}\)
                 \RComment Rule \(\rightarrow_1\)
-\zi	\Else \((\id{t}, \,\id{f}) \gets \proc{Pop} (\,\id{f_1})\)
+\zi  \Else \((\id{t}, \,\id{f}) \gets \proc{Pop} (\,\id{f_1})\)
               \RComment \(\proc{Push} (\id{t}, \,\id{f}) =
               \id{f_1}\)
-\zi		\If \id{t} = \proc{Empty}
-\zi		\Then \(\kw{result} \gets \proc{Roots} (\,\id{f})\)
+\zi    \If \id{t} = \proc{Empty}
+\zi    \Then \(\kw{result} \gets \proc{Roots} (\,\id{f})\)
                         \RComment Rule \(\rightarrow_2\)
-\zi		\Else \(\kw{result} \gets \proc{Push} (\proc{Root}
+\zi    \Else \(\kw{result} \gets \proc{Push} (\proc{Root}
                         (\id{t}), \proc{Roots} (\,\id{f}))\)\!\!
                         \RComment\!\!\!Rule \(\rightarrow_3\)
-\zi		\End
-\zi	\End
+\zi    \End
+\zi  \End
 \end{codebox}
 }
 
@@ -497,9 +497,9 @@ The corresponding algorithmic definition is
 \frametitle{Search/Binary trees/Breadth-first (cont)}
 
 Let us recall the rewrite system of \proc{Next} (see
-page~\pageref{next_level}): 
+page~\pageref{next_level}):
 \begin{align*}
-   \proc{Next} (\proc{Forest}(\type{node}).\proc{Empty}) 
+   \proc{Next} (\proc{Forest}(\type{node}).\proc{Empty})
 &\rightarrow_1 \proc{Forest}
    (\type{node}).\proc{Empty}\\
    \proc{Next} (\proc{Push} (\proc{Empty}, \,\id{f}))
@@ -521,22 +521,22 @@ The corresponding algorithmic definition is
 {\small
 \begin{codebox}
 \Procname{\(\proc{Next} (\,\id{f_1})\)}
-\zi	\If \,\id{f_1} = \proc{Forest}(\type{node}).\proc{Empty}
-\zi	\Then \(\kw{result} \gets
-                \proc{Stack}(\type{node}).\proc{Empty}\) 
+\zi  \If \,\id{f_1} = \proc{Forest}(\type{node}).\proc{Empty}
+\zi  \Then \(\kw{result} \gets
+                \proc{Stack}(\type{node}).\proc{Empty}\)
                 \RComment This is rule \(\rightarrow_1\)
-\zi	\Else \((\id{t}, \,\id{f}) \gets \proc{Pop} (\,\id{f_1})\)
+\zi  \Else \((\id{t}, \,\id{f}) \gets \proc{Pop} (\,\id{f_1})\)
               \RComment This means \(\proc{Push} (\id{t}, \,\id{f}) =
               \id{f_1}\)
-\zi		\If \id{t} = \proc{Empty}
-\zi		\Then \(\kw{result} \gets \proc{Next} (\,\id{f})\)
+\zi    \If \id{t} = \proc{Empty}
+\zi    \Then \(\kw{result} \gets \proc{Next} (\,\id{f})\)
                       \RComment This is rule \(\rightarrow_2\)
-\zi		\Else \RComment This is rule \(\rightarrow_3\)
-\zi		\(\kw{result} \gets \proc{Push} (\proc{Left}
+\zi    \Else \RComment This is rule \(\rightarrow_3\)
+\zi    \(\kw{result} \gets \proc{Push} (\proc{Left}
                   (\id{t}), (\proc{Push} (\proc{Right} (\id{t}),
                    \proc{Next} (\,\id{f}))))\)
-\zi		\End
-\zi	\End
+\zi    \End
+\zi  \End
 \end{codebox}
 }
 
@@ -568,11 +568,11 @@ where \(\id{f} \neq \proc{Empty}\).
 The corresponding algorithmic definition is
 \begin{codebox}
 \Procname{\({\cal B} (\,\id{f})\)}
-\zi	\If \,\id{f} = \proc{Empty}
-\zi	\Then \(\kw{result} \gets \proc{Stack}(\type{node}).\proc{Empty}\) 
-\zi	\Else \(\kw{result} \gets \proc{Append} (\proc{Roots}
+\zi  \If \,\id{f} = \proc{Empty}
+\zi  \Then \(\kw{result} \gets \proc{Stack}(\type{node}).\proc{Empty}\)
+\zi  \Else \(\kw{result} \gets \proc{Append} (\proc{Roots}
 (\,\id{f}), {\cal B} (\proc{Next} (\,\id{f})))\)
-\zi	\End
+\zi  \End
 \end{codebox}
 And
 \begin{codebox}
@@ -597,7 +597,7 @@ signature is then
 \times \textbf{\type{int}} \rightarrow
 \proc{Stack}(\type{node}).\type{t}
 \]
-where \type{int} denotes the positive integers. 
+where \type{int} denotes the positive integers.
 
 \bigskip
 
@@ -621,10 +621,10 @@ traversed nodes in the forest \,\id{f} up to depth \(\id{d} \geqslant
 Here are some possible equations defining \({\cal B}_{\id{d}}\):
 \begin{align*}
    {\cal B}_{\id{d}} (\proc{Empty})
-&= \proc{Empty} 
+&= \proc{Empty}
 & \\
    {\cal B}_{0} (\,\id{f})
-&= \proc{Roots} (\,\id{f}) 
+&= \proc{Roots} (\,\id{f})
 & \\
    {\cal B}_{\id{d}} (\,\id{f})
 &= \proc{Append} (\proc{Roots} (\,\id{f}), {\cal B}_{\id{d}-1}
@@ -646,20 +646,20 @@ In order to write the algorithm corresponding to \({\cal
 \id{d}, and use a regular parameter instead:
 \begin{codebox}
 \Procname{\({\cal B} (\id{d}, \,\id{f})\)}
-\zi	\If \id{f} = \proc{Forest}(\type{node}).\proc{Empty}
-\zi	\Then \(\kw{result} \gets
+\zi  \If \id{f} = \proc{Forest}(\type{node}).\proc{Empty}
+\zi  \Then \(\kw{result} \gets
                 \proc{Stack}(\type{node}).\proc{Empty}\)
-\zi	\ElseIf \id{d} = 0
-\zi		\Then \(\kw{result} \gets \proc{Roots} (\,\id{f})\)
-\zi		\ElseIf \(\id{d} > 0\)
-\zi			\Then \(\kw{result} \gets \proc{Append}
+\zi  \ElseIf \id{d} = 0
+\zi    \Then \(\kw{result} \gets \proc{Roots} (\,\id{f})\)
+\zi    \ElseIf \(\id{d} > 0\)
+\zi      \Then \(\kw{result} \gets \proc{Append}
                                (\proc{Roots} (\,\id{f}), {\cal B}
                                (\id{d}-1, \proc{Next}
                                (\,\id{f})))\)
-\zi			\Else \kw{error}
-\zi			\End
-\zi		\End
-\zi	\End
+\zi      \Else \kw{error}
+\zi      \End
+\zi    \End
+\zi  \End
 \end{codebox}
 
 \end{frame}
@@ -678,11 +678,11 @@ What if we want to limit the depth of such traversals, like
 \proc{Lpref}?
 {\footnotesize
 \begin{align*}
-   \proc{Lpref}_{\id{d}} (\proc{Empty}) 
+   \proc{Lpref}_{\id{d}} (\proc{Empty})
 &= \proc{Empty}\\
    \proc{Lpref}_{0} (\proc{Make} (\id{e}, \id{t_1}, \id{t}_2))
 &= \proc{Push} (\id{e}, \proc{Empty})\\
-   \proc{Lpref}_{\id{d}} (\proc{Make} (\id{e}, \id{t_1}, \id{t_2})) 
+   \proc{Lpref}_{\id{d}} (\proc{Make} (\id{e}, \id{t_1}, \id{t_2}))
 &= \proc{Push} (\id{e}, \proc{Append} (\proc{Lpref}_{\id{d}-1}
    (\id{t_1}), \proc{Lpref}_{\id{d}-1} (\id{t_2})))
 \end{align*}

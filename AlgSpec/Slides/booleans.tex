@@ -5,10 +5,9 @@
 \begin{frame}
 \frametitle{Booleans/Signature}
 
-Let us start this section about search algorithms by presenting how to
-specify data structures without relying on a specific programming
-language. The method we introduce here is usually called
-\textbf{algebraic specification}.
+Let us start by presenting how to specify data structures without
+relying on a specific programming language. The method we introduce
+here is usually called \textbf{algebraic specification}.
 
 \bigskip
 
@@ -86,7 +85,7 @@ matching the signature is
 \proc{And} (\proc{True}, \proc{False}) &= \proc{False}\\
 \proc{And} (\proc{False}, \proc{True}) &= \proc{False}\\
 \proc{And} (\proc{False}, \proc{False}) &= \proc{False}\\
-   \forall \id{b_1}, \id{b_2} \quad \proc{Or} (\id{b_1}, \id{b_2}) 
+   \forall \id{b_1}, \id{b_2} \quad \proc{Or} (\id{b_1}, \id{b_2})
 &= \proc{Not} (\proc{And} (\proc{Not} (\id{b_1}), \proc{Not} (\id{b_2})))
 \end{align*}
 The signature and the equations make a \textbf{specification}.
@@ -112,7 +111,7 @@ beginning of the equation. This means, in particular, that we can
 rename these variables because they are just names which are local to
 the equation. For instance
 \[
-  \forall \id{u}, \id{v} \quad \proc{Or} (\id{u}, \id{v}) 
+  \forall \id{u}, \id{v} \quad \proc{Or} (\id{u}, \id{v})
 = \proc{Not} (\proc{And} (\proc{Not} (\id{u}), \proc{Not} (\id{v})))
 \]
 would be equivalent.
@@ -124,7 +123,7 @@ would be equivalent.
 \begin{frame}
 \frametitle{Booleans/Simplifying the equations}
 
-We can simplify these equations before going on. 
+We can simplify these equations before going on.
 
 \bigskip
 
