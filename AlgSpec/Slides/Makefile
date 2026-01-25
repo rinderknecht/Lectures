@@ -1,1 +1,0 @@
-/home/rinderkn/Makefiles/LaTeX/alt/Makefile
