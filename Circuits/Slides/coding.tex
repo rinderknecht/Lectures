@@ -29,13 +29,13 @@ d_{-m} \times 10^{-m}
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary numbers}
 
 Most electronic devices are usually placed in two distinct electric
 states, either charged or discharged, low voltage or high voltage
-etc. 
+etc.
 
 \bigskip
 
@@ -87,7 +87,7 @@ and then sum the powers of \(2\) indexed by \(1\)s:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary numbers (cont)}
 
@@ -108,7 +108,7 @@ The greatest binary number of \(n\) bits equals
 \text{max}_{n} = 2^{n-1} + 2^{n-2} + \dots + 2 + 1
 \label{max}
 \end{equation}
-If we multiply it by \(2\), we get 
+If we multiply it by \(2\), we get
 \begin{equation}
 2 \times \text{max}_{n} = 2^{n} + 2^{n-1} + \dots + 2^{2} + 2
 \label{double_max}
@@ -117,7 +117,7 @@ If we multiply it by \(2\), we get
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary numbers (cont)}
 \label{max_bin}
@@ -150,7 +150,7 @@ For example: the MSB of \(181\) is \(1\) and its LSB is \(1\) also.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{From decimal to binary numbers}
 
@@ -178,7 +178,7 @@ which means that \(d_1\) is the remainder of the integer division
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{From decimal to binary numbers (cont)}
 
@@ -224,7 +224,7 @@ which means that \(d_1\) is the remainder of the integer division
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{From decimal to binary numbers (cont)}
 
@@ -249,7 +249,7 @@ of the fractional part of \(10 F\) multiplied by \(10\) etc.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{From decimal to binary numbers (cont)}
 
@@ -283,7 +283,7 @@ For example
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Octal and hexadecimal numbers}
 
@@ -312,7 +312,7 @@ For example
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Octal numbers and binary numbers}
 
@@ -323,7 +323,7 @@ b_{n-1} 2^{n-1} + b_{n-2} 2^{n-2} + \dots + b_1 2 + b_0
 We can group the bits by groups of three, from right to left:
 \[
 \dots + (b_8 2^8 + b_7 2^7 + b_6 2^6) + (b_5 2^5 + b_4 2^4 + b_3 2^3)
-+ (b_2 2^2 + b_1 2 + b_0) 
++ (b_2 2^2 + b_1 2 + b_0)
 \]
 We can factorise \(2^0\), \(2^3\), \(2^6\) etc. and get
 \[
@@ -331,7 +331,7 @@ We can factorise \(2^0\), \(2^3\), \(2^6\) etc. and get
 \times 2^3 + (b_2 2^2 + b_1 2 + b_0)
 \]
 That is, since \(8 = 2^3\) and \(x^{pq} = (x^p)^q\), then
-\(2^{3q} = (2^3)^q = 8^q\) and 
+\(2^{3q} = (2^3)^q = 8^q\) and
 \[
 \dots + (b_8 2^2 + b_7 2 + b_6) \times 8^2 + (b_5 2^2 + b_4 2 + b_3)
 \times 8^1 + (b_2 2^2 + b_1 2 + b_0) \times 8^0
@@ -340,7 +340,7 @@ That is, since \(8 = 2^3\) and \(x^{pq} = (x^p)^q\), then
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Octal numbers and binary numbers (cont)}
 
@@ -353,7 +353,7 @@ and simply catenate them.
 If we want to convert from binary representation to octal
 \begin{enumerate}
 
-  \item group the bits three-by-three from right to left, 
+  \item group the bits three-by-three from right to left,
 
   \item convert each group to octal digits,
 
@@ -369,7 +369,7 @@ For example
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Octal numbers and decimal numbers}
 
@@ -389,7 +389,7 @@ The indirect way is usually easier because less error-prone.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Hexadecimal numbers}
 
@@ -409,7 +409,7 @@ For example
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Fractional octal and hexadecimal numbers}
 
@@ -427,7 +427,7 @@ Consider
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Addition}
 
@@ -451,7 +451,7 @@ some \(i\). For instance
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Addition}
 
@@ -494,7 +494,7 @@ works from right to left.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subtraction}
 
@@ -526,7 +526,7 @@ For example, consider
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subtraction on binary numbers}
 
@@ -558,7 +558,7 @@ Here we had to borrow two times, until a \(1\) is found.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Multiplication}
 
@@ -584,7 +584,7 @@ which can be \(8\) at most (from \(9 \times 9 = \mathbf{8} \times 10 +
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Multiplication (cont)}
 
@@ -620,7 +620,7 @@ For example
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary}
 \label{two_complement}
@@ -649,7 +649,7 @@ or positivity is coded in the bits of the number
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary (cont)}
 
@@ -680,7 +680,7 @@ has a positional value of \(-128\) rather than \(+128\) (it is
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary (cont)}
 
@@ -714,7 +714,7 @@ that can be formed with the remaining \(n-1\) bits is having only
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary (cont)}
 
@@ -740,7 +740,7 @@ b_0 \geqslant 0
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary (cont)}
 
@@ -770,7 +770,7 @@ range.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Addition}
 
@@ -799,7 +799,7 @@ negative.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Addition (cont)}
 
@@ -829,7 +829,7 @@ number. It is \textbf{incorrect}.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Addition (cont)}
 
@@ -859,7 +859,7 @@ out the bit \(1\) with negative positional value, \(-2^{n-1} + 2^{n-1}
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Addition (cont)}
 
@@ -888,7 +888,7 @@ In the second case, there are two carries and the result is
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Addition (cont)}
 
@@ -908,8 +908,8 @@ Considering the possible carries out of the positions \(n-1\) and
   \item if there is only \textbf{one carry in total}, then
   the sum is \textbf{incorrect}:
   \begin{itemize}
-   
-    \item overflow if the result is negative, 
+
+    \item overflow if the result is negative,
 
     \item underflow if the result is positive;
 
@@ -923,7 +923,7 @@ Considering the possible carries out of the positions \(n-1\) and
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Complement and negation}
 
@@ -960,7 +960,7 @@ What we want is to solve the following puzzle:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Complement and negation (cont)}
 
@@ -968,9 +968,9 @@ Notice that, with \(n\)-bit, \(2\)-complement binary numbers, the
 following holds:
 \[
 0 = -1 + 1 \Longleftrightarrow
-\underbrace{000\dots00}_{n \, \text{bits}} = 
+\underbrace{000\dots00}_{n \, \text{bits}} =
 \underbrace{111\dots11}_{n \, \text{bits}}
-+ 
++
 \underbrace{000\ldots01}_{n \, \text{bits}}
 \]
 So our initial question is equivalent to
@@ -988,7 +988,7 @@ So our initial question is equivalent to
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Complement and negation (cont)}
 
@@ -1019,7 +1019,7 @@ and
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Complement and negation (cont)}
 
@@ -1054,7 +1054,7 @@ number \(10000000\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\(2\)-complement binary/Complement and negation (cont)}
 
@@ -1075,7 +1075,7 @@ Conversely, in order to convert a negative decimal number to
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Gray codes}
 
@@ -1104,7 +1104,7 @@ Gray code for numbers from \(0\) to \(15\) is
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary-Coded Decimal}
 
@@ -1128,7 +1128,7 @@ in groups of four and convert them separately with the usual manner.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary-Coded Decimal (cont)}
 
@@ -1144,7 +1144,7 @@ So, for instance, \(110001010111_2\) is not a BCD.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary-Coded Decimal/Addition}
 
@@ -1176,7 +1176,7 @@ is not, because \(1011_2 = 11_{10}\) is not a decimal digit.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary-Coded Decimal/Addition (cont)}
 
@@ -1199,7 +1199,7 @@ To be more precise, there are two sub-cases:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary-Coded Decimal/Addition (cont)}
 
@@ -1222,7 +1222,7 @@ etc. until \(0001\;0010_2=18_{10}\) to \(0001\;1000_2 =
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary-Coded Decimal/Addition (cont)}
 
@@ -1241,7 +1241,7 @@ For instance
 \renewcommand\arraystretch{0.85}
 \setlength\extrarowheight{4pt}
 \begin{array}{c@{}cc@{\;}c@{\;}c@{\;}c@{\;}cc@{\;}c@{\;}c@{\;}c@{\;}cc@{\;}c@{\;}c@{\;}c}
-  &   &   &   &   & 1 & &   &   &   &   & &   &   &   &\\  
+  &   &   &   &   & 1 & &   &   &   &   & &   &   &   &\\
   &   & 0 & 1 & 1 & 0 & & 1 & 0 & 0 & 0 & & 0 & 1 & 1 & 0\\
 + &   & 0 & 0 & 1 & 1 & & 1 & 0 & 0 & 0 & & 0 & 0 & 0 & 1\\
 \cline{2-16}
@@ -1256,7 +1256,7 @@ For instance
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary-Coded Decimal/Addition (cont)}
 
@@ -1264,7 +1264,7 @@ For instance
   \column{0.5\textwidth}
     Actually, the additions of \(0110\) must be carried over again if
     any block is strictly greater than \(1001\), due to the carries of
-    step~\eqref{coding:add0000}. 
+    step~\eqref{coding:add0000}.
 
     \bigskip
 
@@ -1282,7 +1282,7 @@ For instance
       &   & &  & &1&1 & & 1&1& &\\
       &   & & 1&0&0&1 & & 1&0&1&1\\
       + &   & &  & & &  & & 0&1&1&0\\
-      \cline{2-12} 
+      \cline{2-12}
       & 1 & & 1&1& &  & &  & & &\\
       &   & & 1&0&1&0 & & 0&0&0&1\\
       + &   & & 0&1&1&0 & &  & & &\\
@@ -1295,7 +1295,7 @@ For instance
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Binary-Coded Decimal/Subtraction}
 
@@ -1314,7 +1314,7 @@ The reason of the latter is that when we borrow, we actually borrow
 \renewcommand\arraystretch{0.85}
 \setlength\extrarowheight{4pt}
 \begin{array}{rc@{\;}c@{\;}c@{\;}c@{\;}cc@{\;}c@{\;}c@{\;}c@{\;}cc@{\;}c@{\;}c@{\;}c}
-  &   &   &   & 0 & & 1 & 0 &   &   & & 0 & 1 &   &\\  
+  &   &   &   & 0 & & 1 & 0 &   &   & & 0 & 1 &   &\\
   & 0 & 0 & 1 & 1 & & 0 & 1 & 0 & 1 & & 1 & 0 & 0 & 0\\
 - & 0 & 0 & 1 & 0 & & 0 & 1 & 1 & 0 & & 0 & 0 & 1 & 0\\
 \cline{2-15}

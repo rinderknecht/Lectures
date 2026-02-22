@@ -1,7 +1,7 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra}
 
@@ -25,7 +25,7 @@ reads ``\(A\) is false.''
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Operators}
 \label{def_and_or}
@@ -61,7 +61,7 @@ The three operators of a boolean algebra are as follows.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Operators (cont)}
 \label{def_not}
@@ -85,7 +85,7 @@ words, \(B\) was \emph{not} a boolean variable.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Identities}
 
@@ -115,7 +115,7 @@ For any boolean variable \(A\), the following identities hold:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Identities}
 
@@ -135,7 +135,7 @@ A(B + C) &= (A \cdot B) + (A \cdot C) \label{and_or:dist}
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Identities (cont)}
 
@@ -150,7 +150,7 @@ A(B + C) &= A B + A C
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Identities (cont)}
 
@@ -167,7 +167,7 @@ A B + A \overline{B} &= A \label{or_and:adj}\\
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Identities (cont)}
 
@@ -187,7 +187,7 @@ For example
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Truth tables}
 
@@ -215,7 +215,7 @@ A & B & S & L\\
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Min-terms}
 
@@ -239,13 +239,15 @@ We inserted in the truth table the values of the boolean expressions
 \textbf{min-terms}. The interesting point is that each min-term is
 true only for \textbf{one} combination of values of \(A\) and \(B\).
 
+\medskip
+
 This leads to a way of finding a definition of \(F\) based on boolean
 expressions instead of a truth table.
 
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Min-terms (cont)}
 
@@ -255,16 +257,20 @@ disjunction of them. We get here
 \[
 F(A,B) = \overline{A}\,\overline{B} + A B
 \]
-Why does it work? For each combination \((A,B)\) for which
-\(F(A,B)=1\), one of the min-terms is \(1\),
-i.e., \(\overline{A}\,\overline{B}=1\) or \(A B = 1\), so the
-disjunction is also \(1\). For each combination \((A,B)\) for which
-\(F(A,B)=0\), both min-terms will be \(0\), so is their disjunction.
+Why does it work?
+
+\medskip
+
+For each combination \((A,B)\) for which \(F(A,B)=1\), one of the
+min-terms is \(1\), i.e., \(\overline{A}\,\overline{B}=1\) or \(A B =
+1\), so the disjunction is also \(1\). For each combination \((A,B)\)
+for which \(F(A,B)=0\), both min-terms will be \(0\), so is their
+disjunction.
 
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Boolean algebra/Min-terms (cont)}
 
@@ -272,11 +278,17 @@ Therefore, given a truth table of a boolean function, form the
 expression made of the disjunction of the min-terms for which the
 result is \(1\).
 
+\medskip
+
 This form is called, in general, \textbf{normal disjunctive form}, or
 \textbf{sum of product} (\textbf{SOP}).
 
+\medskip
+
 Counter-example: \(\overline{A + B}\) is \textbf{not} a SOP: the
 negations must apply to variables or \(0\) or \(1\).
+
+\medskip
 
 Any boolean expression can be transformed, by means of the identities
 we gave, into a SOP.
