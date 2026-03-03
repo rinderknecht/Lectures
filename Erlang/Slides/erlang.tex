@@ -1,5 +1,7 @@
 %%-*-latex-*-
 
+\documentclass[compress,dvips,xcolor={dvipsnames},t]{beamer}
+
 % Language
 %
 \usepackage[english]{babel}
@@ -18,7 +20,6 @@
 \input{beamer_cfg}
 \input{cpp}
 \input{erlc}
-\input{trace}
 
 % New commands
 %
@@ -50,10 +51,10 @@
 
 \frame{\maketitle}
 
-\xinclude{rationale}{Rationale}
-\xinclude{introduction}{Introduction}
-\xinclude{lexis}{Lexicon}
-\xinclude{matching}{Matching terms}
-\xinclude{functions}{Functions}
+%\include{rationale}
+\include{introduction}
+\include{lexis}
+\include{matching}
+\include{functions}
 
 \end{document}
