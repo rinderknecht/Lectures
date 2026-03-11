@@ -96,7 +96,7 @@ They are defined by a \textbf{rewrite system}.
 \begin{frame}
 \frametitle{Rewrite rules}
 
-A rewrite system is a set of \textbf{rewrite rules}. 
+A rewrite system is a set of \textbf{rewrite rules}.
 
 \bigskip
 
@@ -128,7 +128,7 @@ to evaluate, where it is possible to combine operations, like \((2+3)
 \bigskip
 
 So let us extend our system with rules that specify the
-sub-expressions we can rewrite. 
+sub-expressions we can rewrite.
 
 \bigskip
 
@@ -154,7 +154,7 @@ are replaced by expressions.
 
 For example, \( (2+3) \times (4+5) \rightarrow 5 \times (4+5) \) is an
 instance since \(2 + 3 \rightarrow 5\). To understand why, replace
-\(e_1\) by \(2+3\), \(e'_1\) by \(5\) and \(e_2\) by \(4+5\). 
+\(e_1\) by \(2+3\), \(e'_1\) by \(5\) and \(e_2\) by \(4+5\).
 
 \bigskip
 
@@ -237,7 +237,10 @@ example, let \(\sigma\) be the following substitution: \(\{e_1 \mapsto
 \frametitle{Instance of a rewrite rule (cont)}
 
 Now we can make a clear definition of the notion of ``instance of a
-rule'': 
+rule'':
+
+\medskip
+
 \begin{quote}
 \emph{An instance of a rule is a rule in which some meta-variables
   \(e_i\) are replaced by expressions \(\sigma(e_i)\).}
@@ -278,7 +281,7 @@ mapping.
 
 \bigskip
 
-We have a basic rewrite rule \(2 + 3 \rightarrow 5\), thus we 
+We have a basic rewrite rule \(2 + 3 \rightarrow 5\), thus we
 extend \(\sigma'\) with \(e'_1 \mapsto 5\) and get
 \begin{mathpar}
 \inferrule
@@ -376,7 +379,7 @@ For example, here is the instance \(\sigma'\rname{\TirName{Mult}_2}\):
 \begin{frame}
 \frametitle{Strategy}
 
-But now, something interesting happens. 
+But now, something interesting happens.
 
 \bigskip
 
@@ -404,7 +407,7 @@ instantiated by substitution \(\sigma'' = \{e_1 \mapsto 2+3; e_2
 \frametitle{Strategy (cont)}
 
 This means that \emph{our system does not specify the order of
-  evaluation of \(\times\) arguments.} 
+  evaluation of \(\times\) arguments.}
 
 \bigskip
 
@@ -425,13 +428,13 @@ We need a \textbf{strategy} to complete it.
 At this point, it is clear that these reductions satisfy the following
 properties:
 \begin{itemize}
- 
+
   \item \textbf{Finiteness.} All the reductions are finite, i.e., all
     the computations terminate.
 
   \item \textbf{Soundness.} All the reductions of an expression end
     with the same value, if any.
-  
+
 \end{itemize}
 
 About the second point, note indeed that \emph{some expressions have
@@ -540,7 +543,10 @@ be rewritten further.
 \bigskip
 
 With the new system, that explicitly specifies the reduction of the
-\NaN error, the soundness property can be rephrased as 
+\NaN error, the soundness property can be rephrased as
+
+\medskip
+
 \begin{quote}
 \emph{All the reductions of an expression end with the same value.}
 \end{quote}
@@ -569,7 +575,7 @@ The idea is to change \(\rname{\TirName{Mult}_2}\) so that instead of
 \;\rname{\TirName{New-Mult}_2}
 \end{mathpar}
 This way, it is not possible anymore to instantiate this rule with
-expression \((2+3) \times (4+5)\) because \(2+3\) is not a value. 
+expression \((2+3) \times (4+5)\) because \(2+3\) is not a value.
 
 \end{frame}
 
@@ -685,7 +691,7 @@ the reductions according to a rewrite system.
 \bigskip
 
 Even if there is no byte-code, we always can interpret what the
-program does by studying a rewrite system which models it. 
+program does by studying a rewrite system which models it.
 
 \end{frame}
 
