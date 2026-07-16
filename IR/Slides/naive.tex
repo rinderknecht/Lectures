@@ -44,9 +44,9 @@ described as
 \li \While \(i \leqslant \len{x}\) \LogAnd \(j \leqslant \len{t}\)
 \li \Do \If \(t[j] = x[i]\)\>\>\>\>\>\>\>\>\Comment Compare a letter of \(x\) with a letter
 of \(t\).
-\li	  \Then \(j \gets j + 1\); \(i \gets i + 1\)\>\>\>\>\>\>\Comment Schedule comparison with next letter in \(x\).
-\li	  \Else \(j \gets j - i + 2\); \(i \gets 1\)\>\>\>\>\>\>\Comment Failed: we slide \(x\) on \(t\) and start again.\End \End
-\li \If \(i > \len{x}\) 
+\li \Then \(j \gets j + 1\); \(i \gets i + 1\)\>\>\>\>\>\>\Comment Schedule comparison with next letter in \(x\).
+\li \Else \(j \gets j - i + 2\); \(i \gets 1\)\>\>\>\>\>\>\Comment Failed: we slide \(x\) on \(t\) and start again.\End \End
+\li \If \(i > \len{x}\)
 \li \Then \(\ldots\)\>\>\>\>\>\>\>\>\Comment Occurrence of \(x\) in \(t\) at position \(j - \len{x}\).
 \li \Else \(\ldots\)\>\>\>\>\>\>\>\>\Comment No occurrences. \End
 \end{codebox}
@@ -66,7 +66,7 @@ case?
 
 In the worst case, \(x\) is not in \(t\) and the test at line \(3\)
 always fails on the last letter of \(x\), leading to make \(x\)
-slide of one position at line \(5\) the latest as possible. 
+slide of one position at line \(5\) the latest as possible.
 
 \bigskip
 
