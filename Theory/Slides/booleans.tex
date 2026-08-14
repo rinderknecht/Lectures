@@ -8,7 +8,7 @@
 In case of \C, the order of evaluation arguments of arithmetic
 operators and functions is not specified, it actually depends on the
 compiler and its version. Therefore it would be dangerous to rely on
-the order of evaluation in \C. 
+the order of evaluation in \C.
 
 \bigskip
 
@@ -183,7 +183,7 @@ where \(e\) represents any boolean expression. Then, now
 {\false \wedge\, (\true \wedge\, \true) \rightarrow \false}
 \quad\sigma_3\rname{\TirName{False}_1}
 \end{mathpar}
-where \(\sigma_3 = \{e \mapsto \true \wedge \true\}\). 
+where \(\sigma_3 = \{e \mapsto \true \wedge \true\}\).
 
 \end{frame}
 
@@ -227,7 +227,7 @@ This is easy to specify:
 \end{mathpar}
 Many programming languages, as \C, use this strategy. It allows the
 programmers to write handy code like
-{\small 
+{\small
 \begin{verbatim}
 while (index <= max && tab[index] > 0) ...
 \end{verbatim}
@@ -252,7 +252,7 @@ reductions:
 \;\rname{\wedge_{\TirName{Refl}}}
 \end{mathpar}
 This rule explicitly specifies the \textbf{reflexivity} of the
-conjunction. 
+conjunction.
 
 But the system becomes non-deterministic because there is now an
 overlap between rule \(\rname{\wedge_{\TirName{Refl}}}\) and both
@@ -270,8 +270,8 @@ Let us summarise the concepts of determinism and non-determinism.
 \begin{itemize}
 
   \item The determinism means that, for any expression, there is only
-    one rule to rewrite it. This implies that, every time a program
-    is run with the same input, the output will the same. This is a
+    one rule to rewrite it. This implies that, every time a program is
+    run with the same input, the output will be the same. This is a
     useful property, called soundness, in particular for debugging.
 
   \item Non-determinism means that, for any expression, there may be
@@ -282,7 +282,7 @@ Let us summarise the concepts of determinism and non-determinism.
         the same for any run on the same input, even if the trace may
         be different each time, which makes the debugging more
         difficult.
- 
+
       \item the rewrite system may be unsound.
 
    \end{itemize}
@@ -306,14 +306,14 @@ int a;
 \end{verbatim}
 }
 If the programmer forgets to give a value to the variable, any access
-to it is unspecified. 
+to it is unspecified.
 
 \bigskip
 
 Practically, this means that whatever is located in the memory at the
 location of the variable will be used at each read access. Of course,
 this value may change from one run of the program to another, even
-on the same input. 
+on the same input.
 
 \bigskip
 
@@ -350,7 +350,7 @@ We may try another rewrite system for \(\wedge\):
 While this system is in theory fine, there are two practical problems:
 \begin{enumerate}
 
-  \item it is \textbf{not deterministic} due to 
+  \item it is \textbf{not deterministic} due to
     \(\rname{\TirName{Comm}}\) that overlaps with all the other rules;
 
   \item it may \textbf{not terminate} due to rule
@@ -372,7 +372,7 @@ While this system is in theory fine, there are two practical problems:
 \frametitle{Non-termination}
 
 Now some reductions may not be finite, which models
-\textbf{non-termination}. 
+\textbf{non-termination}.
 
 \bigskip
 
@@ -385,7 +385,7 @@ additional memory at each loop step. Equivalently, it corresponds to a
 bool and (bool e1, bool e2) { ... return and (e2, e1); ... }
 \end{verbatim}
 }
-Anyway, in presence of infinite reductions, the soundness property
+Anyway, in the presence of infinite reductions, the soundness property
 must be weakened as follows:
 \begin{quote}
 \textbf{Weak soundness.} \emph{All finite reductions of an expression
@@ -456,7 +456,7 @@ There are three kinds of reductions:
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Conditioned expressions}
+\frametitle{Conditional expressions}
 
 At this point, boolean expressions can be
 \begin{itemize}
@@ -473,7 +473,7 @@ At this point, boolean expressions can be
 
 \end{itemize}
 where \(e_1\) and \(e_2\) are boolean expressions. Let us
-extend our boolean expressions with a \textbf{conditioned expression}:
+extend our boolean expressions with a \textbf{conditional expression}:
 \begin{itemize}
   \item \Xif \(e_1\) \Xthen \(e_2\) \Xelse \(e_3\)
 \end{itemize}
@@ -483,9 +483,9 @@ extend our boolean expressions with a \textbf{conditioned expression}:
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Conditioned expressions (cont)}
+\frametitle{Conditional expressions (cont)}
 
-It is easy to extend the rewrite system to cope with conditioned:
+It is easy to extend the rewrite system to cope with conditional:
 \begin{mathpar}
 \inferrule
 {}
@@ -503,9 +503,9 @@ It is easy to extend the rewrite system to cope with conditioned:
   e'_1 \; \Xthen \; e_2 \; \Xelse \; e_3}
 \;\rname{\TirName{If}}
 \end{mathpar}
-This means that the \textbf{conditional expression} \(e_1\) must be
-completely reduced \emph{before} the others. This is the usual way in
-programming languages, the rationale being to avoid unnecessary
-computations (evaluating \(e_2\) and \(e_3\) is not necessary).
+This means that the boolean expression \(e_1\) must be completely
+reduced \emph{before} the others. This is the usual way in programming
+languages, the rationale being to avoid unnecessary computations
+(evaluating \(e_2\) and \(e_3\) is not necessary).
 
 \end{frame}
