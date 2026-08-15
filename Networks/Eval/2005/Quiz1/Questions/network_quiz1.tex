@@ -2,18 +2,17 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\input{trace}
-
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
 \usepackage{graphicx}
 
-\title{Quiz \#1 of introduction to networking} 
-\author{Christian Rinderknecht} 
+\title{Quiz \#1 of introduction to networking}
+\author{Christian Rinderknecht}
 \date{\today}
 
 \begin{document}
 
 \maketitle
-
 
 \section{Review questions}
 
@@ -22,7 +21,7 @@
   \item What is the difference between a host and an end system? List
   different types of end systems. Is a mail server an end system?
 
-  \item What is a client program? What is a server program? 
+  \item What is a client program? What is a server program?
 
   \item What are the two kinds of services that the Internet provides
   to the applications? Describe some typical features of each.
@@ -65,12 +64,13 @@
   by your protocol about the underlying end-to-end transport service.
 
   \begin{figure}
-  \begin{center}
-  \includegraphics*[scale=0.35]{01-02.eps}
-  \caption{Sketch of protocols}\label{protocols}
-  \end{center}
+    \begin{center}
+      \includegraphics*[scale=0.35]{01-02.eps}
+      \caption{Sketch of protocols}
+      \label{protocols}
+    \end{center}
   \end{figure}
- 
+
   \item Consider an application that transmits data at a steady rate:
   it generates an \(N\)-bit unit of data every \(k\) time units, where
   \(k\) is small and fixed. Also, when such an application starts, it
@@ -78,7 +78,7 @@
   following questions, briefly justifying your answer.
 
   \begin{enumerate}
- 
+
     \item Would a packet-switched network or a circuit-switched
     network be more appropriate for this application? Why?
 
