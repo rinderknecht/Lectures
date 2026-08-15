@@ -2,14 +2,13 @@
 
 \documentclass{article}
 
-\usepackage[dvips]{graphicx}
-
-% Automata (Must be loaded BEFORE pstricks packages)
-%
+\usepackage{pst-eps}
 \usepackage{vaucanson-g}
 
-\begin{document}
+%\usepackage{graphicx}
 
+\begin{document}
+\TeXtoEPS
 % Settings
 %
 %\ShowGrid
@@ -45,5 +44,6 @@
 
 \end{VCPicture}
 }
+\endTeXtoEPS
 
 \end{document}

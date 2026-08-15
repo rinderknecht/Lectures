@@ -1,2 +1,2 @@
 clean::
-	@rm -f ${DOC}.nav ${DOC}.snm ${DOC}.out
+> @rm -f ${DOC}.nav ${DOC}.snm ${DOC}.out
