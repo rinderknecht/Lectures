@@ -2,8 +2,8 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\input{trace}
-
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
 \usepackage{graphicx}
 
 \title{Answers to quiz \#1 of introduction to networking}
@@ -42,7 +42,7 @@
   \begin{itemize}
     \item The two end systems perform a handshaking before starting a
     session;
-    
+
     \item It provides reliable end-to-end transport, i.e. the data is
     guaranteed to be delivered completely and in order.
 
@@ -115,7 +115,7 @@
   \caption{Sketch of protocols}\label{protocols}
   \end{center}
   \end{figure}
- 
+
   One example is as follows.
 
   Messages from ATM to server:
@@ -130,7 +130,7 @@
   PASSWD \(<\)passwd\(>\) & User enters PIN, which is sent\\
                           & to server\\
   BALANCE                 & User requests balance\\
-  WITHDRAWAL \(<\)amount\(>\) 
+  WITHDRAWAL \(<\)amount\(>\)
                           & User asks to withdraw money\\
   BYE                     & User all done
   \end{tabular}
@@ -153,7 +153,7 @@
                             BALANCE request\\
   BYE     & User done, display welcome\\
           & screen at ATM
-  \end{tabular}   
+  \end{tabular}
 
   A correct withdrawal looks like this:
 {\small
@@ -179,7 +179,7 @@ BYE                  ------------->
   the following questions, briefly justifying your answer.}
 
   \begin{enumerate}
- 
+
     \item \emph{Would a packet-switched network or a circuit-switched
     network be more appropriate for this application? Why?}
 
