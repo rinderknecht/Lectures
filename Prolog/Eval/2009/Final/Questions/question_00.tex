@@ -5,6 +5,9 @@ which is, in turn, smaller than the values of the right subtree. See
 figure~\ref{fig:bst} for an example.
 A node is added to BST as a leaf. For instance, adding 10 leads to the
 BST shown in figure~\ref{fig:bst_10}.
+Write a function \erlcode{add/2}, such that the call
+\erlcode{add(\(N\),\(T\))} evaluates into a BST containing the nodes
+of BST \(T\) plus \(N\), by adding \(N\) as a leaf.
 \begin{figure}[!h]
 \centering
 \subfloat[A BST\label{fig:bst}]{%
@@ -45,6 +48,3 @@ BST shown in figure~\ref{fig:bst_10}.
 }
 }
 \end{figure}
-Write a function \erlcode{add/2}, such that the call
-\erlcode{add(\(N\),\(T\))} evaluates into a BST containing the nodes
-of BST \(T\) plus \(N\), by adding \(N\) as a leaf.
