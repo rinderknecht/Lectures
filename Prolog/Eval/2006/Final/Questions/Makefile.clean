@@ -1,2 +1,2 @@
 clean::
-	@rm -f *.out *.err
+> @rm -f *.out *.err
