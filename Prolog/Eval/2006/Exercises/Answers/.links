@@ -1,5 +1,1 @@
 $HOME/git/LaTeX-build/Makefile
-
-../Questions/question_01.tex
-../Questions/question_02.tex
-../Questions/prolog_ex1.tex prolog_ex1-QA.tex
