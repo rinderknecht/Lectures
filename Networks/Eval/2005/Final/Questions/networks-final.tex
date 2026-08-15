@@ -2,13 +2,13 @@
 
 \documentclass[12pt,a4paper]{article}
 
-\input{trace}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage{nath}
 
 \title{Final examination on Introduction to the Internet}
 \author{Christian Rinderknecht}
 \date{\today}
-
-\usepackage{nath}
 
 \begin{document}
 
@@ -40,7 +40,7 @@
       \item Provide a formula for the total delay, that is, the
         queuing delay plus the transmission delay.
 
-      \item Express the total delay as a function of \(\frac{L}{R}\).    
+      \item Express the total delay as a function of \(\frac{L}{R}\).
 
     \end{enumerate}
 
@@ -50,7 +50,7 @@
     the fly. Host A then groups the bits into a \textbf{48-byte}
     packets. There is one link between host A and B; its transmission
     rate is \textbf{1~Mbps} and its propagation delay is
-    \textbf{2~msec}. 
+    \textbf{2~msec}.
 
     As soon as host A gathers a packet, it sends it to host B. As soon
     as host B receives an \emph{entire} packet, it converts the
@@ -77,11 +77,11 @@
     than \textsc{udp}?
 
   \item Consider an e-commerce site that wants to keep a purchase
-    record for each of its customers. 
+    record for each of its customers.
   \begin{enumerate}
 
     \item Describe (briefly) how this can be done with \textsc{http}
-      authentication. 
+      authentication.
 
     \item Describe (briefly) how this can be done with cookies.
 
