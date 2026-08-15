@@ -44,7 +44,7 @@ correspondent do not need to be using the e-mail application at the
 same moment.
 
 The next figure provides a high-level view of the e-mail system. The
-three major components are 
+three major components are
 \begin{itemize}
 
   \item \textbf{user agents} (also called in this context
@@ -343,7 +343,7 @@ files) e-mails. These extra header lines and their interpretation
 constitute the \textbf{Multipurpose Internet Mail Extensions}
 (\textbf{MIME}).
 
-The two header keywords enabling MIME are 
+The two header keywords enabling MIME are
 \begin{itemize}
 
   \item {\small \verb+Content-Transfer-Encoding:+}
@@ -389,21 +389,21 @@ possible technique to produce \textsc{ascii} from binary.
 \begin{frame}[containsverbatim]
 \frametitle{The MIME extension for non-\textsc{ascii} data (cont)}
 
-When Bob's mail agent reads this message, it reads the 
-{\small 
+When Bob's mail agent reads this message, it reads the
+{\small
 \begin{verbatim}
 Content-Transfer-Encoding: base64
 \end{verbatim}
-} 
+}
 header, so it proceeds to decode the message body with a
 base64-decoder.
 
-The header line 
-{\small 
+The header line
+{\small
 \begin{verbatim}
 Content-Type: image/jpeg
 \end{verbatim}
-} 
+}
 tells Bob's mail agent that the message should be interpreted
 (\emph{after decoding}) as a JPEG image. Thus, it may propose to Bob
 to launch a JPEG viewer if he would like to.
@@ -413,7 +413,7 @@ mail agent: {\small
 \begin{verbatim}
 MIME-Version: 1.0
 \end{verbatim}
-} 
+}
 
 \end{frame}
 
@@ -431,7 +431,7 @@ Content-Type: \emph{type}/\emph{subtype}; \emph{parameters}
 }
 In the previous example, the type was \verb+image+ and the subtype was
 \verb+jpeg+. The subtype restricts the meaning of the type, thus
-allowing a more precise interpretation of the content. 
+allowing a more precise interpretation of the content.
 
 Most parameters are associated with a specific subtype and are similar
 to a variable definition.
@@ -498,13 +498,13 @@ Let us say a little more about multi-part e-mails.
 
 The mail agent needs to determine where each part starts and ends
 inside the body, how each non-\textsc{ascii} part was encoded and what
-kind of content is it. 
+kind of content is it.
 
-This is simply achieved by 
+This is simply achieved by
 \begin{itemize}
   \item placing \emph{boundary characters} between each part,
 
-  \item repeating \verb+Content-Transfer-Type:+ and 
+  \item repeating \verb+Content-Transfer-Type:+ and
    \verb+Content-Type:+ header line at the beginning of each part.
 
 \end{itemize}
@@ -661,7 +661,7 @@ There are several possibilities: \textbf{\textsc{pop3}} (\textbf{Post
 \begin{frame}
 \frametitle{Mail Access Protocols/POP3}
 
-\textsc{pop3} is an extremely simple mail access protocol. 
+\textsc{pop3} is an extremely simple mail access protocol.
 
 The session starts with the recipient's mail agent opens a
 \textsc{tcp} connection to its mail server on port number 110.
@@ -725,7 +725,7 @@ Connected to mail.konkuk.ac.kr.
 Escape character is '^]'.
 +OK <11115.1117125523@konkuk.ac.kr>
 user rinderkn
-+OK 
++OK
 \end{verbatim}
 }
 
@@ -737,15 +737,15 @@ user rinderkn
 \frametitle{Mail Access Protocols/POP3 (cont)}
 
 Example of failed authentication:
-{\small 
+{\small
 \begin{verbatim}
 $ telnet mail.konkuk.ac.kr 110
 Trying 202.30.38.143...
 Connected to mail.konkuk.ac.kr.
 Escape character is '^]'.
 +OK <15247.1117126049@konkuk.ac.kr>
-user foo 
-+OK 
+user foo
++OK
 pass bar
 -ERR authorization failed
 Connection closed by foreign host.
@@ -774,7 +774,7 @@ Imagine a user has two messages in his mailbox. In the following
 transcript, lines prefixed by \textbf{C:} are sent verbatim by the
 client agent to its \textsc{tcp} socket, and lines starting with
 \textbf{S:} are exactly the lines sent to the \textsc{tcp} connection
-by the server. 
+by the server.
 
 \end{frame}
 
@@ -817,7 +817,7 @@ from multiple machines, e.g. his office computer, his home computer
 and his portable computer.
 
 If Bob reads his messages from his office machine, he will not be able
-to reread them from his home machine. 
+to reread them from his home machine.
 
 In the ``download and keep'' mode, the user agent leaves the messages
 on the server after downloading (a copy of) them.
@@ -892,4 +892,3 @@ This web-based e-mail system is very useful for mobile users since it
 only requires a web browser and an internet connection.
 
 \end{frame}
-

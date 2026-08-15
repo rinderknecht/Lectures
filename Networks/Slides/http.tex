@@ -67,7 +67,7 @@ objects.
 \begin{frame}
 \frametitle{Application layer/The Web and \textsc{http} (cont)}
 
-An URL is made of 
+An URL is made of
 \begin{itemize}
 
   \item a protocol name,
@@ -78,10 +78,10 @@ An URL is made of
 
 \end{itemize}
 
-For instance \url{http://www.ietf.org/rfc/rfc2396.txt} specifies 
+For instance \url{http://www.ietf.org/rfc/rfc2396.txt} specifies
 \begin{itemize}
 
-  \item the use of the \textsc{http}, 
+  \item the use of the \textsc{http},
 
   \item a unique computer named \url{www.ietf.org},
 
@@ -144,14 +144,14 @@ protocol}.
 \bigskip
 
 There are two kinds of TCP connections: \textbf{persistent} and
-\textbf{non-persistent}. 
+\textbf{non-persistent}.
 
 \end{frame}
 
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{The Web and \textsc{http}/Non-persistent connections} 
+\frametitle{The Web and \textsc{http}/Non-persistent connections}
 
 Suppose a client uses a non-persistent connection to query a page made
 of a base \textsc{html} file and ten \textsc{jpeg} images, all objects
@@ -161,7 +161,7 @@ file is \url{http://www.school.org/dep/index.html}
 
   \item The \textsc{http} client initiates a TCP
     connection to the server \url{www.school.org} on port number 80,
-    which is the default port number for \textsc{http}.\label{step1} 
+    which is the default port number for \textsc{http}.\label{step1}
 
   \item The \textsc{http} client send an \textsc{http} request message
     to the server via the socket associated with the TCP connection
@@ -175,7 +175,7 @@ file is \url{http://www.school.org/dep/index.html}
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{The Web and \textsc{http}/Non-persistent connections} 
+\frametitle{The Web and \textsc{http}/Non-persistent connections}
 
 \begin{itemize}
 
@@ -204,7 +204,7 @@ file is \url{http://www.school.org/dep/index.html}
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{The Web and \textsc{http}/Non-persistent connections (cont)} 
+\frametitle{The Web and \textsc{http}/Non-persistent connections (cont)}
 
 The steps described use \textbf{non-persistent connections} because
 each TCP connection is closed after the server sends the object --- it
@@ -225,7 +225,7 @@ non-persistent.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{The Web and \textsc{http}/Non-persistent connections (cont)} 
+\frametitle{The Web and \textsc{http}/Non-persistent connections (cont)}
 
 Let us estimate the amount of time that elapses between the moment the
 client requests a base \textsc{html} file and the time it is received
@@ -242,7 +242,7 @@ client. It is roughly two RTTs plus the transmission time.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{The Web and \textsc{http}/Non-persistent connections (cont)} 
+\frametitle{The Web and \textsc{http}/Non-persistent connections (cont)}
 
 \begin{center}
   \includegraphics[scale=0.32]{02-07.eps}
@@ -323,10 +323,10 @@ The first line \verb+GET /dep/index.html HTTP/1.1+ is called the
 
 \bigskip
 
-The request line has three fields: 
+The request line has three fields:
 \begin{itemize}
 
-  \item the method field (\verb+GET+), 
+  \item the method field (\verb+GET+),
 
   \item the URL field (\verb+/dep/index.html+),
 
@@ -389,7 +389,7 @@ using some specific information (in the body field), as with a form.
 
 In fact, not all forms use a \verb+POST+ method: sometimes the user's
 information is put in the URL itself and a \verb+GET+ method is used
-instead. 
+instead.
 
 For instance, if a form consists in two fields whose given values are
 \texttt{monkeys} and \texttt{bananas}, the following URL is possible:
@@ -437,16 +437,16 @@ Content-Type: text/html
 
 The first line \verb+HTTP/1.1 200 OK+ is the \textbf{status line}. It
 tells here that the object was found and is returned. The number
-\verb+200+ is the status number (equivalent to the status name). 
+\verb+200+ is the status number (equivalent to the status name).
 
 \bigskip
 
-The following six lines are the \textbf{header lines}. 
+The following six lines are the \textbf{header lines}.
 
 \bigskip
 
 The first one, \verb+Connection: close+ acknowledges the
-non-persistent underlying TCP connection. 
+non-persistent underlying TCP connection.
 
 \bigskip
 
@@ -530,7 +530,7 @@ The status code and its associated phrase can be of several kinds:
 \frametitle{The Web and \textsc{http}/\textsc{http} responses (cont)}
 
 It is recommended that you create some small \textsc{http} request
-messages, send them to some web server and examine the response messages. 
+messages, send them to some web server and examine the response messages.
 
 \bigskip
 
@@ -654,7 +654,7 @@ Let us describe an example of session using cookies.
 \begin{itemize}
 
   \item A user connects for the first time to an e-commerce site using
-    cookies. 
+    cookies.
 
   \item The web server creates a unique identification number for
     him and create an entry in its customer database indexed by this
@@ -729,7 +729,7 @@ they can provide a lot of private information to commercial web sites.
 \bigskip
 
 These sites can even record the behaviour of a specific user
-\emph{across several web sites}. 
+\emph{across several web sites}.
 
 \bigskip
 
@@ -812,7 +812,7 @@ User-agent: Mozilla/4.0
 \frametitle{The Web and \textsc{http}/Conditional \texttt{GET} (cont)}
 
 Second, the web server sends a response message with the object:
-{\small 
+{\small
 \begin{verbatim}
 HTTP/1.0 200 OK
 Date: Wed, 12 Aug 1998 15:39:29

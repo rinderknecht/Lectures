@@ -30,7 +30,7 @@
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Internet Directory Service (\textsc{dns})}
+\frametitle{Internet Directory Service (DNS)}
 
 The internet protocols use \textbf{IP addresses} to identify
 hosts. They are a series of numbers, between 0 and 255, separated by
@@ -42,7 +42,7 @@ periods, like \url{mail.konkuk.ac.kr}.
 
 The internet provides an application-layer service that allows
 applications to find the IP address of a host from its name: the
-\textbf{Domain Name Service} (\textbf{\textsc{dns}}). 
+\textbf{Domain Name Service} (\textbf{DNS}).
 
 Because of its functional similarity with the telephone directories,
 which map subscri\-bers' names to their phone number, this service is
@@ -53,9 +53,9 @@ also called \textbf{Internet Directory Service}.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Internet Directory Service (\textsc{dns}) (cont)}
+\frametitle{Internet Directory Service (DNS) (cont)}
 
-The \textsc{dns} is
+The DNS is
 \begin{itemize}
 
   \item a client/server protocol;
@@ -71,9 +71,9 @@ The \textsc{dns} is
 Name servers are often machines running the UNIX operating system and
 the Berkeley Internet Name Domain (BIND) software.
 
-The \textsc{dns} protocol runs over \textsc{udp} and uses port 53. 
+The DNS protocol runs over \textsc{udp} and uses port 53.
 
-\textsc{dns} is commonly used by other application-layer protocols, like
+DNS is commonly used by other application-layer protocols, like
 \textsc{http}, \textsc{smtp} and \textsc{ftp}.
 
 \end{frame}
@@ -81,17 +81,17 @@ The \textsc{dns} protocol runs over \textsc{udp} and uses port 53.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Internet Directory Service (\textsc{dns}) (cont)}
+\frametitle{Internet Directory Service (DNS) (cont)}
 
 When a user wants to retrieve the web page whose URL is
-\url{http://konkuk.ac.kr/index.html}, 
+\url{http://konkuk.ac.kr/index.html},
 \begin{enumerate}
 
   \item its browser extracts the hostname \url{konkuk.ac.kr} from the URL,
 
-  \item passes it to the client side of the \textsc{dns} application,
+  \item passes it to the client side of the DNS application,
 
-  \item this application sends to a \textsc{dns} server the hostname,
+  \item this application sends to a DNS server the hostname,
 
   \item after some delay, it receives back the IP address of the
     referred host,
@@ -108,7 +108,7 @@ When a user wants to retrieve the web page whose URL is
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Internet Directory Service (\textsc{dns}) (cont)}
+\frametitle{Internet Directory Service (DNS) (cont)}
 
 DNS provides a few other important services in addition to translating
 hostnames to IP addresses:
@@ -134,7 +134,7 @@ hostnames to IP addresses:
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Internet Directory Service (\textsc{dns}) (cont)}
+\frametitle{Internet Directory Service (DNS) (cont)}
 
 \begin{itemize}
 
@@ -151,7 +151,7 @@ hostnames to IP addresses:
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Internet Directory Service (\textsc{dns}) (cont)}
+\frametitle{Internet Directory Service (DNS) (cont)}
 
 What if there were only one name server in the internet?
 
@@ -160,7 +160,7 @@ What if there were only one name server in the internet?
   \item If the name server crashes, so does the internet.
 
   \item A single name server would have to handle all the
-  \textsc{dns} queries (from \textsc{http} requests and e-mails at
+  DNS queries (from \textsc{http} requests and e-mails at
   hundreds of millions of hosts).
 
   \item A single name server cannot be geographically close to all
@@ -178,7 +178,7 @@ Therefore \emph{a centralised database does not scale}.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Internet Directory Service (\textsc{dns}) (cont)}
+\frametitle{Internet Directory Service (DNS) (cont)}
 
 That is why
 
@@ -210,7 +210,7 @@ That is why
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Local name servers}
+\frametitle{DNS/Local name servers}
 
 Each ISP has a \textbf{local name server} (also called a
 \textbf{default name server}), so it is relatively close to the users
@@ -237,10 +237,10 @@ address of \url{baie.eurecom.fr}.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Root name servers}
+\frametitle{DNS/Root name servers}
 
 When a local name server can not serve a request, it then acts as a
-\textsc{dns} client and queries a \textbf{root name server}.
+DNS client and queries a \textbf{root name server}.
 
 If the root name server has the required mapping, it returns the IP
 address to the local name server which, in turn, delivers it to the
@@ -254,13 +254,13 @@ address of an \emph{authoritative name server} which has it.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Authoritative name
+\frametitle{DNS/Authoritative name
   servers}
 
 Every host is registered with an authoritative name server.
 
 This authoritative name server is a name server in the
-(\emph{registered}) host's local ISP. 
+(\emph{registered}) host's local ISP.
 
 In principle, each host should be registered in two authoritative name
 servers, in case of failures.
@@ -275,7 +275,7 @@ Many name servers act both as local and authoritative name servers.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Example}
+\frametitle{DNS/Example}
 
 Let us consider an example. Assume that host \url{surf.eurecom.fr}
 queries the IP address of host \url{gaia.cs.umass.edu}.
@@ -295,7 +295,7 @@ queries the IP address of host \url{gaia.cs.umass.edu}.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Example (cont)}
+\frametitle{DNS/Example (cont)}
 
 \begin{center}
   \includegraphics[scale=0.32]{02-16.eps}
@@ -306,10 +306,10 @@ queries the IP address of host \url{gaia.cs.umass.edu}.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Example (cont)}
+\frametitle{DNS/Example (cont)}
 
 Finally, the IP address of host \url{gaia.cs.umass.edu} is forwarded
-back to host \url{surf.eurocom.fr}, through all the \textsc{dns}
+back to host \url{surf.eurocom.fr}, through all the DNS
 clients (steps 4, 5 and 6).
 
 Until now we assumed that a root name server always knows an
@@ -330,7 +330,7 @@ servers for all the departments, in particular \url{cs.umass.edu}.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Example (cont)}
+\frametitle{DNS/Example (cont)}
 
 \begin{center}
 \includegraphics[scale=0.28]{02-17.eps}
@@ -341,10 +341,10 @@ servers for all the departments, in particular \url{cs.umass.edu}.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Recursive
+\frametitle{DNS/Recursive
   and iterative queries}
 
-As in our example, when a name server \emph{A} becomes a \textsc{dns}
+As in our example, when a name server \emph{A} becomes a DNS
 client of name server \emph{B} which, in turn, is client of \emph{C}
 and that \emph{C} sends the result to \emph{B}, this is called a
 \textbf{recursive query} because \emph{B} acts in behalf of \emph{A}.
@@ -366,7 +366,7 @@ ease the burden of root name servers (here, \emph{B}).
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Recursive
+\frametitle{DNS/Recursive
   and iterative queries (cont)}
 
 \begin{center}
@@ -378,7 +378,7 @@ ease the burden of root name servers (here, \emph{B}).
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Caching}
+\frametitle{DNS/Caching}
 
 In order to improve the performances, name servers make use of
 \textbf{caches}.
@@ -400,13 +400,13 @@ days).
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Records}
+\frametitle{DNS/Records}
 
 A (hostname, address) is embedded in a data structure called a
 \textbf{resource record} (\textbf{RR}). In turn, resource records are
 stored in databases in each name server.
 
-Each \textsc{dns} message (either query or response) carries one or
+Each DNS message (either query or response) carries one or
 more resource records.
 
 More precisely, a resource record has the structure (\emph{name},
@@ -421,7 +421,7 @@ We will ignore the \emph{TTL} field in the following description.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Records (cont)}
+\frametitle{DNS/Records (cont)}
 
 The meaning of \emph{name} and \emph{value} depend on the field
 \emph{type}:
@@ -436,7 +436,7 @@ The meaning of \emph{name} and \emph{value} depend on the field
   \item if \emph{type} is \emph{NS}, then \emph{name} is a domain
   (such as \url{umass.edu}) and \emph{value} is the hostname of an
   authoritative name server for all the hosts in \emph{name}. This
-  kind of record is used to route \textsc{dns} queries along in the
+  kind of record is used to route DNS queries along in the
   query chain. For instance, (\url{umass.edu}, \url{dns.umass.edu},
   \emph{NS}).
 
@@ -447,7 +447,7 @@ The meaning of \emph{name} and \emph{value} depend on the field
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Records (cont)}
+\frametitle{DNS/Records (cont)}
 
 \begin{itemize}
 
@@ -471,7 +471,7 @@ The meaning of \emph{name} and \emph{value} depend on the field
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Records (cont)}
+\frametitle{DNS/Records (cont)}
 
 Now we can better understand what is being an authoritative name
 server or not.
@@ -479,7 +479,7 @@ server or not.
 \begin{itemize}
 
   \item If a name server is authoritative for a given hostname, then
-  it must contain a \emph{type A} record for this hostname. 
+  it must contain a \emph{type A} record for this hostname.
 
   \item If a name server is not authoritative for a given hostname,
   it may contain a \emph{type A} record in its cache. Otherwise it
@@ -501,11 +501,11 @@ server or not.
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Messages}
+\frametitle{DNS/Messages}
 
 \vspace*{-1pt}
 
-There are only two kind of \textsc{dns} messages and both queries and
+There are only two kind of DNS messages and both queries and
 replies have the same format:
 \begin{center}
 \includegraphics[scale=0.37]{02-19.eps}
@@ -516,7 +516,7 @@ replies have the same format:
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Messages (cont)}
+\frametitle{DNS/Messages (cont)}
 
 The first 12 bytes are the \textbf{header section}, which is made of
 successive fields:
@@ -539,7 +539,7 @@ successive fields:
 
   \item the \textbf{numbers} are four numbers that count the number of
     occurrences of four kind of data in the next sections.
- 
+
 \end{enumerate}
 
 \end{frame}
@@ -547,7 +547,7 @@ successive fields:
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{\textsc{dns}/Messages (cont)}
+\frametitle{DNS/Messages (cont)}
 
 There are now four \textbf{data sections}:
 

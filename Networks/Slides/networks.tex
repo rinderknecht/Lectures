@@ -1,0 +1,56 @@
+\documentclass[compress,dvips,xcolor={dvipsnames},t]{beamer}
+
+%%-*-latex-*-
+
+% Language and encoding
+%
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+
+% Graphics
+%
+\usepackage{graphicx}
+
+% Maths
+%
+\usepackage{amssymb,amsmath,stmaryrd}
+
+% Miscellanea
+%
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{hyphenat}
+
+% Input files
+%
+\input{beamer_cfg}
+
+% New commands
+%
+\renewcommand{\refname}{}
+
+% ------------------------------------------------------------------------
+% Document
+%
+\title{Computer Networks}
+\author{Christian Rinderknecht}
+\date{24 October 2008}
+
+\begin{document}
+
+\frame{\maketitle}
+
+\include{introduction}
+\include{network_edge}
+\include{network_core}
+\include{network_access}
+\include{isp}
+\include{delay_loss}
+\include{services}
+\include{application}
+\include{http}
+\include{ftp}
+\include{mail}
+\include{dns}
+
+\end{document}

@@ -22,7 +22,7 @@
       \item ISPs and Internet backbones
 
       \item Delay and loss in packet-switched networks
- 
+
       \item Protocol layers and their service models
 
     \end{itemize}
@@ -36,7 +36,7 @@
 \begin{frame}
 \frametitle{The network core}
 
-The network core is a mesh of interconnected routers. 
+The network core is a mesh of interconnected routers.
 
 \bigskip
 
@@ -180,14 +180,14 @@ How long does it take to send the file?
   time.
 
   \item Thus the rate for each circuit is the link rate by its time
-  using it: 
-  
+  using it:
+
   1.536/24 = 64 kb/s = 64,000 b/s
 
   \item The file is transfered in 640,000/64,000 = 10 seconds.
 
   \item But we have to add the time to setup the circuit, so the total
-  transfer time is 
+  transfer time is
 
   10 + 0.5 = 10.5 seconds.
 
@@ -281,7 +281,7 @@ at a time.
 
 Let us consider on a very simple case how long it takes to send a
 message of \(L\) bits on a series of \(Q\) links whose rate is \(R\)
-bits/sec. 
+bits/sec.
 
 \bigskip
 
@@ -318,7 +318,7 @@ Let us compare packet switching and circuit switching.
   delays (mainly queuing delays).
 
   \item Proponents of packet switching argue that
-  
+
   \begin{itemize}
 
     \item it offers better sharing of the bandwidth than circuit
@@ -347,7 +347,7 @@ Let us consider a simple example. Suppose
   \item users share a 1 Mbps link;
 
   \item each user alternates periods of activity and of inactivity:
-  
+
    \begin{itemize}
 
      \item when he is active, he generates data at the constant rate
@@ -515,13 +515,13 @@ store-and-forward delays).
 
 \bigskip
 
-This is much less than with message switching! 
+This is much less than with message switching!
 
 \bigskip
 
 The reason is pipelining: once the first packet reaches the
 destination, the source and the two switches are transmitting
-simultaneously. 
+simultaneously.
 
 \end{frame}
 
@@ -571,7 +571,7 @@ contains the application data.
 
 If we cut our message into pieces much smaller than the envelopes,
 then the postal service has to carry a heavier load of envelopes than
-of messages! 
+of messages!
 
 \bigskip
 
@@ -645,12 +645,12 @@ They are local to each switch.
 \bigskip
 
 Assume a packet starts from host A and must arrive to B: it has to
-cross three links. 
+cross three links.
 
 \bigskip
 
 It begins with the VC number of the first link, say
-12, and enters PS1 at the interface 1. 
+12, and enters PS1 at the interface 1.
 
 \bigskip
 
@@ -668,7 +668,7 @@ the packet must go out through interface 2 (towards PS2).
 \begin{center}
   \includegraphics[scale=0.30]{01-12.eps}
 \end{center}
- 
+
 \end{frame}
 
 % ------------------------------------------------------------------------

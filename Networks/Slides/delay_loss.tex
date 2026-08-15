@@ -22,7 +22,7 @@
       \item ISPs and Internet backbones
 
       \item \textbf{Delay and loss in packet-switched networks}
- 
+
       \item Protocol layers and their service models
 
     \end{itemize}
@@ -42,16 +42,16 @@ like the Internet.
 \bigskip
 
 When a packet crosses a link and a router, it suffers different kinds
-of delays: 
+of delays:
 \begin{itemize}
 
-  \item \textbf{nodal processing delay}, 
+  \item \textbf{nodal processing delay},
 
   \item \textbf{queuing delay},
 
   \item \textbf{transmission delay},
- 
-  \item \textbf{propagation delay}. 
+
+  \item \textbf{propagation delay}.
 
 \end{itemize}
 All together, they give the \textbf{total nodal delay}.
@@ -129,7 +129,7 @@ the transmission rate of the link.
 \frametitle{Queuing delay and packet loss}
 
 The delay which can be the highest and is the most difficult to assess
-is the queuing delay. 
+is the queuing delay.
 
 \bigskip
 
@@ -237,7 +237,7 @@ not linear).
 \frametitle{Queuing delay and packet loss (cont)}
 
 In practice, periodic arrival or linear bursts are improbable: the
-arrival is \emph{random}. 
+arrival is \emph{random}.
 
 \bigskip
 
@@ -258,6 +258,7 @@ augmentation of the average delay.
 \begin{frame}
 \frametitle{Queuing delay and packet loss (cont)}
 
+\vspace*{15mm}
 \begin{center}
   \includegraphics[scale=0.40]{01-19.eps}
 \end{center}
@@ -364,7 +365,7 @@ idea of the delay variation.
 
 The web site \url{http://www.traceroute.org} provides a list of links
 to web sites, classified by countries, which provide an interface to
-\textsf{Traceroute}. 
+\textsf{Traceroute}.
 
 \bigskip
 
@@ -394,6 +395,13 @@ traceroute to pauillac.inria.fr (128.93.11.35), 30 hops max, 38 byte packets
  7  * * *
  8  * * *
  9  * * *
+10  P14-0.PASCR2.Pastourelle.opentransit.net (193.251.128.105) 58.415 ms  57.089 ms  57.764 ms
+11  193.51.185.2 (193.51.185.2)  57.802 ms  61.880 ms  58.485 ms
+12  inria-g3-1.cssi.renater.fr (193.51.180.174)  60.999 ms  58.497 ms  57.900 ms
+13  royal-inria.cssi.renater.fr (193.51.182.73)  58.860 ms  63.028 ms  58.961 ms
+14  193.48.202.2 (193.48.202.2)  63.017 ms  58.502 ms  57.889 ms
+15  rocq-gw-bb.inria.fr (192.93.1.100)  60.721 ms  61.437 ms  61.078 ms
+16  pauillac.inria.fr (128.93.11.35)  60.759 ms  62.540 ms  61.703 ms
 \end{verbatim}
 }
 
@@ -404,17 +412,6 @@ traceroute to pauillac.inria.fr (128.93.11.35), 30 hops max, 38 byte packets
 \begin{frame}[containsverbatim]
 \frametitle{Delays and routes in the Internet (cont)}
 
-{\tiny
-\begin{verbatim}
-10  P14-0.PASCR2.Pastourelle.opentransit.net (193.251.128.105) 58.415 ms  57.089 ms  57.764 ms
-11  193.51.185.2 (193.51.185.2)  57.802 ms  61.880 ms  58.485 ms
-12  inria-g3-1.cssi.renater.fr (193.51.180.174)  60.999 ms  58.497 ms  57.900 ms
-13  royal-inria.cssi.renater.fr (193.51.182.73)  58.860 ms  63.028 ms  58.961 ms
-14  193.48.202.2 (193.48.202.2)  63.017 ms  58.502 ms  57.889 ms
-15  rocq-gw-bb.inria.fr (192.93.1.100)  60.721 ms  61.437 ms  61.078 ms
-16  pauillac.inria.fr (128.93.11.35)  60.759 ms  62.540 ms  61.703 ms
-\end{verbatim}
-}
 The domain extensions (\texttt{.fo}, \texttt{.dk}, \texttt{.fr}) help
 you to follow the packets along the corresponding countries. Note that
 some routers have no name (only address). Routers 7, 8 and 9 do not
