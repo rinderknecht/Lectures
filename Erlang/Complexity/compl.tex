@@ -2,17 +2,12 @@
 
 \documentclass[11pt,a4paper]{article}
 
+\usepackage[T1]{fontenc}
 \usepackage[british]{babel}
 
 \usepackage{amssymb,amsmath,stmaryrd}
 \usepackage{xspace}
-
-% Inputing in verbatim mode
-%
 \usepackage{verbatim}
-
-\input{trace}
-\input{erlc}
 
 \newcommand\stt[1]{\texttt{\small #1}}
 \newcommand\cost[1]{\llbracket{\stt{#1}}\rrbracket}
@@ -48,7 +43,6 @@ i.e., \(e = \val{e}\), then \(\cost{\(e\)} = \cost{\(\val{e}\)} = 0\).
 
 Consider the following \Erlang module:
 {\small\verbatiminput{join.erl}}
-\erlcomp{.}{join}
 \noindent The cost of a function call like
 \(\cost{join(\(e_1\),\(e_2\))}\) is, by definition, the sum of the
 costs of rewriting \(e_1\) and \(e_2\), plus the cost of rewriting the
@@ -116,7 +110,7 @@ it is thus possible to have only one furmula for the cost:
 \]
 Let us take an example:
 \begin{align*}
-\stt{join([1,2,3], [4,5])} 
+\stt{join([1,2,3], [4,5])}
 &\xrightarrow{2} \stt{[1|join([2,3],[4,5])]}\\
 &\xrightarrow{2} \stt{[1|[2|join([3],[4,5])]]}\\
 &\xrightarrow{2} \stt{[1|[2|[3|join([],[4,5])]]]}\\
@@ -161,7 +155,6 @@ the length of the second list will have no impact.
 
 Consider the following \Erlang module:
 {\small\verbatiminput{rev.erl}}
-\erlcomp{.}{rev}
 \noindent The cost of a function call like \(\cost{rev(\(e\))}\)
 is, by definition, the sum of the costs of rewriting \(e\) and the
 cost of rewriting the call with the corresponding value \(\val{e}\) as
@@ -174,7 +167,7 @@ Considering each clause separately, we can therefore write the
 equations defining the costs
 \begin{align*}
 \cost{rev([])} &= 1\\
-\cost{rev([H|T])} 
+\cost{rev([H|T])}
   &= 1 + \cost{join(rev(T),[H])}\\
   &= 1 + (\cost{rev(T)} +
 \cost{join(\(\val{\stt{rev(T)}}\),[H])})
@@ -187,7 +180,7 @@ length. Here, the size of the input is characterized by an integer
 \(n\) where \(n = \stt{len(\(e\))}\). Let us define the cost of
 \stt{rev/1} in terms of \(n\):
 \[
-\comp{rev/1}{n} \triangleq \cost{rev(\(e\))} 
+\comp{rev/1}{n} \triangleq \cost{rev(\(e\))}
 \quad \text{where}\;\, \stt{len(\(e\))} = n
 \]
 Using this definition, the previous equations are equivalent to
@@ -239,7 +232,7 @@ we can therefore gather the two cases into one as
 \]
 Let us take an example:
 \begin{align*}
-\stt{rev([1,2,3])} 
+\stt{rev([1,2,3])}
 &\xrightarrow{4} \stt{join(rev([2,3]),[1])}\\
 &\xrightarrow{4} \stt{join(join(rev([3]),[2]),[1])}\\
 &\xrightarrow{4} \stt{join(join(join(rev([]),[3]),[2]),[1])}\\
@@ -276,7 +269,6 @@ input list will multiply at least by \(50\) the computing time.
 
 Consider the following list reversing using an \emph{accumulator}:
 {\small\verbatiminput{rev_bis.erl}}
-\erlcomp{.}{rev_bis}
 \noindent The cost of a function call like
 \(\cost{rev\_bis(\(e\))}\) is, by definition, the sum of the costs
 of rewriting \(e\) and the cost of rewriting the call with the
@@ -304,7 +296,7 @@ length. Here, the size of the input is characterized by an integer
 to \stt{rev\_join/2}. Let us define the cost of \stt{rev\_bis/1} and
 \stt{rev\_join/2} in terms of the input size:
 \begin{align*}
-\comp{rev\_bis/1}{n} &\triangleq \cost{rev\_bis(\(e\))} 
+\comp{rev\_bis/1}{n} &\triangleq \cost{rev\_bis(\(e\))}
 & \text{where}\;\, \stt{len(\(e\))} = n\\
 \comp{rev\_join/2}{n,m} &\triangleq \cost{rev\_join(\(e_1\),\(e_2\))}
 & \text{where}\;\, \stt{len(\(e_1\))} = n \;\, \text{and} \;\,
@@ -342,7 +334,7 @@ differences:
 \end{align*}
 Let us take an example:
 \begin{align*}
-\stt{rev\_bis([1,2,3])} 
+\stt{rev\_bis([1,2,3])}
 &\xrightarrow{5} \stt{rev\_join([1,2,3],[])}\\
 &\xrightarrow{7} \stt{rev\_join([2,3],[1])}\\
 &\xrightarrow{7} \stt{rev\_join([3],[2,1])}\\
@@ -369,7 +361,7 @@ enough. We can also now compare the cost of \stt{rev\_bis/1} with
 \stt{rev/1}:
 \begin{align*}
 \comp{rev/1}{n} &= \frac{n+1}{2} \; \comp{rev\_bis/1}{n}\\
-\comp{rev/1}{n} &\sim \frac{n}{2} \; \comp{rev\_bis/1}{n} 
+\comp{rev/1}{n} &\sim \frac{n}{2} \; \comp{rev\_bis/1}{n}
 & \text{where} \;\, n \rightarrow +\infty
 \end{align*}
 Clearly, \stt{rev\_bis/1} is better than \stt{rev/1}.
