@@ -1,17 +1,15 @@
 %%-*-latex-*-
 
-\documentclass[a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
-\usepackage[francais]{babel}
-\usepackage[OT1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}       % Required for \DJ and hyphenation
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb, stmaryrd}
 \usepackage{amsfonts}
-
-\usepackage{xspace}
-\usepackage{amssymb,amsmath,stmaryrd}
+\usepackage{alltt}
 \usepackage{graphicx}
 
-\input{trace}
 \input{commands}
 \input{ocaml_syntax}
 
@@ -27,46 +25,46 @@
 \maketitle
 
 %\begin{center}
-\centerline{\textbf{Durée: 2 heures. Documents et calculatrices ne sont
-pas autorisés.}}
+\centerline{\textbf{DurÃ©e: 2 heures. Documents et calculatrices ne sont
+pas autorisÃ©s.}}
 %\end{center}
 
 
-\section{Syntaxe et sémantique}
+\section{Syntaxe et sÃ©mantique}
 
 \noindent Pour chacun des programmes suivants \textbf{dans l'ordre du sujet},
 
 \begin{enumerate}
 
-  \item construisez l'arbre correspondant (\textbf{à l'encre}),
- 
-  \item dans chaque arbre, reliez les variables dans les expressions à
-  leur lieur (\textbf{dans une encre différente}),
+  \item construisez l'arbre correspondant (\textbf{Ã  l'encre}),
 
-  \item identifiez les variables libres (\textbf{à l'encre dans
+  \item dans chaque arbre, reliez les variables dans les expressions Ã 
+  leur lieur (\textbf{dans une encre diffÃ©rente}),
+
+  \item identifiez les variables libres (\textbf{Ã  l'encre dans
   l'arbre et dans une phrase}),
 
-  \item décrivez formellement son exécution à l'aide de la sémantique
-  suivante, où $\evalf{e}{\rho}$ est la valeur de l'expression $e$
+  \item dÃ©crivez formellement son exÃ©cution Ã  l'aide de la sÃ©mantique
+  suivante, oÃ¹ $\evalf{e}{\rho}$ est la valeur de l'expression $e$
   dans l'environnement $\rho$:
 \begin{align*}
-\evalf{\overline{n}}{\rho} &= \dot{n} \ \ \textnormal{où $\overline{n}$
+\evalf{\overline{n}}{\rho} &= \dot{n} \ \ \textnormal{oÃ¹ $\overline{n}$
   est un entier mini-ML et $\dot{n} \in \mathbb{N}$}\\
 \evalf{e_1 \texttt{+} \, e_2}{\rho} &= \evalf{e_1}{\rho} +
-\evalf{e_2}{\rho} \ \ \textnormal{etc.}\\ 
+\evalf{e_2}{\rho} \ \ \textnormal{etc.}\\
 \evalf{\lpar{e}\rpar}{\rho} &= \evalf{e}{\rho}\\
-\evalf{x}{\rho} &= \rho(x) \ \ \textnormal{(la première liaison de $x$ dans $\rho$)}\\
+\evalf{x}{\rho} &= \rho(x) \ \ \textnormal{(la premiÃ¨re liaison de $x$ dans $\rho$)}\\
 \evalf{\Xfun \,\, x \rightarrow e}{\rho} &= \langle\Xfun \,\, x
 \rightarrow e, \rho\rangle\\
 \evalf{\Xlet \,\, x = e_1 \,\, \Xin \,\, e_2}{\rho} &= \evalf{e_2}{((x
   \mapsto \evalf{e_1}{\rho}) \oplus \rho)}\\
 \evalf{e_1 \,\, e_2}{\rho} &= \evalf{e}{((x \mapsto \evalf{e_2}{\rho})
-  \oplus \rho')} \ \ \textnormal{où} \ \ \evalf{e_1}{\rho} = \langle\Xfun \,\, x
+  \oplus \rho')} \ \ \textnormal{oÃ¹} \ \ \evalf{e_1}{\rho} = \langle\Xfun \,\, x
 \rightarrow e,\rho'\rangle
 \end{align*}
-  L'évaluation consiste à appliquer les équations de la gauche vers la
-  droite jusqu'au résultat ou une impossibilité (c.-à-d. erreur à
-  l'exécution).
+  L'Ã©valuation consiste Ã  appliquer les Ã©quations de la gauche vers la
+  droite jusqu'au rÃ©sultat ou une impossibilitÃ© (c.-Ã -d. erreur Ã 
+  l'exÃ©cution).
 
 \end{enumerate}
 
@@ -103,14 +101,14 @@ in x+1;;
 let compose = fun f -> fun g -> fun x -> f (g x) in
   let square = fun f -> compose f f in
   let double = fun x -> x + x in
-  let quad = square double 
+  let quad = square double
 in square quad;;
 \end{verbatim}
 
 
 \section{Programmation}
 
-\noindent Le type des arbres binaires est défini par:
+\noindent Le type des arbres binaires est dÃ©fini par:
 \begin{verbatim}
 type 'a arbre = Vide | Noeud of 'a * 'a arbre * 'a arbre
 \end{verbatim}
@@ -119,12 +117,12 @@ type 'a arbre = Vide | Noeud of 'a * 'a arbre * 'a arbre
 \noindent Un arbre binaire de recherche est un arbre binaire tel que:
 
 \begin{itemize}
-  
-  \bitem toutes les étiquettes du sous-arbre de gauche
-  (respectivement, de droite) sont inférieures (respectivement,
-  supérieures) à l'étiquette de la racine,
 
-  \bitem récursivement, les deux sous-arbres sont eux-mêmes des arbres
+  \bitem toutes les Ã©tiquettes du sous-arbre de gauche
+  (respectivement, de droite) sont infÃ©rieures (respectivement,
+  supÃ©rieures) Ã  l'Ã©tiquette de la racine,
+
+  \bitem rÃ©cursivement, les deux sous-arbres sont eux-mÃªmes des arbres
   de recherche.
 
 \end{itemize}
@@ -139,18 +137,18 @@ sous-arbre de gauche de la racine.
 
 \begin{itemize}
 
-  \bitem Écrire une fonction \texttt{minimum} qui renvoie le plus
-  petit élément d'un arbre binaire de recherche. On déclenchera
+  \bitem Ã‰crire une fonction \texttt{minimum} qui renvoie le plus
+  petit Ã©lÃ©ment d'un arbre binaire de recherche. On dÃ©clenchera
   l'exception \texttt{Not\_found} si l'arbre est vide.
 
-  \bitem Écrire une fonction \texttt{appartient} currifyée qui indique
-  si une étiquette donnée apparaît dans un arbre de recherche
-  donné. On tirera parti du fait que l'arbre est classé pour que la
+  \bitem Ã‰crire une fonction \texttt{appartient} currifyÃ©e qui indique
+  si une Ã©tiquette donnÃ©e apparaÃ®t dans un arbre de recherche
+  donnÃ©. On tirera parti du fait que l'arbre est classÃ© pour que la
   recherche soit plus rapide que dans un arbre binaire quelconque.
 
-  \bitem Écrire une fonction \texttt{ajoute} qui ajoute un n{\oe}ud
-  dans un arbre de recherche de façon à ce que celui-ci reste un arbre
-  de recherche. Cela se fait en rajoutant une feuille à l'arbre.
+  \bitem Ã‰crire une fonction \texttt{ajoute} qui ajoute un n{\oe}ud
+  dans un arbre de recherche de faÃ§on Ã  ce que celui-ci reste un arbre
+  de recherche. Cela se fait en rajoutant une feuille Ã  l'arbre.
 
 \end{itemize}
 
