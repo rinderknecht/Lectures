@@ -1,14 +1,12 @@
 %%-*-latex-*-
 
-\documentclass[a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
-\usepackage[francais]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}       % Required for \DJ and hyphenation
+\usepackage[french]{babel}
 
-\input{trace}
-
-\title{Corrigé du TP 1 de programmation fonctionnelle en Objective Caml}
+\title{CorrigÃ© du TP 1 de programmation fonctionnelle en Objective Caml}
 \author{Christian Rinderknecht}
 
 \begin{document}
@@ -31,11 +29,11 @@ let q x = 2.0 *. x*.x +. 3.0 *. x -. 2.0
 val abs_int : int -> int = <fun>
 \end{verbatim}
 
-\section{Evaluation d'une expression}
+\section{Ã‰valuation d'une expression}
 
 Pas de questions.
 
-\section{D\'eclarations}
+\section{DÃ©clarations}
 
 \subsection{Variables globales}
 
@@ -62,11 +60,11 @@ val nouvel_an : string = "2004"
 val solve : float * float * float -> float * float = <fun>
 \end{verbatim}
 
-\section{Produit cartésien}
+\section{Produit cartÃ©sien}
 
 Pas de questions.
 
-\section{R\'ecursivit\'e}
+\section{RÃ©cursivitÃ©}
 
 Pas de questions.
 
@@ -89,7 +87,7 @@ val deuxfois : ('a -> 'a) -> 'a -> 'a = <fun>
 val deuxfois : ('a -> 'a) -> 'a -> 'a = <fun>
 \end{verbatim}
 
-\section{Portée statique des variables}
+\section{PortÃ©e statique des variables}
 
 \begin{verbatim}
 # let p = 10;;
@@ -104,13 +102,13 @@ p : int = 11
 - : int = 10
 \end{verbatim}
 
-La variable \texttt{p} qui apparaît dans la définition de la fonction
-\texttt{k}, est liée \emph{définitivement} à la valeur \texttt{10}. La
-troisième phrase redéfinit une nouvelle variable \texttt{p}, rendant
-inaccessible la première variable \texttt{p}, \emph{sauf pour la
-fonction \texttt{k}}. En effet, une fonction est modélisée par une
-\emph{fermeture}, c'est-à-dire une paire constituée du code de la
-fonction et de l'environnement statique au lieu de définition.
+La variable \texttt{p} qui apparaÃ®t dans la dÃ©finition de la fonction
+\texttt{k}, est liÃ©e \emph{dÃ©finitivement} Ã  la valeur \texttt{10}. La
+troisiÃ¨me phrase redÃ©finit une nouvelle variable \texttt{p}, rendant
+inaccessible la premiÃ¨re variable \texttt{p}, \emph{sauf pour la
+fonction \texttt{k}}. En effet, une fonction est modÃ©lisÃ©e par une
+\emph{fermeture}, c'est-Ã -dire une paire constituÃ©e du code de la
+fonction et de l'environnement statique au lieu de dÃ©finition.
 
 \end{document}
 
