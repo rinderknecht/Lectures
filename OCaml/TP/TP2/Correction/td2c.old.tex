@@ -1,10 +1,9 @@
-\documentclass[a4paper]{article}
-\usepackage[francais]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
-%\usepackage{fullpage}
-%\advance\hoffset by -3mm  % A4 is narrower.
-%\advance\voffset by  8mm  % A4 is taller.
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}       % Required for \DJ and hyphenation
+\usepackage[french]{babel}
+\usepackage{amssymb}
 
 \title{Corrigé des Travaux de programmation fonctionnelle en Objective Caml}
 \author{Christian Rinderknecht}
@@ -44,7 +43,7 @@ let dérivée epsilon f x =
 let intégrale n (a, b) f =
   let nf = float_of_int n in
   let pas = (b -. a) /. nf in
-  
+
   let rec somme k x =
     if k = 0 then 0.0
     else f(x) +. (somme (k-1) (x+.pas))
@@ -213,7 +212,7 @@ let newton2 epsilon f x =
 \end{quote}
 
 Cette fonction est en fait moins rapide que {\tt newton}, puisque {\tt
-delta} est calculé deux fois à chaque itération (une fois pour
+  delta} est calculé deux fois à chaque itération (une fois pour
 calculer la prochaine valeur de {\tt x}, une fois pour déterminer si
 on s'arrête).
 

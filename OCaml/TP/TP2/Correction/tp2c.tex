@@ -1,16 +1,15 @@
 %%-*-latex-*-
 
-\documentclass[a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
-\usepackage[francais]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}       % Required for \DJ and hyphenation
+\usepackage[french]{babel}
 \usepackage{amssymb}
 
-\input{trace}
-
-\title{Corrigé du TP 2 de programmation fonctionnelle en Objective Caml}
+\title{CorrigÃ© du TP 2 de programmation fonctionnelle en Objective Caml}
 \author{Christian Rinderknecht}
+\date{Vendredi 7 mars 2003}
 
 \begin{document}
 
@@ -24,7 +23,7 @@ let uncurry f = fun (x, y) -> f x y;;
 \end{verbatim}
 
 
-\section{Paramètres fonctionnels}
+\section{ParamÃ¨tres fonctionnels}
 
 \begin{verbatim}
 let fun_prod f g = fun (x, y) -> (f x, g y);;
@@ -34,25 +33,25 @@ let rec iter n f x =
 ;;
 \end{verbatim}
 
-\noindent On aurait pu écrire la dernière ligne:
+\noindent On aurait pu Ã©crire la derniÃ¨re ligne:
 \verb|iter (n-1) f (f x)|
 
 \medskip
 
-\noindent La version naïve de Fibonnacci est
+\noindent La version naÃ¯ve de Fibonnacci est
 \begin{verbatim}
 let rec fib n = if n < 2 then 1 else fib (n-1) + fib (n-2);;
 \end{verbatim}
 
-\noindent Soit $A_n$ le nombre d'appels récursifs pour calculer
+\noindent Soit $A_n$ le nombre d'appels rÃ©cursifs pour calculer
 \texttt{fib(n)}. Alors nous avons
 $$A_0 = A_1 = 1 \ \textnormal{et} \ \forall n > 1, A_n = 1 + A_{n-1} +
 A_{n-2}$$
 Posons $B_n = A_n + 1$ et il vient:
 $$ B_0 = B_1 = 2 \ \textnormal{et} \ \forall n > 1, B_n = B_{n-1} +
 B_{n-2} $$
-On prouve par récurrence sur $n$ que $\forall n \in \mathbb{N}, B_n =
-2 F_n$. Par conséquent $A_n = 2 F_n - 1$. Le temps d'exécution de
+On prouve par rÃ©currence sur $n$ que $\forall n \in \mathbb{N}, B_n =
+2 F_n$. Par consÃ©quent $A_n = 2 F_n - 1$. Le temps d'exÃ©cution de
 \texttt{fib(n)} est donc asymptotiquement une exponentielle de $n$.
 
 \medskip
@@ -63,17 +62,17 @@ Si l'on pose $f : (x,y) \mapsto (x+y,x)$, alors $(F_{n+2},F_{n+1}) = f
 
 \medskip
 
-\noindent 
+\noindent
 La suite $(F_{n+1},F_{n})$ pour tout $n \in \mathbb{N}$ vaut donc
 $(F_{n+1},F_{n}) = f^{n}(F_1,F_0)$, soit $(F_{n+1},F_{n}) =
 f^{n}(1,1)$. Nous pouvons alors la programmer directement et
-efficacement (le nombre d'appels est linéaire en $n$ maintenant):
+efficacement (le nombre d'appels est linÃ©aire en $n$ maintenant):
 
 \begin{verbatim}
 let fib n = fst (iter n (fun (x,y) -> (x+y,x)) (1,1));;
 \end{verbatim}
 
-\noindent La fonction \texttt{fst} est prédéfinie mais peut se définir
+\noindent La fonction \texttt{fst} est prÃ©dÃ©finie mais peut se dÃ©finir
 trivialement par:
 \begin{verbatim}
 let fst (x,y) = x;;
@@ -93,16 +92,16 @@ let rec modulo x y = loop (fun v -> v - y) (fun v -> v < y) x;;
 \end{verbatim}
 \begin{verbatim}
 let iter_bis n f x =
-  fst (loop (fun_prod f pred) 
-            (fun (_, k) -> k = 0) 
+  fst (loop (fun_prod f pred)
+            (fun (_, k) -> k = 0)
             (x, n))
 \end{verbatim}
 Dans la fonction {\tt iter\_bis}, on utilise {\tt loop} pour calculer
-la suite $(f^k(x), n-k)_{k \geq 0}$ et on s'arrête lorsque la deuxième
+la suite $(f^k(x), n-k)_{k \geq 0}$ et on s'arrÃªte lorsque la deuxiÃ¨me
 composante s'annule. On obtient donc la paire $(f^n(x), 0)$, dont on
-extrait la première composante grâce à {\tt fst}. Cette fonction est
-prédéfinie mais peut se définir trivialement, ainsi que \texttt{pred}
-qui calcule le prédécesseur d'un entier par:
+extrait la premiÃ¨re composante grÃ¢ce Ã  {\tt fst}. Cette fonction est
+prÃ©dÃ©finie mais peut se dÃ©finir trivialement, ainsi que \texttt{pred}
+qui calcule le prÃ©dÃ©cesseur d'un entier par:
 \begin{verbatim}
 let fst (x,y) = x
 let pred x = x - 1
@@ -120,14 +119,14 @@ let rec fact n = match n with
 
 \noindent ou bien
 \begin{verbatim}
-let rec fact n = 
+let rec fact n =
   match n with
     0 -> 1
   | _ -> n * fact(n-1)
 ;;
 \end{verbatim}
 
-\noindent Opérations sur les matrices:
+\noindent OpÃ©rations sur les matrices:
 \begin{verbatim}
 let transpose = fun ((x, y), (z, t)) -> ((x, z), (y, t));;
 
@@ -140,10 +139,10 @@ let is_const ((x, y), (z, t)) = (x = y) & (y = z) & (z = t)
 ;;
 \end{verbatim}
 
-\noindent On ne peut pas utiliser un simple filtrage pour déterminer
-si les quatre éléments sont égaux (cf. énoncé).
+\noindent On ne peut pas utiliser un simple filtrage pour dÃ©terminer
+si les quatre Ã©lÃ©ments sont Ã©gaux (cf. Ã©noncÃ©).
 \begin{verbatim}
-let trig_sup m = 
+let trig_sup m =
   match m with
     (_, (0.0, _)) -> true
   | _ -> false
