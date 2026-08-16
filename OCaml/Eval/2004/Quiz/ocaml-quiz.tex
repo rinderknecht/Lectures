@@ -1,20 +1,14 @@
 %%-*-latex-*-
 
-\documentclass[a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
-\usepackage[francais]{babel}
-\usepackage[OT1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}       % Required for \DJ and hyphenation
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb, stmaryrd}
 \usepackage{amsfonts}
-\usepackage{xspace}
 \usepackage{alltt}
-\usepackage{amssymb,amsmath,stmaryrd}
 
-\input{trace}
-\input{commands}
-\input{ocaml_syntax}
-
-\title{Quiz de programmation fonctionnelle en Objective Caml}
 \author{Christian Rinderknecht}
 \date{Lundi 8 mars 2004}
 
@@ -28,12 +22,12 @@
 \begin{itemize}
 
   \item construisez l'arbre correspondant,
- 
-  \item reliez les variables dans les expressions à leur lieur,
+
+  \item reliez les variables dans les expressions Ã  leur lieur,
 
   \item identifiez les variables libres,
 
-  \item si le programme est clos, décrivez précisément son exécution.
+  \item si le programme est clos, dÃ©crivez prÃ©cisÃ©ment son exÃ©cution.
 
 \end{itemize}
 
@@ -76,7 +70,7 @@ x+1;;
 let compose = fun f -> fun g -> fun x -> f (g x) in
   let square = fun f -> compose f f in
   let double = fun x -> x + x in
-  let quad = square double 
+  let quad = square double
 in square quad;;
 \end{verbatim}
 
