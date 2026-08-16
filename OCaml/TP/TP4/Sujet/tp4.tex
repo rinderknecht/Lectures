@@ -1,16 +1,13 @@
 %%-*-latex-*-
 
-\documentclass[a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
-\usepackage[francais]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
-\usepackage{epsf}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}       % Required for \DJ and hyphenation
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
 \usepackage{xspace}
-
-\input{trace}
 
 \title{TP 4 de programmation fonctionnelle en Objective Caml}
 \author{Christian Rinderknecht}
@@ -22,74 +19,73 @@
 
 \maketitle
 
-L'objectif est de présenter les arbres binaires et les arbres binaires
-de recherche. La programmation de ces deux structures de données et
-les opérations associées sont un bon exercice pour découvrir la
-puissance d'Objective Caml par rapport à des langages non fonctionels
-où il faut manipuler moult pointeurs. En particulier, on approfondira
-l'usage du filtrage et des types polymorphes récursifs, déjà entrevus
-lors du travail dirigé concernant les listes.
+L'objectif est de prÃ©senter les arbres binaires et les arbres binaires
+de recherche. La programmation de ces deux structures de donnÃ©es et
+les opÃ©rations associÃ©es sont un bon exercice pour dÃ©couvrir la
+puissance d'Objective Caml par rapport Ã  des langages non fonctionels
+oÃ¹ il faut manipuler moult pointeurs. En particulier, on approfondira
+l'usage du filtrage et des types polymorphes rÃ©cursifs, dÃ©jÃ  entrevus
+lors du travail dirigÃ© concernant les listes.
 
 
 \section{Arbres binaires}
 
-Un arbre binaire est un arbre où chaque \ne a au plus deux fils, un
-fils gauche et un fils droit. De plus, chaque \ne est annoté par une
-étiquette, qui est une valeur a priori quelconque. Voici un exemple
-d'arbre annoté par des étiquettes de type entier:
+Un arbre binaire est un arbre oÃ¹ chaque \ne a au plus deux fils, un
+fils gauche et un fils droit. De plus, chaque \ne est annotÃ© par une
+Ã©tiquette, qui est une valeur a priori quelconque. Voici un exemple
+d'arbre annotÃ© par des Ã©tiquettes de type entier:
 
-$$
-\epsfxsize=190pt
-\epsfbox{arbre_bin.eps}
-$$
+\begin{center}
+  \includegraphics[scale=0.8]{arbre_bin.eps}
+\end{center}
 
-Le type des arbres binaires est défini par:
+Le type des arbres binaires est dÃ©fini par:
 \begin{verbatim}
   type 'a arbre =
     Vide
   | Noeud of 'a * ('a arbre) * ('a arbre)
 \end{verbatim}
 
-Ce type est \emph{paramétré} par la variable de type \verb+'a+, ce qui
-permet de définir le type des arbres indépendamment du type des
-étiquettes. On pourra ensuite utiliser le type {\tt int arbre} lorsque
+Ce type est \emph{paramÃ©trÃ©} par la variable de type \verb+'a+, ce qui
+permet de dÃ©finir le type des arbres indÃ©pendamment du type des
+Ã©tiquettes. On pourra ensuite utiliser le type {\tt int arbre} lorsque
 l'on veut annoter chaque \ne par un entier, etc.
 
 \begin{itemize}
 
-  \item Écrire une fonction qui calcule la hauteur d'un arbre.
+  \item Ã‰crire une fonction qui calcule la hauteur d'un arbre.
 
-  \item Écrire une fonction qui calcule la taille (le nombre de \nes)
+  \item Ã‰crire une fonction qui calcule la taille (le nombre de \nes)
         d'un arbre.
 
-  \item Écrire une fonction {\tt recherche}, qui prend en argument une
-        étiquette {\tt x} et un arbre {\tt a}, et indique si cette
-        étiquette apparaît sur l'un des \nes de {\tt a}.
+  \item Ã‰crire une fonction {\tt recherche}, qui prend en argument une
+        Ã©tiquette {\tt x} et un arbre {\tt a}, et indique si cette
+        Ã©tiquette apparaÃ®t sur l'un des \nes de {\tt a}.
 
-  \item Écrire une fonction qui énumère les étiquettes d'un arbre et
-        les place dans une liste. On écrira trois versions de cette
-        fonction: en ordre préfixe, infixe, et suffixe. Dans l'ordre
-        préfixe, on commence par placer l'étiquette dans la liste,
+  \item Ã‰crire une fonction qui Ã©numÃ¨re les Ã©tiquettes d'un arbre et
+        les place dans une liste. On Ã©crira trois versions de cette
+        fonction: en ordre prÃ©fixe, infixe, et suffixe. Dans l'ordre
+        prÃ©fixe, on commence par placer l'Ã©tiquette dans la liste,
         puis le sous-arbre gauche et enfin le sous-arbre droit. Dans
-        l'ordre infixe, on place l'étiquette entre les sous-arbres, et
-        dans l'ordre postfixe, après les sous-arbres. Par exemple, le
+        l'ordre infixe, on place l'Ã©tiquette entre les sous-arbres, et
+        dans l'ordre postfixe, aprÃ¨s les sous-arbres. Par exemple, le
         parcours de l'arbre ci-dessus en ordre infixe donne la liste
-        $\verb+[ 3; 6; 7; 2; 12; 1 ]+$.
+        \texttt{[3;6;7;2;12;1]}.
 
-  \item Écrire une fonction {\tt compare\_arbres} qui compare deux
-        arbres. En plus des arbres à comparer, elle prendra en
+  \item Ã‰crire une fonction {\tt compare\_arbres} qui compare deux
+        arbres. En plus des arbres Ã  comparer, elle prendra en
         argument une fonction de comparaison {\tt r} sur les
-        étiquettes. La fonction devra renvoyer {\tt true} si, et
-        seulement si, les deux arbres ont la même structure et si les
-        étiquettes sont deux à deux dans la relation {\tt r}.
+        Ã©tiquettes. La fonction devra renvoyer {\tt true} si, et
+        seulement si, les deux arbres ont la mÃªme structure et si les
+        Ã©tiquettes sont deux Ã  deux dans la relation {\tt r}.
 
-  \item Application: écrire une fonction qui compare deux arbres en ne
+  \item Application: Ã©crire une fonction qui compare deux arbres en ne
         prenant en compte que leur structure (i.e.  sans s'occuper des
-        étiquettes).
+        Ã©tiquettes).
 
-  \item Écrire une fonction {\tt sous\_arbre} qui prend deux arbres en
+  \item Ã‰crire une fonction {\tt sous\_arbre} qui prend deux arbres en
         argument, et indique si le premier est un sous-arbre
-        (éventuellement égal) de l'autre.
+        (Ã©ventuellement Ã©gal) de l'autre.
 
 \end{itemize}
 
@@ -97,76 +93,74 @@ l'on veut annoter chaque \ne par un entier, etc.
 \section{Arbres binaires de recherche}
 
 Nous allons voir maintenant quelques applications des arbres: les
-arbres de recherche, qui permettent de classer des données plus
+arbres de recherche, qui permettent de classer des donnÃ©es plus
 efficacement que dans une liste.
 
 Un arbre de recherche est un arbre binaire tel que:
 
 \begin{itemize}
-  
-  \item toutes les étiquettes du sous-arbre de gauche (resp. de
-        droite) sont inférieures (resp. supérieures) à l'étiquette de
+
+  \item toutes les Ã©tiquettes du sous-arbre de gauche (resp. de
+        droite) sont infÃ©rieures (resp. supÃ©rieures) Ã  l'Ã©tiquette de
         la racine,
 
-  \item récursivement, les deux sous-arbres sont eux-mêmes des arbres
+  \item rÃ©cursivement, les deux sous-arbres sont eux-mÃªmes des arbres
         de recherche.
 
 \end{itemize}
 
-$$
-\epsfxsize=320pt
-\epsfbox{arech.eps}
-$$
-
+\begin{center}
+  \includegraphics[scale=0.8]{arech.eps}
+\end{center}
 Le premier arbre ci-dessus est un arbre de recherche. Le second n'en
 est pas un car~7 est plus grand que~3 mais il se trouve dans le
 sous-arbre de gauche de la racine.
 
-Dans une liste, les opérations classiques (par exemple, déterminer si
-un élément appartient ou non à la liste) demandent un temps $O(n)$,
-c'est-à-dire proportionnel à la taille de la liste, parce qu'on risque
-d'avoir à parcourir toute la liste pour effectuer la recherche. Dans
-un arbre binaire de recherche, les éléments sont triés, ce qui permet
-des opérations plus rapides. En effet, le temps maximal nécessaire à
-une recherche sera la hauteur de l'arbre, soit $O(\log n)$ si
-l'arbre est équilibré.
+Dans une liste, les opÃ©rations classiques (par exemple, dÃ©terminer si
+un Ã©lÃ©ment appartient ou non Ã  la liste) demandent un temps $O(n)$,
+c'est-Ã -dire proportionnel Ã  la taille de la liste, parce qu'on risque
+d'avoir Ã  parcourir toute la liste pour effectuer la recherche. Dans
+un arbre binaire de recherche, les Ã©lÃ©ments sont triÃ©s, ce qui permet
+des opÃ©rations plus rapides. En effet, le temps maximal nÃ©cessaire Ã 
+une recherche sera la hauteur de l'arbre, soit $O(\log n)$ si l'arbre
+est Ã©quilibrÃ©.
 
 \begin{itemize}
 
-  \item Écrire une fonction qui renvoie le plus petit élément d'un
+  \item Ã‰crire une fonction qui renvoie le plus petit Ã©lÃ©ment d'un
         arbre binaire de recherche. On lancera l'exception {\tt
         Not\_found} si l'arbre est vide.
 
-  \item Écrire une fonction qui indique si une étiquette donnée
-        apparaît dans un arbre de recherche donné. On tirera parti du
-        fait que l'arbre est classé pour que la recherche soit plus
+  \item Ã‰crire une fonction qui indique si une Ã©tiquette donnÃ©e
+        apparaÃ®t dans un arbre de recherche donnÃ©. On tirera parti du
+        fait que l'arbre est classÃ© pour que la recherche soit plus
         rapide que dans un arbre binaire quelconque.
 
-  \item Écrire une fonction qui ajoute une étiquette dans un arbre de
-        recherche de façon à ce que celui-ci reste un arbre de
-        recherche. Cela se fait en rajoutant une feuille à l'arbre.
+  \item Ã‰crire une fonction qui ajoute une Ã©tiquette dans un arbre de
+        recherche de faÃ§on Ã  ce que celui-ci reste un arbre de
+        recherche. Cela se fait en rajoutant une feuille Ã  l'arbre.
 
-  \item On dispose déjà de plusieurs fonctions capables de transformer
+  \item On dispose dÃ©jÃ  de plusieurs fonctions capables de transformer
         le contenu d'un arbre binaire en liste, en le parcourant dans
-        l'ordre préfixe, infixe ou postfixe. Laquelle de ces fonctions
-        faut-il utiliser pour que la liste résultante soit triée par
+        l'ordre prÃ©fixe, infixe ou postfixe. Laquelle de ces fonctions
+        faut-il utiliser pour que la liste rÃ©sultante soit triÃ©e par
         ordre croissant?
 
-        On en déduit alors un algorithme de tri de liste. On part d'un
-        arbre de recherche vide dans lequel on insère successivement
-        toutes les valeurs de la liste à trier. Il ne reste plus qu'à
-        afficher par ordre croissant les étiquettes de cet arbre grâce
-        à la fonction précédente. L'ordre dans lequel on réalise les
+        On en dÃ©duit alors un algorithme de tri de liste. On part d'un
+        arbre de recherche vide dans lequel on insÃ¨re successivement
+        toutes les valeurs de la liste Ã  trier. Il ne reste plus qu'Ã 
+        afficher par ordre croissant les Ã©tiquettes de cet arbre grÃ¢ce
+        Ã  la fonction prÃ©cÃ©dente. L'ordre dans lequel on rÃ©alise les
         insertions est-il significatif?
 
-  \item Écrire une fonction qui recherche une étiquette donnée dans un
-        arbre, et la retire. Si l'étiquette n'existe pas, on lancera
+  \item Ã‰crire une fonction qui recherche une Ã©tiquette donnÃ©e dans un
+        arbre, et la retire. Si l'Ã©tiquette n'existe pas, on lancera
         l'exception {\tt Not\_found}. Si elle existe, on renverra donc
         un nouvel arbre de recherche qui ne contient plus cette
-        étiquette. Indication: on commencera par écrire une fonction
-        qui prend en argument un arbre et retourne la paire constituée
-        de l'élément minimal (s'il n'existe pas alors {\tt
-        Not\_found}) et de l'arbre initial sans cet élément.
+        Ã©tiquette. Indication: on commencera par Ã©crire une fonction
+        qui prend en argument un arbre et retourne la paire constituÃ©e
+        de l'Ã©lÃ©ment minimal (s'il n'existe pas alors {\tt
+        Not\_found}) et de l'arbre initial sans cet Ã©lÃ©ment.
 
 \end{itemize}
 
