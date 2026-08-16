@@ -1,21 +1,16 @@
 %%-*-latex-*-
 
-\documentclass[a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
-\usepackage[francais]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
-\usepackage{epsf}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}       % Required for \DJ and hyphenation
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{xspace}
 
-\input{trace}
-
-\title{Corrigé du TP 4 de programmation fonctionnelle en Objective Caml}
+\title{CorrigÃ© du TP 4 de programmation fonctionnelle en Objective Caml}
 \author{Christian Rinderknecht}
-
-\def\ne{n{\oe}ud\xspace}
-\def\nes{n{\oe}uds\xspace}
 
 \begin{document}
 
@@ -23,32 +18,30 @@
 
 \section{Arbres binaires}
 
-\emph{Un arbre binaire est un arbre où chaque \ne a au plus deux fils,
-un fils gauche et un fils droit. De plus, chaque \ne est annoté par
-une étiquette, qui est une valeur a priori quelconque. Voici un
-exemple d'arbre annoté par des étiquettes de type entier:}
+\emph{Un arbre binaire est un arbre oÃ¹ chaque nÅ“ud a au plus deux fils,
+un fils gauche et un fils droit. De plus, chaque nÅ“ud est annotÃ© par
+une Ã©tiquette, qui est une valeur a priori quelconque. Voici un
+exemple d'arbre annotÃ© par des Ã©tiquettes de type entier:}
+\begin{center}
+  \includegraphics[scale=0.8]{arbre_bin.eps}
+\end{center}
 
-$$
-\epsfxsize=190pt
-\epsfbox{arbre_bin.eps}
-$$
-
-\emph{Le type des arbres binaires est défini par:}
+\emph{Le type des arbres binaires est dÃ©fini par:}
 \begin{verbatim}
   type 'a arbre =
     Vide
   | Noeud of 'a * ('a arbre) * ('a arbre)
 \end{verbatim}
 
-\emph{Ce type est \emph{paramétré} par la variable de type
-\texttt{'a}, ce qui permet de définir le type des arbres
-indépendamment du type des étiquettes. On pourra ensuite utiliser le
-type {\tt int arbre} lorsque l'on veut annoter chaque \ne par un
+\emph{Ce type est \emph{paramÃ©trÃ©} par la variable de type
+\texttt{'a}, ce qui permet de dÃ©finir le type des arbres
+indÃ©pendamment du type des Ã©tiquettes. On pourra ensuite utiliser le
+type {\tt int arbre} lorsque l'on veut annoter chaque nÅ“ud par un
 entier, etc.}
 
 \begin{itemize}
 
-         \item \emph{Écrire une fonction qui calcule la hauteur d'un
+         \item \emph{Ã‰crire une fonction qui calcule la hauteur d'un
                arbre.}
 
                \smallskip
@@ -60,9 +53,9 @@ let rec hauteur a = match a with
     1 + max (hauteur gauche) (hauteur droit)
                \end{verbatim}
 
-               La fonction \texttt{max} est polymorphe et prédéfinie,
-               mais dans le cas précis (elle s'applique à des entiers
-               naturels) elle pourrait être simplement définie par
+               La fonction \texttt{max} est polymorphe et prÃ©dÃ©finie,
+               mais dans le cas prÃ©cis (elle s'applique Ã  des entiers
+               naturels) elle pourrait Ãªtre simplement dÃ©finie par
 
 \begin{verbatim}
 let max a b = if a < b then b else a
@@ -70,8 +63,8 @@ let max a b = if a < b then b else a
 
                \smallskip
 
-         \item \emph{Écrire une fonction qui calcule la taille d'un
-               arbre (c'est-à-dire le nom\-bre de \nes).}
+         \item \emph{Ã‰crire une fonction qui calcule la taille d'un
+               arbre (c'est-Ã -dire le nom\-bre de nÅ“uds).}
 
                \smallskip
 
@@ -84,9 +77,9 @@ let rec taille a = match a with
 
                \smallskip
 
-         \item \emph{Écrire une fonction {\tt recherche}, qui prend en
-               argument une étiquette {\tt x} et un arbre {\tt a}, et
-               indique si cette étiquette apparaît sur l'un des \nes
+         \item \emph{Ã‰crire une fonction {\tt recherche}, qui prend en
+               argument une Ã©tiquette {\tt x} et un arbre {\tt a}, et
+               indique si cette Ã©tiquette apparaÃ®t sur l'un des nÅ“uds
                de {\tt a}.}
 
                \smallskip
@@ -98,22 +91,22 @@ let rec recherche x a = match a with
     elm = x || recherche x gauche || recherche x droit
                \end{verbatim}
 
-  \item \emph{Écrire une fonction qui énumère les étiquettes d'un
-        arbre et les place dans une liste. On écrira trois versions de
-        cette fonction: en ordre préfixe, infixe, et suffixe. Dans
-        l'ordre préfixe, on commence par placer l'étiquette dans la
+  \item \emph{Ã‰crire une fonction qui Ã©numÃ¨re les Ã©tiquettes d'un
+        arbre et les place dans une liste. On Ã©crira trois versions de
+        cette fonction: en ordre prÃ©fixe, infixe, et suffixe. Dans
+        l'ordre prÃ©fixe, on commence par placer l'Ã©tiquette dans la
         liste, puis le sous-arbre gauche et enfin le sous-arbre
-        droit. Dans l'ordre infixe, on place l'étiquette entre les
-        sous-arbres, et dans l'ordre postfixe, après les
+        droit. Dans l'ordre infixe, on place l'Ã©tiquette entre les
+        sous-arbres, et dans l'ordre postfixe, aprÃ¨s les
         sous-arbres. Par exemple, le parcours de l'arbre ci-dessus en
         ordre infixe donne la liste \texttt{[3; 6; 7; 2; 12; 1]}.}
 
         \smallskip
 
 \begin{verbatim}
-let rec préfixe a = match a with
+let rec prÃ©fixe a = match a with
   Vide -> []
-| Noeud(x, g, d) -> x :: ((préfixe g) @ (préfixe d))
+| Noeud(x, g, d) -> x :: ((prÃ©fixe g) @ (prÃ©fixe d))
 
 let rec infixe a = match a with
   Vide -> []
@@ -123,38 +116,38 @@ let rec suffixe a = match a with
   Vide -> []
 | Noeud(x, g, d) -> (suffixe g) @ (suffixe d) @ [x]
 \end{verbatim}
-        
+
         \medskip
 
-        Note: il est possible d'écrire les fonctions de parcours ({\tt
-        préfixe}, {\tt infixe} et {\tt suffixe}) de façon plus
-        efficace. Les versions ci-dessus présentent l'avantage d'être
-        très lisibles.
+        Note: il est possible d'Ã©crire les fonctions de parcours ({\tt
+        prÃ©fixe}, {\tt infixe} et {\tt suffixe}) de faÃ§on plus
+        efficace. Les versions ci-dessus prÃ©sentent l'avantage d'Ãªtre
+        trÃ¨s lisibles.
 
-  \item \emph{Écrire une fonction {\tt compare\_arbres} qui compare
-        deux arbres. En plus des arbres à comparer, elle prendra en
+  \item \emph{Ã‰crire une fonction {\tt compare\_arbres} qui compare
+        deux arbres. En plus des arbres Ã  comparer, elle prendra en
         argument une fonction de comparaison {\tt r} sur les
-        étiquettes. La fonction devra renvoyer {\tt true} si, et
-        seulement si, les deux arbres ont la même structure et si les
-        étiquettes sont deux à deux dans la relation {\tt r}.}
+        Ã©tiquettes. La fonction devra renvoyer {\tt true} si, et
+        seulement si, les deux arbres ont la mÃªme structure et si les
+        Ã©tiquettes sont deux Ã  deux dans la relation {\tt r}.}
 
         \smallskip
 
         \begin{verbatim}
-let rec compare_arbres r a b = 
+let rec compare_arbres r a b =
   match (a, b) with
     (Vide, Vide) -> true
   | (Noeud (xa,ga,da), Noeud(xb,gb,db)) ->
-         r xa xb 
+         r xa xb
       && compare_arbres r ga gb && compare_arbres r da db
   | _ -> false
 \end{verbatim}
 
         \medskip
 
-  \item \emph{Application: écrire une fonction qui compare deux arbres
+  \item \emph{Application: Ã©crire une fonction qui compare deux arbres
         en ne prenant en compte que leur structure (i.e.  sans
-        s'occuper des étiquettes).}
+        s'occuper des Ã©tiquettes).}
 
         \smallskip
 
@@ -165,14 +158,14 @@ let compare_structures a b =
 
         \smallskip
 
-  \item \emph{Écrire une fonction {\tt sous\_arbre} qui prend deux
+  \item \emph{Ã‰crire une fonction {\tt sous\_arbre} qui prend deux
         arbres en argument, et indique si le premier est un sous-arbre
-        (éventuellement égal) de l'autre.}
+        (Ã©ventuellement Ã©gal) de l'autre.}
 
         \smallskip
 
 \begin{verbatim}
-let rec sous_arbre a b = 
+let rec sous_arbre a b =
   match (a, b) with
     (Vide, _) -> true
   | (_, Noeud(_, gb, db)) ->
@@ -188,37 +181,35 @@ let rec sous_arbre a b =
 \emph{Un arbre de recherche est un arbre binaire tel que:}
 
 \begin{itemize}
-  
-  \item \emph{toutes les étiquettes du sous-arbre de gauche (resp. de
-        droite) sont inférieures (resp. supérieures) à l'étiquette de
+
+  \item \emph{toutes les Ã©tiquettes du sous-arbre de gauche (resp. de
+        droite) sont infÃ©rieures (resp. supÃ©rieures) Ã  l'Ã©tiquette de
         la racine,}
 
-  \item \emph{récursivement, les deux sous-arbres sont eux-mêmes des
+  \item \emph{rÃ©cursivement, les deux sous-arbres sont eux-mÃªmes des
         arbres de recher\-che.}
 
 \end{itemize}
 
-$$
-\epsfxsize=320pt
-\epsfbox{arech.eps}
-$$
-
+\begin{center}
+  \includegraphics[scale=0.8]{arech.eps}
+\end{center}
 \emph{Le premier arbre ci-dessus est un arbre de recherche. Le second
 n'en est pas un car~7 est plus grand que~3 mais il se trouve dans le
 sous-arbre de gauche de la racine.}
 
-\emph{Dans une liste, les opérations classiques (par exemple,
-déterminer si un élément appartient ou non à la liste) demandent un
-temps $O(n)$, c'est-à-dire proportionnel à la taille de la liste,
-parce qu'on risque d'avoir à parcourir toute la liste pour effectuer
-la recherche. Dans un arbre binaire de recherche, les éléments sont
-triés, ce qui permet des opérations plus rapides. En effet, le temps
-maximal nécessaire à une recherche sera la hauteur de l'arbre, soit
-$O(\log n)$ si l'arbre est équilibré.}
+\emph{Dans une liste, les opÃ©rations classiques (par exemple,
+dÃ©terminer si un Ã©lÃ©ment appartient ou non Ã  la liste) demandent un
+temps $O(n)$, c'est-Ã -dire proportionnel Ã  la taille de la liste,
+parce qu'on risque d'avoir Ã  parcourir toute la liste pour effectuer
+la recherche. Dans un arbre binaire de recherche, les Ã©lÃ©ments sont
+triÃ©s, ce qui permet des opÃ©rations plus rapides. En effet, le temps
+maximal nÃ©cessaire Ã  une recherche sera la hauteur de l'arbre, soit
+$O(\log n)$ si l'arbre est Ã©quilibrÃ©.}
 
 \begin{itemize}
 
-  \item \emph{Écrire une fonction qui renvoie le plus petit élément
+  \item \emph{Ã‰crire une fonction qui renvoie le plus petit Ã©lÃ©ment
         d'un arbre binaire de recherche. On lancera l'exception {\tt
         Not\_found} si l'arbre est vide.}
 
@@ -233,9 +224,9 @@ let rec minimum a = match a with
 
         \smallskip
 
-  \item \emph{Écrire une fonction qui indique si une étiquette donnée
-        apparaît dans un arbre de recherche donné. On tirera parti du
-        fait que l'arbre est classé pour que la recherche soit plus
+  \item \emph{Ã‰crire une fonction qui indique si une Ã©tiquette donnÃ©e
+        apparaÃ®t dans un arbre de recherche donnÃ©. On tirera parti du
+        fait que l'arbre est classÃ© pour que la recherche soit plus
         rapide que dans un arbre binaire quelconque.}
 
         \smallskip
@@ -249,9 +240,9 @@ let rec cherche x a = match a with
 
         \smallskip
 
-  \item \emph{Écrire une fonction qui ajoute une étiquette dans un
-        arbre de recherche de façon à ce que celui-ci reste un arbre
-        de recherche. Cela se fait en rajoutant une feuille à
+  \item \emph{Ã‰crire une fonction qui ajoute une Ã©tiquette dans un
+        arbre de recherche de faÃ§on Ã  ce que celui-ci reste un arbre
+        de recherche. Cela se fait en rajoutant une feuille Ã 
         l'arbre.}
 
         \smallskip
@@ -260,25 +251,25 @@ let rec cherche x a = match a with
 let rec ajout x a = match a with
   Vide -> Noeud (x, Vide, Vide)
 | Noeud (y, gauche, droit) ->
-    if x <= y 
+    if x <= y
     then Noeud (y, ajout x gauche, droit)
     else Noeud (y, gauche, ajout x droit)
 \end{verbatim}
 
         \smallskip
 
-  \item \emph{On dispose déjà de plusieurs fonctions capables de
+  \item \emph{On dispose dÃ©jÃ  de plusieurs fonctions capables de
         transformer le contenu d'un arbre binaire en liste, en le
-        parcourant dans l'ordre préfixe, infixe ou postfixe. Laquelle
-        de ces fonctions faut-il utiliser pour que la liste résultante
-        soit triée par ordre croissant?}
+        parcourant dans l'ordre prÃ©fixe, infixe ou postfixe. Laquelle
+        de ces fonctions faut-il utiliser pour que la liste rÃ©sultante
+        soit triÃ©e par ordre croissant?}
 
-        \emph{On en déduit alors un algorithme de tri de liste. On
-        part d'un arbre de recherche vide dans lequel on insère
-        successivement toutes les valeurs de la liste à trier. Il ne
-        reste plus qu'à afficher par ordre croissant les étiquettes de
-        cet arbre grâce à la fonction précédente. L'ordre dans lequel
-        on réalise les insertions est-il significatif?}
+        \emph{On en dÃ©duit alors un algorithme de tri de liste. On
+        part d'un arbre de recherche vide dans lequel on insÃ¨re
+        successivement toutes les valeurs de la liste Ã  trier. Il ne
+        reste plus qu'Ã  afficher par ordre croissant les Ã©tiquettes de
+        cet arbre grÃ¢ce Ã  la fonction prÃ©cÃ©dente. L'ordre dans lequel
+        on rÃ©alise les insertions est-il significatif?}
 
         \smallskip
 
@@ -293,14 +284,14 @@ let tri_liste l =
 
         \smallskip
 
-  \item \emph{Écrire une fonction qui recherche une étiquette donnée
-        dans un arbre, et la retire. Si l'étiquette n'existe pas, on
+  \item \emph{Ã‰crire une fonction qui recherche une Ã©tiquette donnÃ©e
+        dans un arbre, et la retire. Si l'Ã©tiquette n'existe pas, on
         lancera l'exception {\tt Not\_found}. Si elle existe, on
         renverra donc un nouvel arbre de recherche qui ne contient
-        plus cette étiquette. Indication: on commencera par écrire une
+        plus cette Ã©tiquette. Indication: on commencera par Ã©crire une
         fonction qui prend en argument un arbre et retourne la paire
-        constituée de l'élément minimal (s'il n'existe pas alors {\tt
-        Not\_found}) et de l'arbre initial sans cet élément.}
+        constituÃ©e de l'Ã©lÃ©ment minimal (s'il n'existe pas alors {\tt
+        Not\_found}) et de l'arbre initial sans cet Ã©lÃ©ment.}
 
         \smallskip
 
@@ -315,11 +306,11 @@ let rec retire_minimum a = match a with
 let rec supprime x a = match a with
   Vide -> raise Not_found
 | Noeud (y, gauche, droit) ->
-    if x = y 
+    if x = y
     then match droit with
             Vide -> gauche
           | _ ->
-              let (min_d, reste_d) = retire_minimum droit 
+              let (min_d, reste_d) = retire_minimum droit
               in Noeud (min_d, gauche, reste_d)
     else supprime x (if x < y then gauche else droit)
 \end{verbatim}
