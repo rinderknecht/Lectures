@@ -5,7 +5,7 @@
 \begin{frame}[containsverbatim]
 \frametitle{Exceptions}
 
-Les exceptions de ML ont servi de modèle pour celles du langage \cpp. 
+Les exceptions de ML ont servi de modèle pour celles du langage \cpp.
 {\small
 \begin{verbatim}
 exception Perdu
@@ -13,9 +13,9 @@ exception Perdu
 let rec cherche_la_clé k = function
   (h,v)::t -> if h = k then v else cherche_la_clé k t
 | [] -> raise Perdu
-  
-let k = 
-  try 
+
+let k =
+  try
     cherche_la_clé "Louis" [("Georges",14); ("Louis",5)]
   with Perdu -> 10
 \end{verbatim}
@@ -94,7 +94,7 @@ Constructeur & Usage\\
         l'expression a été encadrée par un bloc \textsf{try $e$ with
         $m$}:
         \begin{itemize}
- 
+
           \item Si l'évaluation de $e$ retourne une valeur normale,
                 celle-ci est retournée sans passer par le filtre $m$.
 
@@ -113,4 +113,3 @@ Constructeur & Usage\\
 \end{itemize}
 
 \end{frame}
-

@@ -8,10 +8,10 @@
 Étendons encore les expressions de mini-ML par les \emph{filtres} et
 les \emph{motifs}:
 \begin{itemize}
- 
+
   \item \Xmatch{} $e$ \Xwith{} $p_1 \rightarrow e_1 \mid \ldots \mid
     p_n \rightarrow e_n$
- 
+
   \item où les $p_i$ sont des motifs.
 
 \end{itemize}
@@ -49,7 +49,7 @@ Les motifs sont définis récursivement par les cas suivants:
 % ------------------------------------------------------------------------
 %
 \begin{frame}[containsverbatim]
-\frametitle{Le filtre à motifs (suite)} 
+\frametitle{Le filtre à motifs (suite)}
 
 Typiquement, on se sert des filtres pour faire des définitions par cas
 de fonctions (mais pas uniquement), comme en mathématiques. Par exemple:
@@ -73,7 +73,7 @@ définition précédente se lit donc: «~Si la valeur de \texttt{n}
 % ------------------------------------------------------------------------
 %
 \begin{frame}
-\frametitle{Le filtre à motifs (suite)} 
+\frametitle{Le filtre à motifs (suite)}
 
 Que signifie la relation «~$v$ a la forme de $p$~» (ou «~$p$ filtre
 $v$~»)?
@@ -93,7 +93,7 @@ $v$~»)?
 
 \bigskip
 
-\remarques 
+\remarques
 
 \begin{itemize}
 
@@ -114,7 +114,7 @@ $v$~»)?
 
 Le \emph{filtrage} est l'évaluation d'un filtre. Informellement,
 l'évaluation de
- 
+
 \centerline{\Xmatch{} $e$ \Xwith{} $p_1 \rightarrow e_1 \mid \ldots
   \mid p_n \rightarrow e_n$} commence par celle de $e$ en $v$.
 
@@ -165,7 +165,7 @@ somme:
 \begin{verbatim}
 let int_of_booléen = fun b ->
   match b with
-     Vrai -> 1 
+     Vrai -> 1
    | Faux -> 0
 \end{verbatim}
 }

@@ -31,7 +31,7 @@ Un type $t$ est défini \emph{récursivement} par les cas:
 
 \bigskip
 
-\remarque 
+\remarque
 
 Jusqu'à présent, nous n'avons pas rencontré de valeurs de type
 \textsf{float}, \textsf{char} ou \textsf{string}.
@@ -124,7 +124,7 @@ s'écrit \verb+<-+ en \textsc{ascii}.
 
   \item Les opérateurs booléens sont \emph{séquentiels},
   c.-à-d. qu'ils n'évaluent leurs arguments que si c'est nécessaire,
-  l'évaluation se faisant de la gauche vers la droite. 
+  l'évaluation se faisant de la gauche vers la droite.
 
 \end{itemize}
 
@@ -161,7 +161,7 @@ Pour utiliser ces variables, il faut étendre la syntaxe des types:
   & $q$
 \end{tabular}
 
-On peut maintenant écrire 
+On peut maintenant écrire
 
 \phrase{type abscisse = float}
 
@@ -247,14 +247,14 @@ Le type de la fonction \textsf{compose} se construit ainsi:
 \begin{itemize}
 
   \item le premier argument \textsf{f} est une fonction quelconque,
-  donc de type $\alpha \rightarrow \beta$; 
+  donc de type $\alpha \rightarrow \beta$;
 
   \item le second argument \textsf{g} est une fonction dont le
   résultat doit être passé en argument à \textsf{f}, donc de type
-  $\alpha$; 
+  $\alpha$;
 
   \item le domaine de \textsf{g} est quelconque, donc \textsf{g} est
-  de type $\gamma \rightarrow \alpha$; 
+  de type $\gamma \rightarrow \alpha$;
 
   \item la fonction \textsf{compose} prend un argument \texttt{x} qui
   doit être passé à \textsf{g}, donc du type $\gamma$; finalement, le

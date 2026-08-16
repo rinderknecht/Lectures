@@ -1,10 +1,12 @@
 %%-*-latex-*-
 
+\documentclass[compress,dvips,xcolor={dvipsnames},t]{beamer}
+
 % Language
 %
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}       % Required for \DJ and hyphenation
-\usepackage[francais]{babel}
+\usepackage[french]{babel}
 
 % Maths and graphics
 %
@@ -18,7 +20,6 @@
 \input{commands}
 \input{ocaml_syntax}
 \input{cpp}
-\input{trace}
 
 % New commands
 %
@@ -35,13 +36,13 @@
 
 \frame{\maketitle}
 
-\xinclude{introduction}{Pr\'esentation de mini-ML}
-\xinclude{syntax}{Variables, syntaxe abstraite et environnement}
-\xinclude{execution}{\'Evaluation des programmes mini-ML}
-\xinclude{extensions}{Extensions de mini-ML}
-\xinclude{types}{Types}
-\xinclude{matching}{Variantes et filtrage de motifs}
-\xinclude{lists}{Listes}
-\xinclude{exceptions}{Exceptions}
+\include{introduction}
+\include{syntax}
+\include{execution}
+\include{extensions}
+\include{types}
+\include{matching}
+\include{lists}
+\include{exceptions}
 
 \end{document}

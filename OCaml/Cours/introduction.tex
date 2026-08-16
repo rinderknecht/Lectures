@@ -47,7 +47,7 @@ travailler en dehors des heures de classe.
 
 \end{itemize}
 
-\textcolor{blue}{Enseignement et recherche} 
+\textcolor{blue}{Enseignement et recherche}
 
 Classes préparatoires, grandes universités (Europe, USA, Japon).
 
@@ -106,7 +106,7 @@ mots-clés:
 \medskip
 
 \begin{tabular}{rll}
-    $\bullet$ 
+    $\bullet$
   & \textcolor{blue}{définition globale}
   & \phrase{$e$}\\
   &
@@ -164,9 +164,9 @@ suivants:
     $\bullet$
   & \textcolor{blue}{fonction} (ou \textcolor{blue}{abstraction})
   & $\Xfun \,\, x \rightarrow e$\\
-    $\bullet$ 
+    $\bullet$
   & \textcolor{blue}{appel} (ou \textcolor{blue}{application})
-  & $e_1 \,\, e_2$ \\ 
+  & $e_1 \,\, e_2$ \\
     $\bullet$
   & \textcolor{blue}{opérateur arithmétique}
   & \lpar\texttt{+}\rpar \ \lpar\texttt{-}\rpar \ \lpar\texttt{/}\rpar
@@ -253,7 +253,7 @@ suivants:
 
   \item L'application des opérateurs est prioritaire par rapport à
   l'abstraction:
-  \begin{center} 
+  \begin{center}
     \texttt{fun x -> x + y} \ équivaut à \ \texttt{fun x ->
     \textcolor{blue}{(}x + y\textcolor{blue}{)}}
   \end{center}
@@ -269,7 +269,7 @@ suivants:
 
 Un programme, c.-à-d. une suite de définitions globales, peut toujours
 se réécrire en une seule phrase à l'aide de définitions locales
-imbriquées. 
+imbriquées.
 
 \bigskip
 
@@ -278,7 +278,7 @@ L'exemple précédent est équivalent à
 let x = 0 \textcolor{blue}{in}
   let id = fun x -> x \textcolor{blue}{in}
   \textcolor{blue}{let _ =} let y = 2 in id (y) \textcolor{blue}{in}
-  let x = (fun x -> fun y -> x + y) 1 2 
+  let x = (fun x -> fun y -> x + y) 1 2
 \textcolor{blue}{in} x+1;;
 \end{semiverbatim}
 Le symbole \verb|_| désigne une variable dont le nom est unique et
@@ -305,7 +305,7 @@ Par exemple:
 let compose = fun f -> fun g -> fun x -> f (g x) in
   let square = fun f -> compose f f in
   let double = fun x -> x + x in
-  let quad = square double 
+  let quad = square double
 in square quad;;
 \end{verbatim}
 }
@@ -321,7 +321,7 @@ in square quad;;
 {\small
 \begin{alignat*}{1}
   \texttt{compose} &\equiv f \mapsto (g \mapsto (x \mapsto f(g(x))))
-  \equiv f \mapsto (g \mapsto (x \mapsto f \circ g (x)))\\ 
+  \equiv f \mapsto (g \mapsto (x \mapsto f \circ g (x)))\\
 &\equiv f \mapsto (g \mapsto f \circ g) \ \ \textnormal{car} \ \
   \forall h.(x \mapsto h(x) \equiv h)\\
   \texttt{square} &\equiv f \mapsto f \circ f \equiv f \mapsto f^2\\
@@ -335,4 +335,3 @@ in square quad;;
 Donc le résultat du programme (\verb+square quad+) est une fonction.
 
 \end{frame}
-

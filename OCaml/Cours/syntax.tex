@@ -22,7 +22,7 @@ expressions suffisent) sous forme d'arbres est très commode.
       \TR{$x$}
       \TR{$e$}
     } \\
-    $e_1 \,\, e_2$ 
+    $e_1 \,\, e_2$
   & \pstree[nodesep=2pt,levelsep=15pt,treesep=10pt]{\TR{\$}}{
       \TR{$e_1$}
       \TR{$e_2$}
@@ -103,7 +103,7 @@ L'expression \verb|(1+2)*(5/1)| se représente
     \end{center}
     }
 et \verb|let x = 1 in (1+2)*(5/1)| devient (attention: \verb+x+ et $x$
-sont différents) 
+sont différents)
     {\small
     \begin{center}
       \pstree[nodesep=2pt,levelsep=18pt]{\TR{\Xlet}}{
@@ -169,7 +169,7 @@ Quid du programme page~\pageref{un_autre_programme}?
 
 Une phrase associe une expression $e$ à une variable $x$: on parle de
 \emph{liaison}, notée $x \mapsto e$. Un sous-programme définit donc un
-ensemble de liaisons appelé \emph{environnement}. 
+ensemble de liaisons appelé \emph{environnement}.
 
 \bigskip
 
@@ -180,7 +180,7 @@ une variable donnée fait référence. Par exemple dans {\small
 let x = 0 in
   let id = fun x -> x in
   let y = id (x) in
-  let x = (fun x -> fun y -> x + y) 1 2 
+  let x = (fun x -> fun y -> x + y) 1 2
 in x+1;;
 \end{verbatim}
 }
@@ -317,7 +317,7 @@ quel serait la valeur du programme réduit à la simple expression
 C'est pourquoi la première analyse statique des compilateurs consiste
 à déterminer les variables libres des expressions. Si le programme
 n'est pas clos, il est rejeté. Dans le cas de \verb|x|, le compilateur
-OCaml imprimerait 
+OCaml imprimerait
 \begin{center}
 \texttt{Unbound value x}
 \end{center}

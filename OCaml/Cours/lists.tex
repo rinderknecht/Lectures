@@ -78,7 +78,7 @@ let rec reverse = function
 ou, plus efficacement:
 {\small
 \begin{verbatim}
-let reverse l = 
+let reverse l =
   let rec reverse_aux acc = function
     [] -> acc
   | h::t -> reverse_aux (h::acc) t
