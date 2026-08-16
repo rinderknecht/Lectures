@@ -12,9 +12,6 @@
 \title{TP 4 de programmation fonctionnelle en Objective Caml}
 \author{Christian Rinderknecht}
 
-\def\ne{n{\oe}ud\xspace}
-\def\nes{n{\oe}uds\xspace}
-
 \begin{document}
 
 \maketitle
@@ -30,8 +27,8 @@ lors du travail dirigé concernant les listes.
 
 \section{Arbres binaires}
 
-Un arbre binaire est un arbre où chaque \ne a au plus deux fils, un
-fils gauche et un fils droit. De plus, chaque \ne est annoté par une
+Un arbre binaire est un arbre où chaque nœud a au plus deux fils, un
+fils gauche et un fils droit. De plus, chaque nœud est annoté par une
 étiquette, qui est une valeur a priori quelconque. Voici un exemple
 d'arbre annoté par des étiquettes de type entier:
 
@@ -49,18 +46,18 @@ Le type des arbres binaires est défini par:
 Ce type est \emph{paramétré} par la variable de type \verb+'a+, ce qui
 permet de définir le type des arbres indépendamment du type des
 étiquettes. On pourra ensuite utiliser le type {\tt int arbre} lorsque
-l'on veut annoter chaque \ne par un entier, etc.
+l'on veut annoter chaque nœud par un entier, etc.
 
 \begin{itemize}
 
   \item Écrire une fonction qui calcule la hauteur d'un arbre.
 
-  \item Écrire une fonction qui calcule la taille (le nombre de \nes)
+  \item Écrire une fonction qui calcule la taille (le nombre de nœuds)
         d'un arbre.
 
   \item Écrire une fonction {\tt recherche}, qui prend en argument une
         étiquette {\tt x} et un arbre {\tt a}, et indique si cette
-        étiquette apparaît sur l'un des \nes de {\tt a}.
+        étiquette apparaît sur l'un des nœuds de {\tt a}.
 
   \item Écrire une fonction qui énumère les étiquettes d'un arbre et
         les place dans une liste. On écrira trois versions de cette
