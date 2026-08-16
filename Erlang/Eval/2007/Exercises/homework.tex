@@ -2,14 +2,15 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\input{trace}
-
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
 \usepackage{xspace}
+
 \newcommand\Erlang{\textsf{Erlang}\xspace}
 
-\title{Homework \#11 of Erlang}
+\title{Homework of Erlang}
 \author{Christian Rinderknecht}
-\date{18 April 2007} 
+\date{18 April 2007}
 
 \begin{document}
 
@@ -43,16 +44,14 @@
 4>
 \end{verbatim}
 }
+
 \textbf{Hint:} Use \texttt{random:uniform/1}, since
 \texttt{random:uniform(P)} is an integer chosen pseudo-randomly by the
 \Erlang runtime between \texttt{1} and \texttt{P}. (The distribution
-is uniform, i.e., all numbers in the interval have an equal chance to
-be chosen.)
+is uniform, that is, all numbers in the interval have an equal chance
+to be chosen.)
 \end{enumerate}
 
 Try to make your functions as efficient as possible.
 
 \end{document}
-
-
-
