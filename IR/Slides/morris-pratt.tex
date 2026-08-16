@@ -16,7 +16,7 @@ letters of \(x\) etc. (see line \(5\)), \emph{without using the
 If the failure occurred at the index \(i\) in the word \(x\) and index
 \(j\) in the text, we have
 \begin{align*}
-   x[1 \dots i-1] 
+   x[1 \dots i-1]
 &= t[j-i \dots j-1]\\
 x[i] &\neq t[j]
 \end{align*}
@@ -34,10 +34,10 @@ x[i] &\neq t[j]
 \vspace*{-25pt}
 \[
 \begin{array}{rcc@{\,}c@{}ccr@{}r@{\,}c@{}ccc@{}ccc}
-  & & & \scriptstyle j-i 
-  & & & 
+  & & & \scriptstyle j-i
+  & & &
   & & \multicolumn{2}{@{}l}{\scriptstyle j-i+p}
-  & & 
+  & &
   & \multicolumn{1}{r@{}}{\scriptstyle j-1}
   & \multicolumn{1}{c}{\scriptstyle j}\\
 \cline{2-15}
@@ -48,26 +48,26 @@ x[i] &\neq t[j]
   & \multicolumn{1}{c|}{c}
   & \multicolumn{2}{c|}{\ldots}
   &
-  & 
+  &
   &
   & \phantom{HHHH}
-  & 
+  &
   & \multicolumn{1}{|>{\columncolor{mygrey}}c|}{\textcolor{white}{\texttt{b}}}
   & \phantom{HHHH}\\
 \cline{2-15}
   &
-  & 
+  &
   & \multicolumn{1}{:c}{\scriptstyle 1}
   &
   &
-  & 
+  &
   & \multicolumn{1}{r@{\,}:}{\scriptstyle p}
-  & 
+  &
   &
   &
   &
   & \multicolumn{1}{c@{}:}{\scriptstyle i-1}
-  & \multicolumn{1}{c}{\scriptstyle i}\\ 
+  & \multicolumn{1}{c}{\scriptstyle i}\\
 \cline{4-15}
     \multicolumn{1}{r}{x:}
   &
@@ -78,18 +78,18 @@ x[i] &\neq t[j]
   & \multicolumn{2}{c}{\ldots}
   &
   &
-  & 
-  & 
+  &
+  &
   &
   & \multicolumn{1}{|>{\columncolor{mygrey}}c|}{\textcolor{white}{\texttt{a}}}
   & \\
 \cline{4-15}
   &&&&&&
-  & 
+  &
   & \multicolumn{1}{:c}{\scriptstyle 1}
   &
   &
-  & 
+  &
   & \multicolumn{1}{c:}{}\\
 \cline{9-15}
   &&&&&
@@ -160,14 +160,14 @@ example, the word \(u = \texttt{abacaba}\) has the three borders
 \bigskip
 
 Let us note \(\Border{}{x}\) the \textbf{longest border} of a non-empty
-word \(x\). 
+word \(x\).
 
 \bigskip
 
 For a given word \(x\), let us define a function \(\MPsupplyName_{x}\) on
 all its prefixes as
 \[
-  \MPsupply{x}{}{i} = \len{\Border{}{x[1 \dots i]}} 
+  \MPsupply{x}{}{i} = \len{\Border{}{x[1 \dots i]}}
   \qquad 1 \leqslant i \leqslant \len{x}
 \]
 or, equivalently
@@ -186,14 +186,14 @@ Here is the table of the maximum borders for the prefixes of the word
 \texttt{abacabac}:
 \[
 \begin{array}{c|ccccccccc|}
-x & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c} 
+x & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c}
  & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c}\\
 \hline
   i
 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
   \Border{}{y}
-& \epsilon & \epsilon & \texttt{a} 
-& \epsilon & \texttt{a} & \texttt{ab} & \texttt{aba} & \texttt{abac}\\ 
+& \epsilon & \epsilon & \texttt{a}
+& \epsilon & \texttt{a} & \texttt{ab} & \texttt{aba} & \texttt{abac}\\
   \MPsupply{x}{}{i}
 & 0 & 0 & 1 & 0 & 1 & 2 & 3 & 4\\
 \hline
@@ -225,7 +225,7 @@ letter. So, at index \(7\), you should read \(
 Coming back to the naive search:
 \[\small
 \begin{array}{rcc@{\,}c@{}ccr@{}r@{\,}c@{}ccc@{}ccc}
-  & & & \scriptstyle j-i & & & 
+  & & & \scriptstyle j-i & & &
   & & \multicolumn{2}{@{}l}{\scriptstyle j-i+p}
   & &
   & \multicolumn{1}{r@{}}{\scriptstyle j-1}
@@ -240,18 +240,18 @@ Coming back to the naive search:
   & \phantom{ll}\\
 \cline{2-15}
   &
-  & 
+  &
   & \multicolumn{1}{:@{\,}l}{\scriptstyle 1}
   &
   & \multicolumn{1}{c:}{}
-  & 
+  &
   & \multicolumn{1}{r@{\,}:}{\scriptstyle p}
-  & 
+  &
   &
   &
   &
   & \multicolumn{1}{r@{}:}{\scriptstyle i-1}
-  & \scriptstyle i\\ 
+  & \scriptstyle i\\
 \cline{4-15}
     \multicolumn{1}{r}{x:}
   &
@@ -263,7 +263,7 @@ Coming back to the naive search:
   & \\
 \cline{4-15}
   &&&&&&
-  & 
+  &
   &\multicolumn{1}{:@{\,}l}{\scriptstyle 1}
   &&&& \multicolumn{1}{r@{}:}{\scriptstyle \MPsupply{x}{}{i-1}}\\
 \cline{9-15}
@@ -325,7 +325,7 @@ In practice, it is convenient to use a function
 \(
 s_{x}: \{1, \dots, \len{x}\} \rightarrow \{0, \dots, \len{x}\}
 \)
-defined as 
+defined as
 \[
 \sX{x}{}{i} = 1 + \MPsupply{x}{}{i-1} \qquad 1 \leqslant i \leqslant
 \len{x}
@@ -338,7 +338,7 @@ This function \(s_{x}\) is called the \textbf{failure function} of
 pattern \(x\). For the word \texttt{abacabac}, it is
 \[
 \begin{array}{c|ccccccccc|}
-x & & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c} & \texttt{a} 
+x & & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c} & \texttt{a}
  & \texttt{b} & \texttt{a} & \texttt{c}\\
 \hline
   i
@@ -366,12 +366,12 @@ x & & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c} & \texttt{a}
 \li \While \(i \leqslant \len{x}\) \LogAnd \(j \leqslant \len{t}\)
 \li \Do \If \(i = 0\) \LogOr \(x[i] = t[j]\)\>\>\>\>\>\>\>\>\Comment Test on \(i\) because now \(i\) can be 0.
 \li	  \Then \(i \gets i + 1\); \(j \gets j + 1\)\>\>\>\>\>\>\Comment Schedule next letter in \(x\).
-\li	  \Else \(i \gets s[i]\)\>\>\>\>\>\>\Comment Failed: we slide \(x\) on \(t\). 
-          \End 
+\li	  \Else \(i \gets s[i]\)\>\>\>\>\>\>\Comment Failed: we slide \(x\) on \(t\).
+          \End
     \End
-\li \If \(\len{x} < i\) 
+\li \If \(\len{x} < i\)
 \li \Then \(\ldots\) \>\>\>\>\>\>\>\>\Comment Occurrence of \(x\) in \(t\) at \(j - \len{x}\).
-\li \Else \(\ldots\)\>\>\>\>\>\>\>\>\Comment No occurrences. 
+\li \Else \(\ldots\)\>\>\>\>\>\>\>\>\Comment No occurrences.
     \End
 \end{codebox}
 }
@@ -382,12 +382,12 @@ x & & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c} & \texttt{a}
 %
 \begin{frame}
 \frametitle{Morris-Pratt algorithm/Single-assignment pseudo-code}
- 
+
 \begin{codebox}
 \(\proc{MP} (x, t)\)\\
 \li \(s \gets \proc{MP-Fail} (x)\)
 \li \((i, j) \gets \proc{Offsets} (s,x,t,1,1)\)
-\li \If \(\len{x} < i\) 
+\li \If \(\len{x} < i\)
 \li \Then \(\ldots\) \textbf{else} \(\ldots\)
     \End
 \end{codebox}
@@ -421,14 +421,14 @@ word \(x=\texttt{abacabac}\) in the text
 \[
 \begin{array}{c|cccccccccccccc|}
 j & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14\\
-  & \texttt{b} & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c} 
-  & \texttt{a} & \texttt{c} & \texttt{a} & \texttt{b} & \texttt{a} 
+  & \texttt{b} & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c}
+  & \texttt{a} & \texttt{c} & \texttt{a} & \texttt{b} & \texttt{a}
   & \texttt{c} & \texttt{a} & \texttt{a} & \texttt{b}\\
 \hline
 i & 1 & 1 & 2 & 3 & 4 & 5 & 6 & 1 & 2 & 3 & 4 & 5 & 6 & 2 \\
   & 0 &   &   &   &   &   & 2 &   &   &   &   &   & 2 &   \\
   &   &   &   &   &   &   & 1 &   &   &   &   &   & 1 &   \\
-  &   &   &   &   &   &   & 0 &   &   &   &   &   &   &  
+  &   &   &   &   &   &   & 0 &   &   &   &   &   &   &
 \end{array}
 \]
 
@@ -463,17 +463,17 @@ i & 1 & 1 & 2 & 3 & 4 & 5 & 6 & 1 & 2 & 3 & 4 & 5 & 6 & 2 \\
 \cline{2-15}
     \multicolumn{1}{r|}{t:}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{b}}}
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{c}}}
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{a}}}
   & \texttt{b}\\
 \cline{2-15}
@@ -481,72 +481,72 @@ i & 1 & 1 & 2 & 3 & 4 & 5 & 6 & 1 & 2 & 3 & 4 & 5 & 6 & 2 \\
 \cline{2-9}
     \multicolumn{1}{r|}{x:}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{a}}}
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
   & \texttt{c}\\
 \cline{2-10}
   &
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{b}}}
-  & \texttt{a} 
+  & \texttt{a}
   & \texttt{c}\\
 \cline{3-14}
     \multicolumn{6}{c|}{}
-  & \texttt{a} 
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{b}}}
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
   & \texttt{c}\\
 \cline{7-15}
     \multicolumn{7}{c|}{}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{a}}}
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
   & \texttt{c}\\
 \cline{8-16}
     \multicolumn{8}{c|}{}
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{b}}}
-  & \texttt{a} 
+  & \texttt{a}
   & \texttt{c}\\
 \cline{9-20}
     \multicolumn{12}{c|}{}
-  & \texttt{a} 
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{b}}}
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
   & \texttt{c}\\
 \cline{13-21}
     \multicolumn{13}{c|}{}
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
   & \texttt{c}\\
 \cline{14-21}
 \end{array}
@@ -569,9 +569,9 @@ How do we compute the longest borders?
 \[
 \begin{array}{r@{}>{\,}cccccc@{\,}c}
   & {\scriptstyle 1}
-  & 
+  &
   &&
-  & 
+  &
   & \phantom{HHHHHI}{\scriptstyle \len{y}}
   &\\
 \cline{2-8}
@@ -583,9 +583,9 @@ How do we compute the longest borders?
   & \multicolumn{1}{|>{\columncolor{mygrey}}c|}{\textcolor{white}{a}}\\
 \cline{2-8}
   & {\scriptstyle 1}
-  & 
+  &
   &&
-  & 
+  &
   & \phantom{HH}{\scriptstyle \len{\Border{}{y}}}
   &\\
 \cline{2-8}
@@ -597,9 +597,9 @@ How do we compute the longest borders?
   & \multicolumn{1}{|>{\columncolor{mygrey}}c|}{\textcolor{white}{a}}\\
 \cline{2-8}
   & {\scriptstyle 1}
-  & 
+  &
   &&
-  & 
+  &
   & \phantom{HH}{\scriptstyle \len{\Border{2}{y}}}
   &\\
 \cline{2-8}
@@ -621,7 +621,7 @@ How do we compute the longest borders?
 \frametitle{Morris-Pratt algorithm/Maximum borders (cont)}
 
 Let us find the longest border of a word \(ya\),
-i.e., \(\Border{}{ya}\), where \(a\) is a letter. 
+i.e., \(\Border{}{ya}\), where \(a\) is a letter.
 
 \bigskip
 
@@ -685,9 +685,9 @@ This can be formally summarised as follows. For all word \(y \neq
  &= \epsilon\\
 \Border{}{y \cdot a} &= \left\{
 \begin{aligned}
-& \Border{}{y} \cdot a 
+& \Border{}{y} \cdot a
 && \text{if} \; \Border{}{y} \cdot a \preccurlyeq y\\
-& \Border{}{\Border{}{y} \cdot a} 
+& \Border{}{\Border{}{y} \cdot a}
 && \text{otherwise}
 \end{aligned}
 \right.
@@ -743,24 +743,24 @@ equal to \(n\) and let us prove that it holds for words of length
 \frametitle{Morris-Pratt algorithm/Maximum borders (cont)}
 
 Let \(y\) be a word of length \(n\), \(1 \leqslant n\), and a letter
-\(a\). 
+\(a\).
 
 \bigskip
 
-By definition, we have 
+By definition, we have
 \[
 \Border{}{ya} = \left\{
 \begin{aligned}
-& \Border{}{y} \cdot a 
+& \Border{}{y} \cdot a
 && \text{if} \; \Border{}{y} \cdot a \preccurlyeq y\\
-& \Border{}{\Border{}{y} \cdot a} 
+& \Border{}{\Border{}{y} \cdot a}
 && \text{otherwise}
 \end{aligned}
 \right.
 \]
-So, if \(\Border{}{y} \cdot a \preccurlyeq y\), then 
+So, if \(\Border{}{y} \cdot a \preccurlyeq y\), then
 \[
-\Border{}{ya} = \Border{}{y} \cdot a \preccurlyeq y \prec ya 
+\Border{}{ya} = \Border{}{y} \cdot a \preccurlyeq y \prec ya
 \]
 This is the property for words of length \(n+1\) such that
 \(\Border{}{y} \cdot a \preccurlyeq y\).
@@ -776,7 +776,7 @@ Otherwise, if \(\Border{}{y} \cdot a \npreccurlyeq y\) then
 \[
 \Border{}{ya} = \Border{}{\Border{}{y} \cdot a}.
 \]
-Since \(\Border{}{y} \prec y\) and \(\len{y} = n\) then 
+Since \(\Border{}{y} \prec y\) and \(\len{y} = n\) then
 \begin{align*}
 \len{\Border{}{y}} < \len{y}
 &\Leftrightarrow
@@ -789,7 +789,7 @@ Since \(\Border{}{y} \prec y\) and \(\len{y} = n\) then
 Thus \(\len{\Border{}{y} \cdot a} = \len{\Border{}{y}} + 1 \leqslant
 n\), and the inductive assumption holds:
 \begin{align*}
-  \Border{}{\Border{}{y} \cdot a} 
+  \Border{}{\Border{}{y} \cdot a}
 & \prec \Border{}{y} \cdot a\\
   \Border{}{ya}
 & \preccurlyeq \Border{}{y} \prec y \prec ya
@@ -843,7 +843,7 @@ Therefore
 \Border{k}{y} \prec \Border{k-1}{y} \prec y
 \qquad 2 \leqslant k
 \]
-Then, 
+Then,
 \[
 \Border{k}{y} \cdot a \preccurlyeq \Border{k-1}{y}
 \Longleftrightarrow
@@ -865,14 +865,14 @@ If \(\Border{k}{y} \cdot a \preccurlyeq y\) and \(\Border{k-1}{y} \neq
 \varepsilon\) then, using the definition
 \[
   \Border{}{ya}
-= \Border{}{\Border{k-1}{y} \cdot a} 
-= \Border{k}{y} \cdot a 
+= \Border{}{\Border{k-1}{y} \cdot a}
+= \Border{k}{y} \cdot a
 \]
 Otherwise, if \(\Border{k-1}{y} = \varepsilon\) then
 \[
-  \Border{}{ya} 
-= \Border{}{\Border{k-1}{y} \cdot a} 
-= \Border{}{a} 
+  \Border{}{ya}
+= \Border{}{\Border{k-1}{y} \cdot a}
+= \Border{}{a}
 = \varepsilon
 \]
 and we cannot have \(\Border{k}{y} \cdot a \preccurlyeq y\) since
@@ -880,15 +880,15 @@ and we cannot have \(\Border{k}{y} \cdot a \preccurlyeq y\) since
 undefined (the empty word has no border). Finally, we can summarise
 all cases:
 \[
-\Border{}{ya} = 
+\Border{}{ya} =
 \left\{
   \begin{aligned}
-   & \Border{k}{y} \cdot a 
+   & \Border{k}{y} \cdot a
    && \text{if} \; \Border{k}{y} \cdot a \preccurlyeq y\\
-   & \varepsilon 
+   & \varepsilon
    && \text{if} \; \Border{k-1}{y} = \varepsilon
   \end{aligned}
-\right. 
+\right.
 \]
 
 \end{frame}
@@ -903,11 +903,11 @@ all cases:
 Let us give a computational definition of function
 \(\MPsupplyName_{x}\). Let \(ya \preccurlyeq x\).
 \begin{align*}
-   \MPsupply{x}{}{\len{ya}}  
+   \MPsupply{x}{}{\len{ya}}
 &= \len{\Border{}{ya}}
 && \text{by substitution of} \; y \; \text{by}
                              \; ya \; \text{in definition}\\
-   \MPsupply{x}{}{\len{y}+1} 
+   \MPsupply{x}{}{\len{y}+1}
 &= \len{\Border{}{ya}}
 && \text{by property of length} \tag{1}
 \end{align*}
@@ -921,11 +921,11 @@ which we can prove by induction on \(k\). The property is true for
 \(\MPsupply{x}{k}{\len{y}} = \len{\Border{k}{y}}\) and do
 \begin{align*}
   \MPsupply{x}{k+1}{\len{y}}
-&= \MPsupply{x}{k}{\MPsupply{x}{}{\len{y}}} 
+&= \MPsupply{x}{k}{\MPsupply{x}{}{\len{y}}}
 = \MPsupply{x}{k}{\len{\Border{}{y}}}
 = \len{\Border{k}{\Border{}{y}}}\\
 &= \len{\Border{k+1}{y}}
-\end{align*} 
+\end{align*}
 which proves that the property holds for all \(k\) such that \( 1
 \leqslant k\).
 
@@ -963,15 +963,15 @@ figure page~\pageref{morris-pratt-conf} by letting \(\len{ya}=i\).
 Let us consider again the recursive definition of \textsc{Border} at
 page~\pageref{border_def}:
 \[
-\Border{}{ya} = 
+\Border{}{ya} =
 \left\{
   \begin{aligned}
-   & \Border{k}{y} \cdot a 
+   & \Border{k}{y} \cdot a
    && \text{if} \; \Border{k}{y} \cdot a \preccurlyeq y\\
-   & \varepsilon 
+   & \varepsilon
    && \text{if} \; \Border{k-1}{y} = \varepsilon
   \end{aligned}
-\right. 
+\right.
 \]
 where \(k\) is the smallest non-zero integer such that \(\Border{k}{y}
 \cdot a \preccurlyeq y\) or \(\Border{k-1}{y} = \varepsilon\).
@@ -980,7 +980,7 @@ where \(k\) is the smallest non-zero integer such that \(\Border{k}{y}
 
 By taking the lengths of each side of the equations, it comes
 \[
-\len{\Border{}{ya}} = 
+\len{\Border{}{ya}} =
 \left\{
   \begin{aligned}
    & \len{\Border{k}{y} \cdot a }
@@ -988,7 +988,7 @@ By taking the lengths of each side of the equations, it comes
    & \len{\varepsilon}
    && \text{if} \; \Border{k-1}{y} = \varepsilon
   \end{aligned}
-\right. 
+\right.
 \]
 
 \end{frame}
@@ -1000,7 +1000,7 @@ By taking the lengths of each side of the equations, it comes
 
 By equation \((1)\) we get
 \[
-\MPsupply{x}{}{\len{y} + 1} = 
+\MPsupply{x}{}{\len{y} + 1} =
 \left\{
   \begin{aligned}
   & \len{\Border{k}{y}} + 1
@@ -1012,7 +1012,7 @@ By equation \((1)\) we get
 \]
 Using equations \((2)\) and \((3)\):
 \[
-\MPsupply{x}{}{\len{y} + 1} = 
+\MPsupply{x}{}{\len{y} + 1} =
 \left\{
   \begin{aligned}
    & \MPsupply{x}{k}{\len{y}} + 1
@@ -1059,7 +1059,7 @@ where \(k\) is the smallest nonzero integer such that
 \label{beta_def}
 
 From that definition, it is clear that \(\MPsupplyName\) returns the value
-\(-1\) only on \(0\). 
+\(-1\) only on \(0\).
 
 \bigskip
 
@@ -1100,7 +1100,7 @@ assuming \(0 \leqslant i \leqslant \len{x}\):
 \(\proc{Beta} (x, i)\)\\
 \li \If \(i = 0\)
 \li \Then \(\proc{Beta} \gets -1\)\RComment \(\MPsupply{x}{}{0} = -1\)
-\li \Else \(\id{offset} \gets i-1\) 
+\li \Else \(\id{offset} \gets i-1\)
 \li       \Repeat
 \li         \(\id{offset} \gets \proc{Beta}(x,\id{offset})\)
 \li       \Until \(\id{offset} = -1\) \LogOr \(x[1+\id{offset}] = x[i]\)
@@ -1139,7 +1139,7 @@ assuming \(0 \leqslant i \leqslant \len{x}\):
 \begin{frame}
 \frametitle{Pattern preprocessing (cont)}
 
-The problem here is inefficiency: 
+The problem here is inefficiency:
 \begin{enumerate}
 
   \item successive calls with the same arguments trigger again the
@@ -1171,7 +1171,7 @@ increasing values of \(i\):
 \(\proc{Make-Beta}(x)\)\\
 \li \(\MPsupplyName_{x}[0] \gets -1\)
 \li \For \(i \gets 1\) \To \(\len{x}\)
-\li	\Do \(\id{offset} \gets i-1\) 
+\li	\Do \(\id{offset} \gets i-1\)
 \li     \Repeat
 \li       \(\id{offset} \gets \MPsupplyName_{x}[\id{offset}]\)
 \li     \Until \(\id{offset} = -1\) \LogOr \(x[1+\id{offset}] = x[i]\)
@@ -1241,9 +1241,9 @@ Instead, let us prove by induction on \(k\) that
 The case \(k=1\) is the definition of \(s\). Let us then assume that
 the property is true for all values from \(1\) to \(k\). We have
 \[
-  \sX{x}{k+1}{i} 
-= \sX{x}{k}{\sX{x}{}{i}} 
-= 1 + \MPsupply{x}{k}{\sX{x}{}{i}-1} 
+  \sX{x}{k+1}{i}
+= \sX{x}{k}{\sX{x}{}{i}}
+= 1 + \MPsupply{x}{k}{\sX{x}{}{i}-1}
 = 1 + \MPsupply{x}{k}{\MPsupply{x}{}{i-1}}
 = 1 + \MPsupply{x}{k+1}{i-1}
 \]
@@ -1319,7 +1319,7 @@ where \(k\) is the smallest non-zero integer such that
 \(\proc{Offset} (x, s_{x}, \id{offset})\)\\
 \li \If \(\id{offset} = 0\) \LogOr \(x[\id{offset}] = x[i]\)
 \li \Then \(\proc{Offset} \gets \id{offset}\)
-\li \Else \(\proc{Offset} \gets \proc{Offset} (x, s_{x}, 
+\li \Else \(\proc{Offset} \gets \proc{Offset} (x, s_{x},
                                                s_{x}[\id{offset}])\)
     \End
 \end{codebox}

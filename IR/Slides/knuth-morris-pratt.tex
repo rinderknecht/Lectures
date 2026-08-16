@@ -11,7 +11,7 @@ Morris-Pratt algorithm, based on avoiding situations which lead to
 certain letter comparison failures.
 \[\small
 \begin{array}{rcc@{\,}c@{}ccr@{}r@{\,}c@{}ccc@{}ccc}
-  & & & \scriptstyle j-i & & & 
+  & & & \scriptstyle j-i & & &
   & & \multicolumn{2}{@{}l}{\scriptstyle j-i+p}
   & &
   & \multicolumn{1}{r@{}}{\scriptstyle j-1}
@@ -26,18 +26,18 @@ certain letter comparison failures.
   & \phantom{ll}\\
 \cline{2-15}
   &
-  & 
+  &
   & \multicolumn{1}{:c}{\scriptstyle 1}
   &
   & \multicolumn{1}{c:}{}
-  & 
+  &
   & \multicolumn{1}{r@{\,}:}{\scriptstyle p}
-  & 
+  &
   &
   &
   &
   & \multicolumn{1}{r@{}:}{\scriptstyle i-1}
-  & \scriptstyle i\\ 
+  & \scriptstyle i\\
 \cline{4-15}
     \multicolumn{1}{r}{x:}
   &
@@ -49,7 +49,7 @@ certain letter comparison failures.
   & \\
 \cline{4-15}
   &&&&&&
-  & 
+  &
   &\multicolumn{1}{:c}{\scriptstyle 1}
   &&&& \multicolumn{1}{r@{}:}{\scriptstyle \MPsupply{x}{}{i-1}}
   & \multicolumn{1}{@{}c@{}}{\scriptstyle \sX{x}{}{i}}\\
@@ -107,7 +107,7 @@ and Pratt and provide a new one. \emph{The search algorithm itself
 
 The disjointedness implicitly entails that it is a relative concept:
 we consider the disjoint border of a \emph{proper prefix} of another
-word. Thus, the letter with follows the prefix is used as a
+word. Thus, the letter which follows the prefix is used as a
 constraint, i.e., it must not follow the disjoint border.
 
 \bigskip
@@ -141,7 +141,7 @@ for. In other words:
 If the maximum border of \(y\) is followed by \(a\) we must take the
 maximum disjoint border of the maximum border:
 \[
-\DBorder{x}{}{y} = \DBorder{x}{}{\Border{}{y}} 
+\DBorder{x}{}{y} = \DBorder{x}{}{\Border{}{y}}
 \qquad \text{if} \; ya \preccurlyeq x \; \text{and} \; \Border{}{y}
 \cdot a \preccurlyeq y
 \]
@@ -188,7 +188,7 @@ By taking the length of each side of the equations,
 = \left\lbrace
   \begin{aligned}
     &  \len{\Border{}{y}}
-    && \text{if} \; x = y \; \text{or} 
+    && \text{if} \; x = y \; \text{or}
        \; \Border{}{y} \cdot a \npreccurlyeq y\\
     &  \len{\DBorder{x}{}{\Border{}{y}}}
     && \text{otherwise}
@@ -198,12 +198,12 @@ By taking the length of each side of the equations,
 Let \(\KMPsupply{x}{}{i}\) be the length of the disjoint maximum border of
 \(x[1 \dots i]\):
 \[
-\KMPsupply{x}{}{i} = \len{\DBorder{x}{}{x[1...i]}} 
+\KMPsupply{x}{}{i} = \len{\DBorder{x}{}{x[1...i]}}
 \qquad 1 \leqslant i \leqslant \len{x}
 \]
 or, equivalently,
 \[
-\KMPsupply{x}{}{\len{y}} = \len{\DBorder{x}{}{y}} 
+\KMPsupply{x}{}{\len{y}} = \len{\DBorder{x}{}{y}}
 \qquad y \preccurlyeq x
 \]
 
@@ -220,7 +220,7 @@ Therefore
 = \left\lbrace
   \begin{aligned}
     &  \MPsupply{x}{}{\len{y}}
-    && \text{if} \; x = y \; \text{or} 
+    && \text{if} \; x = y \; \text{or}
        \; \Border{}{y} \cdot a \npreccurlyeq y\\
     &  \KMPsupply{x}{}{\len{\Border{}{y}}}
     && \text{otherwise}
@@ -233,7 +233,7 @@ that is to say
 = \left\lbrace
   \begin{aligned}
     &  \MPsupply{x}{}{\len{y}}
-    && \text{if} \; x = y \; \text{or} 
+    && \text{if} \; x = y \; \text{or}
        \; \Border{}{y} \cdot a \npreccurlyeq y\\
     &  \KMPsupply{x}{}{\MPsupply{x}{}{\len{y}}}
     && \text{otherwise}
@@ -246,7 +246,7 @@ If \(\len{y} = i\), we can write instead
 = \left\lbrace
   \begin{aligned}
     &  \MPsupply{x}{}{i}
-    && \text{if} \; x = y \; \text{or} 
+    && \text{if} \; x = y \; \text{or}
        \; \Border{}{y} \cdot a \npreccurlyeq y\\
     &  \KMPsupply{x}{}{\MPsupply{x}{}{i}}
     && \text{otherwise}
@@ -279,14 +279,14 @@ So, finally, for \(1 \leqslant i \leqslant \len{x}\),
 = \left\lbrace
   \begin{aligned}
     &  \MPsupply{x}{}{i}
-    && \text{if} \; i = \len{x} \; \text{or} 
+    && \text{if} \; i = \len{x} \; \text{or}
        \; x [\MPsupply{x}{}{i} + 1] \neq x [i + 1]\\
     &  \KMPsupply{x}{}{\MPsupply{x}{}{i}}
     && \text{otherwise}
   \end{aligned}
   \right.
 \]
-which allows us to naturally extends \(\KMPsupplyName_{x}\) on \(0\): 
+which allows us to naturally extends \(\KMPsupplyName_{x}\) on \(0\):
 \(\KMPsupply{x}{}{0} = \MPsupply{x}{}{0} = -1\).
 
 \end{frame}
@@ -299,10 +299,10 @@ which allows us to naturally extends \(\KMPsupplyName_{x}\) on \(0\):
 Before going further, let us check by hand the following values of
 \(\KMPsupply{x}{}{i}\) and compare them to \(\MPsupply{x}{}{i}\): we must
 always have \(\KMPsupply{x}{}{i} \leqslant \MPsupply{x}{}{i}\), since we
-plan an optimisation. 
+plan an optimisation.
 \[
 \begin{array}{c|ccccccccccc|}
-x & & \texttt{a} & \texttt{b} & \texttt{c} & \texttt{a} 
+x & & \texttt{a} & \texttt{b} & \texttt{c} & \texttt{a}
   & \texttt{b} & \texttt{a} & \texttt{b} & \texttt{c}
   & \texttt{a} & \texttt{c}\\
 \hline
@@ -333,7 +333,7 @@ This definition of \(\KMPsupplyName_{x}\) relies on
 \(\KMPsupply{x}{}{i}\) requires \(\MPsupply{x}{p}{i}\), i.e.,
 values \(\MPsupply{x}{}{j}\) with \(j < i\), since
 \[
-\MPsupply{x}{}{0} = -1 
+\MPsupply{x}{}{0} = -1
 \qquad \MPsupply{x}{}{i} = 1 + \MPsupply{x}{k}{i-1}
 \qquad 1 \leqslant i
 \]
@@ -346,15 +346,15 @@ where \(k\) is the smallest non-zero integer such that
 \end{itemize}
 or, equivalently,
 \[
-\Border{}{ya} = 
+\Border{}{ya} =
 \left\{
   \begin{aligned}
-   & \Border{k}{y} \cdot a 
+   & \Border{k}{y} \cdot a
    && \text{if} \; \Border{k}{y} \cdot a \preccurlyeq y\\
-   & \varepsilon 
+   & \varepsilon
    && \text{if} \; \Border{k-1}{y} = \varepsilon
   \end{aligned}
-\right. 
+\right.
 \]
 where \(k\) is the smallest non-zero integer such that \(\Border{k}{y}
 \cdot a \preccurlyeq y\) or \(\Border{k-1}{y} = \varepsilon\).
@@ -426,7 +426,7 @@ and \(\len{y} = i\),
 where \(q\) is the smallest integer such that
 \begin{itemize}
 
-  \item either \(x[\KMPsupply{x}{q}{\MPsupply{x}{}{i}} + 1]=x[i+1]\) 
+  \item either \(x[\KMPsupply{x}{q}{\MPsupply{x}{}{i}} + 1]=x[i+1]\)
 
   \item or \(\KMPsupply{x}{q-1}{\MPsupply{x}{}{i}} = 0\)
 
@@ -462,7 +462,7 @@ where \(q\) is the smallest integer such that
 \begin{itemize}
 
   \item either \(x[\KMPsupply{x}{q}{\MPsupply{x}{}{i}} + 1]=x[i+1]\)
-  
+
   \item or \(\KMPsupply{x}{q}{\MPsupply{x}{}{i}} + 1 = 0\)
 
 \end{itemize}
@@ -479,7 +479,7 @@ where \(q\) is the smallest integer such that
 \(\proc{Gamma} (x)\)\\
 \li \(\KMPsupplyName_{x}[0] \gets -1\); \(\id{offset} \gets -1\)
     \RComment \(\id{offset} = \MPsupply{x}{}{0}\)
-\li \For \(i \gets 1\) \To \(\len{x}-1\) 
+\li \For \(i \gets 1\) \To \(\len{x}-1\)
 \li \Do \Repeat
 \li       \(\id{offset} \gets \KMPsupplyName_{x}[\id{offset}]\)
 \li     \Until \(\id{offset} = -1\) \LogOr \(x[\id{offset} + 1] = x[i]\)
@@ -541,7 +541,7 @@ Let us recall the definition of \(\KMPsupplyName_{x}\). Let \(1
 &= \left\lbrace
   \begin{aligned}
     &  \MPsupply{x}{}{i}
-    && \text{if} \; i = \len{x} \; \text{or} 
+    && \text{if} \; i = \len{x} \; \text{or}
        \; x [\MPsupply{x}{}{i} + 1] \neq x [i + 1]\\
     &  \KMPsupply{x}{}{\MPsupply{x}{}{i}}
     && \text{otherwise}
@@ -550,7 +550,7 @@ Let us recall the definition of \(\KMPsupplyName_{x}\). Let \(1
 \end{align*}
 Then, for \(1 \leqslant i \leqslant \len{x}-1\)
 \begin{align*}
-   \rX{x}{}{1} 
+   \rX{x}{}{1}
 &= 1 + \KMPsupply{x}{}{0} = 0\\
    \rX{x}{}{1+i}
 &= 1 + \KMPsupply{x}{}{i}
@@ -573,7 +573,7 @@ Then, for \(1 \leqslant i \leqslant \len{x}-1\)
 
 This can be slightly simplified into
 \begin{align*}
-   \rX{x}{}{1} 
+   \rX{x}{}{1}
 &= 0\\
    \rX{x}{}{1+i}
 &= \left\lbrace
@@ -590,7 +590,7 @@ where for \(1 \leqslant i \leqslant \len{x}-1\).
 \bigskip
 
 Now, we need to express \(\MPsupplyName_{x}\) in terms of \(r_{x}\)
-instead of \(\KMPsupplyName_{x}\). 
+instead of \(\KMPsupplyName_{x}\).
 
 \end{frame}
 
@@ -604,7 +604,7 @@ First, let us prove by induction on \(0 \leqslant p\) that
 \rX{x}{p}{1+i} = 1 + \KMPsupply{x}{p}{i} \qquad 0 \leqslant i
 \leqslant \len{x} - 1
 \]
-Because 
+Because
 \[
 \rX{x}{0}{1+i} = 1 + \KMPsupply{x}{0}{i}
 \Longleftrightarrow
@@ -650,7 +650,7 @@ where \(q\) is the smallest integer such that
 \begin{itemize}
 
   \item either \(x[\rX{x}{q}{1 + \MPsupply{x}{}{i}}]=x[1+i]\)
-  
+
   \item or \(\rX{x}{q}{1 + \MPsupply{x}{}{i}} = 0\)
 
 \end{itemize}
@@ -675,7 +675,7 @@ where \(q\) is the smallest integer such that
 \begin{itemize}
 
   \item either \(x[\rX{x}{q}{1 + \MPsupply{x}{}{i-1}}]=x[i]\)
-  
+
   \item or \(\rX{x}{q}{1 + \MPsupply{x}{}{i-1}} = 0\)
 
 \end{itemize}
@@ -692,7 +692,7 @@ where \(q\) is the smallest integer such that
 \(\proc{KMP-Fail} (x)\)\\
 \li \(r_{x}[1] \gets 0\); \(\id{offset} \gets 0\)
     \RComment \(\id{offset} = 1 + \MPsupply{x}{}{1-1}\)
-\li \For \(i \gets 1\) \To \(\len{x}-1\) 
+\li \For \(i \gets 1\) \To \(\len{x}-1\)
 \li \Do \Repeat
 \li       \(\id{offset} \gets r_{x}[\id{offset}]\)
 \li     \Until \(\id{offset} = 0\) \LogOr \(x[\id{offset}] = x[i]\)
@@ -730,9 +730,9 @@ of \(s\):
 \li	\Else \(i \gets r[i]\)
         \End
     \End
-\li \If \(\len{x} < i\) 
+\li \If \(\len{x} < i\)
 \li \Then \(\ldots\) \RComment Occurrence of \(x\) in \(t\) at position \(j - \len{x}\).
-\li \Else \(\ldots\) \RComment No occurrences. 
+\li \Else \(\ldots\) \RComment No occurrences.
     \End
 \end{codebox}
 
@@ -754,9 +754,9 @@ two text search algorithms into one:
 \li	\Else \(i \gets f[i]\)
         \End
     \End
-\li \If \(\len{x} < i\) 
+\li \If \(\len{x} < i\)
 \li \Then \(\ldots\) \RComment Occurrence of \(x\) in \(t\) at position \(j - m\).
-\li \Else \(\ldots\) \RComment No occurrences. 
+\li \Else \(\ldots\) \RComment No occurrences.
     \End
 \end{codebox}
 
@@ -767,9 +767,9 @@ two text search algorithms into one:
 \begin{frame}
 \frametitle{Knuth-Morris-Pratt/The code (cont)}
 
-Then 
+Then
 \begin{align*}
-   \proc{MP} (x, t) 
+   \proc{MP} (x, t)
 &= \proc{Search} (x, t, \proc{MP-Fail})\\
    \proc{KMP} (x, t)
 &= \proc{Search} (x, t, \proc{KMP-Fail})
@@ -788,8 +788,8 @@ word \(x=\texttt{abacabac}\) in the text
 \[
 \begin{array}{c|cccccccccccccc|}
 j & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14\\
-  & \texttt{b} & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c} 
-  & \texttt{a} & \texttt{c} & \texttt{a} & \texttt{b} & \texttt{a} 
+  & \texttt{b} & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c}
+  & \texttt{a} & \texttt{c} & \texttt{a} & \texttt{b} & \texttt{a}
   & \texttt{c} & \texttt{a} & \texttt{a} & \texttt{b}\\
 \hline
 i & 1 & 1 & 2 & 3 & 4 & 5 & 6 & 1 & 2 & 3 & 4 & 5 & 6 & 2 \\
@@ -828,17 +828,17 @@ i & 1 & 1 & 2 & 3 & 4 & 5 & 6 & 1 & 2 & 3 & 4 & 5 & 6 & 2 \\
 \cline{2-15}
     \multicolumn{1}{r|}{t:}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{b}}}
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{c}}}
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{a}}}
   & \texttt{b}\\
 \cline{2-15}
@@ -846,52 +846,52 @@ i & 1 & 1 & 2 & 3 & 4 & 5 & 6 & 1 & 2 & 3 & 4 & 5 & 6 & 2 \\
 \cline{2-9}
     \multicolumn{1}{r|}{x:}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{a}}}
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
   & \texttt{c}\\
 \cline{2-10}
   &
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{b}}}
-  & \texttt{a} 
+  & \texttt{a}
   & \texttt{c}\\
 \cline{3-15}
     \multicolumn{7}{c|}{}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{a}}}
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
   & \texttt{c}\\
 \cline{8-16}
     \multicolumn{8}{c|}{}
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
   & \multicolumn{1}{>{\columncolor{mygrey}}c}{\textcolor{white}{\texttt{b}}}
-  & \texttt{a} 
+  & \texttt{a}
   & \texttt{c}\\
 \cline{9-21}
     \multicolumn{13}{c|}{}
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
-  & \texttt{c} 
-  & \texttt{a} 
-  & \texttt{b} 
-  & \texttt{a} 
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
+  & \texttt{c}
+  & \texttt{a}
+  & \texttt{b}
+  & \texttt{a}
   & \texttt{c}\\
 \cline{14-21}
 \end{array}
@@ -908,7 +908,7 @@ For example, here is the table comparing the values of the two failure
 functions for the same pattern:
 \[
 \begin{array}{c|cccccccc|}
- x & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c} 
+ x & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c}
  & \texttt{a} & \texttt{b} & \texttt{a} & \texttt{c}\\
 \hline
   i
