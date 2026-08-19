@@ -2,15 +2,14 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\input{trace}
-
-\input{title}
-\author{Christian Rinderknecht}
-\date{3 June 2005}
-
-\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
 \usepackage{amsmath,amssymb}
 \usepackage{clrscode}
+
+\title{Quiz \#2 on Algebraic Specification}
+\author{Christian Rinderknecht}
+\date{3 June 2005}
 
 \newcommand\type[1]{\textsf{#1}}
 \newcommand\oMem{\overline{\proc{Mem}}}
@@ -60,7 +59,7 @@ specification of the arrays over items of type
     element.
 
     \item \(\proc{Create} : \type{int} \times \type{int} \rightarrow
-    \type{t}\)\\ 
+    \type{t}\)\\
     The term \(\proc{Create} (x, y)\) denotes an array whose
     elements are indexed from \(x\) to \(y\), if \(x < y\),
     or from \(y\) to \(x\) otherwise. The type \type{int} denotes
@@ -87,7 +86,7 @@ specification of the arrays over items of type
 
   \item \textbf{Functions}
   \begin{itemize}
-  
+
     \item \(\proc{Lower} : \type{t} \rightarrow \type{int}\)\\
     The call \(\proc{Lower} (a)\) is the lower bound of array
     \(a\), i.e. the smallest valid index. If \(a\) is empty, the
@@ -109,16 +108,16 @@ specification of the arrays over items of type
       the \(n\)th element in array \(a\). If \(a\) is empty or \(n\)
       is out of bounds, the call is unspecified.
 
-    \item \(\proc{Mem} : \type{t} \times \proc{Item}.\type{t} 
+    \item \(\proc{Mem} : \type{t} \times \proc{Item}.\type{t}
     \rightarrow \type{bool}\)\\
     The call \(\proc{Mem}(a,e)\) is \proc{true} if \(e\) is an element
-    of array \(a\) and \proc{false} otherwise.    
+    of array \(a\) and \proc{false} otherwise.
 
-    \item \(\proc{Inv} : \type{t} \rightarrow \type{t}\)\\ 
+    \item \(\proc{Inv} : \type{t} \rightarrow \type{t}\)\\
     The call \(\proc{Inv} (a)\) denotes the array whose elements are
     in the reverse order as find in \(a\). For example, let \(a\) be
     the array graphically represented as
-    \begin{tabular}{|c|c|c|c|}\hline\(e_1\) & \(e_2\) & 
+    \begin{tabular}{|c|c|c|c|}\hline\(e_1\) & \(e_2\) &
     \(e_3\) & \(e_4\)\\\hline\end{tabular}\,, then \(\proc{Inv}(a)\) is
     represented as \begin{tabular}{|c|c|c|c|}\hline\(e_4\) & \(e_3\)
     & \(e_2\) & \(e_1\)\\\hline\end{tabular}.
