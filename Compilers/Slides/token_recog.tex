@@ -1,7 +1,7 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens}
 
@@ -27,7 +27,7 @@ following token definition:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Reserved identifiers and white space}
 
@@ -57,7 +57,7 @@ find a token following the white space and return it to the parser.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Input buffer}
 
@@ -98,7 +98,7 @@ input side
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Input buffer (cont)}
 
@@ -114,15 +114,15 @@ If we input characters \exc{A} then \exc{B} in this buffer, we draw
 & \(\longleftarrow\)
 & file\\
   \cline{3-5}
-& 
+&
 &
 & \multicolumn{1}{@{\,}c@{\,}}{\(\upharpoonright\)}
 \end{tabular}
 \end{center}
 The symbol \(\upharpoonright\) is a pointer to the next character
-available for output. 
+available for output.
 
-\textbf{Beware!} The blank character will now be noted 
+\textbf{Beware!} The blank character will now be noted
 \texttt{\char`\ }, in order to avoid confusion with an empty cell in a
 buffer. So, if we input now a blank in our buffer from the file, we
 get the full buffer
@@ -146,7 +146,7 @@ and no more inputs are possible until at least one output is done.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Input buffer/Full buffer}
 
@@ -193,7 +193,7 @@ discarded.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Input buffer (cont)}
 
@@ -237,7 +237,7 @@ Let us output another character:
 \end{center}
 Now, if the lexer needs a character, \exc{C} is output and some
 routine automatically reads some more characters from the disk and
-fill them in order into the buffer. 
+fill them in order into the buffer.
 
 \bigskip
 
@@ -246,7 +246,7 @@ This happens when we output the rightmost character.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Input buffer (cont)}
 
@@ -294,7 +294,7 @@ would be empty.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams}
 
@@ -327,7 +327,7 @@ take place when a lexer is called by a parser to get the next token.]
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams (cont)}
 
@@ -374,7 +374,7 @@ buffer and that \(c\) is not \eof:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams and buffering}
 
@@ -418,7 +418,7 @@ initial input buffer is
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams and buffering (cont)}
 
@@ -473,7 +473,7 @@ we are done: we recognised the token \token{relop}{>=}.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams and buffering (cont)}
 
@@ -524,7 +524,7 @@ state.}
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams and buffering (cont)}
 
@@ -566,7 +566,7 @@ and we forgot where the recognised lexeme starts...
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams and buffering (cont)}
 
@@ -614,12 +614,12 @@ When the lexer reads the next available character, the pointer
 \end{tabular}
 \end{center}
 We are now at state \(2\) and the current character, i.e., pointed by
-\(\upharpoonright\), is \exc{1}. 
+\(\upharpoonright\), is \exc{1}.
 
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams and buffering (cont)}
 
@@ -678,7 +678,7 @@ lexeme we have to shift the current pointer by one position \emph{to
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams and buffering (cont)}
 
@@ -699,7 +699,7 @@ Moreover, the recognised lexeme now always starts at the
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams (resumed)}
 
@@ -731,7 +731,7 @@ described).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Transition diagrams (cont)}
 
@@ -747,7 +747,7 @@ is a part of this one.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Identifiers and longest prefix match}
 
@@ -771,7 +771,7 @@ identifier and not just \texttt{count}. This is called
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Keywords}
 
@@ -796,7 +796,7 @@ position, i.e pointed by \(\upharpoonleft\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Keywords (cont)}
 
@@ -827,7 +827,7 @@ the keywords.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Keywords (cont)}
 
@@ -837,7 +837,7 @@ There are still several drawbacks with this technique, though.
 
 The first problem is that if we indeed have the longest prefix
 property among keywords, it does not hold with respect to the
-identifiers. 
+identifiers.
 
 \bigskip
 
@@ -856,7 +856,7 @@ which have prefix keywords).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Keywords (cont)}
 
@@ -884,7 +884,7 @@ the following regular definition:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Keywords (cont)}
 
@@ -905,7 +905,7 @@ the specification of keywords with transition diagrams.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Keywords (cont)}
 
@@ -923,11 +923,11 @@ a \textbf{table of keywords}. We specify
 \begin{center}
 \includegraphics[bb=48 684 285 755]{dfa_id_kwd}
 \end{center}
- 
+
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Keywords (cont)}
 
@@ -952,10 +952,10 @@ else & \tokenName{else}\\
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Keywords (cont)}
- 
+
 \begin{columns}
 
   \column{0.5\textwidth} Let us write the code for \texttt{switch} in
@@ -985,10 +985,10 @@ else & \tokenName{else}\\
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Numbers}
- 
+
 Let us consider now the numbers as specified by the regular definition
 \begin{align*}
 \term{num} & \rightarrow \text{\term{digit}\plus{} \lparen\exc{.}
@@ -1004,10 +1004,10 @@ recognition:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/White spaces}
- 
+
 The only remaining issue concerns white spaces as specified by the
 regular definition
 \begin{align*}
@@ -1023,10 +1023,10 @@ associated to the final state: no token is emitted.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified}
- 
+
 There is a simple away to reduce the size of the diagrams used to
 specify the tokens while retaining the longest prefix property: allow
 to pass through several final states.
@@ -1050,10 +1050,10 @@ state \(2\) if we could recognise \texttt{>=}.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Comparisons}
- 
+
 The simplified complete version with respect to the one given
 page~\pageref{dfa_relop} is
 \begin{center}
@@ -1063,10 +1063,10 @@ page~\pageref{dfa_relop} is
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Identifiers}
- 
+
 The transition diagram for specifying identifiers \emph{and} keywords
 looks now like
 \begin{center}
@@ -1076,10 +1076,10 @@ looks now like
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Numbers}
- 
+
 The transition diagram for specifying numbers is simpler now:
 \begin{center}
 \includegraphics[bb=48 632 320 758]{dfa_num_opt}
@@ -1088,10 +1088,10 @@ The transition diagram for specifying numbers is simpler now:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Interpretation}
- 
+
 How does we interpret these new transition diagrams, where the final
 states may have out-going edges (and the initial state have incoming
 edges)?
@@ -1129,10 +1129,10 @@ position.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Interpretation (cont)}
- 
+
 The new feature here is about final states. When the current state is
 final
 \begin{enumerate}
@@ -1143,7 +1143,7 @@ final
   \item if there is an out-going edge which carries a matching
   character, we try to recognise a longer lexeme;
   \begin{enumerate}
-  
+
     \item if we fail, i.e., if we cannot go further in the diagram and
     the current state is not final, then we shift back the current
     pointer \(\upharpoonright\) to the position pointed
@@ -1162,10 +1162,10 @@ final
 
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Example}
- 
+
 Following our example of number recognition:
 \begin{itemize}
 
@@ -1227,10 +1227,10 @@ Following our example of number recognition:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Example (cont)}
- 
+
 \begin{itemize}
 
   \item We shift right by one the current pointer and stay in
@@ -1294,10 +1294,10 @@ Following our example of number recognition:
 
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Example (cont)}
- 
+
 \begin{itemize}
 
   \item The \term{digit} label of the loop matches again the current
@@ -1368,10 +1368,10 @@ Following our example of number recognition:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Example (cont)}
- 
+
 Let us consider the following initial buffer:
 \begin{center}
 \begin{tabular}{rcc@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}ccl}
@@ -1451,10 +1451,10 @@ different situation:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Recognition of tokens/Simplified/Example (cont)}
- 
+
 The label on the edge from state \(2\) to \(3\) matches \exc{.} so we
 move to state \(3\), shift by one the current pointer in the buffer:
 \begin{center}

@@ -1,7 +1,7 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Lexer}
 
@@ -19,7 +19,7 @@ token.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Lexer (cont)}
 
@@ -39,7 +39,7 @@ Usually, a lexical analyser is in charge of
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Lexer/Tokens, lexemes, patterns}
 
@@ -70,7 +70,7 @@ the substring \texttt{pi} is a lexeme for the token \tokenName{id}
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Lexer/Tokens, lexemes, patterns (cont)}
 
@@ -81,7 +81,7 @@ the substring \texttt{pi} is a lexeme for the token \tokenName{id}
 \begin{tabular}{>{\bfseries\sffamily}l|>{\tt}l|l}
 \hline\hline
   \multicolumn{1}{c|}{\textsc{Token}}
-& \multicolumn{1}{c|}{\textsc{Sample lexemes}} 
+& \multicolumn{1}{c|}{\textsc{Sample lexemes}}
 & \multicolumn{1}{c}{\textsc{Informal pattern}}\\
 \hline
 id       & pi count D2 \dots  & letter followed by letters and digits\\
@@ -98,7 +98,7 @@ literal  & "message" ""  \ldots & any characters between \texttt{"} and \texttt{
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Lexer/Tokens, lexemes, patterns (cont)}
 
@@ -126,7 +126,7 @@ page~\pageref{tokens_lexemes}.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens}
 
@@ -148,13 +148,13 @@ alphabet.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens (cont)}
 
 A \textbf{string} over some alphabet is a finite sequence of symbols
 drawn from that alphabet. The terms \textbf{sentence}
-and \textbf{word} are often used as synonyms. 
+and \textbf{word} are often used as synonyms.
 
 \bigskip
 
@@ -166,7 +166,7 @@ string}, denoted \(\varepsilon\), is a special string of length zero.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens/Strings and formal languages (cont)}
 
@@ -202,7 +202,7 @@ of \(s\).\\
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens/Strings and formal languages (cont)}
 
@@ -233,12 +233,12 @@ of \(s\).\\
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens/Strings and formal languages (cont)}
 
 The term \textbf{language} denotes any set of strings over some fixed
-alphabet. 
+alphabet.
 
 \bigskip
 
@@ -250,7 +250,7 @@ C programs is an infinite language.
 
 If \(x\) and \(y\) are strings, then the \textbf{concatenation}
 of \(x\) and \(y\), written \(xy\) or \(x \cdot y\), is the string
-formed by appending \(y\) to \(x\). 
+formed by appending \(y\) to \(x\).
 
 \bigskip
 
@@ -265,7 +265,7 @@ concatenation: \(s \varepsilon = \varepsilon s = s\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens/Strings and formal languages (cont)}
 
@@ -284,7 +284,7 @@ sss\) etc.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens/Strings and formal languages (cont)}
 
@@ -322,7 +322,7 @@ v\\
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens/Operations on languages}
 
@@ -349,20 +349,20 @@ and \textbf{closure}. Let \(L\) and \(M\) be two languages.
 \end{center}
 In other words, \(L^{*}\) means ``zero or more concatenations
 of \(L\)'', and \(L^{+}\) means ``one or more concatenations
-of \(L\).'' 
+of \(L\).''
 
 %Note that \(L^{*} = L^0 \cup \bigcup_{i=1}^{\infty}{L^{i}} = \{\varepsilon\} \cup L^{+}\)
 
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens/Operations on languages/Examples}
 
 Let \(L
 = \{\texttt{A}, \texttt{B}, \ldots, \texttt{Z}, \texttt{a}, \texttt{b}, \ldots, \texttt{z}\}\)
-and \(D = \{\texttt{0}, \texttt{1}, \ldots, \texttt{9}\}\). 
+and \(D = \{\texttt{0}, \texttt{1}, \ldots, \texttt{9}\}\).
 \begin{enumerate}
 
   \item \(L\) is the alphabet consisting of the set of upper and lower
@@ -391,7 +391,7 @@ Here are some examples of new languages created from \(L\) and \(D\):
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specification of tokens/Operations on languages/Examples
   (cont)}

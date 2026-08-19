@@ -1,10 +1,10 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Deterministic finite automata}
- 
+
 Transition diagrams are useful \emph{graphical} representations of
 instances of the mathematical concept of \textbf{deterministic finite
 automaton} (\textbf{DFA}).
@@ -24,7 +24,7 @@ Formally, a DFA \({\cal D}\) is a 5-tuple \({\cal D} = (Q, \Sigma,
 
   \item a finite set of \emph{input symbols}, often noted \(\Sigma\);
 
-  \item a \emph{transition function} \(\delta\) that takes 
+  \item a \emph{transition function} \(\delta\) that takes
   a state and an input symbol and returns a state: if \(q\) is a state
   with an edge labeled \(a\), the edge leads to state \(\delta(q,
   a)\).
@@ -34,7 +34,7 @@ Formally, a DFA \({\cal D}\) is a 5-tuple \({\cal D} = (Q, \Sigma,
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Recognised words}
 
@@ -49,9 +49,9 @@ recognised by the DFA \({\cal D} = (Q, \Sigma, \delta, q_0, F)\) if
 
   \item for all \(0 \leqslant i \leqslant n-1\)
 
-  \item there is a sequence of states \(q_i \in Q\) such as 
+  \item there is a sequence of states \(q_i \in Q\) such as
 
-  \item \(\delta (q_i, a_{i+1}) = q_{i+1}\) 
+  \item \(\delta (q_i, a_{i+1}) = q_{i+1}\)
 
   \item and \(q_n \in F\).
 
@@ -62,7 +62,7 @@ set of words recognised by \(\cal D\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Recognised words/Example}
 
@@ -88,7 +88,7 @@ set of words recognised by \(\cal D\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Recognised language}
 
@@ -123,7 +123,7 @@ L({\cal D}) = \{w \in \Sigma^{*} \; \lvert \; \hat{\delta}(q_0, w) \in F\}
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Recognised language/Example}
 
@@ -134,7 +134,7 @@ For example, in our last example:
 &= q_0\\
    \hat{\delta}(q_0, \textsf{t})
 &= \delta (\hat{\delta}(q_0, \epsilon), \textsf{t})
-= \delta (q_0, \textsf{t}) 
+= \delta (q_0, \textsf{t})
 = q_1\\
    \hat{\delta}(q_0, \textsf{th})
 &= \delta (\hat{\delta}(q_0, \textsf{t}), \textsf{h})
@@ -144,7 +144,7 @@ For example, in our last example:
 &= \delta (\hat{\delta}(q_0, \textsf{th}), \textsf{e})
 = \delta (q_2, \textsf{e})
 = q_4\\
-   \hat{\delta}(q_0, \textsf{then}) 
+   \hat{\delta}(q_0, \textsf{then})
 &= \delta (\hat{\delta}(q_0, \textsf{the}), \textsf{n})
 = \delta (q_4, \textsf{n})
 = q_5 \in F
@@ -154,10 +154,10 @@ For example, in our last example:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Transition diagrams}
- 
+
 We can also redefine transition diagrams in terms of the concept of
 DFA.
 
@@ -188,7 +188,7 @@ F)\) is a graph defined as follows:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Transition diagram/Example}
 
@@ -197,12 +197,12 @@ Here is a transition diagram for the language over alphabet \(\{0,
 \(01\):
 \begin{center}
 \includegraphics[bb=48 710 185 760]{dfa_01}
-\end{center} 
+\end{center}
 
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Transition table}
 
@@ -230,7 +230,7 @@ q & & \delta (q, a)\\
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Transition table/Example}
 
@@ -257,7 +257,7 @@ transition table here, but the whole DFA \(\cal D\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Example}
 
@@ -291,7 +291,7 @@ Therefore, there are four states because there are four cases:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Example (cont)}
 
@@ -316,7 +316,7 @@ transition diagram.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Example (cont)}
 
@@ -344,7 +344,7 @@ transition diagram.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{DFA/Example (cont)}
 
@@ -368,7 +368,7 @@ since \(q_0\) is the sole final state.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{DFA/Example (cont)}
 
@@ -376,31 +376,31 @@ We can check this by computing step by step
 \(\hat{\delta}(q_0,\verb+110101+)\), from the shortest prefix to the
 longest (which is the word \verb+110101+ itself):
 \begin{align*}
-  \hat{\delta} (q_0, \varepsilon) 
+  \hat{\delta} (q_0, \varepsilon)
 &= q_0\\
-   \hat{\delta} (q_0, \texttt{1}) 
+   \hat{\delta} (q_0, \texttt{1})
 &= \delta (\hat{\delta} (q_0, \varepsilon), \texttt{1})
 &= \delta (q_0, \texttt{1})
 &= q_1\\
-   \hat{\delta} (q_0, \texttt{11}) 
-&= \delta (\hat{\delta} (q_0, \texttt{1}), \texttt{1}) 
-&= \delta (q_1, \texttt{1}) 
+   \hat{\delta} (q_0, \texttt{11})
+&= \delta (\hat{\delta} (q_0, \texttt{1}), \texttt{1})
+&= \delta (q_1, \texttt{1})
 &= q_0\\
-   \hat{\delta} (q_0, \texttt{110}) 
-&= \delta (\hat{\delta} (q_0, \texttt{11}), \texttt{0}) 
-&= \delta (q_0, \texttt{0}) 
+   \hat{\delta} (q_0, \texttt{110})
+&= \delta (\hat{\delta} (q_0, \texttt{11}), \texttt{0})
+&= \delta (q_0, \texttt{0})
 &= q_2\\
-   \hat{\delta} (q_0, \texttt{1101}) 
-&= \delta (\hat{\delta} (q_0, \texttt{110}), \texttt{1}) 
-&= \delta (q_2, \texttt{1}) 
+   \hat{\delta} (q_0, \texttt{1101})
+&= \delta (\hat{\delta} (q_0, \texttt{110}), \texttt{1})
+&= \delta (q_2, \texttt{1})
 &= q_3\\
-   \hat{\delta} (q_0, \texttt{11010}) 
-&= \delta (\hat{\delta} (q_0, \texttt{1101}), \texttt{0}) 
-&= \delta (q_3, \texttt{0}) 
+   \hat{\delta} (q_0, \texttt{11010})
+&= \delta (\hat{\delta} (q_0, \texttt{1101}), \texttt{0})
+&= \delta (q_3, \texttt{0})
 &= q_1\\
-   \hat{\delta} (q_0, \texttt{110101}) 
-&= \delta (\hat{\delta} (q_0, \texttt{11010}), \texttt{1}) 
-&= \delta (q_1, \texttt{1}) 
+   \hat{\delta} (q_0, \texttt{110101})
+&= \delta (\hat{\delta} (q_0, \texttt{11010}), \texttt{1})
+&= \delta (q_1, \texttt{1})
 &= q_0 \in F
 \end{align*}
 

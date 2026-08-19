@@ -1,7 +1,7 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Equivalence of DFAs and NFAs}
 
@@ -25,7 +25,7 @@ construction}, which converts any NFA to a DFA.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction}
 
@@ -36,7 +36,7 @@ leads, in general, to \emph{several} states.
 \bigskip
 
 The idea of the subset construction is to create a new automaton where
-these edges are merged. 
+these edges are merged.
 
 \bigskip
 
@@ -53,7 +53,7 @@ This is the first step to create a DFA from a NFA.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction (cont)}
 
@@ -70,7 +70,7 @@ determinism
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction (cont)}
 
@@ -102,7 +102,7 @@ The other components of \({\cal D}\) are constructed as follows.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction (cont)}
 
@@ -136,7 +136,7 @@ Hence the number of subsets of an \(n\)-element set is also \(2^n\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction (cont)}
 
@@ -163,7 +163,7 @@ defined as follows.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Example/Transition table}
 
@@ -180,7 +180,7 @@ defined as follows.
     \#          & q_2 & \varnothing  & \varnothing
   \end{array}
   \]
-  and let us create an equivalent DFA. 
+  and let us create an equivalent DFA.
 
   \column{0.5\textwidth} First, we form all the subsets of the sets of
   the NFA and put them in the first column:
@@ -203,7 +203,7 @@ defined as follows.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Example/Transition table (cont)}
 
@@ -234,7 +234,7 @@ defined as follows.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Example/Transition table (cont)}
 \[
@@ -246,13 +246,13 @@ defined as follows.
 \rightarrow & \{q_0\} & \delta_N(q_0, 0) & \delta_N(q_0, 1)\\
             & \{q_1\} & \delta_N(q_1, 0) & \delta_N(q_1, 1)\\
          \# & \{q_2\} & \delta_N(q_2, 0) & \delta_N(q_2, 1)\\
-            & \{q_0, q_1\} & \delta_N(q_0,0) \cup \delta_N(q_1,0) 
+            & \{q_0, q_1\} & \delta_N(q_0,0) \cup \delta_N(q_1,0)
                            & \delta_N(q_0,1) \cup \delta_N(q_1,1)\\
-         \# & \{q_0, q_2\} & \delta_N(q_0,0) \cup \delta_N(q_2,0) 
+         \# & \{q_0, q_2\} & \delta_N(q_0,0) \cup \delta_N(q_2,0)
                            & \delta_N(q_0,1) \cup \delta_N(q_2,1)\\
-         \# & \{q_1, q_2\} & \delta_N(q_1,0) \cup \delta_N(q_2,0) 
+         \# & \{q_1, q_2\} & \delta_N(q_1,0) \cup \delta_N(q_2,0)
                            & \delta_N(q_1,1) \cup \delta_N(q_2,1)\\
-         \# & \{q_0, q_1, q_2\} 
+         \# & \{q_0, q_1, q_2\}
             & \delta_N(q_0,0) \cup \delta_N(q_1,0) \cup \delta_N(q_2,0)
             & \delta_N(q_0,1) \cup \delta_N(q_1,1) \cup \delta_N(q_2,1)
 \end{array}
@@ -261,7 +261,7 @@ defined as follows.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Example/Transition table (cont)}
 \[
@@ -282,7 +282,7 @@ defined as follows.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Example/Transition diagram}
 
@@ -295,7 +295,7 @@ where states with out-going edges which have no end are final states.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Example/Transition diagram (cont)}
 
@@ -320,7 +320,7 @@ where states with out-going edges which have no end are final states.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Example/Transition diagram (cont)}
 
@@ -365,7 +365,7 @@ where states with out-going edges which have no end are final states.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Example/Transition diagram (cont)}
 So, finally, the DFA is simply
@@ -376,7 +376,7 @@ So, finally, the DFA is simply
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Optimisation}
 
@@ -400,7 +400,7 @@ to avoid the construction of inaccessible states.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Optimisation/Example}
 
@@ -417,7 +417,7 @@ to avoid the construction of inaccessible states.
     \#          & q_2 & \varnothing  & \varnothing
   \end{array}
   \]
-  
+
   \column{0.5\textwidth} Initially, the sole subset of accessible
   states is \(\{q_0\}\):
   \[
@@ -440,7 +440,7 @@ to avoid the construction of inaccessible states.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Optimisation/Example (cont)}
 
@@ -478,7 +478,7 @@ to avoid the construction of inaccessible states.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Tries}
 
@@ -500,7 +500,7 @@ It is possible to apply the subset construction to this NFA.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Tries (cont)}
 
@@ -519,7 +519,7 @@ like keywords.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Text searching}
 
@@ -538,7 +538,7 @@ symbol. If we note \(\Sigma\) the language alphabet, we get
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Text searching (cont)}
 
@@ -564,7 +564,7 @@ Try for instance the input \texttt{constantcontinue}.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Bad case}
 
@@ -581,7 +581,7 @@ finite set).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Bad case (cont)}
 
@@ -604,7 +604,7 @@ until the \textbf{end} of the word to accept or reject it.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Bad case (cont)}
 
@@ -624,18 +624,18 @@ where words \(x1w\) and \(x'0w\) have length \(n\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Bad case (cont)}
 
 Let us call the DFA \({\cal D} = (Q_D, \Sigma, \delta_D, q_D, F_D)\),
-where \(q_D=\{q_0\}\). 
+where \(q_D=\{q_0\}\).
 
 \bigskip
 
 The extended transition function is noted \(\hat{\delta}_D\) as
 usual. The situation of the previous picture can be formally expressed
-as 
+as
 \begin{gather}
 \hat{\delta}_D (q_D, x1) = \hat{\delta}_D (q_D, x'0) = q \label{ext:1}\\
 \lvert{x1w}\lvert = \lvert{x'0w}\lvert = n
@@ -645,7 +645,7 @@ where \(\lvert{u}\lvert\) is the length of \(u\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Bad case (cont)}
 
@@ -665,7 +665,7 @@ at the \(n\)-th position from the end.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction/Bad case (cont)}
 

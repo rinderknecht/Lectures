@@ -1,7 +1,7 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Why study compiler construction?}
 
@@ -30,7 +30,7 @@ So why teach how to make compilers?
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Why study compiler construction? (cont)}
 
@@ -63,7 +63,7 @@ Anyway, compilers are excellent examples of complex software systems
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Function of a compiler}
 
@@ -92,7 +92,7 @@ byte-code.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Compilation chain}
 
@@ -105,7 +105,7 @@ of tools:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Compilation chain (cont)}
 
@@ -119,7 +119,7 @@ compiler:
 \begin{itemize}
 
   \item to only preprocess the sources: \verb+gcc -E prog.c+
-  (standard output)\\ 
+  (standard output)\\
   Annotations are introduced by \verb+#+, like \verb+#define x 6+
 %   You can also call directly the C preprocessor \verb+cpp+.
 
@@ -138,7 +138,7 @@ compiler:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{The analysis-synthesis model of compilation}
 
@@ -149,7 +149,7 @@ In this class we shall detail only the compilation stage itself.
 There are two parts to compilation: \textbf{analysis} and
 \textbf{synthesis}.
 \begin{enumerate}
- 
+
   \item The analysis part breaks up the source program into
   constituent pieces of an \textbf{intermediary representation} of the
   program.
@@ -163,7 +163,7 @@ In this class we shall restrict ourselves to the analysis part.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Analysis}
 
@@ -190,7 +190,7 @@ In this class we shall focus on linear and hierarchical analysis.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Lexical analysis}
 
@@ -236,7 +236,7 @@ position := initial+rate*60
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Syntax analysis}
 
@@ -254,11 +254,11 @@ by a \textbf{parse tree} such as:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Syntax analysis (cont)}
 
-In the expression 
+In the expression
 \begin{verbatim}
 initial + rate * 60
 \end{verbatim} 
@@ -272,7 +272,7 @@ is a logical unit because the usual conventions of arithmetic
 
 \bigskip
 
-Thus, because the expression 
+Thus, because the expression
 \begin{verbatim}
 initial + rate
 \end{verbatim}
@@ -282,7 +282,7 @@ subtree.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Syntax analysis (cont)}
 
@@ -298,7 +298,7 @@ by a set of cases:
   \item If \emph{expression}\(_1\) and \emph{expression}\(_2\) are
   expressions, then so are
    \begin{enumerate}
- 
+
      \item \emph{expression}\(_1\) \verb|+|
        \emph{expression}\(_2\) \label{rule_add_is_expr}
 
@@ -306,7 +306,7 @@ by a set of cases:
        \emph{expression}\(_2\) \label{rule_mult_is_expr}
 
      \item \verb|(| \emph{expression}\(_1\)
-       \verb|)| \label{rule_paren_is_expr} 
+       \verb|)| \label{rule_paren_is_expr}
 
    \end{enumerate}
 
@@ -315,7 +315,7 @@ by a set of cases:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Syntax analysis (cont)}
 
@@ -330,7 +330,7 @@ of operators applied to other expressions.
 \bigskip
 
 Therefore, by rule~\ref{rule_id_is_expr}, \texttt{initial} and
-\texttt{rate} are expressions. 
+\texttt{rate} are expressions.
 
 \bigskip
 
@@ -354,7 +354,7 @@ Thus, by rule~\ref{rule_add_is_expr}, we conclude that
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Syntax analysis (cont)}
 
@@ -363,7 +363,7 @@ by rules such as
 \begin{enumerate}
 
   \item If \emph{identifier} is an identifier and
-    \emph{expression} is an expression, then 
+    \emph{expression} is an expression, then
     \begin{center}
       \emph{identifier} \verb|:=| \emph{expression}
     \end{center}
@@ -383,12 +383,12 @@ by rules such as
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Syntax analysis (cont)}
 
 The division between lexical and syntactic analysis is somewhat
-arbitrary. 
+arbitrary.
 
 \bigskip
 
@@ -409,10 +409,10 @@ Imagine now that the lexer does \textbf{not} recognise numbers, just
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Syntax analysis (cont)}
- 
+
 \begin{columns}
 
   \column{0.5\textwidth} For instance, the parse tree for the number
@@ -422,7 +422,7 @@ Imagine now that the lexer does \textbf{not} recognise numbers, just
   \end{center}
 
   \column{0.5\textwidth}
-  But notice how this tree actually is almost a list. 
+  But notice how this tree actually is almost a list.
 
   \bigskip
 
@@ -439,7 +439,7 @@ Imagine now that the lexer does \textbf{not} recognise numbers, just
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Syntax analysis (cont)}
 
@@ -470,7 +470,7 @@ structure is needed.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Syntax analysis (cont)}
 
@@ -489,7 +489,7 @@ elements are retained for the semantic analysis.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Semantic analysis}
 
@@ -518,12 +518,12 @@ corresponding arithmetic functions).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Semantic analysis (cont)}
 
 In our example, page~\pageref{ast_eg}, assume all identifiers were
-declared as floats. 
+declared as floats.
 
 \bigskip
 
@@ -535,7 +535,7 @@ allows these two types of operands for the multiplication \verb|*|.
 
 Then the analyser must insert a special node in the syntax tree which
 represents a \textbf{type cast} from integer to float for
-\texttt{60}. 
+\texttt{60}.
 
 \bigskip
 
@@ -552,7 +552,7 @@ conversion has to be output.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Semantic analysis (cont)}
 
@@ -567,7 +567,7 @@ Hence the semantic analysis issues no error and produces the following
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases}
 
@@ -583,7 +583,7 @@ The first row makes up the analysis and the second the synthesis.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/Symbol table}
 
@@ -596,7 +596,7 @@ corresponding identifier. Example of identifier attributes are
 \begin{itemize}
   \item the allocated storage,
 
-  \item the type, 
+  \item the type,
 
   \item the \textbf{scope} (i.e. where in the program it is valid),
 
@@ -609,7 +609,7 @@ corresponding identifier. Example of identifier attributes are
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Phases/Symbol table (cont)}
 
@@ -640,7 +640,7 @@ intermediate code.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/Error detection and reporting}
 
@@ -668,7 +668,7 @@ deal with these errors. Here come some examples.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The analysis phase/Lexing}
 
@@ -702,7 +702,7 @@ where \tokenName{ID} (\emph{identifier}), \tokenName{SYM}
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The analysis phase/Lexing (cont)}
 
@@ -715,7 +715,7 @@ The lexer also outputs or updates a symbol table like\footnote{Even if
 Identifier & Attributes\\
 \hline
 \hline
-\texttt{position} & \ldots\\ 
+\texttt{position} & \ldots\\
 \hline
 \texttt{initial} & \ldots\\
 \hline
@@ -730,7 +730,7 @@ line and column numbers.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The analysis phase/Parsing}
 
@@ -760,14 +760,14 @@ line and column numbers.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The analysis phase/Parsing (cont)}
 
 The parse tree can be considered as a \textbf{trace} of the syntax
 analysis process: it summarises all the recognition work done by the
 parser. It depends on the syntax rules (i.e. the grammar) and the
-input stream of tokens. 
+input stream of tokens.
 %We will discuss later how to define a grammar.
 \begin{center}
 \includegraphics[bb=71 605 377 721]{refined_parse_tree_eg}
@@ -776,14 +776,14 @@ input stream of tokens.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The analysis phase/Semantic analysis}
 
 The semantic analysis considers the syntax tree and checks certain
 properties depending on the language, typically it makes sure that the
 valid syntactic constructs also have a certain meaning (with respect
-to the rules of the language). 
+to the rules of the language).
 
 \bigskip
 
@@ -795,7 +795,7 @@ code generation and/or optimisation.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The analysis phase/Semantic
   analysis (cont)}
@@ -812,7 +812,7 @@ code generator.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The synthesis phase}
 
@@ -824,13 +824,13 @@ target language.
 
 Given the annotated syntax tree and the symbol table, the first
 sub-phase consists in producing a program in some artificial,
-intermediary, language. 
+intermediary, language.
 
 \bigskip
 
 Such a language should be independent of the target language, while
 containing features common to the \emph{family} the target language
-belongs to. 
+belongs to.
 
 \bigskip
 
@@ -841,7 +841,7 @@ family.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Phases/The synthesis phase (cont)}
 
@@ -872,7 +872,7 @@ id_position := temp3
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The synthesis phase (cont)}
 
@@ -891,7 +891,7 @@ many details of the target architecture).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The synthesis phase (cont)}
 
@@ -907,7 +907,7 @@ several properties:
   \item some instructions can have less than three operands (e.g. the
   first and last instruction);
 
-  \item the result of an operation must be linked to a variable; 
+  \item the result of an operation must be linked to a variable;
 
 \end{itemize}
 As a consequence, the compiler must order well the code for the
@@ -917,7 +917,7 @@ third one because the multiplication has priority on addition.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Phases/The synthesis phase/Code optimisation}
 
@@ -948,7 +948,7 @@ unnecessary concern to integrate it in the code generation phase.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Phases/The synthesis phase/Code generation}
 
@@ -987,7 +987,7 @@ MOVF R1, id_position
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Phases/The synthesis phase/Code generation (cont)}
 
@@ -996,7 +996,7 @@ register \texttt{2}, then multiplies it with the float 60.0.
 
 \bigskip
 
-The \texttt{\#} signifies that \texttt{60.0} is a constant. 
+The \texttt{\#} signifies that \texttt{60.0} is a constant.
 
 \bigskip
 
@@ -1012,7 +1012,7 @@ Finally, the value in register \texttt{1} is moved to the address of
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Implementation of phases into passes}
 
@@ -1022,7 +1022,7 @@ an implementation of the synthesis \textbf{back-end}.
 \bigskip
 
 A \textbf{pass} consists in reading an input file and writing an output
-file. 
+file.
 
 \bigskip
 
@@ -1032,7 +1032,7 @@ interleave their activity.
 
   \item On one hand, this can lead to a greater efficiency since
   interactions with the file system are much slower than with internal
-  memory. 
+  memory.
 
   \item On the other hand, this architecture leads to a greater
   complexity of the compiler --- something the software engineer
@@ -1043,7 +1043,7 @@ interleave their activity.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Implementation of phases into passes (cont)}
 

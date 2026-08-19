@@ -1,12 +1,12 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{NFA with \(\epsilon\)-transitions (\eNFA)}
 
 We shall now introduce another extension to NFA, called \eNFA, which
-is a NFA whose labels can be the empty string, noted \(\epsilon\). 
+is a NFA whose labels can be the empty string, noted \(\epsilon\).
 
 \bigskip
 
@@ -25,7 +25,7 @@ something more than \(a\) as input.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/Example}
 
@@ -43,7 +43,7 @@ note the utility of the \(\epsilon\)-transition between \(q_0\) and
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA (cont)}
 
@@ -59,14 +59,14 @@ connected to all their initial (respectively, final) states with an
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA (cont)}
 
 In lexical analysis, once we have a single \eNFA, we can
 \begin{enumerate}
 
-  \item either remove all the \(\epsilon\)-transitions and 
+  \item either remove all the \(\epsilon\)-transitions and
   \begin{enumerate}
     \item either create a NFA and then maybe a DFA;
 
@@ -79,7 +79,7 @@ In lexical analysis, once we have a single \eNFA, we can
 
 \end{enumerate}
 Both methods assume that it is always possible to create an equivalent
-NFA, hence a DFA, from a given \eNFA. 
+NFA, hence a DFA, from a given \eNFA.
 
 \bigskip
 
@@ -89,7 +89,7 @@ In other words, \textbf{DFA, NFA and \eNFA have the same expressive
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA (cont)}
 
@@ -112,7 +112,7 @@ instead of \(\Sigma\) --- but the alphabet still remains \(\Sigma\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure}
 
@@ -140,16 +140,16 @@ where the \eNFA is \({\cal E} = (Q_E, \Sigma, \delta_E, q_0, F_E)\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure (cont)}
 
 Now we define \(\eDFS\) as follows:
 \begin{align}
-   \eDFS (q, Q) 
-&= \varnothing 
+   \eDFS (q, Q)
+&= \varnothing
 & \text{if} \; q \in Q \label{eDFS_1}\\
-  \eDFS (q, Q) 
+  \eDFS (q, Q)
 &= \{q\} \quad \cup \bigcup_{p \in \delta_E(q,\epsilon)}{\eDFS (p, Q
     \cup \{q\})}
 & \text{if} \; q \not\in Q \label{eDFS_2}
@@ -175,7 +175,7 @@ following \(\epsilon\)-closures:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure (cont)}
 
@@ -185,16 +185,16 @@ Consider, as a more difficult example, the following \eNFA \(\cal E\):
 \end{center}
 \(\eClose (q_0)\)
 \begin{align*}
-  &= \eDFS (q_0, \varnothing) 
+  &= \eDFS (q_0, \varnothing)
   & \text{since} \; q_0 \in Q_E\\
-  & = \{q_0\} \cup \eDFS (q_1, \{q_0\}) 
+  & = \{q_0\} \cup \eDFS (q_1, \{q_0\})
               \cup \eDFS (q_4, \{q_0\})
   & \text{by eq.~\ref{eDFS_2}}\\
   &= \{q_0\} \cup \biggl( \{q_1\} \cup \bigcup_{p \in
                 \delta_E(q_1,\epsilon)}{\eDFS (p, \{q_0,
                 q_1\})}\biggr)
   & \text{by eq.~\ref{eDFS_2}}\\
-  &\mathrel{\phantom{=}} \phantom{\{q_0\}}{} 
+  &\mathrel{\phantom{=}} \phantom{\{q_0\}}{}
    \cup \biggl( \{q_4\} \cup \bigcup_{p \in
      \delta_E(q_4,\epsilon)}{\eDFS (p, \{q_0, q_4\})}
    \biggr)
@@ -204,7 +204,7 @@ Consider, as a more difficult example, the following \eNFA \(\cal E\):
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure (cont)}
 
@@ -212,7 +212,7 @@ Consider, as a more difficult example, the following \eNFA \(\cal E\):
 \eClose (q_0)
   &= \{q_0\} \cup \biggl( \{q_1\} \cup \bigcup_{p \in
                 \{q_2\}}{\eDFS (p, \{q_0, q_1\})}\biggr)\\
-  &\mathrel{\phantom{=}} \phantom{\{q_0\}}{} 
+  &\mathrel{\phantom{=}} \phantom{\{q_0\}}{}
    \cup \biggl( \{q_4\} \cup \bigcup_{p \in \varnothing}{\eDFS (p,
      \{q_0, q_4\})} \biggr)\\
   &= \{q_0\} \cup (\{q_1\} \cup \eDFS (q_2, \{q_0, q_1\}))
@@ -226,7 +226,7 @@ Consider, as a more difficult example, the following \eNFA \(\cal E\):
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure (cont)}
 
@@ -252,12 +252,12 @@ Consider, as a more difficult example, the following \eNFA \(\cal E\):
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure (cont)}
 
 It is useful to extend \(\eClose\) to sets of states, not just
-states. 
+states.
 
 \bigskip
 
@@ -272,7 +272,7 @@ for any subset \(Q \subseteq Q_E\) where the \eNFA is \({\cal E} =
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure /
   Optimisation}
@@ -290,12 +290,12 @@ and all its \(Q'\) states are accessible from \(q_3\).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure/Optimisation (cont)}
 
 \begin{align*}
-   \eClose (q_0) 
+   \eClose (q_0)
 &= \eDFS (q_0, \varnothing)\\
 &= \{q_0\} \cup \eDFS (q_1, \{q_0\}) \cup \eDFS (q_2, \{q_0\})\\
 &= \{q_0\} \cup (\{q_1\} \cup \eDFS (q3, \{q_0, q_1\}))\\
@@ -313,18 +313,18 @@ inefficient if \(Q'\) is big.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure/Optimisation (cont)}
 
 The way to avoid duplicating traversals is to change the definitions
-of \(\eClose\) and \(\eCloseSet\). 
+of \(\eClose\) and \(\eCloseSet\).
 
 Dually, we need a new definition of \(\eDFS\) and create function
 \(\eDFSset\) which is similar to \(\eDFS\) except that it applies to
 set of states instead of one state:
 \begin{align*}
-   \eClose (q) 
+   \eClose (q)
 &= \eDFS (q, \varnothing)
 && \text{if} \; q \in Q_E\\
    \eCloseSet (Q)
@@ -343,7 +343,7 @@ states that have to be explored.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure/Optimisation (cont)}
 
@@ -351,7 +351,7 @@ In the first definition we computed the \emph{new reachable states},
 but in the new one we compute the \emph{currently reached
   states}. Then let us redefine \(\eDFS\) this way:
 \begin{align*}
-  \eDFS (q, Q') 
+  \eDFS (q, Q')
 &= Q'
 && \text{if} \; q \in Q' \tag{1'}\\
   \eDFS (q, Q')
@@ -360,10 +360,10 @@ but in the new one we compute the \emph{currently reached
 \end{align*}
 Contrast with the first definition
 \begin{align*}
-   \eDFS (q, Q') 
-&= \varnothing 
+   \eDFS (q, Q')
+&= \varnothing
 & \text{if} \; q \in Q' \tag{1} \label{empty}\\
-  \eDFS (q, Q') 
+  \eDFS (q, Q')
 &= \{q\} \quad \cup \bigcup_{p \in \delta_E(q,\epsilon)}{\eDFS (p, Q'
     \cup \{q\})}
 & \text{if} \; q \not\in Q' \tag{2} \label{parallel}
@@ -375,7 +375,7 @@ new state, i.e., none not already in \(Q'\), whereas in (1') we return
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure/Optimisation (cont)}
 
@@ -385,7 +385,7 @@ first one:
    \eDFSset (\varnothing, Q')
 &= Q'\label{eDFSset:1}\\
    \eDFSset (\{q\} \cup Q, Q')
-&= \eDFSset (Q, \eDFS (q, Q')) 
+&= \eDFSset (Q, \eDFS (q, Q'))
 & \text{if} \; q \not\in Q \label{eDFSset:2}
 \end{align}
 Notice that the definitions of \(\eDFS\) and \(\eDFSset\) are
@@ -402,13 +402,13 @@ reached states) in the previous searches.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure/Optimisation (cont)}
 
 Coming back to our example page~\ref{enfa_closure}, we find
 \begin{align*}
-   \eClose (q_0) 
+   \eClose (q_0)
 &= \eDFS (q_0, \varnothing)
 && q_0 \in Q_E\\
 &= \eDFSset (\{q_1, q_2\}, \{q_0\})
@@ -430,12 +430,12 @@ Coming back to our example page~\ref{enfa_closure}, we find
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{\eNFA{}/\(\epsilon\)-closure/Optimisation (cont)}
 
 \begin{align*}
-   \eClose (q_0) 
+   \eClose (q_0)
 &= \eDFS (q_2, \{q_0, q_1, q_3\} \cup Q')
 && \text{by eq.~(3)}\\
 &= \eDFSset (\{q_3\}, \{q_0, q_1, q_2, q_3\} \cup Q')
@@ -455,7 +455,7 @@ result is always the same.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Extended transition functions for {\eNFA}s}
 
@@ -484,7 +484,7 @@ This definition is based on the regular identity \(wa =
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Extended transition functions for {\eNFA}s/Example}
 
@@ -511,7 +511,7 @@ the input \verb+5.6+:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Extended transition functions for {\eNFA}s/Example (cont)}
 
@@ -533,7 +533,7 @@ a number.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction for {\eNFA}s}
 
@@ -549,7 +549,7 @@ NFA: we must take into account the states reachable through
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction for {\eNFA}s (cont)}
 
@@ -581,7 +581,7 @@ Assume that \({\cal E} = (Q, \Sigma, \delta, q_0, F)\) is an
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction for {\eNFA}s/Example}
 
@@ -592,25 +592,25 @@ table is
 \multicolumn{2}{c||}{\cal E} & + & - & 0, \ldots, 9 & \mathtt{.} &
 \epsilon\\
 \hhline{==::=====}
-\rightarrow & q_0 & \{q_1\} & \{q_1\} & \varnothing & \varnothing 
+\rightarrow & q_0 & \{q_1\} & \{q_1\} & \varnothing & \varnothing
                   & \{q_1\}\\
-            & q_1 & \varnothing  & \varnothing & \{q_1, q_4\} 
+            & q_1 & \varnothing  & \varnothing & \{q_1, q_4\}
                   & \{q_2\} & \varnothing\\
             & q_2 & \varnothing  & \varnothing & \{q_3\} & \varnothing
                   & \varnothing\\
             & q_3 & \varnothing & \varnothing & \{q_3\} & \varnothing
                   & \{q_5\}\\
-            & q_4 & \varnothing & \varnothing & \varnothing  
+            & q_4 & \varnothing & \varnothing & \varnothing
                   & \varnothing & \{q_3\}\\
-         \# & q_5 & \varnothing & \varnothing & \varnothing 
-                  & \varnothing & \varnothing 
+         \# & q_5 & \varnothing & \varnothing & \varnothing
+                  & \varnothing & \varnothing
 \end{array}
 \]
 
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction for {\eNFA}s/Example (cont)}
 
@@ -619,13 +619,13 @@ By applying the subset construction to this \eNFA, we get the table
 \begin{array}{r@{}l||c|c|c|c}
 \multicolumn{2}{c||}{\cal D} & + & - & 0, \ldots, 9 & \mathtt{.}\\
 \hhline{==::====}
-\rightarrow 
-   & \{q_0,q_1\} 
+\rightarrow
+   & \{q_0,q_1\}
              & \{q_1\} & \{q_1\} & \{q_1, q_3, q_4, q_5\} & \{q_2\}\\
-   & \{q_1\} & \varnothing  & \varnothing & \{q_1, q_3, q_4, q_5\} 
+   & \{q_1\} & \varnothing  & \varnothing & \{q_1, q_3, q_4, q_5\}
              & \{q_2\}\\
-\# & \{q_1, q_3, q_4, q_5\} 
-             & \varnothing  & \varnothing & \{q_1, q_3, q_4, q_5\} 
+\# & \{q_1, q_3, q_4, q_5\}
+             & \varnothing  & \varnothing & \{q_1, q_3, q_4, q_5\}
              & \{q_2\}\\
    & \{q_2\} & \varnothing & \varnothing & \{q_3, q_5\} & \varnothing\\
 \# & \{q_3, q_5\}
@@ -636,7 +636,7 @@ By applying the subset construction to this \eNFA, we get the table
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction for {\eNFA}s/Example (cont)}
 
@@ -645,7 +645,7 @@ Let us rename the states of \(\cal D\) and get rid of the empty sets:
 \begin{array}{r@{}l||c|c|c|c}
 \multicolumn{2}{c||}{\cal D} & + & - & 0, \ldots, 9 & \mathtt{.}\\
 \hhline{==::====}
-\rightarrow 
+\rightarrow
    & A & B & B & C & D\\
    & B &   &   & C & D\\
 \# & C &   &   & C & D\\
@@ -657,7 +657,7 @@ Let us rename the states of \(\cal D\) and get rid of the empty sets:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Subset construction for {\eNFA}s/Example (cont)}
 

@@ -1,3 +1,5 @@
+\documentclass[compress,dvips,xcolor={dvipsnames},t]{beamer}
+
 % Language
 %
 \usepackage[english]{babel}
@@ -46,7 +48,6 @@
 \input{grammar}
 \input{dfa_macros}
 \input{beamer_cfg}
-\input{trace}
 
 % ------------------------------------------------------------------------
 % Document
@@ -59,15 +60,15 @@
 
 \frame{\maketitle}
 
-\xinclude{overview}{Overview of the compilation chain}
-\xinclude{token_spec}{Token specification}
-\xinclude{regexp}{Regular expressions}
-\xinclude{lex}{Lex, a tool for building lexers}
-\xinclude{token_recog}{Transition diagrams and regular expressions}
-\xinclude{dfa}{Deterministic Finite Automata (DFA)}
-\xinclude{nfa}{Non-deterministic Finite Automata (NFA)}
-\xinclude{subset}{The subset construction}
-\xinclude{enfa}{Non-deterministic Finite Automata with epsilon-transitions (e-NFA)}
-\xinclude{re_to_enfa}{From regular expressions to e-NFAs}
+\include{overview}
+\include{token_spec}
+\include{regexp}
+\include{lex}
+\include{token_recog}
+\include{dfa}
+\include{nfa}
+\include{subset}
+\include{enfa}
+\include{re_to_enfa}
 
 \end{document}

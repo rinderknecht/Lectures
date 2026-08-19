@@ -1,10 +1,10 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specifying lexers}
- 
+
 Several tools have been built for constructing lexical analysers from
 special-purpose notations based on regular expressions.
 
@@ -27,21 +27,21 @@ specification as the \textbf{\Lex language}.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specifying lexers (cont)}
- 
+
 \Lex is generally used in the following manner:
 \begin{center}
 \begin{tabular}{cc|c|cc}
 \cline{3-3}
-  \Lex source 
+  \Lex source
 & \multirow{2}{*}{\Large \(\longrightarrow\)}
 & \Lex
 & \multirow{2}{*}{\Large \(\longrightarrow\)}
 & \multirow{2}{*}{\texttt{lex.yy.c}}\\
   \texttt{lex.l}
-& 
+&
 & compiler\\
   \cline{3-3}
 \\
@@ -51,7 +51,7 @@ specification as the \textbf{\Lex language}.
 & C
 & \multirow{2}{*}{\Large \(\longrightarrow\)}
 & \multirow{2}{*}{\texttt{a.out}}\\
-& 
+&
 & compiler\\
   \cline{3-3}
 \\
@@ -62,7 +62,7 @@ specification as the \textbf{\Lex language}.
 & \multirow{2}{*}{\Large \(\longrightarrow\)}
 & token\\
   stream
-& 
+&
 &
 &
 & stream\\
@@ -73,10 +73,10 @@ specification as the \textbf{\Lex language}.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex specifications}
- 
+
 A \Lex specification (or source or program) consists of three parts:
 {\small
 \begin{verbatim}
@@ -94,10 +94,10 @@ the translation rules.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex specifications (cont)}
- 
+
 The \textbf{translation rules} of a \Lex program are statements of
 the form
 \begin{quote}
@@ -122,10 +122,10 @@ procedures) are needed by the actions.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specifying lexers/Lex specifications (cont)}
- 
+
 A lexer created by \Lex interacts with a parser in the following way:
 \begin{enumerate}
 
@@ -154,13 +154,13 @@ A lexer created by \Lex interacts with a parser in the following way:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex declarations section}
- 
+
 {\small
 \begin{verbatim}
-%{ /* definitions of constants 
+%{ /* definitions of constants
      LT, LE, EQ, GT, GE, IF, THEN, ELSE, ID, NUM, RELOP */
 %}
 
@@ -178,11 +178,11 @@ num      {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex declarations section
 (cont)}
- 
+
 First, we see a place for the declaration of the tokens. Depending on
 the parser, if any, used with \Lex, these token may be declared by the
 parser. In this case, they are not declared here.
@@ -206,14 +206,14 @@ tabulation (\verb+\t+) or newline (\verb+\n+).
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Specifying lexers/Lex declarations section
 (cont)}
 
 \textbf{Character classes.} If we want to denote a set of letters
 or digits, it is often long to enumerate all the elements, like
-the \term{digit} regular expression. 
+the \term{digit} regular expression.
 
 \bigskip
 
@@ -246,11 +246,11 @@ We can now describe identifiers in a very compact way:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex declarations section
 (cont)}
- 
+
 It is possible to have \exc{]} and \exc{-} in a character range: the
 character \exc{]} must be first and \exc{-} must be first or last.
 
@@ -274,16 +274,16 @@ symbols (or \textbf{metasymbols}): parentheses and vertical bar.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex declarations section
 (cont)}
- 
-The definition of \texttt{num} introduces a few more features. 
+
+The definition of \texttt{num} introduces a few more features.
 
 \bigskip
 
-There is another metasymbol ``\verb+?+'' with the obvious meaning. 
+There is another metasymbol ``\verb+?+'' with the obvious meaning.
 
 \bigskip
 
@@ -307,10 +307,10 @@ like \verb+"."+
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex translation rules}
- 
+
 {\small
 \begin{verbatim}
 %%
@@ -332,11 +332,11 @@ else     { return ELSE; }
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex translation rules
 (cont)}
- 
+
 The translation rules follow the first \verb+%%+.
 
 \bigskip
@@ -363,10 +363,10 @@ in \texttt{lex.yy.c}) and is used to pass attributes about the token.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/User code}
- 
+
 Contrary to our previous presentation, the procedure \texttt{lexeme}
 takes here no argument. This is because the input buffer is directly
 and globally accessed in \Lex through the pointer \texttt{yytext},
@@ -394,10 +394,10 @@ char* lexeme () {
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Lex longest-prefix match}
- 
+
 If several regular expressions match the input, \Lex chooses the rule
 which matches the most text. This is why the input \verb+if123+ is
 matched (recognised) as an identifier and not as the two tokens
@@ -419,13 +419,13 @@ written \emph{before} \verb+{id}+.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Example}
- 
+
 It is possible to use \Lex alone. For instance, let \texttt{count.l}
 be the \Lex specification
-{\small 
+{\small
 \begin{verbatim}
 %{
 int char_count=1, line_count=1;
@@ -447,10 +447,10 @@ int main () {
 
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Example (cont)}
- 
+
 We have to compile the \Lex specification into C code, then compile
 this C code and link the object code against a special library named
 \verb+l+:
@@ -474,10 +474,10 @@ There were 210 characters in 12 lines.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Example (cont)}
- 
+
 We can extend the previous specification to count words as well. For
 this, we need to define a regular expression for letters and bind it
 to a name, at the end of the declarations.
@@ -500,10 +500,10 @@ letter [A-Za-z]
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Example (cont)}
- 
+
 We can also use more regular expressions with names.
 {\small
 \begin{verbatim}
@@ -521,10 +521,10 @@ id     {letter}([_]*{alpha})*  /* No space inside! */
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{Specifying lexers/Example (cont)}
- 
+
 By default, if there is no parser and no explicit \texttt{main}
 procedure, \Lex will add one in the produced C code as if it were
 given in the user code section (at the end of the specification) as

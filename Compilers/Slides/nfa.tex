@@ -1,7 +1,7 @@
 %%-*-latex-*-
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Non-deterministic finite automata}
 
@@ -27,7 +27,7 @@ suffix is 01.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{Non-deterministic finite automata (cont)}
 
@@ -44,7 +44,7 @@ where nodes are states of the NFA.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{NFA/Formal definitions}
 
@@ -80,13 +80,13 @@ table:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{NFA/Formal definitions (cont)}
 
 Note that, in the transition table of a NFA, all the cells are
 filled: there is no transition between two states if and only if the
-corresponding cell contains \(\varnothing\). 
+corresponding cell contains \(\varnothing\).
 
 \bigskip
 
@@ -108,7 +108,7 @@ same:
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}
 \frametitle{NFA/Formal definitions (cont)}
 
@@ -136,7 +136,7 @@ soon as \textbf{at least one current state belongs to \(F\)}.
 \end{frame}
 
 % ------------------------------------------------------------------------
-% 
+%
 \begin{frame}[containsverbatim]
 \frametitle{NFA/Example}
 
@@ -149,7 +149,7 @@ Let us use \(\hat{\delta}_N\) to describe the processing of the input
   \item \(\hat{\delta}_N (q_0, \varepsilon) = q_0\)
 
   \item \(\hat{\delta}_N (q_0, \verb+0+) = \delta_N (q_0, \verb+0+) =
-    \{q_0, q_1\}\) 
+    \{q_0, q_1\}\)
 
   \item \(\hat{\delta}_N (q_0, \verb+00+) = \delta_N (q_0, \verb+0+)
     \cup \delta_N (q_1, \verb+0+) = \{q_0, q_1\} \cup \varnothing =
