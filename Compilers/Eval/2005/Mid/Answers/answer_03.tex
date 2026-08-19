@@ -1,4 +1,4 @@
-\paragraph{Answer 3.} 
+\paragraph{Answer 3.}
 
 \begin{enumerate}
 
@@ -36,17 +36,17 @@
     included in another. If so, we can simply remove it from the
     expression.
     \begin{align*}
-      a \lparen a \, \disjM{} \, b \rparen\kleeneM{} b 
-      \, \disjM{} \, \lparen a b \rparen\kleeneM{} 
+      a \lparen a \, \disjM{} \, b \rparen\kleeneM{} b
+      \, \disjM{} \, \lparen a b \rparen\kleeneM{}
       \, \disjM{} \, \lparen b a \rparen\kleeneM
-      &= a \lparen a \, \disjM{} \, b \rparen\kleeneM{} b 
+      &= a \lparen a \, \disjM{} \, b \rparen\kleeneM{} b
       \, \disjM{} \, \epsilon
-      \, \disjM{} \, \lparen a b \rparen\plusM{} 
+      \, \disjM{} \, \lparen a b \rparen\plusM{}
       \, \disjM{} \, \lparen b a \rparen\kleeneM
       & \text{\emph{since}} \, \lparen ab \rparen\kleeneM =
       \epsilon \, \disjM{}\, \lparen ab \rparen\plusM\\
-      &= a \lparen a \, \disjM{} \, b \rparen\kleeneM{} b 
-      \, \disjM{} \, \lparen a b \rparen\plusM{} 
+      &= a \lparen a \, \disjM{} \, b \rparen\kleeneM{} b
+      \, \disjM{} \, \lparen a b \rparen\plusM{}
       \, \disjM{} \, \lparen b a \rparen\kleeneM
       & \text{\emph{since}} \, \{\epsilon\} \subset L(\lparen ba
       \rparen\kleeneM)
@@ -69,11 +69,11 @@
    b\).
 
    As a consequence, one possible answer is
-   \[  
-     a \lparen a \, \disjM{} \, b \rparen\kleeneM{} b 
-     \, \disjM{} \, \lparen a b \rparen\kleeneM{} 
+   \[
+     a \lparen a \, \disjM{} \, b \rparen\kleeneM{} b
+     \, \disjM{} \, \lparen a b \rparen\kleeneM{}
      \, \disjM{} \, \lparen b a \rparen\kleeneM
-     = a \lparen a \, \disjM{} \, b\rparen\kleeneM b 
+     = a \lparen a \, \disjM{} \, b\rparen\kleeneM b
      \, \disjM{} \, \lparen ba \rparen\kleeneM
    \]
    The intersection between \(L(a \lparen a \, \disjM{} \,
