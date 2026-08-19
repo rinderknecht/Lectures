@@ -2,15 +2,14 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\input{trace}
-
-\input{title}
-\author{Christian Rinderknecht}
-\date{17 May 2005}
-
-\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
 \usepackage{amsmath,amssymb}
 \usepackage{clrscode}
+
+\title{Quiz \#1 on Algebraic Specification}
+\author{Christian Rinderknecht}
+\date{17 May 2005}
 
 \newcommand\type[1]{\textsf{#1}}
 
@@ -57,7 +56,7 @@ specification of the arrays over items of type
     element.
 
     \item \(\proc{Create} : \type{int} \times \type{int} \rightarrow
-    \type{t}\)\\ 
+    \type{t}\)\\
     The term \(\proc{Create} (x, y)\) denotes an array whose
     elements are indexed from \(x\) to \(y\), if \(x < y\),
     or from \(y\) to \(x\) otherwise. The type \type{int} denotes
@@ -84,7 +83,7 @@ specification of the arrays over items of type
 
   \item \textbf{Functions}
   \begin{itemize}
-  
+
     \item \(\proc{Lower} : \type{t} \rightarrow \type{int}\)\\
     The call \(\proc{Lower} (a)\) is the lower bound of array
     \(a\), i.e., the smallest valid index. If \(a\) is empty, the
