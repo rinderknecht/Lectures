@@ -6,7 +6,7 @@ representation with \(n\) bits \(b_{n-1}, b_{n-2}, \dots, b_0\) is
 b_{n-1}(-2)^{n-1} + b_{n-2}(-2)^{n-2} + \dots + b_1(-2)^1 + b_0
 \]
 Devise a \textsf{C} function converting a decimal number, possibly
-negative, into its negabinary form: 
+negative, into its negabinary form:
 {\small
 \begin{verbatim}
 char* from10toNeg2 (int dec);
@@ -17,4 +17,3 @@ char* from10toNeg2 (int dec);
 then \texttt{a/b <= 0} and \texttt{a\%b >= 0}. Also, if \texttt{a <=
 0} and \texttt{b < 0}, then \texttt{a/b => 0} and \texttt{a\%b <=
 0}. For instance, \(17 = (-8)(-2) + 1\) and \(-17 = 8(-2) - 1\).
-
