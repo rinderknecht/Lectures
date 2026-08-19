@@ -2,17 +2,17 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\input{trace}
-
-\input{title}
-\author{Christian Rinderknecht}
-\date{17 June 2005}
-
-\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage{xcolor}
 \usepackage{vaucanson-g}
 \usepackage{amsmath,amssymb}
 \usepackage{clrscode}
 \usepackage{graphicx}
+
+\title{Final examination on Algebraic Specification}
+\author{Christian Rinderknecht}
+\date{17 June 2005}
 
 \newcommand\type[1]{\textsf{#1}}
 
@@ -34,7 +34,7 @@ signature:
     \item The type of the binary trees is noted \type{t}.
 
     \item The type of the nodes is noted \type{node}.
-  
+
   \end{itemize}
 
   \item \textbf{Constructors}
@@ -63,8 +63,8 @@ signature:
      occurs in tree \(t\), otherwise it is equal to
      \proc{False}. (We assume we have equality on nodes.)
 
-     \item \(\proc{Min-Depth}: \type{t} \times \type{node} 
-     \rightarrow \type{int}\)\\ 
+     \item \(\proc{Min-Depth}: \type{t} \times \type{node}
+     \rightarrow \type{int}\)\\
      The term \(\proc{Min-Depth} (t, e)\) denotes the minimum depth at
      which node \(e\) occurs in tree \(t\). (The root is at depth 0.)
      If \(e\) is not in \(t\), the value is unspecified. In case the
@@ -76,7 +76,7 @@ signature:
      \begin{center}
        \includegraphics{int_tree_example}
      \end{center}
-     then \(\left\{ 
+     then \(\left\{
      \begin{aligned}
        \proc{Min-Depth} (t, 7) & \quad \text{is unspecified
          (i.e. undefined)}\\
@@ -109,7 +109,6 @@ signature:
   \end{enumerate}
 
 \end{itemize}
-
 
 \input{question_01}
 \input{question_02}
