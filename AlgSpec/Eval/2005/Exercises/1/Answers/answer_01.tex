@@ -10,59 +10,59 @@
   We still have to consider the two other constructors, \proc{Create}
   and \proc{Set}:
   \begin{align}
-       \proc{Lower} (\proc{Create} (x, y)) 
+       \proc{Lower} (\proc{Create} (x, y))
     &= \textbf{?} \label{Lower_1}\\
-       \proc{Lower} (\proc{Set} (a, n, e)) 
+       \proc{Lower} (\proc{Set} (a, n, e))
     &= \textbf{?} \label{Lower_2}
   \end{align}
   In case of equation~\ref{Lower_1}, we must distinguish two cases: if
   \(x < y\) or \(x \geqslant y\):
   \begin{align*}
-       \proc{Lower} (\proc{Create} (x, y)) 
-    &= \textbf{?} 
+       \proc{Lower} (\proc{Create} (x, y))
+    &= \textbf{?}
     &  \text{if} \;x < y\\
-       \proc{Lower} (\proc{Create} (x, y)) 
-    &= \textbf{?} 
+       \proc{Lower} (\proc{Create} (x, y))
+    &= \textbf{?}
     &  \text{if} \;x \geqslant y\\
-       \proc{Lower} (\proc{Set} (a, n, e)) 
+       \proc{Lower} (\proc{Set} (a, n, e))
     &= \textbf{?}
   \end{align*}
   These cases are easy to complete because we know explicitly the
   lower bound:
   \begin{align*}
-       \proc{Lower} (\proc{Create} (x, y)) 
+       \proc{Lower} (\proc{Create} (x, y))
     &= x
     &  \text{if} \;x < y\\
-       \proc{Lower} (\proc{Create} (x, y)) 
+       \proc{Lower} (\proc{Create} (x, y))
     &= y
     &  \text{if} \;x \geqslant y\\
-       \proc{Lower} (\proc{Set} (a, n, e)) 
+       \proc{Lower} (\proc{Set} (a, n, e))
     &= \textbf{?}
   \end{align*}
   The last case (equation~\ref{Lower_2}) is also easy to solve because
   the argument is simply the array \(a\) with one element modified:
   the call to \proc{Set} does not change the lower bound. Therefore:
   \begin{align*}
-       \proc{Lower} (\proc{Create} (x, y)) 
+       \proc{Lower} (\proc{Create} (x, y))
     &= x
     &  \text{if} \;x < y\\
-       \proc{Lower} (\proc{Create} (x, y)) 
+       \proc{Lower} (\proc{Create} (x, y))
     &= y
     &  \text{if} \;x \geqslant y\\
-       \proc{Lower} (\proc{Set} (a, n, e)) 
+       \proc{Lower} (\proc{Set} (a, n, e))
     &= \proc{Lower} (a)
   \end{align*}
 
   \item \(\proc{Upper} : \type{t} \rightarrow \type{int}\)\\
   This case is the dual of \proc{Lower}:
   \begin{align}
-       \proc{Upper} (\proc{Create} (x, y)) 
+       \proc{Upper} (\proc{Create} (x, y))
     &= y
     &  \text{if} \;x < y \label{Upper_1}\\
-       \proc{Upper} (\proc{Create} (x, y)) 
+       \proc{Upper} (\proc{Create} (x, y))
     &= x
     &  \text{if} \;x \geqslant y \label{Upper_2}\\
-       \proc{Upper} (\proc{Set} (a, n, e)) 
+       \proc{Upper} (\proc{Set} (a, n, e))
     &= \proc{Upper} (a) \label{Upper_3}
   \end{align}
 
@@ -75,34 +75,34 @@
   The remaining constructors \proc{Create} and \proc{Set} have to be
   considered:
   \begin{align}
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   &= \textbf{?} \label{Get_1}\\
      \proc{Get} (\proc{Set} (a, p, e), n)
   &= \textbf{?} \label{Get_2}
   \end{align}
   We know from the signature that if the index \(n\) is out of
-  bounds, the value of the call to \proc{Get} is unspecified. 
+  bounds, the value of the call to \proc{Get} is unspecified.
 
   This means that equation~\ref{Get_1} should be restricted to the
   case
   \[
-    \proc{Lower} (\proc{Create} (x, y)) \leqslant n 
+    \proc{Lower} (\proc{Create} (x, y)) \leqslant n
     \leqslant \proc{Upper} (\proc{Create} (x, y))
   \]
   which can be split into two cases, depending on \(x\) and \(y\):
   \begin{align*}
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   &= \textbf{?}
   & \text{if} \; x \leqslant n \leqslant y\\
-     \proc{Get} (\proc{Create} (x, y), n) 
-  &= \textbf{?} 
+     \proc{Get} (\proc{Create} (x, y), n)
+  &= \textbf{?}
   & \text{if} \; y \leqslant n \leqslant x\\
      \proc{Get} (\proc{Set} (a, p, e), n)
   &= \textbf{?}
   \end{align*}
   We have to restrict also equation~\ref{Get_2} to the case
   \[
-    \proc{Lower} (\proc{Set} (a, p, e)) \leqslant n 
+    \proc{Lower} (\proc{Set} (a, p, e)) \leqslant n
     \leqslant \proc{Upper} (\proc{Set} (a, p, e))
   \]
   which, using the equations~\ref{Lower_2} and~\ref{Upper_3} of
@@ -112,11 +112,11 @@
   \).
   Therefore we have:
   \begin{align*}
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   &= \textbf{?}
   & \text{if} \; x \leqslant n \leqslant y\\
-     \proc{Get} (\proc{Create} (x, y), n) 
-  &= \textbf{?} 
+     \proc{Get} (\proc{Create} (x, y), n)
+  &= \textbf{?}
   & \text{if} \; y \leqslant n \leqslant x\\
      \proc{Get} (\proc{Set} (a, p, e), n)
   &= \textbf{?}
@@ -126,11 +126,11 @@
   \(\proc{Lower} (a) \leqslant p \leqslant \proc{Upper} (a)\).
   So:
   \begin{align*}
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   &= \textbf{?}
   & \text{if} \; x \leqslant n \leqslant y\\
-     \proc{Get} (\proc{Create} (x, y), n) 
-  &= \textbf{?} 
+     \proc{Get} (\proc{Create} (x, y), n)
+  &= \textbf{?}
   & \text{if} \; y \leqslant n \leqslant x\\
      \proc{Get} (\proc{Set} (a, p, e), n)
   &= \textbf{?}
@@ -142,10 +142,10 @@
   element between the bounds, it is always equal to
   \proc{Item}.\proc{Default}:
   \begin{align*}
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   &= \proc{Default}
   & \text{if} \; x \leqslant n \leqslant y\\
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   &= \proc{Default}
   & \text{if} \; y \leqslant n \leqslant x\\
      \proc{Get} (\proc{Set} (a, p, e), n)
@@ -155,10 +155,10 @@
   The last equation has to be split in two cases, because we can
   express differently the result if \(p = n\) or not:
   \begin{align*}
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   =& \;\proc{Default}
   & \text{if} \; x \leqslant n \leqslant y\\
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   =& \;\proc{Default}
   & \text{if} \; y \leqslant n \leqslant x\\
      \proc{Get} (\proc{Set} (a, n, e), n)
@@ -175,10 +175,10 @@
   n\), the result cannot be \(e\), by construction. Hence we must look
   for it in \(a\). As a conclusion:
   \begin{align*}
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   =& \;\proc{Default}
   & \text{if} \; x \leqslant n \leqslant y\\
-     \proc{Get} (\proc{Create} (x, y), n) 
+     \proc{Get} (\proc{Create} (x, y), n)
   =& \;\proc{Default}
   & \text{if} \; y \leqslant n \leqslant x\\
      \proc{Get} (\proc{Set} (a, n, e), n)
