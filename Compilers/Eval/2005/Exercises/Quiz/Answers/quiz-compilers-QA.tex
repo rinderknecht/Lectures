@@ -1,0 +1,57 @@
+%%-*-latex-*-
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+
+% Maths
+%
+\usepackage{amssymb,amsmath,stmaryrd,txfonts}
+
+% Graphics
+%
+\usepackage{graphicx}
+
+% Inclusion of code
+%
+\usepackage{verbatim}
+
+% Miscellanea
+%
+\usepackage{xspace}
+\usepackage{alltt}
+
+% New environments and commands
+%
+\newcommand\Lex{\textsf{Lex}\xspace}
+
+% Input files
+%
+\input{token}
+\input{grammar}
+
+% ------------------------------------------------------------------------
+% Document
+%
+\author{Christian Rinderknecht}
+\date{29 November 2005}
+\title{Answers to the quiz on Compilers}
+
+\begin{document}
+
+\maketitle
+
+\input{question_00}
+\input{answer_00}
+
+\input{question_01}
+\input{answer_01}
+
+\input{question_02}
+\input{answer_02}
+
+\input{question_03}
+\input{answer_03}
+
+\end{document}
