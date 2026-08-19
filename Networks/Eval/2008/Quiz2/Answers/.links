@@ -1,6 +1,1 @@
-$HOME/Makefiles/LaTeX/alt/Makefile
-
-$HOME/LaTeX/TeX/trace.tex
-
-../Questions/question_01.tex
-../Questions/networks-quiz2.tex networks-quiz2-QA.tex
+$HOME/git/LaTeX-build/Makefile
