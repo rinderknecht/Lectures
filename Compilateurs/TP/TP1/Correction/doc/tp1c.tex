@@ -2,28 +2,51 @@
 
 \documentclass[a4paper,11pt]{article}
 
-\usepackage[francais]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
-\usepackage{ae,aecompl}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
 \usepackage{xspace}
+\usepackage{xcolor}
 
 \usepackage{mathpartir}
 \usepackage{amssymb}
 \usepackage{amsmath}
 
-\usepackage[noweb]{ocamlweb}
-%%\pagestyle{ocamlweb}
+\usepackage{listings}
+\usepackage{listingsutf8}
+
+\lstdefinelanguage{OCaml}{
+  morekeywords={
+    and,as,assert,begin,class,constraint,do,done,downto,else,end,
+    exception,external,false,for,fun,function,functor,if,in,
+    include,inherited,initializer,lazy,let,match,method,module,
+    mutable,new,object,of,open,or,private,rec,sig,struct,
+    then,to,true,try,type,val,virtual,when,while,with
+  },
+  sensitive=true,
+  morecomment=[s]{(*}{*)},
+  morestring=[b]"
+}
+
+\lstset{
+  language=OCaml,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\sffamily\bfseries,
+  commentstyle=\itshape,
+  stringstyle=\ttfamily,
+  columns=fullflexible,
+  literate={é}{{\'e}}1,
+  morekeywords={module}
+}
 
 \input{commands}
 \input{ocaml_syntax}
-\input{ocw-redef}
-\input{trace}
 
 \newcommand{\ibullet}{\item[$\bullet$]}
 \newcommand{\inferlabel}[1]{\inferrule*[right=\textsc{#1}]}
 
-\title{Correction du TP 1 d'Interpr�tation et compilation}
+\title{Correction du TP 1 d'Interprétation et compilation}
 \author{Christian Rinderknecht}
 \date{23 et 24 septembre 2003}
 
@@ -35,8 +58,291 @@
 
 \input{tp1-questions}
 
-\section{R�ponses}
+\section{Réponses}
 
-\input{main}
+\subsection{Module \textsf{Eval}}
+
+Nous donnons ici le contenu du module \textsf{Eval} (fichier
+\textsf{eval.ml}). Il contient plusieurs sous-modules correspondant
+chacun à une calculette avec différen\-tes constructions qui sont
+ajoutées au fur et à mesure des questions.
+
+\lstinputlisting[
+  language=OCaml,
+  inputencoding=utf8
+]{eval.ml}
+
+\subsubsection{Sous-module \textsf{Eval.Initial}}
+\label{Eval.Initial}
+
+Le sous-module \textsf{Eval.Initial} regroupe les définitions de type
+et de valeurs correspondant à la calculette avec constantes et
+opérateurs arithmétiques. Il répond à la question~\ref{q1}.
+
+L'exception \textsf{DivByZero} sera déclanchée lorsqu'une division par
+zéro sera anticipée par la calculette.
+
+Le dernier cas du filtre de la fonction \textsf{eval} est nécessaire car la
+syntaxe abstraite, c'est-à-dire le type \textsf{Ast.expr}, inclut tous les
+constructeurs pour réaliser l'ensemble du travail pratique.
+
+\subsubsection{Sous-module \textsf{Eval.WithLet}}
+\label{Eval.WithLet}
+
+Le module \textsf{Eval.WithLet} reprend le module
+\textsf{Eval.Initial} et l'étend avec les variables et la liaison
+locale. Il répond à la question~\ref{q2}.
+
+Les environnements $\rho$ sont codés de façon fonctionnelle.
+
+La fonction \textsf{empty\_env} implante l'environnement vide.
+
+La fonction \textsf{extend} implante l'extension des environnements
+par une nouvelle liaison (il s'agit de l'opérateur $\oplus$). Ainsi
+l'implantation de $\rho \oplus x \mapsto v$ est \textsf{extend env
+  (x,v)}.
+
+Il y a maintenant deux types d'erreurs: la division par zéro et les
+variables libres (c'est-à-dire non introduites par un
+\textsf{let}). Il est alors utile de regrouper ces erreurs sous un
+même type. Ainsi, l'exception \textsf{Err (FreeVar x)} est déclanchée
+quand la variable \textsf{x} est libre dans l'expression. Par exemple:
+\texttt{let a = 1 in b} (ici la variable libre est \texttt{b}).
+
+La fonction \textsf{eval} prend ici un argument supplémentaire:
+l'environ\-nement dans lequel l'expression doit être évaluée.
+
+
+\subsubsection{Sous-module \textsf{Eval.WithCondInt}}
+\label{Eval.WithCondInt}
+
+Le module \textsf{Eval.WithCondInt} reprend et étend le module
+\textsf{Eval.WithLet} avec une construction conditionnelle
+discriminant les branches avec un entier (à zéro ou non), dans le
+style du langage~C. Il répond à la question~\ref{q3}. On nous donne:
+
+\begin{itemize}
+
+    \ibullet \textbf{Syntaxe concrète}
+  {\small
+   \begin{verbatim}
+Expression ::= ...
+  | "ifz" Expression "then" Expression "else" Expression
+   \end{verbatim}
+}
+
+  \vspace*{-15pt}
+
+  \ibullet \textbf{Exemple} \qquad \texttt{1+2*(ifz 0 then 3
+  else 4)}
+
+  \ibullet \textbf{Syntaxe abstraite}
+
+  \kwd{type} \type{expr} \equal{} \texttt{...} \vbar{} \cst{Ifz}
+  \kwd{of} \type{expr} \texttt{*} \type{expr} \texttt{*} \type{expr}
+
+\end{itemize}
+
+  \noindent Une sémantique opérationnelle pour notre conditionnelle est:
+
+  \begin{mathpar}
+  \inferlabel{if-then}
+    {\eval{\rho}{e_1}{\cst{Int} \, (n)}\\
+     n \neq 0\\
+     \eval{\rho}{e_2}{v_2}}
+    {\eval{\rho}{\cst{Ifz} \, (e_1,e_2,e_3)}{v_2}}
+  \and
+  \inferlabel{if-else}
+    {\eval{\rho}{e_1}{\cst{Int} \, (0)}\\
+     \eval{\rho}{e_3}{v_3}}
+    {\eval{\rho}{\cst{Ifz} \, (e_1,e_2,e_3)}{v_3}}
+  \end{mathpar}
+
+L'implantation par un nouveau cas dans le filtre de la fonction
+\textsf{eval} est immédiat.
+
+
+\subsubsection{Sous-module \textsf{Eval.WithCond}}
+\label{Eval.WithCond}
+
+Le module \textsf{Eval.WithCond} reprend le module
+\textsf{Eval.WithCondInt} et l'étend avec une conditionnelle qui
+discrimine ses branches à l'aide d'une expression booléenne (comme en
+O'Caml, par exemple). Il répond à la question~\ref{q4}. Nous devons
+ajouter au langage de la calculette les expressions booléennes.  Pour
+faciliter le travail, cela est déja fait au niveau de la syntaxe
+concrète et abstraite -- cf. \textsf{lexer.mll}, \textsf{parser.mly}
+et \textsf{ast.ml}. Dans ce dernier, la syntaxe abstraite contient la
+définition des booléens.
+
+Voici les syntaxes reconnues par défaut par la calculette:
+  \begin{itemize}
+
+    \ibullet \textbf{Syntaxe concrète}
+  {\small
+   \begin{verbatim}
+Boolean ::= true | false
+      | Boolean "and" Boolean
+      | Boolean "or" Boolean
+      | "not" "(" Boolean ")"
+Expression ::=  ...
+      | "if" Boolean "then" Expression "else" Expression
+   \end{verbatim}
+}
+
+  \vspace*{-6pt}
+
+  \ibullet \textbf{Exemple} \qquad \texttt{1+2*(if true then 3
+  else 4)}
+
+  \ibullet \textbf{Syntaxe abstraite}
+
+  \begin{tabbing}
+    \kwd{type} \type{boolean} \= \equal{} \= \cst{True} \vbar{}
+    \cst{False} \vbar{} \cst{Not} \kwd{of} \type{boolean}\\
+    \> \vbar \> \cst{And} \kwd{of} \type{boolean} \(\times\)
+    \type{boolean}\\
+    \> \vbar \> \cst{Or} \kwd{of} \type{boolean}
+    \(\times\) \type{boolean}\\
+    \kwd{type} \type{expr} \equal{} \texttt{...} \vbar{} \cst{If}
+    \kwd{of} \type{boolean} \(\times\) \type{expr} \(\times\)
+    \type{expr}
+  \end{tabbing}
+
+  \end{itemize}
+
+On remarque que la solution présentée ici ne permet pas qu'un booléen
+soit une expression, donc le type des valeurs restera inchangé dans la
+sémantique, mais il faudra une seconde relation d'évaluation dédiée
+aux booléens. Donc, en théorie, il faudrait choisir une autre notation
+que $\eval{\rho}{e}{v}$, mais en pratique c'est commode de reprendre
+la même, à ceci près que les expressions booléennes n'ont pas besoin
+d'un environnement pour s'évaluer car nous n'avons pas permis au
+\texttt{let ... in ...} de lier des booléens. Donc nous noterons la
+relation d'évaluation des booléens $\evalb{b}{\overline{b}}$, où $b$
+est une valeur O'Caml de type \textsf{Ast.bexpr} et $\overline{b}$ est de
+type \type{bool}.
+
+  \begin{mathpar}
+  \inferlabel{if-then}
+    {\evalb{b}{\kwd{true}}\\
+     \eval{\rho}{e_2}{v_2}}
+    {\eval{\rho}{\cst{If} \, (b,e_2,e_3)}{v_2}}
+  \and
+  \inferlabel{if-else}
+    {\evalb{b}{\kwd{false}}\\
+     \eval{\rho}{e_3}{v_3}}
+    {\eval{\rho}{\cst{If} \, (b,e_2,e_3)}{v_3}}
+  \end{mathpar}
+
+L'implantation de cette sémantique est directe (elle s'appuie
+inductivement sur la syntaxe abstraite). l'implantation par un nouveau
+cas dans le filtre de la fonction \textsf{eval} est immédiat.
+
+\subsubsection{Sous-module \textsf{Eval.WithEnvList}}
+\label{Eval.WithEnvList}
+
+Le module \textsf{Eval.WithEnvList} reprend le module
+\textsf{Eval.WithCond} en remplaçant le codage fonctionnel de
+l'environnement par un codage à l'aide d'une structure de donnée
+nommée \emph{liste d'association}. Il répond à la
+question~\ref{q5}. Une liste d'association est une liste de paires qui
+modélisent les liaisons. Ainsi, $\rho(x)$ est implanté non plus par
+\textsf{env x} (\textsf{env} est une fonction OCaml) mais par
+\textsf{List.assoc x env} (\textsf{env} est une liste
+d'association). La raison est essentiellement l'efficacité de la
+recherche d'une liaison, bien qu'il serait encore plus efficace
+d'utiliser une autre structure de donnée, comme une table de hachage,
+si le nombre de variable est élevé en moyenne par programme.
+
+Les environnements $\rho$ sont codés à l'aide d'une liste
+d'association. L'envi\-ron\-nement vide est alors simplement codé par
+\textsf{[\;]} (plus besoin de \textsf{empty\_env}).
+
+Au lieu de coder $\rho(x)$ par \textsf{env x} (plus un
+\textbf{\textsf{try with}}, on fait \textsf{lookup x env}.
+
+L'ajout d'une nouvelle liaison devient l'ajout d'une paire an tête de
+liste: $\rho \oplus x \mapsto v$ est codé par \textsf{(x,v)::env} au
+lieu de \textsf{extend env (x,v)} avec un codage fonctionnel. On n'a
+donc plus besoin de la fonction \textsf{extend}.
+
+Dans la définition de la fonction \textsf{eval}, le motif \textsf{Var
+  x} change et appelle \textsf{lookup x env} dorénavant, et le cas de
+la liaison locale est plus simple.
+
+\subsection{Module \textsf{Main}}
+
+Le module \textsf{Main} est le pilote de la calculette. C'est ce
+module \emph{uniquement} qui interagit avec l'usager et, en
+particulier, filtre les erreurs des autres modules (ici
+\textsf{Eval}). Il est composé de plusieurs sous-modules correspondant
+chacun à un des sous-modules de \textsf{Eval} de même nom. Par exemple
+\textsf{Main.Initial} correspond à (en l'occurrence \emph{utilise})
+\textsf{Eval.Initial}.
+
+\lstinputlisting[
+  language=OCaml,
+  inputencoding=utf8
+]{main.ml}
+
+\subsubsection{Sous-module \textsf{Main.Initial}}
+\label{Main.Initial}
+
+Le sous-module \textsf{Main.Initial} correspond au cas initial avec
+les quatre opérations arithmétiques de base ainsi que les
+constantes. Il répond donc à la question~\ref{q1} en complétant le
+module \textsf{Eval.Initial} (cf. section~\ref{Eval.Initial}). La
+seule erreur qui puisse provenir de \textsf{Eval.Initial} est
+\textsf{DivByZero}.
+
+\subsubsection{Sous-module \textsf{Main.WithLet}}
+\label{Main.WithLet}
+
+Le sous-module \textsf{Main.WithLet} correspond au module
+\textsf{Eval.WithLet} (cf. section~\ref{Eval.WithLet}). En complétant
+ce dernier, il répond ainsi à la question~\ref{q2}. Les variables et
+la liaison locale sont possibles, donc il faut filtrer en plus le cas
+des variables libres.
+
+\subsubsection{Sous-module \textsf{Main.WithCondInt}}
+\label{Main.WithCondInt}
+
+Le sous-module \textsf{Main.WithCondInt} correspond à
+\textsf{Eval.WithCondInt} (cf. section~\ref{Eval.WithCondInt}). En
+complétant ce dernier, il répond ainsi à la question~\ref{q3}. Du
+point de vue du pilotage, rien ne change: les erreurs possibles sont
+toujours les mêmes qu'avec \textsf{Main.WithLet}.
+
+\subsubsection{Sous-module \textsf{Main.WithCond}}\label{Main.WithCond}
+
+Le sous-module \textsf{Main.WithCond} correspond à
+\textsf{Eval.WithCond} (cf. section~\ref{Eval.WithCond}). En
+complétant ce dernier, il répond ainsi à la question~\ref{q4}.
+
+\subsubsection{Sous-module \textsf{Main.WithEnvList}}
+\label{Main.WithEnvList}
+
+Le sous-module \textsf{Main.WithEnvList} correspond à
+\textsf{Eval.WithEnvList} (cf. section~\ref{Eval.WithEnvList}). En
+complétant ce dernier, il répond ainsi à la question~\ref{q5}. Nous
+devons néanmoins réécrire \textsf{Main.WithEnvList.calc} car le codage
+de l'environ\-ne\-ment vide à changé (c'est \textsf{[\;]} maintenant).
+
+La fonction \textsf{main} est celle qui est appelée après le lancement
+du programme. Pour tester en boîte blanche (c.-à-d. en modifiant le
+code) il faut alors modifier les appels à \textsf{calc} et
+recompiler. Par exemple, nous avons ici l'appel à
+\textsf{WithEnvList.calc}, que l'on peut remplacer par un appel à
+\textsf{WithCond.calc} etc. Cette méthode n'est pas bonne car, en
+général, un test en boîte grise ou noire est préférable. Pour cela il
+faudrait proposer,par exemple, à l'usager des options sur la ligne de
+commande de lancement de la calculette.
+
+Cette liaison globale est le point d'entrée du programme (il s'agit
+d'évaluer l'appel à \textsf{main}). Son intérêt est de demander à
+l'environnement d'exécution de tracer toutes les exceptions qui
+pourraient remonter de l'appel à \textsf{main}.
+
 
 \end{document}
