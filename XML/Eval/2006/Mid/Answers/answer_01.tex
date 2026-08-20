@@ -5,7 +5,7 @@
 \proc{Dequeue}(\proc{Queue}(S,\proc{Empty}))
 &\stackrel{2}{\rightarrow}
 \proc{Dequeue}(\proc{Queue}(\proc{Empty}, \proc{Rev}(S)))\\
-\proc{Enqueue}(e,\proc{Queue}(S,T)) 
+\proc{Enqueue}(e,\proc{Queue}(S,T))
 &\stackrel{3}{\rightarrow}
   \proc{Queue}(\proc{Push}(e,S),T)
 \end{align*}
@@ -27,7 +27,7 @@ to say
 \end{gather*}
 \noindent Another way is to add an error-case rule like
 \[
-\proc{Dequeue}(\proc{Queue}(\proc{Empty},\proc{Empty})) 
+\proc{Dequeue}(\proc{Queue}(\proc{Empty},\proc{Empty}))
 \stackrel{4}{\rightarrow} \proc{Error}
 \]
 \noindent \textbf{and} prefer it over rule \(3\).
