@@ -2,14 +2,14 @@ exception Repeated_variable of string
 exception Too_many_variables
 exception Too_many_equations
 
-(* 
+(*
   Function call [check (s)] checks for consistence of system
   [s]. It may raise [Repeated_variable], [Too_many_variables] or
   [Too_many_equations]. It returns a pair [(dim, vars)] where [dim] is
   the dimension of the system, and [vars] is the sorted list of
   the variables occurring in the system.
 *)
-let check (sys : Ast.system) : int * (string list) = 
+let check (sys : Ast.system) : int * (string list) =
   let rec merge_vars l1 l2 =
     match (l1,l2) with
       [], _ -> l2
@@ -31,7 +31,7 @@ let check (sys : Ast.system) : int * (string list) =
       then raise (Repeated_variable var)
       else var::acc
     in List.fold_left folder [] terms in
-  (* 
+  (*
     Function call [check_sub_sys (acc) (eq)] checks equation [eq], get
     its variable names and merge this list to [acc].
   *)
@@ -42,7 +42,7 @@ let check (sys : Ast.system) : int * (string list) =
     The variable [sys_vars] is the ordered list of variable names
     present in the system [sys].
   *)
-  let sys_vars : string list = 
+  let sys_vars : string list =
     List.fold_left (check_sub_sys) [] sys in
 
   (*
@@ -55,36 +55,36 @@ let check (sys : Ast.system) : int * (string list) =
     [sys].
   *)
   let eq_num = List.length (sys)
-in if var_num = eq_num 
+in if var_num = eq_num
    then (var_num, sys_vars)
    else if var_num < eq_num
         then raise Too_many_equations
         else raise Too_many_variables
-  
+
 
 let print_term (var, coef) =
   if coef < 0
-  then 
+  then
     if coef = -1
     then (print_string " - "; print_string var)
     else (print_string " - "; print_int (abs (coef)); print_string var)
-  else 
+  else
     if coef = 1
     then (print_string " + "; print_string var)
     else (print_string " + "; print_int (coef); print_string var)
 
-let print_eq (terms, const) = 
+let print_eq (terms, const) =
   let rec print_terms = function
      [] -> print_string " = "; print_int const
   | term::others ->
       print_term term; print_terms others
 in match terms with
      [] -> assert false
-   | (var,coef)::others -> 
+   | (var,coef)::others ->
        begin
         (if coef = -1
          then (print_string "-"; print_string var)
-         else 
+         else
            if coef = 1
            then print_string var
            else (print_int (coef); print_string var)
@@ -98,7 +98,7 @@ let print_sys title sys =
     print_newline ();
     List.iter (fun x -> print_eq x; print_newline ()) sys
   end
-  
+
 let get_sys filename : Ast.system =
   let ic = open_in filename in
   let lexbuf = Lexing.from_channel ic in
@@ -119,14 +119,14 @@ let () = Lexer.trace filename
 
 let () = Arg.parse [] anonymous usage
 
-let sys = 
+let sys =
   match !sys_opt with
     None -> prerr_endline usage; exit (-1)
   | Some filename -> get_sys filename
 
 let () = print_sys "Initial system" (sys)
 
-let () = 
+let () =
   let (dim, vars) = check (sys)
 in begin
      print_string "Variables: ";
@@ -145,14 +145,14 @@ let normalise (sys : Ast.system) : Ast.system =
   let (dim, vars) = check (sys) in
   let rec normalise_term (prev_terms, remaining_vars) term =
     match (remaining_vars, term) with
-      (v::other_vars, (var, coef)) -> 
+      (v::other_vars, (var, coef)) ->
         if v = var
         then (term::prev_terms, other_vars)
         else normalise_term ((v,0)::prev_terms, other_vars) term
     | _ -> assert false in
   let normalise_eq (terms, const) acc =
     let sorted_terms = List.sort compare terms in
-    let (norm_terms, _) = 
+    let (norm_terms, _) =
       List.fold_left normalise_term ([],vars) sorted_terms
     in (List.rev norm_terms, const)::acc
 in List.fold_right normalise_eq sys []
@@ -171,14 +171,14 @@ let store (sys) =
         mat.(i).(j) <- coef;
         store_terms (i,j+1) other_terms
       end in
-  let store_equation (i) (terms, const) = 
+  let store_equation (i) (terms, const) =
     begin
       store_terms (i,0) terms;
       mat.(i).(n) <- const
     end in
   let rec store_system (i) = function
     [] -> ()
-  | eq::other_eq -> 
+  | eq::other_eq ->
       begin
         store_equation (i) (eq);
         store_system (i+1) other_eq
@@ -188,7 +188,7 @@ in store_system 0 sys; mat
 let v_sys = store (normalised_sys)
 
 let print_v_sys title v_sys =
-  let dim = Array.length (v_sys) 
+  let dim = Array.length (v_sys)
 in begin
      print_string title;
      print_newline ();
@@ -202,12 +202,12 @@ in begin
        print_newline ()
      done
    end
-  
+
 let () = print_v_sys "Vectorized system" v_sys
 
 (* Printing raw operations *)
 
-let print_raw i = 
+let print_raw i =
   begin print_string "L"; print_int i end
 
 let print_raw_swap i0 i1 =
@@ -219,7 +219,7 @@ let print_raw_swap i0 i1 =
 let print_raw_simpl i d =
   begin
     print_string "Simplifying: ";
-    print_raw i; print_string " <- "; 
+    print_raw i; print_string " <- ";
     print_raw i; print_string "/"; print_int d
   end
 
@@ -234,8 +234,8 @@ let print_pivot i j v_sys =
     print_newline ()
   end
 
-(* 
-  L_{current_raw} <- p L_{pivot_raw} - q L_{current_raw} 
+(*
+  L_{current_raw} <- p L_{pivot_raw} - q L_{current_raw}
 *)
 let print_mult coef raw =
   if coef = 1
@@ -248,7 +248,7 @@ let print_combination (p,pivot_raw) (q,current_raw) =
   let op = if q > 0 then " - " else " + "
 in begin
      print_string "Combining: ";
-     print_raw current_raw; 
+     print_raw current_raw;
      print_string " <- ";
      print_mult p pivot_raw;
      print_string op;
@@ -259,9 +259,9 @@ in begin
 
 let gcd n m =
   let rec gcd_aux n m =
-    if   n > m 
+    if   n > m
     then gcd_aux  m n
-    else if   n = 0 
+    else if   n = 0
          then m
          else gcd_aux (m mod n) n
 in gcd_aux (abs(n)) (abs(m))
@@ -330,12 +330,12 @@ let solve v_sys =
       v_sys.(current_raw).(j) <-
         p*v_sys.(pivot_raw).(j) - q*v_sys.(current_raw).(j)
     done in
-  
+
   let gen_combine i j =
-(*    prerr_endline ("gen_combine (" ^ string_of_int i 
-                   ^ "," ^ string_of_int j ^ ")"); 
+(*    prerr_endline ("gen_combine (" ^ string_of_int i
+                   ^ "," ^ string_of_int j ^ ")");
 *)    if v_sys.(i).(j) <> 0
-    then 
+    then
       let smallest_cm = scm v_sys.(j).(j) v_sys.(i).(j) in
         let coef_pivot = smallest_cm / v_sys.(j).(j) in
         let coef_current = smallest_cm / v_sys.(i).(j)
