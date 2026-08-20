@@ -2,10 +2,8 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\usepackage[francais]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
-\usepackage{ae,aecompl}
+\usepackage[french]{babel}
 
 \usepackage{xspace}
 \usepackage{amsmath}
@@ -14,17 +12,16 @@
 
 \input{commands}
 \input{ocaml_syntax}
-\input{trace}
 
 \title{Examen de compilation}
 \author{Christian Rinderknecht}
-\date{Lundi 2 février 2004}
+\date{Lundi 2 fÃ©vrier 2004}
 
 \begin{document}
 
 \maketitle
 
-\centerline{\textbf{Durée: deux heures. Documents et calculatrices interdits.}}
+\centerline{\textbf{DurÃ©e: deux heures. Documents et calculatrices interdits.}}
 
 
 \section{Syntaxe}
@@ -33,7 +30,7 @@
 
   \item Soient les non-terminaux \texttt{Expression}, \texttt{Term},
   \texttt{Sign}, \texttt{Factor} et \texttt{Expressions}. Soit
-  \texttt{Expressions} le symbole de départ. Soient les terminaux
+  \texttt{Expressions} le symbole de dÃ©part. Soient les terminaux
   \texttt{number} et \texttt{ident}. Soit \texttt{epsilon} le mot vide
   ($\varepsilon$). Soient les productions
   {\small
@@ -57,43 +54,43 @@ Factor      ::= ident
   \noindent Questions:
   \begin{enumerate}
 
-    \item Factorisez la grammaire à gauche et supprimez les récursions à
+    \item Factorisez la grammaire Ã  gauche et supprimez les rÃ©cursions Ã 
     gau\-che.
 
     \item Pour chaque non-terminal de cette nouvelle grammaire,
-    calculez ses ensembles de premiers lexèmes (${\cal P}$) et de
-    lexèmes suivants (${\cal S}$).
+    calculez ses ensembles de premiers lexÃ¨mes (${\cal P}$) et de
+    lexÃ¨mes suivants (${\cal S}$).
 
-    \item En déduire quels sont les non-terminaux qui peuvent dériver
+    \item En dÃ©duire quels sont les non-terminaux qui peuvent dÃ©river
     $\varepsilon$.
 
     \item Construisez la table d'analyse descendante. La grammaire
     est-elle LL(1)?
 
-    \item Donnez une grammaire équivalente en EBNF (question indépendan\-te).
+    \item Donnez une grammaire Ã©quivalente en EBNF (question indÃ©pendan\-te).
 
   \end{enumerate}
 
-  \item Trouvez une grammaire EBNF non récursive qui spécifie la
-  syntaxe des nombres à virgule flottante dont la spécification est la
+  \item Trouvez une grammaire EBNF non rÃ©cursive qui spÃ©cifie la
+  syntaxe des nombres Ã  virgule flottante dont la spÃ©cification est la
   suivante:
 
   \begin{itemize}
 
-    \item Un nombre à virgule flottante est constitué de trois
+    \item Un nombre Ã  virgule flottante est constituÃ© de trois
     parties: un signe, une mantisse et un exposant. Elle sont toujours
-    placées dans cet ordre. Le signe et l'exposant sont optionnels.
+    placÃ©es dans cet ordre. Le signe et l'exposant sont optionnels.
 
-    \item Un signe est formé d'un seul caractère \texttt{+} ou
+    \item Un signe est formÃ© d'un seul caractÃ¨re \texttt{+} ou
     \texttt{-}.
 
     \item La mantisse est une suite non vide de chiffres contenant un
-    caractère \texttt{.} (point décimal) qui est placé au début, au
-    sein ou à la fin de la suite de chiffres.
+    caractÃ¨re \texttt{.} (point dÃ©cimal) qui est placÃ© au dÃ©but, au
+    sein ou Ã  la fin de la suite de chiffres.
 
-    \item L'exposant est constitué de trois parties: un caractère
+    \item L'exposant est constituÃ© de trois parties: un caractÃ¨re
     \texttt{e}, un signe et une suite non vide de chiffres. Ces trois
-    parties sont toujours placées dans cet ordre. Le signe est
+    parties sont toujours placÃ©es dans cet ordre. Le signe est
     optionnel.
 
   \end{itemize}
@@ -104,10 +101,10 @@ Factor      ::= ident
 \end{enumerate}
 
 
-\section{Sémantique}
+\section{SÃ©mantique}
 
-Soit le langage fonctionnel Micro-ML dont la syntaxe concrète est
-spécifiée par la grammaire en BNF
+Soit le langage fonctionnel Micro-ML dont la syntaxe concrÃ¨te est
+spÃ©cifiÃ©e par la grammaire en BNF
 {\small
 \begin{verbatim}
 Expression ::= integer
@@ -118,7 +115,7 @@ Expression ::= integer
              | Expression Expression
 \end{verbatim}
 }
-\noindent La syntaxe abstraite associée est
+\noindent La syntaxe abstraite associÃ©e est
 {\small
 \begin{tabbing}
 \Xtype \ident{expr} \= \equal \= \cst{Int} \Xof \type{int}\\
@@ -133,8 +130,8 @@ Expression ::= integer
 %\vbar \cst{Mult} \vbar \cst{Div}\semi{}
 \end{tabbing}
 }
-\noindent La sémantique opérationnelle $\eval{\rho}{e}{v}$ est la plus
-petite relation définie par les règles d'inférence
+\noindent La sÃ©mantique opÃ©rationnelle $\eval{\rho}{e}{v}$ est la plus
+petite relation dÃ©finie par les rÃ¨gles d'infÃ©rence
 \begin{mathpar}
 \inferrule
   {\ceval{\cst{Const} \; n}{\dot{n}}}
@@ -145,7 +142,7 @@ petite relation définie par les règles d'inférence
   {\eval{\rho}{\cst{Var} \; x}{\rho (x)}}\;\TirName{var}
 \and
 \inferrule*[right=let]
-  {\eval{\rho}{e_1}{v_1}\\ 
+  {\eval{\rho}{e_1}{v_1}\\
    \eval{\rho \oplus x \mapsto v_1}{e_2}{v_2}}
   {\eval{\rho}
         {\cst{Let} \, \lpar{x},e_1,e_2\rpar}
@@ -165,7 +162,7 @@ petite relation définie par les règles d'inférence
   {\eval{\rho}{\cst{App} \, (e_1,e_2)}{v_0}}
 \end{mathpar}
 
-\noindent où le type des valeurs est:
+\noindent oÃ¹ le type des valeurs est:
 
 \Xtype \type{value} \equal \cst{Int} \Xof \type{int} \vbar
 \cst{Clos} \Xof \type{string} \texttt{*} \type{expr} \texttt{*}
@@ -176,23 +173,23 @@ variables vers les valeurs.
 
 \begin{enumerate}
 
-  \item Montrez que la grammaire algébrique est ambiguë.
+  \item Montrez que la grammaire algÃ©brique est ambiguÃ«.
 
-  \item Prouvez que le programme \textsf{1 2} ne peut être
-  évalué. Quelle différence voyez-vous entre cet exemple et
+  \item Prouvez que le programme \textsf{1 2} ne peut Ãªtre
+  Ã©valuÃ©. Quelle diffÃ©rence voyez-vous entre cet exemple et
   \lpar\kwd{fun} \ident{f} $\rightarrow$ \ident{f} \ident{f}\rpar{}
   \lpar\kwd{fun} \ident{f} $\rightarrow$ \ident{f} \ident{f}\rpar,
-  donné dans le cour?
+  donnÃ© dans le cour?
 
-  \item Donnez la définition standard de la fonction ${\cal L}$ qui
+  \item Donnez la dÃ©finition standard de la fonction ${\cal L}$ qui
   donne les variables libres d'une expression de Micro-ML.
 
-  \item \label{q\theenumi} Vérifiez que les constructions \kwd{let}
+  \item \label{q\theenumi} VÃ©rifiez que les constructions \kwd{let}
     \ident{x} \equal{} \ident{e}$_1$ \kwd{in} \ident{e}$_2$ et
     \lpar\kwd{fun} \ident{x} $\rightarrow$ \ident{e}$_2$\rpar{}
-    \ident{e}$_1$ sont équivalentes du point de vue de l'évaluation
-    --- c'est-à-dire que l'une produit une valeur $v$ si et seulement
-    si l'autre produit également $v$.
+    \ident{e}$_1$ sont Ã©quivalentes du point de vue de l'Ã©valuation
+    --- c'est-Ã -dire que l'une produit une valeur $v$ si et seulement
+    si l'autre produit Ã©galement $v$.
 
 \end{enumerate}
 
