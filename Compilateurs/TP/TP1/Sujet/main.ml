@@ -11,10 +11,10 @@ let main () =
   let ast = Parser.expression Lexer.token lexbuf in
   let () = print_string "=> " in
 
-(* A partir d'ici il faut réécrire et compléter le code qui suit de
-  façon à ce que si l'évaluation déclenche une exception, il faut
-  afficher le message d'erreur associé (puis finir l'exécution). Si le
-  résultat est un entier affichez-le, sinon affichez simplement
+(* A partir d'ici il faut rÃ©Ã©crire et complÃ©ter le code qui suit de
+  faÃ§on Ã  ce que si l'Ã©valuation dÃ©clenche une exception, il faut
+  afficher le message d'erreur associÃ© (puis finir l'exÃ©cution). Si le
+  rÃ©sultat est un entier affichez-le, sinon affichez simplement
   "<fun>".  
 *)
 

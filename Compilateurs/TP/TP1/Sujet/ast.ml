@@ -1,7 +1,6 @@
+(* La syntaxe abstraite des expressions boolÃ©ennes est *)
 
-(* La syntaxe abstraite des expressions booléennes est *)
-
-type bexpr = 
+type bexpr =
   And of bexpr * bexpr
 | Or of bexpr * bexpr
 | Not of bexpr
@@ -26,14 +25,14 @@ type expr =
 and bin_op = Add | Sub | Mult | Div
 
 
-(* L'expression O'Caml [fv e] représente les variables libres
+(* L'expression O'Caml [fv e] reprÃ©sente les variables libres
  (\emph{free variables}) de l'expression [e]. La fonction O'Caml [fv]
- implante la fonction mathématique ${\cal L}$ définie par
+ implante la fonction mathÃ©matique ${\cal L}$ dÃ©finie par
 \begin{align*}
 {\cal L} (\cst{Const} \,\, \_) & = \varnothing\\
 {\cal L} (\cst{Var} \,\, x) & = \{x\}\\
 {\cal L} (\cst{BinOp} \, (\_,e_1,e_2)) & = {\cal L}(e_1) \cup {\cal
- L}(e_2)\\ 
+ L}(e_2)\\
 {\cal L} (\cst{Let} \, (x,e_1,e_2)) & = {\cal L}(e_1) \cup ({\cal
  L}(e_2) \backslash \{x\})\\
 {\cal L} (\cst{LetRec} \, (x,e_1,e_2)) & = ({\cal L}(e_1) \cup
@@ -47,7 +46,7 @@ and bin_op = Add | Sub | Mult | Div
 \end{align*}
 *)
 
-module StringSet = 
+module StringSet =
   Set.Make (struct type t = string let compare = compare end)
 
 open StringSet
@@ -56,7 +55,7 @@ let rec fv e = match e with
   Const _ -> empty
 | BinOp (_,e1,e2) -> union (fv e1) (fv e2)
 | Var x -> singleton x
-| Let (x,e1,e2) 
+| Let (x,e1,e2)
 | LetRec (x,e1,e2) -> union (fv e1) (remove x (fv e2))
 | Fun (x,e) -> remove x (fv e)
 | App (e1,e2) -> union (fv e1) (fv e2)
@@ -64,5 +63,3 @@ let rec fv e = match e with
 | Ifz (e0,e1,e2) -> union (fv e0) (union (fv e1) (fv e2))
 | Assign (x,e) -> fv e
 | U -> empty
-
-

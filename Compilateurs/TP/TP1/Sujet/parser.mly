@@ -4,12 +4,12 @@
 
 %token <string> IDENT
 %token <int> INT
-%token TRUE FALSE 
+%token TRUE FALSE
 
 %token PLUS MINUS SLASH TIMES ARROW LPAR RPAR EQUAL
 %token ASSIGN UNIT
 
-%token LET REC IN FUN 
+%token LET REC IN FUN
 %token IFZ IF THEN ELSE
 %token AND OR NOT
 
@@ -17,13 +17,21 @@
 
 %start expression
 %type <Ast.expr> expression
+%type <Ast.expr> gexpr
+%type <Ast.expr> expr1
+%type <Ast.expr> expr2
+%type <Ast.expr> expr3
+%type <Ast.expr> expr4
+%type <Ast.bexpr> bexpr
+%type <Ast.bexpr> bexpr1
+%type <Ast.bexpr> bexpr2
 
 %%
 
 expression: gexpr EOF   { $1 }
 ;
 
-gexpr: 
+gexpr:
   expr1                              { $1 }
 | LET IDENT EQUAL gexpr IN gexpr     { Let ($2,$4,$6) }
 | LET REC IDENT EQUAL gexpr IN gexpr { LetRec ($3,$5,$7) }
