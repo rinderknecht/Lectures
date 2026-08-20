@@ -1,13 +1,9 @@
 %%-*-latex-*-
 
-\documentclass[10pt]{article}
+\documentclass[11pt,a4paper]{article}
 
-% Packages
-%
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{ae,aecompl}
+\usepackage[french]{babel}
 \usepackage{verbatim}
 \usepackage{xspace}
 
@@ -16,12 +12,10 @@
 \newcommand{\must}{\noindent $\triangleright$ \xspace}
 \newcommand{\bitem}{\item[$\bullet$]}
 
-\input{trace}
-
 % Header
 %
-\title{Introduction \`a la compilation séparée avec GNU Make}
-\author{Yann Régis-Gianas}
+\title{Introduction \`a la compilation sÃ©parÃ©e avec GNU Make}
+\author{Yann RÃ©gis-Gianas}
 
 \begin{document}
 
@@ -29,49 +23,49 @@
 
 \section{Introduction}
 
-\textsf{Make} est un utilitaire de gestion des dépendances entre
-fichiers. Il est souvent utilisé pour la compilation car un projet est
-formé d'unités (ou modules) qui dépendent les unes des autres de
-manière hiérarchique. On l'utilise aussi pour automatiser des tâches
-répétitives comme la génération de documentation, le lancement de
+\textsf{Make} est un utilitaire de gestion des dÃ©pendances entre
+fichiers. Il est souvent utilisÃ© pour la compilation car un projet est
+formÃ© d'unitÃ©s (ou modules) qui dÃ©pendent les unes des autres de
+maniÃ¨re hiÃ©rarchique. On l'utilise aussi pour automatiser des tÃ¢ches
+rÃ©pÃ©titives comme la gÃ©nÃ©ration de documentation, le lancement de
 batteries de tests, le nettoyage de fichiers sources ou bien la
-création de l'archive \textsf{tar} (\emph{tarball} en anglais) ou
-\textsf{zip} de la distribution. Pour l'installation d'un logiciel à
+crÃ©ation de l'archive \textsf{tar} (\emph{tarball} en anglais) ou
+\textsf{zip} de la distribution. Pour l'installation d'un logiciel Ã 
 partir de ses sources sous \textsc{Unix}, on utilise souvent la commande
 {\small \verb!make && make install!}.
 
-\textsf{Make} est un outil de développement standard sous \textsc{Unix},
-normalisé \textsc{Posix.2}. Il en existe de nombreuses versions qui
-fournissent des extensions à cette norme. Nous utiliserons
+\textsf{Make} est un outil de dÃ©veloppement standard sous \textsc{Unix},
+normalisÃ© \textsc{Posix.2}. Il en existe de nombreuses versions qui
+fournissent des extensions Ã  cette norme. Nous utiliserons
 \textsf{GNU Make}, la plus populaire, mais nous resterons dans le cadre
 du standard \textsc{Posix}.
 
-La description des dépendances entre fichiers est faite par le
-développeur sous la forme d'un fichier \texttt{Makefile}. L'objectif
-de ce TP est d'écrire un makefile pour un projet C.
+La description des dÃ©pendances entre fichiers est faite par le
+dÃ©veloppeur sous la forme d'un fichier \texttt{Makefile}. L'objectif
+de ce TP est d'Ã©crire un makefile pour un projet C.
 
-Note: toutes les lignes commençant par \must correspondent à des
+Note: toutes les lignes commenÃ§ant par \must correspondent Ã  des
 actions que vous devez effectuer pour la bonne marche du TP.
 
 
 \section{Un premier makefile}
 
-\must À la racine de votre compte, décompressez l'archive:
+\must Ã€ la racine de votre compte, dÃ©compressez l'archive:
 {\small
 \begin{verbatim}
 tar xfz tp-make.tgz
-\end{verbatim} 
+\end{verbatim}
 }
 
-\must Éditez le fichier {\small \verb!~/TP-Make/Projet/src/Makefile!}
+\must Ã‰ditez le fichier {\small \verb!~/TP-Make/Projet/src/Makefile!}
 dont le contenu est:
 {\small
 \begin{verbatim}
-# déclaration de variables
+# dÃ©claration de variables
 CC = gcc
 CFLAGS = -Wall
 
-# règles
+# rÃ¨gles
 all: main
 
 compute_result.o: compute_result.c compute_result.h \
@@ -81,7 +75,7 @@ compute_result.o: compute_result.c compute_result.h \
 parse_num.o: parse_num.c parse_num.h tools.h
         $(CC) $(CFLAGS) -c parse_num.c
 
-print_result.o: print_result.c print_result.h compute_struct.h \ 
+print_result.o: print_result.c print_result.h compute_struct.h \
                 tools.h
         $(CC) $(CFLAGS) -c print_result.c
 
@@ -102,21 +96,21 @@ re: clean main
 }
 
 \noindent Nous allons d'abord comprendre ce makefile et ensuite
-l'améliorer.
+l'amÃ©liorer.
 
 \section{Compiler avec \textsf{Make}}
 
-Un makefile simple est composé de déclarations de variables
-et de règles. Nous rentrerons dans le détail du format de ces
-différents composants un peu plus tard. Les lignes commencant par un
+Un makefile simple est composÃ© de dÃ©clarations de variables
+et de rÃ¨gles. Nous rentrerons dans le dÃ©tail du format de ces
+diffÃ©rents composants un peu plus tard. Les lignes commencant par un
 \verb!#! sont des commentaires.
 
 \medskip
 
-\must Identifiez la catégorie des différentes lignes de ce
-makefile. 
+\must Identifiez la catÃ©gorie des diffÃ©rentes lignes de ce
+makefile.
 
-\must En supposant que vous avez ouvert l'archive à la racine, saisissez
+\must En supposant que vous avez ouvert l'archive Ã  la racine, saisissez
 {\small
 \begin{verbatim}
 ~$ cd TP-Make/Projet/src
@@ -125,8 +119,8 @@ makefile.
 }
 
 \noindent La compilation du projet s'effectue. Vous pouvez lancer
-l'exécutable, c'est un programme qui effectue la division euclidienne
-d'un nombre $n$ donné en argument par 3 (il retourne $p$ et $q$ tels
+l'exÃ©cutable, c'est un programme qui effectue la division euclidienne
+d'un nombre $n$ donnÃ© en argument par 3 (il retourne $p$ et $q$ tels
 que $n = 3 \times p + q$).
 
 \medskip
@@ -139,16 +133,16 @@ que $n = 3 \times p + q$).
 \end{verbatim}
 }
 
-\subsection{L'importance des règles}
+\subsection{L'importance des rÃ¨gles}
 
-\subsection{Pour maintenir les fichiers à jour}
+\subsection{Pour maintenir les fichiers Ã  jour}
 
-Le makefile est une base de données de dépendances entre
+Le makefile est une base de donnÃ©es de dÃ©pendances entre
 fichiers. Par exemple, on voit que les fichiers \texttt{main.o},
-\texttt{print\_result.o} et \texttt{compute\_re\-sult.o} dépendent du
-fichier \texttt{compute\_struct.h}.  En effet, ce fichier définit une
-structure de données qui est utilisée lors du calcul et de l'affichage
-du résultat.
+\texttt{print\_result.o} et \texttt{compute\_re\-sult.o} dÃ©pendent du
+fichier \texttt{compute\_struct.h}.  En effet, ce fichier dÃ©finit une
+structure de donnÃ©es qui est utilisÃ©e lors du calcul et de l'affichage
+du rÃ©sultat.
 
 \medskip
 
@@ -167,25 +161,25 @@ ligne vide par exemple ou bien en lancant la commande:
 \end{verbatim}
 }
 
-\noindent Le fichier \verb!compute_struct.h! est plus récent que les
-fichiers qui en dépendent, donc le système recompile les fichiers
+\noindent Le fichier \verb!compute_struct.h! est plus rÃ©cent que les
+fichiers qui en dÃ©pendent, donc le systÃ¨me recompile les fichiers
 \verb!print_result.o! et \verb!compute_result.o! mais pas le fichier
 \verb!parse_num.o! car celui-ci n'utilise pas \verb!compute_result.h!.
 
-\subsection{Pour maintenir la cohérence du projet}
+\subsection{Pour maintenir la cohÃ©rence du projet}
 
-\noindent Spécifier correctement les dépendances d'un projet n'est pas
+\noindent SpÃ©cifier correctement les dÃ©pendances d'un projet n'est pas
 facultatif, par exemple
 
 \medskip
 
 \begin{itemize}
 
-  \item[$\triangleright$] supprimez la dépendance entre le fichier
-  objet \verb!print_result.o!  et l'en-tête \verb!compute_struct.h!,
+  \item[$\triangleright$] supprimez la dÃ©pendance entre le fichier
+  objet \verb!print_result.o!  et l'en-tÃªte \verb!compute_struct.h!,
 
   \item[$\triangleright$] modifiez \verb!compute_struct.h! en
-  échangeant l'ordre des champs de la structure \verb!compute_struct_t!,
+  Ã©changeant l'ordre des champs de la structure \verb!compute_struct_t!,
 
   \item[$\triangleright$] relancez la compilation:
 {\small
@@ -193,7 +187,7 @@ facultatif, par exemple
 ~/TP-Make/Projet/src$ make
 \end{verbatim}
 }
-   \item[$\triangleright$] et finalement l'exécution:
+   \item[$\triangleright$] et finalement l'exÃ©cution:
 {\small
 \begin{verbatim}
 ~/TP-Make/Projet/src$ ./main 16
@@ -203,18 +197,18 @@ facultatif, par exemple
 
 \end{itemize}
 
-\noindent \emph{La compilation s'est bien passée bien et pourtant le
+\noindent \emph{La compilation s'est bien passÃ©e bien et pourtant le
 programme est faux!}
 
 \medskip
 
-\must Vérifiez les dépendances de ce makefile en dessinant le
-graphe induit par ses règles (à un fichier correspond un n{\oe}ud, et
-la relation représentée par la flèche est «~dépend de~»).
+\must VÃ©rifiez les dÃ©pendances de ce makefile en dessinant le
+graphe induit par ses rÃ¨gles (Ã  un fichier correspond un n{\oe}ud, et
+la relation reprÃ©sentÃ©e par la flÃ¨che est Â«~dÃ©pend de~Â»).
 
-\subsection{Le format des règles}
+\subsection{Le format des rÃ¨gles}
 
-\noindent Une règle suit la syntaxe suivante:
+\noindent Une rÃ¨gle suit la syntaxe suivante:
 {\small
 \begin{verbatim}
 cibles: dependances
@@ -224,14 +218,14 @@ cibles: dependances
 \end{verbatim}
 }
 
-\noindent Nous avons vu précédemment une cible \texttt{.PHONY} dont
-le nom est prédéfini et la règle est alors traitée spécialement. Nous
-verrons plus loin sa sémantique.
+\noindent Nous avons vu prÃ©cÃ©demment une cible \texttt{.PHONY} dont
+le nom est prÃ©dÃ©fini et la rÃ¨gle est alors traitÃ©e spÃ©cialement. Nous
+verrons plus loin sa sÃ©mantique.
 
-\subsection{Tabulation en début de commande}
+\subsection{Tabulation en dÃ©but de commande}
 
-L'oubli des tabulations au début de chaque ligne de commande est une
-erreur commune. Dans ce cas-là, \textsf{Make} produit une erreur de la
+L'oubli des tabulations au dÃ©but de chaque ligne de commande est une
+erreur commune. Dans ce cas-lÃ , \textsf{Make} produit une erreur de la
 forme:
 {\small
 \begin{verbatim}
@@ -239,14 +233,14 @@ Makefile:13: *** missing separator.  Stop.
 \end{verbatim}
 }
 
-\noindent Pour détecter facilement ce type d'erreur, vérifiez que vous
+\noindent Pour dÃ©tecter facilement ce type d'erreur, vÃ©rifiez que vous
 utilisez le mode \textsf{Emacs} idoine (\textsf{M-x makefile-mode}):
-les tabulations sont alors colorées.
+les tabulations sont alors colorÃ©es.
 
 \subsection{Cibles multiples}
 
-On constate que les cibles peuvent être multiples. Un même graphe de
-dépendances peut donc être écrit de manières différentes.
+On constate que les cibles peuvent Ãªtre multiples. Un mÃªme graphe de
+dÃ©pendances peut donc Ãªtre Ã©crit de maniÃ¨res diffÃ©rentes.
 
 \medskip
 
@@ -262,12 +256,12 @@ all: main
 
 parse_num.o print_result.o compute_result.o: tools.h
 
-print_result.o compute_result.o: compute_struct.h 
+print_result.o compute_result.o: compute_struct.h
 
 compute_result.o: compute_result.c compute_result.h
         $(CC) $(CFLAGS) -c compute_result.c
 
-parse_num.o: parse_num.c parse_num.h 
+parse_num.o: parse_num.c parse_num.h
         $(CC) $(CFLAGS) -c parse_num.c
 
 print_result.o: print_result.c print_result.h
@@ -287,36 +281,36 @@ re: clean main
 \end{verbatim}
 }
 
-\must Vérifiez que ce makefile est bien équivalent au premier
-en dessinant son graphe de dépendances.
+\must VÃ©rifiez que ce makefile est bien Ã©quivalent au premier
+en dessinant son graphe de dÃ©pendances.
 
 \medskip
 
-\noindent On voit que les définitions des dépendances peuvent se faire
-de manière indépendantes même si elles portent sur les mêmes fichiers.
+\noindent On voit que les dÃ©finitions des dÃ©pendances peuvent se faire
+de maniÃ¨re indÃ©pendantes mÃªme si elles portent sur les mÃªmes fichiers.
 
-\subsection{Règle \texttt{.PHONY}}
+\subsection{RÃ¨gle \texttt{.PHONY}}
 
-La cible prédéfinie ayant pour nom \texttt{\small .PHONY} permet de
-déclarer des règles qui ne produisent pas de fichiers mais qui doivent
-être toujours exécutées si on les appelle. Supposons que l'on n'aie
-pas déclaré de règle \texttt{\small .PHONY: clean}. Lorsque l'on
+La cible prÃ©dÃ©finie ayant pour nom \texttt{\small .PHONY} permet de
+dÃ©clarer des rÃ¨gles qui ne produisent pas de fichiers mais qui doivent
+Ãªtre toujours exÃ©cutÃ©es si on les appelle. Supposons que l'on n'aie
+pas dÃ©clarÃ© de rÃ¨gle \texttt{\small .PHONY: clean}. Lorsque l'on
 appelle \texttt{\small make clean}, puisqu'il n'y a pas de fichier
-nommé \texttt{clean} \textsf{Make} conclut que cette cible doit être
-mise à jour et donc envoie la commande correspondante (\texttt{\small
-rm ...}) à l'interprète de commandes sous-jacent. Mais si, par erreur,
-un fichier \texttt{clean} est créé, lorsque l'on appelle \texttt{\small
-make clean}, puisqu'il n'y a pas de dépendances associées,
-\textsf{Make} conlut que le fichier est à jour et donc \emph{la
-commande n'est pas effectuée}. La règle \texttt{\small .PHONY} force
-\textsf{Make} a effectuer la commande même si la cible est à jour.
+nommÃ© \texttt{clean} \textsf{Make} conclut que cette cible doit Ãªtre
+mise Ã  jour et donc envoie la commande correspondante (\texttt{\small
+rm ...}) Ã  l'interprÃ¨te de commandes sous-jacent. Mais si, par erreur,
+un fichier \texttt{clean} est crÃ©Ã©, lorsque l'on appelle \texttt{\small
+make clean}, puisqu'il n'y a pas de dÃ©pendances associÃ©es,
+\textsf{Make} conlut que le fichier est Ã  jour et donc \emph{la
+commande n'est pas effectuÃ©e}. La rÃ¨gle \texttt{\small .PHONY} force
+\textsf{Make} a effectuer la commande mÃªme si la cible est Ã  jour.
 
-\subsection{Règles à motif}
+\subsection{RÃ¨gles Ã  motif}
 \label{regle_a_motif}
 
-Les dépendances peuvent suivre une règles plus générales définies à
-l'aide de motif (\emph{pattern} en anglais). Ainsi, on peut décrire
-comment construire un fichier objet à partir d'un fichier source:
+Les dÃ©pendances peuvent suivre une rÃ¨gles plus gÃ©nÃ©rales dÃ©finies Ã 
+l'aide de motif (\emph{pattern} en anglais). Ainsi, on peut dÃ©crire
+comment construire un fichier objet Ã  partir d'un fichier source:
 {\small
 \begin{verbatim}
 %.o: %.c
@@ -324,28 +318,28 @@ comment construire un fichier objet à partir d'un fichier source:
 \end{verbatim}
 }
 
-\noindent Cette règle signifie que pour construire un fichier objet à
+\noindent Cette rÃ¨gle signifie que pour construire un fichier objet Ã 
 partir d'un fichier source, il faut compiler le fichier \texttt{.c}
 par la commande {\small \verb!$(CC) $(CFLAGS) -c $<!}. Le \verb!$<!
-est une variable définie automatiquement pour toute règle et qui
-symbolise le premier fichier de la liste de dépendances.
+est une variable dÃ©finie automatiquement pour toute rÃ¨gle et qui
+symbolise le premier fichier de la liste de dÃ©pendances.
 
 \medskip
 
-\must Modifiez le makefile en rajoutant cette règle. 
+\must Modifiez le makefile en rajoutant cette rÃ¨gle.
 
 \medskip
 
 \noindent Il y a d'autres variables automatiques:
 
 \begin{itemize}
- 
-  \bitem \verb!$<!: le premier fichier de la liste de dépendances;
-  
-  \bitem \verb!$^!: tous les fichiers de la liste de dépendances (en
+
+  \bitem \verb!$<!: le premier fichier de la liste de dÃ©pendances;
+
+  \bitem \verb!$^!: tous les fichiers de la liste de dÃ©pendances (en
   fusionnant les doublons);
-  
-  \bitem \verb!$+!: tous les fichiers de la liste de dépendances (sans
+
+  \bitem \verb!$+!: tous les fichiers de la liste de dÃ©pendances (sans
   fusionner les doublons);
 
   \bitem \verb!$*!: le nom sans extension de la cible;
@@ -356,7 +350,7 @@ symbolise le premier fichier de la liste de dépendances.
 
 \medskip
 
-\must Par exemple, on peut modifier la règle précédente en:
+\must Par exemple, on peut modifier la rÃ¨gle prÃ©cÃ©dente en:
 {\small
 \begin{verbatim}
 %.o : %.c
@@ -364,8 +358,8 @@ symbolise le premier fichier de la liste de dépendances.
 \end{verbatim}
 }
 
-\must De même, la création de l'exécutable (édition de liens) peut
-s'écrire:
+\must De mÃªme, la crÃ©ation de l'exÃ©cutable (Ã©dition de liens) peut
+s'Ã©crire:
 {\small
 \begin{verbatim}
 main: main.o print_result.o parse_num.o compute_result.o
@@ -375,14 +369,14 @@ main: main.o print_result.o parse_num.o compute_result.o
 
 \subsection{Format des commandes}
 
-Les commandes qui sont exécutées par les règles sont en fait du script
-\emph{shell} \textsc{Unix}. On peut donc faire énormément de choses au
-sein des règles.
+Les commandes qui sont exÃ©cutÃ©es par les rÃ¨gles sont en fait du script
+\emph{shell} \textsc{Unix}. On peut donc faire Ã©normÃ©ment de choses au
+sein des rÃ¨gles.
 
 \medskip
 
-\must Modifiez la règle de compilation pour afficher la dernière date
-de création du fichier cible:
+\must Modifiez la rÃ¨gle de compilation pour afficher la derniÃ¨re date
+de crÃ©ation du fichier cible:
 {\small
 \begin{verbatim}
 %.o : %.c
@@ -394,34 +388,34 @@ de création du fichier cible:
 \end{verbatim}
 }
 
-Plusieurs choses à noter:
+Plusieurs choses Ã  noter:
 
 \begin{itemize}
 
-  \bitem \verb!@! sert à spécifier à make de ne pas afficher la
-  commande avant de l'exécuter.
+  \bitem \verb!@! sert Ã  spÃ©cifier Ã  make de ne pas afficher la
+  commande avant de l'exÃ©cuter.
 
-  \bitem les \verb!\! servent à continuer la ligne (comme en
-  \emph{shell}). Cette règle contient donc deux commandes, la première
-  servant à faire l'affichage de la date et la seconde est la
-  compilation à proprement parler.
+  \bitem les \verb!\! servent Ã  continuer la ligne (comme en
+  \emph{shell}). Cette rÃ¨gle contient donc deux commandes, la premiÃ¨re
+  servant Ã  faire l'affichage de la date et la seconde est la
+  compilation Ã  proprement parler.
 
-  \bitem les commandes \emph{shell} sont par défaut envoyée à
-  l'interprète de commande \textsc{Unix} \textsf{sh}. On peut en spécifier un
-  autre à l'aide de la variable prédéfinie de \textsf{Make} nommée
+  \bitem les commandes \emph{shell} sont par dÃ©faut envoyÃ©e Ã 
+  l'interprÃ¨te de commande \textsc{Unix} \textsf{sh}. On peut en spÃ©cifier un
+  autre Ã  l'aide de la variable prÃ©dÃ©finie de \textsf{Make} nommÃ©e
   \texttt{SHELL}.
 
 \end{itemize}
 
-La dernière utilisation classique des règles est l'automatisation de
-tâches. On peut créer des règles qui ne dépendent de rien et dont le
-rôle est d'exécuter une commande \emph{shell}. Par exemple, la règle
+La derniÃ¨re utilisation classique des rÃ¨gles est l'automatisation de
+tÃ¢ches. On peut crÃ©er des rÃ¨gles qui ne dÃ©pendent de rien et dont le
+rÃ´le est d'exÃ©cuter une commande \emph{shell}. Par exemple, la rÃ¨gle
 \texttt{clean} du makefile permet de nettoyer le projet en ne
 laissant que les sources.
 
 \medskip
 
-\must On peut appeler ces règles directement par une commande \emph{shell}:
+\must On peut appeler ces rÃ¨gles directement par une commande \emph{shell}:
 {\small
 \begin{verbatim}
 ~/TP-Make/Projet/src$ make clean
@@ -429,54 +423,54 @@ laissant que les sources.
 }
 
 En fait, lorsqu'on lance \textsf{Make} sans argument, c'est la
-première règle trouvée qui est exécutée. Ainsi dans notre cas, la
-règle \texttt{all} est donc exécutée. Comme elle dépend de l'existence
-du fichier \texttt{main}, la compilation du projet est lancée.
+premiÃ¨re rÃ¨gle trouvÃ©e qui est exÃ©cutÃ©e. Ainsi dans notre cas, la
+rÃ¨gle \texttt{all} est donc exÃ©cutÃ©e. Comme elle dÃ©pend de l'existence
+du fichier \texttt{main}, la compilation du projet est lancÃ©e.
 
-La règle \texttt{re} du makefile est une erreur commune a ne
-surtout pas commettre. Souvent, lorsqu'on a mal établi ses
-dépendances, on a tendance à compiler le projet par la commande:
+La rÃ¨gle \texttt{re} du makefile est une erreur commune a ne
+surtout pas commettre. Souvent, lorsqu'on a mal Ã©tabli ses
+dÃ©pendances, on a tendance Ã  compiler le projet par la commande:
 {\small \verb!make clean && make!}.  C'est exactement ce que fait la
-règle \texttt{re}: recompiler entièrement le projet. Or, cette
+rÃ¨gle \texttt{re}: recompiler entiÃ¨rement le projet. Or, cette
 utilisation de \textsf{Make} remet en cause tous ses avantages,
-c'est-à-dire la capacité de ne recompiler que le strict minimum. Lors
-de gros projets, il est essentiel d'avoir bien défini ses dépendances,
-sinon des temps d'attente de l'ordre de la dizaine de minutes sont à
-prévoir à chaque compilation!
+c'est-Ã -dire la capacitÃ© de ne recompiler que le strict minimum. Lors
+de gros projets, il est essentiel d'avoir bien dÃ©fini ses dÃ©pendances,
+sinon des temps d'attente de l'ordre de la dizaine de minutes sont Ã 
+prÃ©voir Ã  chaque compilation!
 
 \medskip
 
-\must Supprimez la règle \texttt{re} car ce genre de règle est à bannir.
+\must Supprimez la rÃ¨gle \texttt{re} car ce genre de rÃ¨gle est Ã  bannir.
 
 \subsection{Variables}
 
-\noindent On définit une variable suivant le format:
+\noindent On dÃ©finit une variable suivant le format:
 {\small
 \begin{verbatim}
 NOM=VALEUR
 \end{verbatim}
 }
-\noindent On accède au contenu d'une variable en la déréférençant à
-l'aide du \verb!$!, ainsi {\small \verb!$(NOM)!} représente la suite
-de caractères \texttt{\small VALEUR}.
+\noindent On accÃ¨de au contenu d'une variable en la dÃ©rÃ©fÃ©renÃ§ant Ã 
+l'aide du \verb!$!, ainsi {\small \verb!$(NOM)!} reprÃ©sente la suite
+de caractÃ¨res \texttt{\small VALEUR}.
 
 Les variables permettent par exemple de centraliser les informations
-qui peuvent être différentes en fonction des systèmes. Par exemple,
-dans le makefile, on a stocké le nom du compilateur à
-l'intérieur de la variable \texttt{CC}. Ainsi, si on veut utiliser un
+qui peuvent Ãªtre diffÃ©rentes en fonction des systÃ¨mes. Par exemple,
+dans le makefile, on a stockÃ© le nom du compilateur Ã 
+l'intÃ©rieur de la variable \texttt{CC}. Ainsi, si on veut utiliser un
 autre compilateur~C, on doit seulement modifier cette valeur et non
 modifier l'appel un peu partout dans le makefile. Pour rendre
-les makefiles plus facile à adapter en fonction des systèmes,
-on a l'habitude de mettre les déclarations de variables en tête du
-fichier. Les variables peuvent aussi servir à contenir une liste de
-fichiers pour y faire référence par la suite.
+les makefiles plus facile Ã  adapter en fonction des systÃ¨mes,
+on a l'habitude de mettre les dÃ©clarations de variables en tÃªte du
+fichier. Les variables peuvent aussi servir Ã  contenir une liste de
+fichiers pour y faire rÃ©fÃ©rence par la suite.
 
 \medskip
 
-\must Ainsi, dans le makefile, définissez la variable
-\texttt{\small OBJECTS} représentant les fichiers objets du projet
-ainsi que la variable \texttt{\small PROGRAM} définissant le programme
-exécutable final:
+\must Ainsi, dans le makefile, dÃ©finissez la variable
+\texttt{\small OBJECTS} reprÃ©sentant les fichiers objets du projet
+ainsi que la variable \texttt{\small PROGRAM} dÃ©finissant le programme
+exÃ©cutable final:
 {\small
 \begin{verbatim}
 PROGRAM=main
@@ -484,7 +478,7 @@ OBJECTS=main.o print_result.o parse_num.o compute_result.o
 \end{verbatim}
 }
 
-\must La règle de création de l'exécutable devient donc:
+\must La rÃ¨gle de crÃ©ation de l'exÃ©cutable devient donc:
 {\small
 \begin{verbatim}
 $(PROGRAM): $(OBJECTS)
@@ -492,7 +486,7 @@ $(PROGRAM): $(OBJECTS)
 \end{verbatim}
 }
 
-\noindent Attention, on pourrait être tenté de définir la variable
+\noindent Attention, on pourrait Ãªtre tentÃ© de dÃ©finir la variable
 \texttt{\small OBJECTS}  ainsi:
 {\small
 \begin{verbatim}
@@ -501,30 +495,30 @@ OBJECTS=*.o
 }
 
 \noindent mais ce serait une erreur. En effet, lorsqu'on affecte
-\texttt{*.o} à \texttt{\small OBJECTS}, il n'y a pas d'interprétation
-de \texttt{*.o} \emph{dans les versions récentes de \textsf{Make}}: il
-n'y a qu'une affectation de chaîne de caractères et \texttt{\small
+\texttt{*.o} Ã  \texttt{\small OBJECTS}, il n'y a pas d'interprÃ©tation
+de \texttt{*.o} \emph{dans les versions rÃ©centes de \textsf{Make}}: il
+n'y a qu'une affectation de chaÃ®ne de caractÃ¨res et \texttt{\small
 \$(OBJECTS)} vaut \texttt{\small "*.o"}. Des versions anciennes de
-\textsf{Make} interprètent \texttt{*.o} comme le ferait le
+\textsf{Make} interprÃ¨tent \texttt{*.o} comme le ferait le
 \emph{shell}: s'il existe des fichiers avec l'extension \texttt{.o}
-leurs noms sont expansés, sinon \texttt{*.o} devient une chaîne de
-caractères. Ce comportement a donc disparu dans les versions récentes.
+leurs noms sont expansÃ©s, sinon \texttt{*.o} devient une chaÃ®ne de
+caractÃ¨res. Ce comportement a donc disparu dans les versions rÃ©centes.
 
 \medskip
 
-\must Essayez de définir \texttt{\small OBJECTS} ainsi.
+\must Essayez de dÃ©finir \texttt{\small OBJECTS} ainsi.
 
 \medskip
 
-\noindent On peut pourtant déduire automatiquement la liste des objets
+\noindent On peut pourtant dÃ©duire automatiquement la liste des objets
 en utilisant les fonctions de manipulation des variables de
 \textsf{Make}.
 
 \medskip
 
 \must Par exemple, la fonction {\small \verb!$(wildcard PATTERN...)!}
-permet d'effectuer une interprétation de motif (ou \emph{pattern})
-\emph{shell} au moment de la définition de la variable:
+permet d'effectuer une interprÃ©tation de motif (ou \emph{pattern})
+\emph{shell} au moment de la dÃ©finition de la variable:
 {\small
 \begin{verbatim}
 SOURCES=$(wildcard *.c)
@@ -533,11 +527,11 @@ SOURCES=$(wildcard *.c)
 
 \noindent La fonction {\small
 \verb!$(patsubst PATTERN,REPLACEMENT,TEXT)!}  permet de remplacer
-toutes les occurrences filtrées par un motif dans un texte.
+toutes les occurrences filtrÃ©es par un motif dans un texte.
 
 \medskip
 
-\must Ainsi, définissez:
+\must Ainsi, dÃ©finissez:
 {\small
 \begin{verbatim}
 OBJECTS=$(patsubst %.c,%.o, $(SOURCES))
@@ -552,11 +546,11 @@ par \texttt{.o}
 \noindent Il existe aussi {\small \verb!$(subst FROM,TO,TEXT)!} qui
 remplace dans le texte \texttt{\small TEXT} chaque occurrence de
 \texttt{\small FROM} par \texttt{\small TO}. Pour plus d'informations
-sur ces fonctions repor\-tez-vous à la documentation de \textsf{Make}.
+sur ces fonctions repor\-tez-vous Ã  la documentation de \textsf{Make}.
 
 \subsection{Directives}
 
-Les directives sont des instructions spéciales qui agissent sur le
+Les directives sont des instructions spÃ©ciales qui agissent sur le
 comportement de \textsf{Make}. Il existe de nombreuses directives,
 aussi on n'envisagera ici que les plus utiles.
 
@@ -564,30 +558,30 @@ La directive \texttt{include} permet d'inclure un makefile
 dans un autre makefile, dans le but, par exemple, de
 centraliser les informations de configuration du projet dans un unique
 fichier. Tous les makefiles du projet l'incluent alors en
-tête.
+tÃªte.
 
 \medskip
 
-\must Créez un fichier \verb!~/TP-Make/Projet/Makefile.conf!  et
-déplacez-y les définitions de variables dépendantes du projet.
+\must CrÃ©ez un fichier \verb!~/TP-Make/Projet/Makefile.conf!  et
+dÃ©placez-y les dÃ©finitions de variables dÃ©pendantes du projet.
 
 \medskip
 
-\must Placez \texttt{include ../Makefile.conf} à la place de vos
-variables dépendantes du projet dans
+\must Placez \texttt{include ../Makefile.conf} Ã  la place de vos
+variables dÃ©pendantes du projet dans
 {\small \verb!~/TP-Make/Projet/src/Makefile!}.
 
 \subsection{Options de \textsf{Make}}
 
-\textsf{Make} est un utilitaire qui possède des options. Par exemple,
+\textsf{Make} est un utilitaire qui possÃ¨de des options. Par exemple,
 si votre makefile ne se nomme pas \texttt{Makefile}, vous
-pouvez spécifier son nom avec l'option \texttt{-f}.
+pouvez spÃ©cifier son nom avec l'option \texttt{-f}.
 
 \medskip
 
 \must Copiez le fichier {\small \verb!~/TP-Make/Projet/src/Makefile!}
-dans un fichier nommé, par exemple, \texttt{MyMakefile}, et utilisez
-cette option.  
+dans un fichier nommÃ©, par exemple, \texttt{MyMakefile}, et utilisez
+cette option.
 {\small
 \begin{verbatim}
 ~/TP-Make/Projet/src$ cp Makefile MyMakefile
@@ -595,16 +589,16 @@ cette option.
 \end{verbatim}
 }
 
-\noindent Lorsque l'on n'est pas sûr du comportement de \textsf{Make},
+\noindent Lorsque l'on n'est pas sÃ»r du comportement de \textsf{Make},
 on peut le lancer en lui demandant d'imprimer les commandes mais de
-ne pas les transmettre à l'interprète sous-jacent. Cela se fait avec
+ne pas les transmettre Ã  l'interprÃ¨te sous-jacent. Cela se fait avec
 l'option \texttt{-n} (\emph{just print}).
 
 \medskip
 
 \noindent Lorsque l'on ne comprend plus le comportement de
 \textsf{Make} sur un makefile, on peut le lancer en mode
-débogage à l'aide de l'option \texttt{-d} (\emph{debug}): 
+dÃ©bogage Ã  l'aide de l'option \texttt{-d} (\emph{debug}):
 {\small
 \begin{verbatim}
 ~/TP-Make/Projet/src$ make -d
@@ -616,33 +610,33 @@ section suivante.
 
 \medskip
 
-\noindent L'option \texttt{-k} (\emph{keep going}), quant à elle,
-permet de continuer la compilation des fichiers même en cas d'erreur
+\noindent L'option \texttt{-k} (\emph{keep going}), quant Ã  elle,
+permet de continuer la compilation des fichiers mÃªme en cas d'erreur
 de certaines compilations.
 
 \medskip
 
 \noindent On peut finalement noter l'option \texttt{-j} (\emph{jobs})
-qui permet de lancer les compilations en parallèle lorsque le matériel
-le permet. Sur des systèmes multiprocesseurs, on peut ainsi gagner
+qui permet de lancer les compilations en parallÃ¨le lorsque le matÃ©riel
+le permet. Sur des systÃ¨mes multiprocesseurs, on peut ainsi gagner
 beaucoup de temps.
 
 \section{Utilisation courante}
 
 Cette section explique une utilisation de \textsf{Make} qui repose sur
-des variables et des règles définies de manière implicite par des
+des variables et des rÃ¨gles dÃ©finies de maniÃ¨re implicite par des
 conventions de programmation.
 
-\subsection{Règles et variables implicites}
+\subsection{RÃ¨gles et variables implicites}
 
-Comme la compilation de code~C est une tâche très courante sur les
-systèmes \textsc{Unix}, la règle qui décrit comment compiler un
-fichier \texttt{.c} en \texttt{.o} est prédéfinie par \textsf{Make},
+Comme la compilation de code~C est une tÃ¢che trÃ¨s courante sur les
+systÃ¨mes \textsc{Unix}, la rÃ¨gle qui dÃ©crit comment compiler un
+fichier \texttt{.c} en \texttt{.o} est prÃ©dÃ©finie par \textsf{Make},
 comme on a pu le constater sur le makefile initial.
 
 \medskip
 
-\must Supprimez la règle de compilation du makefile et
+\must Supprimez la rÃ¨gle de compilation du makefile et
 lancez:
 {\small
 \begin{verbatim}
@@ -651,9 +645,9 @@ lancez:
 \end{verbatim}
 }
 
-\noindent La compilation des fichiers sources s'est effectuée sans
-qu'on ait eu besoin d'écrire la règle! En fait, la règle
-prédéfinie correspondante possède la forme suivante:
+\noindent La compilation des fichiers sources s'est effectuÃ©e sans
+qu'on ait eu besoin d'Ã©crire la rÃ¨gle! En fait, la rÃ¨gle
+prÃ©dÃ©finie correspondante possÃ¨de la forme suivante:
 {\small
 \begin{verbatim}
 %.o: %.c
@@ -661,23 +655,23 @@ prédéfinie correspondante possède la forme suivante:
 \end{verbatim}
 }
 \noindent Les variables \texttt{\small CC}, \texttt{\small CPPFLAGS} et
-\texttt{\small CFLAGS} sont prédéfinies et signifient:
+\texttt{\small CFLAGS} sont prÃ©dÃ©finies et signifient:
 
 \begin{itemize}
 
   \bitem \texttt{\small CC}: le compilateur C;
 
-  \bitem \texttt{\small CPPFLAGS}: les options du préprocesseur (comme
+  \bitem \texttt{\small CPPFLAGS}: les options du prÃ©processeur (comme
   par exemple \texttt{-I});
 
   \bitem \texttt{\small CFLAGS}: les options du compilateur (comme
-  \texttt{-O2}). 
+  \texttt{-O2}).
 
 \end{itemize}
 
 \medskip
 
-\must Ainsi, on peut définir ces variables au niveau du \emph{shell}:
+\must Ainsi, on peut dÃ©finir ces variables au niveau du \emph{shell}:
 {\small
 \begin{verbatim}
 ~/TP-Make/Projet/src$ make clean
@@ -685,20 +679,20 @@ prédéfinie correspondante possède la forme suivante:
 \end{verbatim}
 }
 
-\noindent De la même manière, la création d'exécutable est gérée par
-défaut par \textsf{Make}.
+\noindent De la mÃªme maniÃ¨re, la crÃ©ation d'exÃ©cutable est gÃ©rÃ©e par
+dÃ©faut par \textsf{Make}.
 
 \medskip
 
-\must Supprimez la commande de création de l'exécutable et ensuite:
+\must Supprimez la commande de crÃ©ation de l'exÃ©cutable et ensuite:
 {\small
 \begin{verbatim}
 ~/TP-Make/Projet/src$ make clean
-~/TP-Make/Projet/src$ make 
+~/TP-Make/Projet/src$ make
 \end{verbatim}
 }
 
-\noindent En fait, la règle prédéfinie (et implicite) est de la forme:
+\noindent En fait, la rÃ¨gle prÃ©dÃ©finie (et implicite) est de la forme:
 {\small
 \begin{verbatim}
 %: %.o
@@ -707,27 +701,27 @@ défaut par \textsf{Make}.
 }
 
 \noindent La variable \texttt{\small LDFLAGS} correspond aux options
-pour le programme qui effectue l'édition de liens (usuellement
-\textsf{ld}). On peut par exemple spécifier ici des options donnant
-les chemins des bibliothèques, telles que \texttt{-Ldirectory} et
+pour le programme qui effectue l'Ã©dition de liens (usuellement
+\textsf{ld}). On peut par exemple spÃ©cifier ici des options donnant
+les chemins des bibliothÃ¨ques, telles que \texttt{-Ldirectory} et
 \texttt{-llibrary}.
 
-\subsection{Applications récursives}
+\subsection{Applications rÃ©cursives}
 
-Pour des projets moyens ou grands, il est souvent utile ou nécessaire
-de hiérarchiser les sources et donc de placer les fichiers dans des
-répertoires différents (correspondant alors logiquement à des
-composants du logiciel à construire). Pour gérer la compilation de
-tels projets, il est possible d'effectuer des appels récursifs de
-\textsf{Make} dans les sous-répertoires, de telle sorte que chaque
-composant (ou module) possède son propre makefile et soit compilé
-séparément.
+Pour des projets moyens ou grands, il est souvent utile ou nÃ©cessaire
+de hiÃ©rarchiser les sources et donc de placer les fichiers dans des
+rÃ©pertoires diffÃ©rents (correspondant alors logiquement Ã  des
+composants du logiciel Ã  construire). Pour gÃ©rer la compilation de
+tels projets, il est possible d'effectuer des appels rÃ©cursifs de
+\textsf{Make} dans les sous-rÃ©pertoires, de telle sorte que chaque
+composant (ou module) possÃ¨de son propre makefile et soit compilÃ©
+sÃ©parÃ©ment.
 
 \medskip
 
-\must Créez un makefile à la racine du projet ({\small
-\verb!~/TP-Make/Projet/Makefile!}) pour factoriser l'appel de la règle
-\texttt{clean} dans tous les sous-répertoires du projet. Il contient
+\must CrÃ©ez un makefile Ã  la racine du projet ({\small
+\verb!~/TP-Make/Projet/Makefile!}) pour factoriser l'appel de la rÃ¨gle
+\texttt{clean} dans tous les sous-rÃ©pertoires du projet. Il contient
 alors:
 {\small
 \begin{verbatim}
@@ -739,41 +733,41 @@ clean:
 \end{verbatim}
 }
 \noindent Les deux signes dollar dans {\small \verb!$$dir!} servent,
-le premier, à éviter que \textsf{Make} ne confonde {\small
-\verb!$dir!} avec une variable gérée par lui, et le second est pour
-l'interprète de commandes.
+le premier, Ã  Ã©viter que \textsf{Make} ne confonde {\small
+\verb!$dir!} avec une variable gÃ©rÃ©e par lui, et le second est pour
+l'interprÃ¨te de commandes.
 
-Cette méthode d'application récursive est très pratique car elle
+Cette mÃ©thode d'application rÃ©cursive est trÃ¨s pratique car elle
 permet de modulariser ses makefiles tout en factorisant leurs
-informations communes. Vous retrouverez ce principe à l'{\oe}uvre dans
+informations communes. Vous retrouverez ce principe Ã  l'{\oe}uvre dans
 de nombreux projets.
 
-Néanmoins, de nos jours on critique l'utilisation des appels récursifs
+NÃ©anmoins, de nos jours on critique l'utilisation des appels rÃ©cursifs
 de \textsf{Make} et l'option \texttt{-C} (\emph{change directory}). On
 constate en effet que si on a une multitude de makefiles au sein d'un
-même projet, lorsqu'on lance une commande, par exemple {\small
-\verb!make all!}, le makefile principal fait appel à tous les
-sous-makefiles pour savoir si les cibles doivent être
-reconstruites. En effet, il ne connaît pas les dépendances du projet
-entier donc il peut appeler certains makefiles de sous-répertoires
-sans que cela soit nécessaire. Ces appels engendrent une certaine
-lenteur du système car on calcule les dépendances localement à chaque
-sous-répertoire: les calculer globalement serait plus efficace.
+mÃªme projet, lorsqu'on lance une commande, par exemple {\small
+\verb!make all!}, le makefile principal fait appel Ã  tous les
+sous-makefiles pour savoir si les cibles doivent Ãªtre
+reconstruites. En effet, il ne connaÃ®t pas les dÃ©pendances du projet
+entier donc il peut appeler certains makefiles de sous-rÃ©pertoires
+sans que cela soit nÃ©cessaire. Ces appels engendrent une certaine
+lenteur du systÃ¨me car on calcule les dÃ©pendances localement Ã  chaque
+sous-rÃ©pertoire: les calculer globalement serait plus efficace.
 
-Une autre solution consiste donc à n'utiliser qu'un seul
-makefile qui inclut des fichiers décrivant les dépendances de
-chaque module (sous-répertoi\-re) du projet. Dans ces fichiers, on
+Une autre solution consiste donc Ã  n'utiliser qu'un seul
+makefile qui inclut des fichiers dÃ©crivant les dÃ©pendances de
+chaque module (sous-rÃ©pertoi\-re) du projet. Dans ces fichiers, on
 \textit{augmente} les variables du makefile principal.
 
 \medskip
 
-\must Définissez une variable \texttt{\small CLEANFILES} dans le
-makefile principal, c'est-à-dire situé à la racine du projet ({\small
+\must DÃ©finissez une variable \texttt{\small CLEANFILES} dans le
+makefile principal, c'est-Ã -dire situÃ© Ã  la racine du projet ({\small
 \verb!~/TP-Make/Projet/Makefile!}).
 
 \medskip
 
-\noindent Dans le fichier de description du sous-répertoire, on trouve
+\noindent Dans le fichier de description du sous-rÃ©pertoire, on trouve
 maintenant:
 {\small
 \begin{verbatim}
@@ -786,7 +780,7 @@ CLEANFILES += src/main.o src/printer_result.o src/parse_num.o \
               src/compute_result.o
 \end{verbatim}
 }
-\noindent Maintenant la règle \texttt{clean} s'écrit:
+\noindent Maintenant la rÃ¨gle \texttt{clean} s'Ã©crit:
 {\small
 \begin{verbatim}
 clean:
@@ -794,26 +788,26 @@ clean:
 \end{verbatim}
 }
 
-\must Définissez un fichier \texttt{dep.mk} dans chaque
-sous-répertoire dans lequel vous insérez la partie de makefile
-nécessaire au module. Attention, il faut désormais résonnez en
-considérant que vous vous situez à la racine du projet.
+\must DÃ©finissez un fichier \texttt{dep.mk} dans chaque
+sous-rÃ©pertoire dans lequel vous insÃ©rez la partie de makefile
+nÃ©cessaire au module. Attention, il faut dÃ©sormais rÃ©sonnez en
+considÃ©rant que vous vous situez Ã  la racine du projet.
 
 \medskip
 
 \must Incluez ces makefiles dans le makefile principal et supprimez
-les appels récursifs.
+les appels rÃ©cursifs.
 
 \medskip
 
-\noindent On évite ainsi les appels récursifs à \textsf{Make} et donc
+\noindent On Ã©vite ainsi les appels rÃ©cursifs Ã  \textsf{Make} et donc
 on gagne du temps.
 
-\subsection{Génération automatique des dépendances}
+\subsection{GÃ©nÃ©ration automatique des dÃ©pendances}
 
-Il est possible de définir automatiquement la plupart des dépendances
-d'un projet à l'aide de programmes comme \verb!makedepend! ou
-\verb!gcc!. 
+Il est possible de dÃ©finir automatiquement la plupart des dÃ©pendances
+d'un projet Ã  l'aide de programmes comme \verb!makedepend! ou
+\verb!gcc!.
 
 \medskip
 
@@ -829,31 +823,31 @@ d'un projet à l'aide de programmes comme \verb!makedepend! ou
 
 \noindent L'option \texttt{-M} de \textsc{gcc} permet d'obtenir la
 liste des fichiers inclus par un source~C ainsi que ce fichier~C
-lui-même : on obtient ainsi l'ensemble de tous les fichiers dont
-dépend le fichier objet. On redirige cette sortie vers un fichier
-temporaire. Ensuite, la commande \texttt{sed} insère le fichier de
-dépendances au sein des fichiers cibles de la règle. En effet, si on
+lui-mÃªme : on obtient ainsi l'ensemble de tous les fichiers dont
+dÃ©pend le fichier objet. On redirige cette sortie vers un fichier
+temporaire. Ensuite, la commande \texttt{sed} insÃ¨re le fichier de
+dÃ©pendances au sein des fichiers cibles de la rÃ¨gle. En effet, si on
 modifie le source, par exemple en rajoutant une inclusion, les
-dépendances doivent être regénérées. Au final, la sortie de
-\textsc{sed} donne le contenu du fichier de dépendances et on peut
+dÃ©pendances doivent Ãªtre regÃ©nÃ©rÃ©es. Au final, la sortie de
+\textsc{sed} donne le contenu du fichier de dÃ©pendances et on peut
 effacer le fichier temporaire.
 
 Voici une explication de la commande \textsc{sed} ci-dessus. Tout
 d'abord, il faut se souvenir que \textsc{sed} (\emph{Stream EDitor})
-permet de transformer un flux de caractères. Une des commandes les
-plus utilisées est la substitution
+permet de transformer un flux de caractÃ¨res. Une des commandes les
+plus utilisÃ©es est la substitution
 \texttt{s, regexp, regexp, g}. Elle effectue un remplacement de
-tout sous-mot filtré par la première expression régulière par la
-seconde. Il faut échapper les caractères qui correspondent à la
-syntaxe des expressions régulières et non au caractère du flux (cela
+tout sous-mot filtrÃ© par la premiÃ¨re expression rÃ©guliÃ¨re par la
+seconde. Il faut Ã©chapper les caractÃ¨res qui correspondent Ã  la
+syntaxe des expressions rÃ©guliÃ¨res et non au caractÃ¨re du flux (cela
 explique les \verb!\(! par exemple). Dans notre cas, on utilise une
-référence à l'entrée dans la sortie: le \verb!\1! fait référence à ce
-qui a été capturé par le premier jeu de parenthèses (ici c'est le nom
+rÃ©fÃ©rence Ã  l'entrÃ©e dans la sortie: le \verb!\1! fait rÃ©fÃ©rence Ã  ce
+qui a Ã©tÃ© capturÃ© par le premier jeu de parenthÃ¨ses (ici c'est le nom
 du fichier sans l'extension \texttt{.o}). Notre commande \texttt{sed}
-consiste donc à chercher le nom de fichier objet éventuellement suivi
-d'un «:~» et de le remplacer par ce même nom de fichier suivi par le
-nom du fichier de dépendances (extension \texttt{.d}) et, enfin, le
-«:~». Par exemple 
+consiste donc Ã  chercher le nom de fichier objet Ã©ventuellement suivi
+d'un Â«:~Â» et de le remplacer par ce mÃªme nom de fichier suivi par le
+nom du fichier de dÃ©pendances (extension \texttt{.d}) et, enfin, le
+Â«:~Â». Par exemple
 {\small
 \begin{verbatim}
 parse_num.o : parse_num.c parse_num.h
@@ -866,13 +860,13 @@ parse_num.o parse_num.d : parse_num.c parse_num.h
 \end{verbatim}
 }
 
-\must Spécifiez l'inclusion des fichiers ainsi produits à la fin du
+\must SpÃ©cifiez l'inclusion des fichiers ainsi produits Ã  la fin du
 makefile.
 
-\subsection{Un makefile générique}
+\subsection{Un makefile gÃ©nÃ©rique}
 
-Après toutes ces explications, on aboutit à un makefile
-générique qui devrait vous servir pour des projets~C de taille
+AprÃ¨s toutes ces explications, on aboutit Ã  un makefile
+gÃ©nÃ©rique qui devrait vous servir pour des projets~C de taille
 moyenne:
 {\small
 \begin{verbatim}
@@ -888,7 +882,7 @@ LDFLAGS=
 # Generic part of the makefile
 OBJECTS=$(patsubst %.c,%.o, $(SOURCES))
 
-.PHONY: all clean 
+.PHONY: all clean
 
 all: $(PROGRAM)
 
@@ -913,24 +907,24 @@ include $(SOURCES:.c=.d)
 
 Lorsqu'on veut que son projet compile sur plusieurs environnements, il
 faut se donner les moyens d'adapter les commandes du makefile en
-fonction des caractéristiques du système d'exploitation ou de la
-distribution visée. Par exemple, sur certains systèmes \textsc{Unix}
+fonction des caractÃ©ristiques du systÃ¨me d'exploitation ou de la
+distribution visÃ©e. Par exemple, sur certains systÃ¨mes \textsc{Unix}
 tels que \textsc{Solaris}, le compilateur~C n'est pas \textsc{gcc}
-mais \textsc{cc}. 
+mais \textsc{cc}.
 
 On a vu que l'alliance des variables de makefile et de la directive
 \texttt{include} permet de configurer la compilation. Il arrive que
 cela ne soit pas suffisant et que certains modules du projet ne soient
-carrément \emph{pas compilables} sur le système. Cela se produit
+carrÃ©ment \emph{pas compilables} sur le systÃ¨me. Cela se produit
 lorsque l'on utilise des extensions du compilateur \textsc{gcc} par
-exemple. Il faut alors désactiver la compilation de certains fichiers
+exemple. Il faut alors dÃ©sactiver la compilation de certains fichiers
 objets.
 
-\textsf{Make} permet l'évaluation conditionnelle de makefile
-à l'aide des commandes \texttt{\small ifeq VAR VALUE} et
+\textsf{Make} permet l'Ã©valuation conditionnelle de makefile
+Ã  l'aide des commandes \texttt{\small ifeq VAR VALUE} et
 \texttt{\small ifdef VARIABLE} qui permettent de tester la valeur
 d'une variable ou bien, simplement, son existence. On peut donc
-rajouter les lignes suivantes dans un makefile. 
+rajouter les lignes suivantes dans un makefile.
 {\small
 \begin{verbatim}
 # If we are working with gcc, we can compile some other features.
@@ -939,29 +933,29 @@ OBJECTS= ext_features.o $(OBJECTS)
 endif
 
 # If the Qt library is present, we can compile a GUI.
-ifdef QT_IS_PRESENT 
+ifdef QT_IS_PRESENT
 OBJECTS= gui.o $(OBJECTS)
 endif
 \end{verbatim}
 }
 
 \must Utilisez ces instructions de compilation conditionnelle pour
-compiler tantôt avec des appels récursifs de \textsf{Make}, tantôt
+compiler tantÃ´t avec des appels rÃ©cursifs de \textsf{Make}, tantÃ´t
 avec des inclusions de makefiles.
 
-\section{Travail à remettre}
+\section{Travail Ã  remettre}
 
-\noindent Complétez l'archive avec les modifications apportées par ce
+\noindent ComplÃ©tez l'archive avec les modifications apportÃ©es par ce
 sujet (toutes les lignes commencant par \must).
 
-%% \noindent Complétez l'archive avec:
+%% \noindent ComplÃ©tez l'archive avec:
 
 %% \begin{itemize}
 
-%%   \bitem les modifications apportées par ce sujet (toutes les lignes
+%%   \bitem les modifications apportÃ©es par ce sujet (toutes les lignes
 %%   commencant par \must);
-  
-%%   \bitem une règle \texttt{doc} globale au projet qui:
+
+%%   \bitem une rÃ¨gle \texttt{doc} globale au projet qui:
 
 %%     \begin{itemize}
 
@@ -974,16 +968,16 @@ sujet (toutes les lignes commencant par \must).
 
 %%     \end{itemize}
 
-%%   \bitem une règle \texttt{check} globale au projet qui:
+%%   \bitem une rÃ¨gle \texttt{check} globale au projet qui:
 
 %%     \begin{itemize}
 
-%%       \bitem s'assure que le programme est bien compilé;
+%%       \bitem s'assure que le programme est bien compilÃ©;
 
-%%       \bitem construit des fichiers \texttt{.out} à partir de fichiers
+%%       \bitem construit des fichiers \texttt{.out} Ã  partir de fichiers
 %%       \texttt{.in};
 
-%%       \bitem vérifie que les \texttt{.out} sont égaux à des
+%%       \bitem vÃ©rifie que les \texttt{.out} sont Ã©gaux Ã  des
 %%       \texttt{.expected}.
 
 %%   \end{itemize}
@@ -999,8 +993,8 @@ sujet (toutes les lignes commencant par \must).
 info make
 \end{verbatim}
 }
-\noindent Pour des projets de plus grande dimension et nécessitant une
-importante configurabilité, on utilise les \textsc{Autotools},
-c'est-à-dire \textsf{autoconf} et \textsf{automake}.
+\noindent Pour des projets de plus grande dimension et nÃ©cessitant une
+importante configurabilitÃ©, on utilise les \textsc{Autotools},
+c'est-Ã -dire \textsf{autoconf} et \textsf{automake}.
 
 \end{document}
