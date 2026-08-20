@@ -1,0 +1,65 @@
+%%-*-latex-*-
+
+\documentclass[compress,dvips,xcolor={dvipsnames},t]{beamer}
+
+% Language and fonts
+%
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage[scaled=0.8]{beramono}
+
+% Graphics
+%
+\usepackage{graphicx}
+
+% Maths
+%
+\usepackage{amssymb,amsmath}
+
+% Miscellanea
+%
+\usepackage{url,xspace}
+\usepackage{booktabs}
+
+% Input files
+%
+\input{beamer_cfg}
+\input{xmllint}
+\input{saxon}
+
+% New commands
+%
+\renewcommand{\refname}{}
+
+\newcommand\MIME{\textsf{MIME}\xspace}
+\newcommand\XML{\textsf{XML}\xspace}
+\newcommand\HTML{\textsf{HTML}\xspace}
+\newcommand\XHTML{\textsf{XHTML}\xspace}
+\newcommand\DTD{\textsf{DTD}\xspace}
+\newcommand\XPath{\textsf{XPath}\xspace}
+\newcommand\XSLT{\textsf{XSLT}\xspace}
+\newcommand\Clang{\textsf{C}\xspace}
+\newcommand\Cpp{\textsf{CPP}\xspace}
+\newcommand\Perl{\textsf{Perl}\xspace}
+\newcommand\Java{\textsf{Java}\xspace}
+\newcommand\Saxon{\textsf{Saxon}\xspace}
+\newcommand\Unicode{\textsf{unicode}\xspace}
+\newcommand\ASCII{\textsf{ASCII}\xspace}
+
+% ------------------------------------------------------------------------
+% Document
+%
+\title{XML and XSLT}
+\author{Christian Rinderknecht}
+\date{31 October 2008}
+
+\begin{document}
+
+\frame{\maketitle}
+
+\include{xml_intro}
+\include{xhtml}
+\include{dtd}
+\include{xslt}
+
+\end{document}

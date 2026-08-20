@@ -2,8 +2,7 @@
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{DTD}
+\begin{frame}{DTD}
 
 We saw at page~\pageref{xml_intro:DOCTYPE} that the \textbf{Document
   Type Declaration} may contain markup which constrains the \XML
@@ -33,7 +32,7 @@ page~\pageref{xml_intro:ATTLIST} when setting up internal linking.
 \bigskip
 
 In general, the \texttt{ATTLIST} can be used to specify any kind of
-attributes of an element, not just label and references. 
+attributes of an element, not just label and references.
 
 \bigskip
 
@@ -55,8 +54,7 @@ punctuation.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{DTD/Element declarations}
+\begin{frame}{DTD/Element declarations}
 
 In order for a document to be validated, which requires more
 constraints than to be merely well-formed, all the elements used
@@ -126,8 +124,7 @@ where \texttt{emphasis} and \texttt{ref} are element names.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{DTD/Element declarations (cont)}
+\begin{frame}{DTD/Element declarations (cont)}
 
 The technique to define the content model is similar to
 \textbf{regular expressions}. Such an expression can be made up by
@@ -217,7 +214,7 @@ well-formed but not valid in the sense above, because the elements
 
 \bigskip
 
-For example: 
+For example:
 \begin{verbatim}
 <!ELEMENT map     (country+)>
 <!ELEMENT country EMPTY>

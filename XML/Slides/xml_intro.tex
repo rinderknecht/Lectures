@@ -2,8 +2,7 @@
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML}
+\begin{frame}{XML}
 
 The acronym \XML stands for \textbf{eXtensible Markup Language}. It is
 a language for defining unranked trees with plain text, such that the
@@ -29,10 +28,9 @@ each other?
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Example}
+\begin{frame}{XML/Example}
 
-As far as the elements are concerned, an e-mail contains at least 
+As far as the elements are concerned, an e-mail contains at least
 \begin{itemize}
 
   \item the recipient's address,
@@ -72,8 +70,7 @@ To: You
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Example (cont)}
+\begin{frame}{XML/Example (cont)}
 
 This e-mail can be modeled by a tree as follows:
 \begin{center}
@@ -112,12 +109,11 @@ follows.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Tags}
+\begin{frame}{XML/Tags}
 
 Each subtree is denoted by an opening and a closing \textbf{tag}. An
 opening tag is a name enclosed between \texttt{<} and \texttt{>}. A
-closing tag is a name enclosed between \texttt{</} and \texttt{>}. 
+closing tag is a name enclosed between \texttt{</} and \texttt{>}.
 
 \bigskip
 
@@ -191,7 +187,7 @@ which could be interpreted as\\
 
 \noindent\rule{\linewidth}{0.5pt}
 \textsf{
-\textbf{Axiom}: The empty set \(\varnothing\) contains no elements. 
+\textbf{Axiom}: The empty set \(\varnothing\) contains no elements.
 }\\
 
 \noindent\rule{\linewidth}{0.5pt}
@@ -232,7 +228,7 @@ we want to send a mail to several recipients we would write:
   <from>Me</from>
   <subject>Homeworks</subject>
   <to>You</to>
-  \textbf{<to>Me</to>} 
+  \textbf{<to>Me</to>}
   <body>
   A <definition>deadline</definition> is a due date for your
 <emphasis>homework</emphasis>.
@@ -245,8 +241,7 @@ we want to send a mail to several recipients we would write:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Repeated nodes (cont)}
+\begin{frame}{XML/Repeated nodes (cont)}
 
 The \XML tree associated to this \XML document is
 \begin{center}
@@ -284,8 +279,7 @@ as a whole, not a part of the contents per se:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Attributes (cont)}
+\begin{frame}{XML/Attributes (cont)}
 
 It is possible to represent that \XML document by the annotated tree
 \begin{center}
@@ -320,8 +314,7 @@ including empty elements.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Attributes (cont)}
+\begin{frame}{XML/Attributes (cont)}
 
 Attributes are considered to be a special kind of node, although they
 are not often represented as such for room's sake.
@@ -348,12 +341,12 @@ The declaration can hold several attributes, besides
 \end{verbatim}
 The encoding is the \textbf{character encoding} of the \XML document,
 which is particularly useful when using \Unicode or some Asian
-fonts. 
+fonts.
 
 \bigskip
 
 Note that the attributes must be in lowercase, the \emph{value} of the
-attributes can be enclosed in single or double quotes. 
+attributes can be enclosed in single or double quotes.
 
 \bigskip
 
@@ -369,14 +362,14 @@ standardized values are valid.
 
 All programming languages offer strings of characters to the
 programmer to use. For instance, in \Clang, the strings are enclosed
-between double quotes: \verb|"abc"|. 
+between double quotes: \verb|"abc"|.
 
 \bigskip
 
 Thus, if the string contains double-quotes, we must take care of
 \textbf{escaping} them, so the compiler (more precisely: the parser)
 can distinguish the double-quotes in the contents from the enclosing
-double-quotes. 
+double-quotes.
 
 \bigskip
 
@@ -412,7 +405,7 @@ start of a tag:
 \begin{semiverbatim}
 <problem>For all integer n, we have n \textbf{<} n + 1.</problem>
 \end{semiverbatim}
-} 
+}
 The \XML way to escape this character is to use instead the special
 sequence of characters \verb|&lt;| so the previous, corrected, element
 becomes
@@ -433,10 +426,10 @@ The sequence \verb|&lt;| is called a \textbf{predefined named entity}.
 
 \bigskip
 
-Such entities always 
+Such entities always
 \begin{enumerate}
- 
-  \item start with an ampersand (\verb|&|), 
+
+  \item start with an ampersand (\verb|&|),
 
   \item continue with a predefined name (here, \texttt{lt}),
 
@@ -459,7 +452,7 @@ So one must always use \verb|&amp;| instead.
 
 There are some other characters which can \emph{sometimes} cause a
 problem to \XML parsers (as opposed to always create a problem, as
-\verb|<| and \verb|&| do). 
+\verb|<| and \verb|&| do).
 
 \bigskip
 
@@ -483,8 +476,7 @@ Character & Entity & Mandatory\\
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Predefined named entities (cont)}
+\begin{frame}{XML/Predefined named entities (cont)}
 
 Consider
 \footXMLin{entities.xml}
@@ -498,7 +490,7 @@ Consider
 
 The two last entities are \textbf{predefined numbered entities} because
 they denote characters by using their \Unicode code (which ranges from
-\(0\) to \(65,536\)). 
+\(0\) to \(65,536\)).
 
 \bigskip
 
@@ -569,7 +561,7 @@ A document type declaration is made, from left to right, of
   \item the root element name,
 
   \item the character \verb|[|,
-  
+
   \item the named character entity declarations,
 
   \item the closing tag \verb|]>|
@@ -604,8 +596,7 @@ For example:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/User-defined internal entities and document type declarations (cont)}
+\begin{frame}{XML/User-defined internal entities and document type declarations (cont)}
 
 A complete example:
 \XMLin{espana.xml}
@@ -748,8 +739,7 @@ declared by
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Unparsed entities and notations (cont)}
+\begin{frame}{XML/Unparsed entities and notations (cont)}
 
 Had we used external entities, the included object had been copied in
 place of the reference and parsed as \XML{} ---~which it is
@@ -785,8 +775,7 @@ declarations as
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Unparsed entities and notations (cont)}
+\begin{frame}{XML/Unparsed entities and notations (cont)}
 
 Notice also that unparsed entities
 \begin{itemize}
@@ -822,8 +811,7 @@ This example is \textbf{not} well-formed.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/A summary of all kinds of entities}
+\begin{frame}{XML/A summary of all kinds of entities}
 
 \begin{center}
 \includegraphics[bb=71 627 276 721]{entities}
@@ -852,7 +840,7 @@ To avoid the need of escaping, there is a special construct:
   \item a closing tag \verb|]]>|.
 
 \end{enumerate}
-For example 
+For example
 \begin{semiverbatim}
 <para>A test in C:
   <c>\textbf{<!CDATA[}if (x < y) return &r;\textbf{]]>}</c>
@@ -863,8 +851,7 @@ For example
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Internal linking}
+\begin{frame}{XML/Internal linking}
 
 Consider a document representing a technical book, like a textbook. It
 is common to find cross-references in such kind of books, i.e.,
@@ -878,7 +865,7 @@ some attributes as references.
 
 \bigskip
 
-The problem is that the writer is then in charge of checking whether 
+The problem is that the writer is then in charge of checking whether
 \begin{itemize}
 
   \item a given label is unique in the whole document,
@@ -891,13 +878,12 @@ The problem is that the writer is then in charge of checking whether
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Internal linking (cont)}
+\begin{frame}{XML/Internal linking (cont)}
 \label{xml_intro:ATTLIST}
 
 \XML provides a way to ensure that any validating parser will check
 this kind of internal linking automatically: using \texttt{ID} and
-\texttt{IDREF}. 
+\texttt{IDREF}.
 
 \bigskip
 
@@ -907,7 +893,7 @@ the kind of all the (attribute) references.
 \bigskip
 
 The attributes used either as label or reference must be declared in
-the \texttt{DOCTYPE} section using \texttt{ATTLIST}. 
+the \texttt{DOCTYPE} section using \texttt{ATTLIST}.
 
 \end{frame}
 
@@ -963,8 +949,7 @@ For the references, use
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Internal linking (cont)}
+\begin{frame}{XML/Internal linking (cont)}
 \label{xml_intro:id_idref}
 
 For example,
@@ -1003,11 +988,10 @@ by the parsers and are nodes of the \XML tree.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Namespaces}
+\begin{frame}{XML/Namespaces}
 
 Each \XML document defines its own element tags, we can call its
-\emph{vocabulary}. 
+\emph{vocabulary}.
 
 \bigskip
 
@@ -1219,7 +1203,7 @@ It is possible to unbind or rebind a prefix namespace:
 \begin{verbatim}
 <?xml version="1.1"?>
 <x xmlns:n1="http://www.w3.org">
-  <n1:a/> <!-- valid; the prefix n1 is bound to 
+  <n1:a/> <!-- valid; the prefix n1 is bound to
                http://www.w3.org -->
     <x xmlns:n1="">
       <n1:a/> <!-- invalid; the prefix n1 is not bound here -->
@@ -1235,8 +1219,7 @@ It is possible to unbind or rebind a prefix namespace:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Namespaces/Unbinding the default namespace}
+\begin{frame}{XML/Namespaces/Unbinding the default namespace}
 
 \smallXMLin{beers.xml}
 
@@ -1244,8 +1227,7 @@ It is possible to unbind or rebind a prefix namespace:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Namespaces/More name scoping}
+\begin{frame}{XML/Namespaces/More name scoping}
 
 \smallXMLin{scoping.xml}
 
@@ -1257,10 +1239,10 @@ It is possible to unbind or rebind a prefix namespace:
 \frametitle{XML/Namespaces/Attributes}
 
 For example, each of the \texttt{bad} empty-element tags is invalid in
-the following: 
+the following:
 \begin{verbatim}
 <!-- http://www.w3.org is bound to n1 and n2 -->
-<x xmlns:n1="http://www.w3.org" 
+<x xmlns:n1="http://www.w3.org"
    xmlns:n2="http://www.w3.org" >
   <bad a="1"    a="2"/>     <!-- invalid -->
   <bad n1:a="1" n2:a="2"/>  <!-- invalid -->
@@ -1279,7 +1261,7 @@ However, each of the following is valid, the second because
 {\small
 \begin{verbatim}
 <!-- http://www.w3.org is bound to n1 and is the default -->
-<x xmlns:n1="http://www.w3.org" 
+<x xmlns:n1="http://www.w3.org"
    xmlns="http://www.w3.org" >
   <good a="1" b="2"/>    <!-- valid -->
   <good a="1" n1:a="2"/> <!-- valid -->
@@ -1291,8 +1273,7 @@ However, each of the following is valid, the second because
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Namespaces (cont)}
+\begin{frame}{XML/Namespaces (cont)}
 
 Namespaces will be very important when learning \XSLT.
 
@@ -1336,8 +1317,7 @@ attributes. For example:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Checking the well-formedness}
+\begin{frame}{XML/Checking the well-formedness}
 \label{well_formedness}
 
 All \XML processors must check whether the input document satisfy the
@@ -1365,11 +1345,10 @@ inserted in the master document).
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XML/Checking the well-formedness (cont)}
+\begin{frame}{XML/Checking the well-formedness (cont)}
 
 There are several \XML parsers available for free on the internet,
-implemented in several languages. 
+implemented in several languages.
 
 \bigskip
 

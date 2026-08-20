@@ -1,7 +1,6 @@
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT}
+\begin{frame}{XSLT}
 
 Given one or several \XML documents, it may be useful
 \begin{itemize}
@@ -17,7 +16,7 @@ so one needs \XSLT (\textbf{eXtensible Stylesheet Language
 
 \bigskip
 
-An \XSLT processor 
+An \XSLT processor
 \begin{itemize}
 
   \item reads an \XML document,
@@ -84,8 +83,7 @@ makes it \XSLT).
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Empty transformation}
+\begin{frame}{XSLT/Empty transformation}
 \label{empty.xsl}
 
 For reason explained later, \XSLT documents require the usage of a
@@ -102,8 +100,7 @@ version of \XSLT is declared to be \texttt{2.0}.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Empty transformation (cont)}
+\begin{frame}{XSLT/Empty transformation (cont)}
 \label{cookbook.xml}
 
 Assume the following \XML document to be transformed:
@@ -113,8 +110,7 @@ Assume the following \XML document to be transformed:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Empty transformation (cont)}
+\begin{frame}{XSLT/Empty transformation (cont)}
 
 The result of applying the empty transformation
 page~\pageref{empty.xsl} to this document yields
@@ -152,8 +148,7 @@ The attributes are not copied by default.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Matching}
+\begin{frame}{XSLT/Matching}
 
 More precisely, the concepts underlying \XSLT transformations are
 \begin{itemize}
@@ -183,8 +178,7 @@ contents are printed (this is the default behaviour).
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Matching (cont)}
+\begin{frame}{XSLT/Matching (cont)}
 
 Consider the following \XSLT transformation
 \smallXSLTin{chapte.xsl}
@@ -199,8 +193,7 @@ The content of the template is output only if a \texttt{chapte}
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Matching (cont)}
+\begin{frame}{XSLT/Matching (cont)}
 
 The result of applying the previous transformation to the document
 page~\pageref{cookbook.xml} is \saxonCut{tmp.xml}{cookbook}{chapte}
@@ -211,8 +204,7 @@ because the template matched no node in the input tree, but
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Matching (cont)}
+\begin{frame}{XSLT/Matching (cont)}
 \label{chapters.xsl}
 
 Let us try to match also the root element and try the next
@@ -247,7 +239,7 @@ one must tell so the processor by using the special empty element
 \begin{verbatim}
 <xsl:apply-templates/>
 \end{verbatim}
-} 
+}
 The meaning of all the \XSLT elements is implicitly relative to the
 last matched element, called the \textbf{context node}.
 
@@ -255,8 +247,7 @@ last matched element, called the \textbf{context node}.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Applying several templates (cont)}
+\begin{frame}{XSLT/Applying several templates (cont)}
 
 The following transformation
 \smallXSLTin{cookbook.xsl}
@@ -268,8 +259,7 @@ child elements, i.e., \texttt{chapter} elements.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Applying several templates (cont)}
+\begin{frame}{XSLT/Applying several templates (cont)}
 
 Since there is no template matching \texttt{chapter} elements, their
 child text nodes will be printed.
@@ -340,8 +330,7 @@ attribute is called a \textbf{disjunctive pattern}.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Selecting children to be matched}
+\begin{frame}{XSLT/Selecting children to be matched}
 
 The second solution consists in specifying that only some child
 elements of a given context node should be matched against the
@@ -351,7 +340,7 @@ available templates.
 
 This \textbf{selection} of the required children is done by means of
 the \texttt{select} attribute of the \texttt{apply-templates}
-element. 
+element.
 
 \bigskip
 
@@ -368,8 +357,7 @@ order.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Selecting children to be matched (cont)}
+\begin{frame}{XSLT/Selecting children to be matched (cont)}
 
 Consider the following \XSLT transformation
 \smallXSLTin{select_chapter.xsl}
@@ -378,8 +366,7 @@ Consider the following \XSLT transformation
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Selecting children to be matched (cont)}
+\begin{frame}{XSLT/Selecting children to be matched (cont)}
 
 The result is now
 \saxonCut{tmp.xml}{cookbook}{select_chapter}
@@ -489,11 +476,10 @@ have to be bent.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/From \XML to \XHTML}
+\begin{frame}{XSLT/From \XML to \XHTML}
 
 One application of \XML, server-side, is to generate \XHTML or,
-in general, \HTML. 
+in general, \HTML.
 
 \bigskip
 
@@ -515,12 +501,11 @@ any presentation style (\HTML specifies both contents and style).
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/From \XML to \XHTML (cont)}
+\begin{frame}{XSLT/From \XML to \XHTML (cont)}
 
 The first step when designing an \XSLT stylesheet (i.e.,
 transformation or transform) to produce \XHTML is to write an instance
-of expected output. 
+of expected output.
 
 \bigskip
 
@@ -556,8 +541,7 @@ First, the start of the \XSLT stylesheet must be
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/From \XML to \XHTML{}/Example}
+\begin{frame}{XSLT/From \XML to \XHTML{}/Example}
 
 Let us try to transform the \XML page~\pageref{cookbook.xml} into some
 \XHTML displayed as
@@ -598,7 +582,7 @@ First, we must decide that the \XHTML should look as follows.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en" lang="en">
    <head>
-      <meta http-equiv="Content-Type" 
+      <meta http-equiv="Content-Type"
             content="text/html; charset=UTF-8"/>
       <title>XSLT Cookbook</title>
    </head>
@@ -634,8 +618,7 @@ First, we must decide that the \XHTML should look as follows.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/From \XML to \XHTML{}/Example (cont)}
+\begin{frame}{XSLT/From \XML to \XHTML{}/Example (cont)}
 
 Therefore, it becomes clear that the infrastructure of the \XHTML,
 made of the \XML processing instruction, \XHTML elements
@@ -654,8 +637,7 @@ The last part being the ordered list of chapters.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/From \XML to \XHTML{}/Example (cont)}
+\begin{frame}{XSLT/From \XML to \XHTML{}/Example (cont)}
 
 From this analysis, we deduce the following structure for the \XSLT
 stylesheet.
@@ -706,8 +688,7 @@ stylesheet.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/From \XML to \XHTML{}/Example (cont)}
+\begin{frame}{XSLT/From \XML to \XHTML{}/Example (cont)}
 
 Notice the \texttt{select} values ``\texttt{title/text()}'' and
 ``\texttt{author/text()}.''
@@ -783,8 +764,7 @@ the embedding \texttt{html} element.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/From \XML to \XHTML{}/Example (cont)}
+\begin{frame}{XSLT/From \XML to \XHTML{}/Example (cont)}
 
 The last step consists in checking the conformity to \XHTML by means
 of the W3C validator available at
@@ -796,8 +776,7 @@ of the W3C validator available at
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Variables}
+\begin{frame}{XSLT/Variables}
 
 Sometimes it is handy to define \textbf{variables} to hold some
 intermediary result. Consider \smallXSLTin{var.xsl}
@@ -810,7 +789,7 @@ intermediary result. Consider \smallXSLTin{var.xsl}
 \frametitle{XSLT/Variables (cont)}
 
 The \texttt{match} expression \verb|"/"| means: "the document
-root". 
+root".
 \begin{center}
 \textbf{The document root is not the root element}.
 \end{center}
@@ -852,7 +831,7 @@ the contents of another variable by prefixing its name with the symbol
 
 \bigskip
 
-\textbf{Important: Variables in \XSLT are immutable}. 
+\textbf{Important: Variables in \XSLT are immutable}.
 
 \bigskip
 
@@ -863,11 +842,10 @@ is no assignment on variables, like \verb|a = a + 1;| in \Clang.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Conditionals}
+\begin{frame}{XSLT/Conditionals}
 
 It is possible to choose a sequence of nodes rather than another one,
-based on a given criterion. 
+based on a given criterion.
 
 \bigskip
 
@@ -958,8 +936,7 @@ the last.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Conditionals (cont)}
+\begin{frame}{XSLT/Conditionals (cont)}
 
 Imagine now that we want
 \begin{center}\tt
@@ -998,8 +975,7 @@ The solution is now:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Template parameters}
+\begin{frame}{XSLT/Template parameters}
 
 Sometimes it is useful that templates be provided parameters.
 
@@ -1049,8 +1025,7 @@ An excerpt of the input:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Template parameters (cont)}
+\begin{frame}{XSLT/Template parameters (cont)}
 
 The corresponding expected result:
 \begin{itemize}
@@ -1105,8 +1080,7 @@ children:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Template parameters (cont)}
+\begin{frame}{XSLT/Template parameters (cont)}
 
 Note the new \XSLT element \texttt{param} and its attribute
 \texttt{name}. It defines a parameter to the template.
@@ -1123,7 +1097,7 @@ Note that the element \texttt{apply-templates} is not empty
 anymore: it contains a new \XSLT element named
 \texttt{with-param}, which carries attributes
 \texttt{name} and \texttt{select}. This defines an argument, i.e., a
-sequence of nodes or basic types passed to the children. 
+sequence of nodes or basic types passed to the children.
 
 \bigskip
 
@@ -1135,8 +1109,7 @@ element \texttt{param}).
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Selecting nodes}
+\begin{frame}{XSLT/Selecting nodes}
 \label{menu}
 
 \footXMLin{menu.xml}
@@ -1204,8 +1177,7 @@ selecting \verb|"@foo"| results either in one or no attribute.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Using wildcards}
+\begin{frame}{XSLT/Using wildcards}
 
 Wildcards can be used to select nodes whose names do not matter, e.g.,
 \smallXSLTin{03list16.xsl} gives the same result as the transform
@@ -1232,8 +1204,8 @@ are node tests and \verb|[3]| and \verb|[2]| are predicates.
 %
 \begin{frame}[containsverbatim]
 \frametitle{XSLT/\(n\)-th node}
- 
-Let us try to select the sixth dish in the document using 
+
+Let us try to select the sixth dish in the document using
 the transform \smallXSLTin{sixth_none.xsl}
 The output contains no dishes! Why? Because \texttt{value-of}
 select no element... Indeed, the location path \verb|*/dish[6]| does
@@ -1246,7 +1218,7 @@ first dish in the menu which is the sixth child of any parent.
 %
 \begin{frame}[containsverbatim]
 \frametitle{XSLT/\(n\)-th node (cont)}
- 
+
 In other words, the expression \verb|*/dish[6]| actually means
 \verb|*/(dish[6])|, i.e. the sixth element in all parent
 contexts which are children of the \texttt{menu} element, thus there
@@ -1258,8 +1230,7 @@ is no matched node. What we want is
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Inserting elements (cont)}
+\begin{frame}{XSLT/Inserting elements (cont)}
 \label{cars}
 
 Consider two documents with the same content but different structure:
@@ -1349,22 +1320,21 @@ attribute:
   ... <xsl:value-of select="."/> ...
 </xsl:template>
 \end{verbatim}
-} 
+}
 Selecting \verb|"."| is the only way to get the attribute value, in
 particular \verb|text()| does not work because attributes are
-different from elements. 
+different from elements.
 
 \bigskip
 
 For instance, the empty transformation does not print the attribute
 values because they are considered different from text nodes.
- 
+
 \end{frame}
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Inserting elements (cont)}
+\begin{frame}{XSLT/Inserting elements (cont)}
 
 Applying it to the first car list page~\pageref{cars} yields
 \saxonCut{tmp.xml}{cars1}{05list07} which is exactly the second car
@@ -1374,8 +1344,7 @@ list (same page).
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Inserting elements (cont)}
+\begin{frame}{XSLT/Inserting elements (cont)}
 
 The name of the inserted elements was until now written in the
 transform, but it is possible to insert elements whose names are made
@@ -1404,8 +1373,7 @@ page~\pageref{cars} yields \saxonCut{tmp.xml}{cars1}{dyn_elm}
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Inserting elements (cont)}
+\begin{frame}{XSLT/Inserting elements (cont)}
 
 In the transform page~\pageref{05list07.xsl} we had a template for
 each attribute (\texttt{model} and \texttt{manufacturer}).
@@ -1426,7 +1394,7 @@ context node when called as \texttt{name()}.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Inserting elements (cont)}
 
 Consider
@@ -1436,7 +1404,7 @@ Consider
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Inserting elements (cont)}
 
 Applying it to the first car list page~\pageref{cars} yields the
@@ -1446,19 +1414,19 @@ second car list: \saxonCut{tmp.xml}{cars1}{05list14}
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Inserting elements (cont)}
 
 We can even generalize the transform and make it work on any kind of
 document, by converting every attribute into an element of the same
-name. Consider 
+name. Consider
 \footXSLTin{05list15.xsl}
 
 \end{frame}
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Inserting elements (cont)}
 
 Apply it to the first car list page~\pageref{cars} yields the second
@@ -1468,7 +1436,7 @@ car list again: \saxonCut{tmp.xml}{cars1}{05list15}
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Inserting attributes}
 
 Inserting attributes is akin to inserting elements. Consider the
@@ -1508,10 +1476,10 @@ one can write
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Inserting attributes (cont)}
 
-Converting the second car list to the first one is thus achieved by 
+Converting the second car list to the first one is thus achieved by
 the transform
 \footXSLTin{05list19.xsl}
 
@@ -1545,7 +1513,7 @@ because of the two first templates.
 \frametitle{XSLT/Copying elements}
 
 Sometimes one wants to copy an element from the source document to the
-output. 
+output.
 
 \bigskip
 
@@ -1626,7 +1594,7 @@ which, when matching the same element, now produces
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Copying elements (cont)}
 
 There is a way to copy the node and the whole subtree below it by using
@@ -1639,7 +1607,7 @@ same document.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Copying elements (cont)}
 
 If the selection in the \texttt{copy-of} element is a node set,
@@ -1652,7 +1620,7 @@ will also entirely copy the car list to the output.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Copying elements (cont)}
 
 It is often useful to copy verbatim the source document \emph{except
@@ -1685,7 +1653,7 @@ not match/select attribute nodes.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Copying elements (cont)}
 
 The relationship between the different tests or types can be
@@ -1700,7 +1668,7 @@ node. The items are the most general data type in \XSLT.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Copying elements (cont)}
 
 Indeed, the previous transform is equivalent to the transform
@@ -1710,7 +1678,7 @@ Indeed, the previous transform is equivalent to the transform
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Copying elements (cont)}
 
 The way to extend our identity transform to include attributes is to
@@ -1754,7 +1722,7 @@ corresponding templates in the imported stylesheet:
 {\small
 \begin{verbatim}
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:transform version="2.0" 
+<xsl:transform version="2.0"
               xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:import href="identity.xsl"/>
   <xsl:output method="xml" indent="yes"/>
@@ -1771,7 +1739,7 @@ corresponding templates in the imported stylesheet:
 
 % ------------------------------------------------------------------------
 %
-\begin{frame} 
+\begin{frame}
 \frametitle{XSLT/Copying elements (cont)}
 
 There is an alternative identity transform, using \texttt{copy-of} for
@@ -1809,7 +1777,7 @@ a sequence? She needs a function!
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}[containsverbatim] 
+\begin{frame}[containsverbatim]
 \frametitle{XSLT/Functions/Namespace}
 
 The first thing to do, when defining or using functions is to declare
@@ -1852,10 +1820,10 @@ need to declare a parameter. This is the purpose of the \XSLT element
 </xsl:function>
 \end{verbatim}
 }
-As usual in other programming languages, the parameter must be named. 
+As usual in other programming languages, the parameter must be named.
 
 If a function requires more parameters, other \texttt{param} elements
-are added. 
+are added.
 
 \textbf{The order is significant.}
 
@@ -1900,7 +1868,7 @@ first sequence to the second sequence.'' This operation is called
 
 Here \verb|my:names($nodes[position()>1])| is a sequence of names,
 possibly empty. If empty, it disappear from the concatenation, e.g.,
-\verb|(1,(),2) eq (1,2)|. 
+\verb|(1,(),2) eq (1,2)|.
 
 \bigskip
 
@@ -1918,9 +1886,8 @@ the same as \verb|(1,2,3,4,5,6,7,8,9,10)|. The built-in function
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Named templates}
- 
+\begin{frame}{XSLT/Named templates}
+
 It is possible to call a template by name instead of it being applied
 when matching an element.
 Consider the transform
@@ -1930,9 +1897,8 @@ Consider the transform
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Named templates (cont)}
-  
+\begin{frame}{XSLT/Named templates (cont)}
+
 Named template and matching templates never interfere with each
 other. For example, the name can be the same as an element name, as
 in
@@ -1942,9 +1908,8 @@ in
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Modes}
- 
+\begin{frame}{XSLT/Modes}
+
 It is sometimes useful to traverse the same document several times and
 match the same elements in a different way each time. This can be done
 using templates with modes.
@@ -1977,7 +1942,7 @@ attribute value.
       <xsl:apply-templates mode="info"/>
   </xsl:template>
 \end{verbatim}
-} 
+}
 
 \end{frame}
 
@@ -2005,9 +1970,8 @@ attribute value.
 
 % ------------------------------------------------------------------------
 %
-\begin{frame}
-\frametitle{XSLT/Modes (cont)}
- 
+\begin{frame}{XSLT/Modes (cont)}
+
 The result of applying it to the first car list page~\pageref{cars} is
 \saxonCut{tmp.xml}{cars1}{modes} Notice the two different runs on the
 input, distinguished by two different outputs in sequence.

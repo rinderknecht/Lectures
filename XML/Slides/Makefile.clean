@@ -1,2 +1,2 @@
 clean::
-	@rm -f ${DOC}.nav ${DOC}.out ${DOC}.snm tmp.xml tmp.xsl tmp.html ${DOC}.out
+> @rm -f ${DOC}.nav ${DOC}.out ${DOC}.snm tmp.xml tmp.xsl tmp.html ${DOC}.out
