@@ -2,28 +2,21 @@
 
 \documentclass[a4paper,11pt]{article}
 
-\usepackage[francais]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
-\usepackage{ae,aecompl}
+\usepackage[french]{babel}
 \usepackage{xspace}
 
 \usepackage{mathpartir}
 \usepackage{amssymb}
 \usepackage{amsmath}
 
-\usepackage[noweb]{ocamlweb}
-%\pagestyle{ocamlweb}
-
 \input{commands}
 \input{ocaml_syntax}
-\input{ocw-redef}
-\input{trace}
 
 \newcommand{\ibullet}{\item[$\bullet$]}
 \newcommand{\inferlabel}[1]{\inferrule*[right=\textsc{#1}]}
 
-\title{Correction du TP 2 d'Interprétation et compilation}
+\title{Correction du TP 2 d'InterprÃ©tation et compilation}
 \author{Christian Rinderknecht}
 \date{7 et 8 octobre 2003}
 
@@ -35,14 +28,14 @@
 
 \input{tp2-questions}
 
-\section{Réponses}
+\section{RÃ©ponses}
 
-  \subsection{Spécification de l'ordre d'évaluation}
+  \subsection{SpÃ©cification de l'ordre d'Ã©valuation}
 
-  Nous répondons ici à la question~\ref{q1}.
+  Nous rÃ©pondons ici Ã  la question~\ref{q1}.
 
-  Une façon de spécifier que le dénominateur est évalué avant le
-  numérateur est:
+  Une faÃ§on de spÃ©cifier que le dÃ©nominateur est Ã©valuÃ© avant le
+  numÃ©rateur est:
   \begin{mathpar}
   \inferrule*[right=\textsc{div}]
   {\eval{\rho}{e_2}{v_2}\\
@@ -51,11 +44,11 @@
   {\eval{\rho}{\cst{BinOp} \, (\cst{Div},e_1,e_2)}{v_1 / v_2}}
   \end{mathpar}
 
-  L'implantation directe de cette sémantique est maladroite, car il
+  L'implantation directe de cette sÃ©mantique est maladroite, car il
   faut produire une variable absente des variables libres de $e_1$, et
   il faut alourdir l'environnement. En pratique, il suffit de changer
-  dans l'évaluateur le \kwd{let ... and ...} en \kwd{let ... in let
-  ...}, comme le montre 
+  dans l'Ã©valuateur le \kwd{let ... and ...} en \kwd{let ... in let
+  ...}, comme le montre
 \begin{tabbing}
 \kwd{let} \= \kwd{rec} \ident{eval} \ident{env} \ident{e} \equal \kwd{match}
 \ident{e} \kwd{with} \texttt{...} \\
@@ -67,18 +60,18 @@
 \texttt{| ...}
 \end{tabbing}
 
-\input{gen-doc}
+%\input{gen-doc}
 
-  \subsection{Évaluation des applications}
+  \subsection{Ã‰valuation des applications}
 
-  \noindent Nous commençons par répondre ici à la question~\ref{q4}.
+  \noindent Nous commenÃ§ons par rÃ©pondre ici Ã  la question~\ref{q4}.
 
   \medskip
 
-  \noindent Par définition $e = \cst{App} \, (\cst{Const} \,
-  \num{1}, \cst{Const} \, \num{2})$, donc la seule règle
-  d'inférence (définissant la relation d'évaluation) dont la
-  conclusion à la forme de $e$ est 
+  \noindent Par dÃ©finition $e = \cst{App} \, (\cst{Const} \,
+  \num{1}, \cst{Const} \, \num{2})$, donc la seule rÃ¨gle
+  d'infÃ©rence (dÃ©finissant la relation d'Ã©valuation) dont la
+  conclusion Ã  la forme de $e$ est
   \begin{mathpar}
     \inferrule*[right=\textsc{app}]
       {\eval{\rho}{e_1}{\clos{x}{e_0}{\rho_0}}\\
@@ -88,44 +81,44 @@
       {\eval{\rho}{\cst{App} \, (e_1,e_2)}{v}}
   \end{mathpar}
 
-  \noindent Il faudrait donc que $\cst{Const} \, \num{1}$ s'évalue
-  en une fermeture (première prémisse). Or la seule règle qui
-  permette l'évaluation de $\cst{Const} \, \num{1}$ est
+  \noindent Il faudrait donc que $\cst{Const} \, \num{1}$ s'Ã©value
+  en une fermeture (premiÃ¨re prÃ©misse). Or la seule rÃ¨gle qui
+  permette l'Ã©valuation de $\cst{Const} \, \num{1}$ est
   \begin{mathpar}
     \inferrule
       {\eval{\rho}{\cst{Const} \,\, n}{\cst{Int} \, (n)}}
       {}\;\TirName{\quad \textsc{const}}
   \end{mathpar}
 
-  \noindent Donc la règle \textsc{app} ne peut finalement s'appliquer,
-  c'est-à-dire qu'il n'exis\-te aucun $\rho$ et $v$ tels que
+  \noindent Donc la rÃ¨gle \textsc{app} ne peut finalement s'appliquer,
+  c'est-Ã -dire qu'il n'exis\-te aucun $\rho$ et $v$ tels que
   $\eval{\rho}{e}{v}$ \emph{car il n'existe pas d'arbre
   de preuve avec cette conclusion}.
 
-  D'autre part, nous avons vu dans le cours que l'évaluation du
+  D'autre part, nous avons vu dans le cours que l'Ã©valuation du
   programme
 
   \centerline{\lpar\kwd{fun} \ident{f} $\rightarrow$ \ident{f} \ident{f}\rpar{}
   \lpar\kwd{fun} \ident{f} $\rightarrow$ \ident{f} \ident{f}\rpar}
 
-  \noindent ne terminait pas \emph{car l'arbre de preuve n'était pas
+  \noindent ne terminait pas \emph{car l'arbre de preuve n'Ã©tait pas
   fini}.
- 
+
   En conclusion, le programme \num{1} \num{2} est essentiellement un
-  terme mal formé, alors que \lpar\kwd{fun} \ident{f} $\rightarrow$
+  terme mal formÃ©, alors que \lpar\kwd{fun} \ident{f} $\rightarrow$
   \ident{f} \ident{f}\rpar{} \lpar\kwd{fun} \ident{f} $\rightarrow$ \ident{f}
-  \ident{f}\rpar{} est bien formé mais son évaluation ne termine pas.
+  \ident{f}\rpar{} est bien formÃ© mais son Ã©valuation ne termine pas.
 
 
   \subsection{La liaison locale}
 
-  \noindent Cette section répond à la question~\ref{q5}.
+  \noindent Cette section rÃ©pond Ã  la question~\ref{q5}.
 
-  \noindent Considérons les instances de règles dont les conclusions
+  \noindent ConsidÃ©rons les instances de rÃ¨gles dont les conclusions
   correspondent respectivement aux expressions \kwd{let} \ident{x}
   \equal{} \ident{e}$_1$ \kwd{in} \ident{e}$_2$ et \lpar\kwd{fun} \ident{x}
-  $\rightarrow$ \ident{e}$_2$\rpar{} \ident{e}$_1$. Pour la première, il n'y
-  a qu'à prendre littéralement la règle \textsc{let-in}:
+  $\rightarrow$ \ident{e}$_2$\rpar{} \ident{e}$_1$. Pour la premiÃ¨re, il n'y
+  a qu'Ã  prendre littÃ©ralement la rÃ¨gle \textsc{let-in}:
   \begin{mathpar}
     \inferrule*[right=\textsc{let-in}]
       {\eval{\rho}{e_1}{v_1}\\
@@ -133,7 +126,7 @@
       {\eval{\rho}{\cst{LetIn} \, (x,e_1,e_2)}{v_2}}
   \end{mathpar}
 
-  \noindent et à y substituer $v$ à $v_2$ (en prévision de la suite):
+  \noindent et Ã  y substituer $v$ Ã  $v_2$ (en prÃ©vision de la suite):
   \begin{mathpar}
     \inferrule*[right=\textsc{let-in}]
       {\eval{\rho}{e_1}{v_1}\\
@@ -141,7 +134,7 @@
       {\eval{\rho}{\cst{LetIn} \, (x,e_1,e_2)}{v}}
   \end{mathpar}
 
-  \noindent Pour la seconde expression, il faut prendre la règle 
+  \noindent Pour la seconde expression, il faut prendre la rÃ¨gle
   \begin{mathpar}
     \inferrule*[right=\textsc{app}]
       {\eval{\rho}{e_1}{\clos{x}{e_0}{\rho_0}}\\
@@ -151,8 +144,8 @@
      {\eval{\rho}{\cst{App} \, (e_1,e_2)}{v}}
   \end{mathpar}
 
-  \noindent et y substituer $\cst{Fun} (x,e_2)$ à $e_1$, $e_1$ à
-  $e_2$ et $v_1$ à $v_2$:
+  \noindent et y substituer $\cst{Fun} (x,e_2)$ Ã  $e_1$, $e_1$ Ã 
+  $e_2$ et $v_1$ Ã  $v_2$:
   \begin{mathpar}
     \inferrule*[right=\textsc{app}]
       {\eval{\rho}{\cst{Fun} (x,e_2)}{\clos{x}{e_2}{\rho}}\\
@@ -164,7 +157,7 @@
 
   \noindent Puisque $\eval{\rho}{\cst{Fun}
   (x,e_2)}{\clos{x}{e_2}{\rho}}$ est un axiome, on voit que les deux
-  (instances de) règles sont équivalentes. En particulier, la liaison
+  (instances de) rÃ¨gles sont Ã©quivalentes. En particulier, la liaison
   locale peut toujours se traduire en termes d'abstrac\-tions et
   d'applications; ce n'est pas une construction fondamentale.
 
