@@ -2,24 +2,22 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\input{trace}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage{verbatim}
+\usepackage{url,xspace}
 
-\input{title}
+\title{Final examination on XSLT}
 \author{Christian Rinderknecht}
 \date{11 December 2007}
 
-% Packages
-%
-\usepackage{verbatim}
-\usepackage{url,xspace}
+\newcommand\XML{\textsf{XML}\xspace}
+\newcommand\XSLT{\textsf{XSLT}\xspace}
 
 % xmllint & Saxon
 %
 \input{xmllint}
 \input{saxon}
-
-\newcommand\XML{\textsf{XML}\xspace}
-\newcommand\XSLT{\textsf{XSLT}\xspace}
 
 \begin{document}
 
@@ -29,10 +27,14 @@
 
 \section{Merging two sorted lists}
 
-Given the following \XML document \smallXMLin{ordered_lists.xml}
-containing two lists sorted in increasing order of some attribute, as
+Given the following \XML document
+
 \smallXMLin{ordered_lists.xml}
-\noindent output an \XML where the lists are merged in increasing order:
+
+\noindent containing two lists sorted in increasing order of some
+attribute, output an \XML where the lists are merged in increasing
+order:
+
 \saxon{tmp.xml}{ordered_lists}{merge1}
 
 \end{document}
