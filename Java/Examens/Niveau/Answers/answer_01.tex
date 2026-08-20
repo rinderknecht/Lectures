@@ -1,9 +1,9 @@
-\paragraph{Réponses.}
+\paragraph{RÃ©ponses.}
 
 \begin{enumerate}
 
-  \item Soit \(\T (n,p)\) le nombre cherché. On a, en suivant la
-    syntaxe de la définition de \texttt{binome}:
+  \item Soit \(\T (n,p)\) le nombre cherchÃ©. On a, en suivant la
+    syntaxe de la dÃ©finition de \texttt{binome}:
     \[\left\{
     \begin{array}{l}
       \T (n,0) = \T (n,n) = 1\\
@@ -18,19 +18,19 @@
       \T' (n,p) = \T' (n-1,p) + \T' (n-1,p-1) \ \textrm{si} \
       0 < p < n
     \end{array}
-    \right.\] 
-    Il en résulte par récurrence que \(\T'(n,p)=2 C_{n}^{p}\), et donc
+    \right.\]
+    Il en rÃ©sulte par rÃ©currence que \(\T'(n,p)=2 C_{n}^{p}\), et donc
     \(\T(n,p)=2 C_{n}^{p} - 1\). Ainsi, la fonction \texttt{binome}
-    effectue environ deux fois plus de calculs que le résultat qu'elle
+    effectue environ deux fois plus de calculs que le rÃ©sultat qu'elle
     fournit!
 
-  \item Oui, il faut trouver une moyen de mémoriser les calculs
-    antérieurs, un vecteur par exemple, ou alors une autre formule de
-    récurrence telle que:
+  \item Oui, il faut trouver une moyen de mÃ©moriser les calculs
+    antÃ©rieurs, un vecteur par exemple, ou alors une autre formule de
+    rÃ©currence telle que:
     \[C_{n}^{p} = \frac{n!}{p! (n-p)!} = \frac{n}{p} C_{n-1}^{p-1}\]
-    Notez que cette dernière peut provoquer un débordement de capacité
-    lorsque \(n C_{n-1}^{p-1}\) est supérieur au plus grand entier
-    représentable en machine. De plus, l'expression \texttt{ n *
+    Notez que cette derniÃ¨re peut provoquer un dÃ©bordement de capacitÃ©
+    lorsque \(n C_{n-1}^{p-1}\) est supÃ©rieur au plus grand entier
+    reprÃ©sentable en machine. De plus, l'expression \texttt{ n *
       (binome(n-1,p-1) / p)} est incorrecte car il est possible que
     \(C_{n-1}^{p-1}\) ne soit pas divisible par \(p\).
 

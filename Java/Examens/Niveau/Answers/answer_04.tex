@@ -1,60 +1,60 @@
-\paragraph{Réponses.}
+\paragraph{RÃ©ponses.}
 
 \begin{enumerate}
 
-  \item Un arbre binaire est un ensemble fini, éventuellement vide, de
-    n{\oe}uds liés par une relation de parenté orientée:
+  \item Un arbre binaire est un ensemble fini, Ã©ventuellement vide, de
+    n{\oe}uds liÃ©s par une relation de parentÃ© orientÃ©e:
     \[
     \left\{
       \begin{array}{l}
         x \, {\cal F}_d \, y \Longleftrightarrow x \, \textnormal{est
           le fils droit de} \, y \Longrightarrow y \, \textnormal{est le
-          père de} \, x \\
+          pÃ¨re de} \, x \\
         x' \, {\cal F}_g \, y \Longleftrightarrow x' \,
         \textnormal{est le fils gauche de} \, y \Longrightarrow y \,
-        \textnormal{est le père de} \, x'
+        \textnormal{est le pÃ¨re de} \, x'
       \end{array}
       \right.
     \]
-    avec les propriétés:
+    avec les propriÃ©tÃ©s:
     \begin{itemize}
 
-     \item si l'arbre est non vide alors il existe un unique élément
-       n'ayant pas de père, appelé \emph{racine} de l'arbre;
+     \item si l'arbre est non vide alors il existe un unique Ã©lÃ©ment
+       n'ayant pas de pÃ¨re, appelÃ© \emph{racine} de l'arbre;
 
-     \item tout élément à part la racine a un et un seul père;
+     \item tout Ã©lÃ©ment Ã  part la racine a un et un seul pÃ¨re;
 
-     \item tout élément a au plus un fils droit et au plus un fils
+     \item tout Ã©lÃ©ment a au plus un fils droit et au plus un fils
        gauche;
- 
-     \item tout élément est un descendant de la racine.
+
+     \item tout Ã©lÃ©ment est un descendant de la racine.
 
    \end{itemize}
 
-  \item 
+  \item
     \begin{itemize}
 
       \item Le parcours en profondeur d'abord: partant de la racine,
-        on explore d'abord complètement les sous-arbres;
+        on explore d'abord complÃ¨tement les sous-arbres;
 
       \item le parcours en largeur d'abord: partant de la racine, on
         explore tous les fils avant de passer au niveau suivant.
 
     \end{itemize}
 
-  \item Un parcours préfixe passe par le père puis les sous-arbres des
+  \item Un parcours prÃ©fixe passe par le pÃ¨re puis les sous-arbres des
     fils. Un parcours postfixe explore les sous-arbres des fils, puis
-    le père. Un parcours infixe passe par un sous-arbre, puis le père,
-    puis l'autre sous-arbre (l'arbre doit être binaire).
+    le pÃ¨re. Un parcours infixe passe par un sous-arbre, puis le pÃ¨re,
+    puis l'autre sous-arbre (l'arbre doit Ãªtre binaire).
 
-  \item 
+  \item
     \begin{enumerate}
 
-      \item Un arbre binaire réduit à la racine possède deux
-        sous-arbres vides. Supposons la propriété vraie au rang
-        \(n\). L'ajout d'un n{\oe}ud revient à remplacer un sous-arbre
+      \item Un arbre binaire rÃ©duit Ã  la racine possÃ¨de deux
+        sous-arbres vides. Supposons la propriÃ©tÃ© vraie au rang
+        \(n\). L'ajout d'un n{\oe}ud revient Ã  remplacer un sous-arbre
         vide par un sous-arbre non vide, et donc d'ajouter deux
-        sous-arbres vides. Au total on a donc ajouté un sous-arbre
+        sous-arbres vides. Au total on a donc ajoutÃ© un sous-arbre
         vide en ajoutant un n{\oe}ud.
 
       \item Soit \(p\) le nombre de n{\oe}uds ayant un seul fils et
@@ -62,20 +62,20 @@
         1\) (le nombre de sous-arbres vides), donc \(q = (n-1-p)/2\).
 
       \item La hauteur maximale d'un arbre de taille \(n\) est au plus
-        \(n-1\) (cas de l'arbre dégénéré en liste\footnote{On parle
+        \(n-1\) (cas de l'arbre dÃ©gÃ©nÃ©rÃ© en liste\footnote{On parle
           alors de \emph{peigne}}). Un arbre binaire non vide de
         hauteur \(h\) a au plus \(1 + \ldots + 2^{h} = 2^{h+1} - 1\)
         n{\oe}uds. Soit \(a\) un arbre binaire de taille \(n\) et
         \(h=\lfloor\log_2{n}\rfloor\): tout arbre binaire non vide de
-        hauteur inférieure ou égale à \(h-1\) a donc au plus \(2^{h} -
-        1 < n\) n{\oe}uds. La hauteur de \(a\) est au moins égale à
+        hauteur infÃ©rieure ou Ã©gale Ã  \(h-1\) a donc au plus \(2^{h} -
+        1 < n\) n{\oe}uds. La hauteur de \(a\) est au moins Ã©gale Ã 
         \(h\).
 
     \end{enumerate}
 
-    \item Un arbre binaire est dit \emph{équilibré en hauteur} s'il
+    \item Un arbre binaire est dit \emph{Ã©quilibrÃ© en hauteur} s'il
       est vide ou si pour tout n{\oe}ud, les sous-arbres gauches et
-      droits ont même hauteur à une unité près.
+      droits ont mÃªme hauteur Ã  une unitÃ© prÃ¨s.
 
 
 \end{enumerate}
