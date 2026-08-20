@@ -6,13 +6,13 @@ open Ast
 type variable = string
 
 type type_expr =
-  TEint 
+  TEint
 | TEfun of type_expr * type_expr
 | TEvar of variable
 | TEunit
 
 
-(* Associer de nouvelles variables de type à chaque variable et à
+(* Associer de nouvelles variables de type Ã  chaque variable et Ã 
    chaque sous-expression d'une expression *)
 
 type typed_var =
@@ -20,7 +20,7 @@ type typed_var =
 
 (* La syntaxe abstraite des expressions est *)
 
-type typed_expr = 
+type typed_expr =
   { desc: typed_expr_desc; type_expr: type_expr }
 
 and typed_expr_desc =
@@ -36,7 +36,7 @@ and typed_expr_desc =
 | TAssign of typed_var * typed_expr
 | TU
 
-(* Production d'une variable de type fraîche *)
+(* Production d'une variable de type fraÃ®che *)
 
 let fresh_type_var =
   let cnt = ref 0
@@ -48,7 +48,7 @@ type typing_env = type_binding list
 let rec annotate (env: typing_env) expr =
   let desc =
     match expr with
-      Const n -> 
+      Const n ->
         TConst n
     | BinOp (op, e1, e2) ->
         TBinOp (op, annotate env e1, annotate env e2)
@@ -80,22 +80,22 @@ let rec annotate (env: typing_env) expr =
 in {desc = desc; type_expr = fresh_type_var()}
 
 let rec string_of_type = function
-  TEint -> 
+  TEint ->
     "int"
-| TEfun (tau1, tau2) -> 
+| TEfun (tau1, tau2) ->
     "(" ^ string_of_type tau1 ^ " -> " ^ string_of_type tau2 ^ ")"
 | TEvar alpha ->
     alpha
-| TEunit -> 
+| TEunit ->
     "unit"
 
 let rec string_of_typed_expr a =
-  let desc = 
+  let desc =
     match a.desc with
       TConst n ->
       string_of_int n ^ ":int"
     | TBinOp (op, a1, a2) ->
-        string_of_typed_expr a1 ^ 
+        string_of_typed_expr a1 ^
         begin match op with
           Add -> "+" | Sub -> "-" | Mult -> "*" | Div -> "/"
         end ^
@@ -103,15 +103,15 @@ let rec string_of_typed_expr a =
     | TVar x ->
         x.var ^ ":" ^ string_of_type(x.type_var)
     | TLet (x, a1, a2) ->
-        "let " ^ x.var ^ ":" ^ string_of_type x.type_var ^ " = " ^ 
+        "let " ^ x.var ^ ":" ^ string_of_type x.type_var ^ " = " ^
         string_of_typed_expr a1 ^ " in " ^
         string_of_typed_expr a2
     | TLetRec (x, a1, a2) ->
-        "let rec " ^ x.var ^ ":" ^ string_of_type x.type_var ^ 
+        "let rec " ^ x.var ^ ":" ^ string_of_type x.type_var ^
         " = " ^ string_of_typed_expr a1 ^ " in " ^
         string_of_typed_expr a2
     | TFun (x, a1) ->
-        "fun " ^ x.var ^ ":" ^ string_of_type x.type_var ^ " -> " ^ 
+        "fun " ^ x.var ^ ":" ^ string_of_type x.type_var ^ " -> " ^
         string_of_typed_expr a1
     | TApp (a1, a2) ->
         string_of_typed_expr a1 ^ " " ^ string_of_typed_expr a2
@@ -124,18 +124,18 @@ let rec string_of_typed_expr a =
     | TAssign (x, a1) ->
         x.var ^ ":" ^ string_of_type x.type_var ^ " := " ^
         string_of_typed_expr a1
-    | TU -> 
+    | TU ->
         "():unit"
 in "(" ^ desc ^ " : " ^ string_of_type a.type_expr ^ ")"
 
 
-(* Génération de l'ensemble d'équations C(a) pour une expression annotée a *)
+(* GÃ©nÃ©ration de l'ensemble d'Ã©quations C(a) pour une expression annotÃ©e a *)
 
 type equation = type_expr * type_expr
 
 let rec make_eq (a: typed_expr) : equation list =
   match a.desc with
-    TConst n -> 
+    TConst n ->
       [(a.type_expr, TEint)]
   | TBinOp (op, a1, a2) ->
       (a.type_expr, TEint) :: (a1.type_expr, TEint) ::
@@ -148,37 +148,37 @@ let rec make_eq (a: typed_expr) : equation list =
   | TFun (x, a1) ->
       (a.type_expr, TEfun (x.type_var, a1.type_expr)) :: make_eq a1
   | TApp (a1, a2) ->
-      (a1.type_expr, TEfun (a2.type_expr, a.type_expr)) 
+      (a1.type_expr, TEfun (a2.type_expr, a.type_expr))
       :: make_eq a1 @ make_eq a2
   | TIf (_, a1, a2) ->
-      (a.type_expr, a1.type_expr) :: (a1.type_expr, a2.type_expr) 
+      (a.type_expr, a1.type_expr) :: (a1.type_expr, a2.type_expr)
       :: make_eq a1 @ make_eq a2
   | TIfz (a1, a2, a3) ->
-      (a.type_expr, a2.type_expr) :: (a2.type_expr, a3.type_expr) 
+      (a.type_expr, a2.type_expr) :: (a2.type_expr, a3.type_expr)
       :: (a1.type_expr, TEint) :: make_eq a1 @ make_eq a2 @ make_eq a3
   | TAssign (x, a1) ->
       (a.type_expr, TEunit) :: (x.type_var, a1.type_expr) :: make_eq a1
-  | TU -> 
+  | TU ->
       [(a.type_expr, TEunit)]
 
 
 (******************** Exercice 3.3: unification **************************)
 
-(* Représentation des substitutions par des fonctions des types dans les
+(* ReprÃ©sentation des substitutions par des fonctions des types dans les
    types *)
 
 type substitution = type_expr -> type_expr
 
-(* La substitution élémentaire tau [alpha <- tau'] *)
+(* La substitution Ã©lÃ©mentaire tau [alpha <- tau'] *)
 
 let make_subst ((alpha,tau'): type_binding) =
   let rec mk_sub_aux tau =
   match tau with
-    TEint | TEunit -> 
+    TEint | TEunit ->
       tau
-  | TEvar beta -> 
+  | TEvar beta ->
       if beta = alpha then tau' else tau
-  | TEfun (tau1, tau2) -> 
+  | TEfun (tau1, tau2) ->
       TEfun (mk_sub_aux tau1, mk_sub_aux tau2)
 in (mk_sub_aux: substitution)
 
@@ -187,7 +187,7 @@ in (mk_sub_aux: substitution)
 let compose phi1 phi2 = fun tau -> phi1(phi2(tau))
 
 
-(* Appliquer une substitution à un ensemble d'équations entre types
+(* Appliquer une substitution Ã  un ensemble d'Ã©quations entre types
    (une liste de paires de types) *)
 
 let subst_eq (phi: substitution) (eq: equation list) : equation list =
@@ -200,9 +200,9 @@ let rec occurrence alpha tau =
   match tau with
     TEint | TEunit ->
       false
-  | TEvar beta -> 
+  | TEvar beta ->
       alpha = beta
-  | TEfun (tau1, tau2) -> 
+  | TEfun (tau1, tau2) ->
       occurrence alpha tau1 || occurrence alpha tau2
 
 
@@ -211,15 +211,15 @@ let rec occurrence alpha tau =
 exception NonUnifiable
 
 let rec (mgu: equation list -> substitution) = function
-  [] -> 
+  [] ->
     (fun tau -> tau)
-| (TEvar alpha, TEvar beta)::c when alpha = beta -> 
+| (TEvar alpha, TEvar beta)::c when alpha = beta ->
     mgu(c)
 | (TEvar alpha, tau)::c when not(occurrence alpha tau) ->
     let phi = make_subst (alpha, tau)
     in compose (mgu (subst_eq phi c)) phi
 | (tau, TEvar alpha) :: c when not(occurrence alpha tau) ->
-    let phi = make_subst (alpha, tau) 
+    let phi = make_subst (alpha, tau)
     in compose (mgu (subst_eq phi c)) phi
 | (TEint, TEint)::c ->
     mgu(c)
@@ -231,24 +231,23 @@ let rec (mgu: equation list -> substitution) = function
 
 let monomorphic_inference e =
   let a = annotate [] e in
-  let phi = mgu (make_eq a) 
+  let phi = mgu (make_eq a)
 in phi (a.type_expr)
 
 
 (*
 let monomorphic_inference e =
   let a = annotate [] e in
-  let () = prerr_endline (string_of_typed_expr a) 
+  let () = prerr_endline (string_of_typed_expr a)
 in TEint
 *)
 
 
 (* Pour tester:
-inférence (App(Op "+", Paire(Const 1, Const 2)));;
-inférence (Let("x", Op "+", App(Var "x", Paire(Const 1, Const 2))));;
-inférence (Let("id", Fun("x", Var "x"),
+infÃ©rence (App(Op "+", Paire(Const 1, Const 2)));;
+infÃ©rence (Let("x", Op "+", App(Var "x", Paire(Const 1, Const 2))));;
+infÃ©rence (Let("id", Fun("x", Var "x"),
                   Paire(App(Var "id", Const 1), App(Var "id", Var "id"))));;
-inférence (Fun("x", Paire(Snd (Var "x"), Fst (Var "x"))));;
-inférence (Fun("f", App(Var "f", Var "f")));;
+infÃ©rence (Fun("x", Paire(Snd (Var "x"), Fst (Var "x"))));;
+infÃ©rence (Fun("f", App(Var "f", Var "f")));;
 *)
-
