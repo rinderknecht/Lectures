@@ -1,13 +1,10 @@
 %%-*-latex-*-
 
-\documentclass[10pt]{article}
+\documentclass[11pt,a4paper]{article}
 
-% Packages
-%
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{ae,aecompl,xspace}
+\usepackage[french]{babel}
+\usepackage{xspace}
 \usepackage{verbatim}
 \usepackage{alltt}
 \usepackage[nottoc]{tocbibind}
@@ -18,12 +15,11 @@
 \newcommand{\bitem}{\item[$\bullet$]}
 
 \input{cpp}
-\input{trace}
 
 % Header
 %
-\title{Introduction \`a la configuration automatique}
-\author{Christian Rinderknecht \and Yann Régis-Gianas}
+\title{Introduction Ã  la configuration automatique}
+\author{Christian Rinderknecht \and Yann RÃ©gis-Gianas}
 
 \begin{document}
 
@@ -35,74 +31,74 @@
 
 \section{Toto}
 Il existe des recommandations et un ensemble d'utilitaires
-\textsf{GNU} dont le but est d'aider au développement, à la
-distribution et à la maintenance de logiciels portables en mode
+\textsf{GNU} dont le but est d'aider au dÃ©veloppement, Ã  la
+distribution et Ã  la maintenance de logiciels portables en mode
 source. En particulier, l'accent est mis sur la configuration
 automatique avant la compilation. Ce sont les \textsf{Autotools}, qui
 correspondent aux applications suivantes.
 
 \begin{itemize}
 
-  \bitem \textsf{autoconf} produit, à partir d'un fichier de
+  \bitem \textsf{autoconf} produit, Ã  partir d'un fichier de
   configuration \texttt{configure.ac}, contenant des appels de macros
   \textsf{M4} et des portions de scripts \emph{shell}, un script
-  \emph{shell} nommé \textsf{configure} et des fichiers de support
-  supplémentaires.
+  \emph{shell} nommÃ© \textsf{configure} et des fichiers de support
+  supplÃ©mentaires.
 
   \bitem \textsf{configure} est produit par \textsf{autoconf} et son
-  exécution produit un fichier \textsf{Makefile} à partir d'une
+  exÃ©cution produit un fichier \textsf{Makefile} Ã  partir d'une
   description \texttt{Makefile.in} et des fichiers de support produits
-  par \textsf{autoconf}. 
+  par \textsf{autoconf}.
 
-  \bitem \textsf{aclocal} est un générateur de macros \textsf{M4} en
-  éventuel support du fichier de configuration \texttt{configure.ac},
-  pour des cas spécifiques comme l'emploi conjoint de
+  \bitem \textsf{aclocal} est un gÃ©nÃ©rateur de macros \textsf{M4} en
+  Ã©ventuel support du fichier de configuration \texttt{configure.ac},
+  pour des cas spÃ©cifiques comme l'emploi conjoint de
   \textsf{automake}.
 
   \bitem \textsf{automake} est un outil pour produire automatiquement
-  un fichier \texttt{Makefile.in} à partir d'une description
-  \texttt{Makefile.am} composée de macros \textsf{M4} et de règles
+  un fichier \texttt{Makefile.in} Ã  partir d'une description
+  \texttt{Makefile.am} composÃ©e de macros \textsf{M4} et de rÃ¨gles
   pour \textsf{make}, dans le but que \texttt{Makefile.in} inclue
-  automatiquement des règles génériques et conformes aux standards
+  automatiquement des rÃ¨gles gÃ©nÃ©riques et conformes aux standards
   \textsf{GNU}.
 
-  \bitem \textsf{autoheader} crée, à partir de \texttt{configure.ac},
-  un fichier d'en-tête~\textsf{C} contenant des directives de
-  pré-compilation \verb+#define+ pour \textsf{configure} (si
+  \bitem \textsf{autoheader} crÃ©e, Ã  partir de \texttt{configure.ac},
+  un fichier d'en-tÃªte~\textsf{C} contenant des directives de
+  prÃ©-compilation \verb+#define+ pour \textsf{configure} (si
   \texttt{con\-figure.ac} appelle la macro
   \texttt{AC\_CONFIG\_HEADERS(\textsf{\emph{file}}.h)} alors
-  \textsf{autoheader} crée \textsf{\emph{file}}\texttt{.h.in}).
+  \textsf{autoheader} crÃ©e \textsf{\emph{file}}\texttt{.h.in}).
 
   \bitem \textsf{libtoolize} fournit un moyen standard d'ajouter le
    support de \textsf{libtool} (un script pour le support de
-   bibliothèques partagées) aux applications~\textsf{C}.
+   bibliothÃ¨ques partagÃ©es) aux applications~\textsf{C}.
 
   \bitem \textsf{autopoint} installe l'infrastructure de fichiers
-  support à l'internationalisation (système \textsf{GNU Gettext}).
+  support Ã  l'internationalisation (systÃ¨me \textsf{GNU Gettext}).
 
-  \bitem \textsf{autoreconf} installe et exécute si besoin les
-  différents outils \textsf{GNU} pour la construction d'applications
+  \bitem \textsf{autoreconf} installe et exÃ©cute si besoin les
+  diffÃ©rents outils \textsf{GNU} pour la construction d'applications
   (\textsf{autoconf}, \textsf{autoheader}, \textsf{aclocal},
-  \textsf{automake}, \textsf{libtoolize} et \textsf{autopoint}) à
-  chaque niveau de l'arborescence des sources. Cela peut être rendu
-  nécessaire si \textsf{Automake} a été mis à jour sur le système ou
-  si \texttt{configure.ac} a changé, par exemple, ou simplement pour
-  créer une nouvelle arborescence.
+  \textsf{automake}, \textsf{libtoolize} et \textsf{autopoint}) Ã 
+  chaque niveau de l'arborescence des sources. Cela peut Ãªtre rendu
+  nÃ©cessaire si \textsf{Automake} a Ã©tÃ© mis Ã  jour sur le systÃ¨me ou
+  si \texttt{configure.ac} a changÃ©, par exemple, ou simplement pour
+  crÃ©er une nouvelle arborescence.
 
-  \bitem \textsf{autoscan} facilite la création et la maintenance du
+  \bitem \textsf{autoscan} facilite la crÃ©ation et la maintenance du
   fichier \texttt{configure.ac}. Il examine les sources~\textsf{C}
-  pour déterminer d'éventuels problèmes de portabilité et analyse
-  aussi l'éventuel \texttt{configure.ac} pour en vérifier la
-  complétude et produit un fichier \texttt{configure.scan} qui sert de
-  canevas pour un (éventuellement nouveau) \texttt{configure.ac}.
+  pour dÃ©terminer d'Ã©ventuels problÃ¨mes de portabilitÃ© et analyse
+  aussi l'Ã©ventuel \texttt{configure.ac} pour en vÃ©rifier la
+  complÃ©tude et produit un fichier \texttt{configure.scan} qui sert de
+  canevas pour un (Ã©ventuellement nouveau) \texttt{configure.ac}.
 
-  \bitem \textsf{autoupdate} met à jour un fichier
-  \texttt{configure.ac} qui fait appel à des macros \textsf{M4} pour
-  \textsf{Autoconf} dont le nom est obsolète.
+  \bitem \textsf{autoupdate} met Ã  jour un fichier
+  \texttt{configure.ac} qui fait appel Ã  des macros \textsf{M4} pour
+  \textsf{Autoconf} dont le nom est obsolÃ¨te.
 
 \end{itemize}
 
-\noindent Nous allons présenter quelques cas simples d'utilisation de
+\noindent Nous allons prÃ©senter quelques cas simples d'utilisation de
 quelques-uns de ces utilitaires.
 
 
@@ -110,100 +106,100 @@ quelques-uns de ces utilitaires.
 
 \textsf{Autoconf} est un outil pour produire des scripts \emph{shell}
 qui configurent automatiquement des distributions logicielles en mode
-source dans le but de les adapter aux nombreux types de systèmes
+source dans le but de les adapter aux nombreux types de systÃ¨mes
 \textsc{Unix}. Les scripts de configuration produits par
-\textsf{Autoconf} sont indépendants de ce dernier lors de leur
-exécution, donc les usagers n'ont pas besoin d'avoir
+\textsf{Autoconf} sont indÃ©pendants de ce dernier lors de leur
+exÃ©cution, donc les usagers n'ont pas besoin d'avoir
 \textsf{Autoconf}.
 
 Les scripts de configuration produits par \textsf{Autoconf} ne
-nécessitent aucune intervention manuelle de la part de l'usager pour
-être exécutés; ils n'ont normalement même pas besoin d'un argument
-spécifiant le type du système. Au lieu de cela, ils testent eux-mêmes
-la présence des caractéristiques et outils dont la distribution a
-besoin. (Avant chaque vérification, ils affichent un message sur une
-ligne disant ce qu'ils testent.) Ainsi ils gèrent bien les systèmes
-hybridés à partir des variantes communes de \textsc{Unix}. En
+nÃ©cessitent aucune intervention manuelle de la part de l'usager pour
+Ãªtre exÃ©cutÃ©s; ils n'ont normalement mÃªme pas besoin d'un argument
+spÃ©cifiant le type du systÃ¨me. Au lieu de cela, ils testent eux-mÃªmes
+la prÃ©sence des caractÃ©ristiques et outils dont la distribution a
+besoin. (Avant chaque vÃ©rification, ils affichent un message sur une
+ligne disant ce qu'ils testent.) Ainsi ils gÃ¨rent bien les systÃ¨mes
+hybridÃ©s Ã  partir des variantes communes de \textsc{Unix}. En
 particulier il n'est pas besoin de maintenir des listes de
-caractéristiques de chaque distribution de chaque variante de
+caractÃ©ristiques de chaque distribution de chaque variante de
 \textsc{Unix}.
 
-Pour chaque distribution pour laquelle \textsf{Autoconf} est employé,
-ce dernier outil crée un script de configuration à partir d'un script
-qui liste les caractéristiques et outils système dont la distribution
-a besoin ou peut utiliser. Après que le script \emph{shell} qui
-reconnaît et réagit à une caractéristique système est écrit,
-\textsf{Autoconf} lui permet d'être partagé par de nombreuses
+Pour chaque distribution pour laquelle \textsf{Autoconf} est employÃ©,
+ce dernier outil crÃ©e un script de configuration Ã  partir d'un script
+qui liste les caractÃ©ristiques et outils systÃ¨me dont la distribution
+a besoin ou peut utiliser. AprÃ¨s que le script \emph{shell} qui
+reconnaÃ®t et rÃ©agit Ã  une caractÃ©ristique systÃ¨me est Ã©crit,
+\textsf{Autoconf} lui permet d'Ãªtre partagÃ© par de nombreuses
 distributions qui peuvent (ou doivent) utiliser cette
-caractéristique. Ainsi, si le script \emph{shell} nécessite
-ultérieurement des ajustements, il n'est modifié qu'en un seul lieu et
-tous les scripts de configuration peuvent être régénérés
-automatiquement pour prendre en compte la mise à jour.
-                        
+caractÃ©ristique. Ainsi, si le script \emph{shell} nÃ©cessite
+ultÃ©rieurement des ajustements, il n'est modifiÃ© qu'en un seul lieu et
+tous les scripts de configuration peuvent Ãªtre rÃ©gÃ©nÃ©rÃ©s
+automatiquement pour prendre en compte la mise Ã  jour.
+
 Le script \emph{shell} de configuration produit par \textsf{Autoconf}
-est nommé par convention \textsf{configure}. Quand il est exécuté,
-celui-ci crée plusieurs fichiers dans lesquels les paramètres
-génériques de configuration sont remplacés par les valeurs
-appropriées. Ces fichiers sont:
-
-\begin{itemize}                                                           
-
-  \bitem un ou plusieurs makefiles, typiquement dans chaque
-  sous-répertoire de la distribution;
-
-  \bitem un ensemble de fichiers définis par l'utilisateur dans
-  lesquels contenant des variables à substituer;
-
-  \bitem optionnellement, un fichier d'en-tête~\textsf{C} dont le nom
-  est configurable, contenant des directives de précompilation
-  \verb+#define+;
-
-  \bitem un script \emph{shell} nommé \texttt{config.status} qui,
-  quand il sera exécuté, recréera les fichiers précédents;
-
-  \bitem un script \emph{shell} optionnel nommé \texttt{config.cache}
-  (crée par la commande \verb|configure --config-cache|) qui
-  sauvegarde le résultat des tests effectués par \textsf{configure}
-  pour être partagés avec d'autres scripts \textsf{configure} ou entre
-  différentes exécutions du même;
-
-  \bitem un fichier \texttt{config.log} contenant les messages émis
-  par d'éventuels compilateurs dans le but d'aider au déverminage si
-  \textsf{configure} commet une erreur.
-                                                                          
-\end{itemize}
-
-Donc, pour créer un script \textsf{configure} avec \textsf{Autoconf}
-il faut écrire un fichier d'entrée \texttt{configure.ac} et lancer
-\textsf{autoconf}. Si on veut écrire ses propres tests (sous forme de
-macros \textsf{M4}) pour compléter ceux proposés par défaut par
-\textsf{Autoconf}, il faut les mettre dans deux fichiers
-\texttt{aclocal.m4} et \texttt{acsite.m4}. Si on a besoin d'un fichier
-d'en-tête~\textsf{C} (souvent nommé \texttt{config.h}) on peut alors
-employer \textsf{Autoheader} et l'on distribue alors sa spécification
-(souvent \texttt{config.h.in}).
-
-Voici un diagramme tiré \emph{verbatim} du manuel de
-\textsf{Autoconf}, qui montre comment les fichiers qui peuvent être
-utiles à la configuration sont produits. Les programmes qui sont
-exécutés sont suffixés par \verb+*+. Les fichiers optionnels
-apparaissent entre crochets. À noter aussi que \textsf{autoconf} et
-\textsf{autoheader} lisent aussi les macros prédéfinies de
-\textsf{Autoconf} dans \texttt{autoconf.m4} (pré-installé).
+est nommÃ© par convention \textsf{configure}. Quand il est exÃ©cutÃ©,
+celui-ci crÃ©e plusieurs fichiers dans lesquels les paramÃ¨tres
+gÃ©nÃ©riques de configuration sont remplacÃ©s par les valeurs
+appropriÃ©es. Ces fichiers sont:
 
 \begin{itemize}
 
-  \bitem Fichiers utilisés pour préparer la distribution du
-  logiciel (côté distributeur):
+  \bitem un ou plusieurs makefiles, typiquement dans chaque
+  sous-rÃ©pertoire de la distribution;
+
+  \bitem un ensemble de fichiers dÃ©finis par l'utilisateur dans
+  lesquels contenant des variables Ã  substituer;
+
+  \bitem optionnellement, un fichier d'en-tÃªte~\textsf{C} dont le nom
+  est configurable, contenant des directives de prÃ©compilation
+  \verb+#define+;
+
+  \bitem un script \emph{shell} nommÃ© \texttt{config.status} qui,
+  quand il sera exÃ©cutÃ©, recrÃ©era les fichiers prÃ©cÃ©dents;
+
+  \bitem un script \emph{shell} optionnel nommÃ© \texttt{config.cache}
+  (crÃ©e par la commande \verb|configure --config-cache|) qui
+  sauvegarde le rÃ©sultat des tests effectuÃ©s par \textsf{configure}
+  pour Ãªtre partagÃ©s avec d'autres scripts \textsf{configure} ou entre
+  diffÃ©rentes exÃ©cutions du mÃªme;
+
+  \bitem un fichier \texttt{config.log} contenant les messages Ã©mis
+  par d'Ã©ventuels compilateurs dans le but d'aider au dÃ©verminage si
+  \textsf{configure} commet une erreur.
+
+\end{itemize}
+
+Donc, pour crÃ©er un script \textsf{configure} avec \textsf{Autoconf}
+il faut Ã©crire un fichier d'entrÃ©e \texttt{configure.ac} et lancer
+\textsf{autoconf}. Si on veut Ã©crire ses propres tests (sous forme de
+macros \textsf{M4}) pour complÃ©ter ceux proposÃ©s par dÃ©faut par
+\textsf{Autoconf}, il faut les mettre dans deux fichiers
+\texttt{aclocal.m4} et \texttt{acsite.m4}. Si on a besoin d'un fichier
+d'en-tÃªte~\textsf{C} (souvent nommÃ© \texttt{config.h}) on peut alors
+employer \textsf{Autoheader} et l'on distribue alors sa spÃ©cification
+(souvent \texttt{config.h.in}).
+
+Voici un diagramme tirÃ© \emph{verbatim} du manuel de
+\textsf{Autoconf}, qui montre comment les fichiers qui peuvent Ãªtre
+utiles Ã  la configuration sont produits. Les programmes qui sont
+exÃ©cutÃ©s sont suffixÃ©s par \verb+*+. Les fichiers optionnels
+apparaissent entre crochets. Ã€ noter aussi que \textsf{autoconf} et
+\textsf{autoheader} lisent aussi les macros prÃ©dÃ©finies de
+\textsf{Autoconf} dans \texttt{autoconf.m4} (prÃ©-installÃ©).
+
+\begin{itemize}
+
+  \bitem Fichiers utilisÃ©s pour prÃ©parer la distribution du
+  logiciel (cÃ´tÃ© distributeur):
   \begin{itemize}
 
-    \bitem Si l'on ne réutilise pas un \texttt{configure.ac}, on peut
-    se faire aider pour en créer un neuf à partir des sources:\\
+    \bitem Si l'on ne rÃ©utilise pas un \texttt{configure.ac}, on peut
+    se faire aider pour en crÃ©er un neuf Ã  partir des sources:\\
     \emph{sources} $\longrightarrow$
     \textsf{autoscan}\texttt{*} $\longrightarrow$
     \texttt{configure.scan} $\longrightarrow$ \texttt{configure.ac}
 
-    \bitem 
+    \bitem
 {\small
 \begin{verbatim}
 configure.ac --.
@@ -223,12 +219,12 @@ Makefile.in -------------------------------> Makefile.in
 
   \end{itemize}
 
-\noindent À noter qu'il faut écrire soi-même la description
+\noindent Ã€ noter qu'il faut Ã©crire soi-mÃªme la description
 \texttt{Makefile.in} du makefile pour \textsf{Autoconf}. Nous verrons
-plus loin la différence avec l'emploi de \textsf{Automake}.
+plus loin la diffÃ©rence avec l'emploi de \textsf{Automake}.
 
-  \bitem Fichiers utilisés pour la configuration de la distribution
-  (côté usager):
+  \bitem Fichiers utilisÃ©s pour la configuration de la distribution
+  (cÃ´tÃ© usager):
 {\small
 \begin{verbatim}
                        .-------------> [config.cache]
@@ -238,7 +234,7 @@ configure* ------------+-------------> config.log
                +--> config.status* -+               +--> make*
 Makefile.in ---'                    `-> Makefile ---'
 \end{verbatim}
-}   
+}
 \end{itemize}
 
 
@@ -261,7 +257,7 @@ projets en Objective Caml.
 \end{alltt}
 }
 
-\noindent La première ligne est une méta-information pour
+\noindent La premiÃ¨re ligne est une mÃ©ta-information pour
 \textsf{Emacs} et les suivantes informent sur la nature du script, son
 auteur et comment s'en servir.
 
@@ -275,7 +271,7 @@ AC_INIT(Fun Calc,1.0,Christian.Rinderknecht@devinci.fr)
 AC_PREREQ(2.53)
 AC_CONFIG_SRCDIR(main.ml)
 
-ac_version=$(autoconf -V | grep GNU) 
+ac_version=$(autoconf -V | grep GNU)
 
 echo "Autoconfiguration of $PACKAGE_STRING"
 echo "(c) 2003 Christian Rinderknecht"
@@ -286,32 +282,32 @@ echo "This is $ac_version"
 }
 
 \noindent Certaines macros\footnote{Les macros \textsf{M4} de
-\textsf{Autoconf} sont toutes préfixées par «~\texttt{AC\_}~».} font
-l'hypothèse que d'autres macros ont été appelées précédemment. De
-plus, toute spécification \texttt{configure.ac} doit contenir un appel
-à la macro \texttt{AC\_INIT} avant de procéder aux tests et doit
-appeler \texttt{AC\_OUTPUT} à la fin. Le premier argument de
+\textsf{Autoconf} sont toutes prÃ©fixÃ©es par Â«~\texttt{AC\_}~Â».} font
+l'hypothÃ¨se que d'autres macros ont Ã©tÃ© appelÃ©es prÃ©cÃ©demment. De
+plus, toute spÃ©cification \texttt{configure.ac} doit contenir un appel
+Ã  la macro \texttt{AC\_INIT} avant de procÃ©der aux tests et doit
+appeler \texttt{AC\_OUTPUT} Ã  la fin. Le premier argument de
 \texttt{AC\_INIT} est le nom du paquetage (\emph{package}), ici
-\textsf{Fun Calc}, et le second son numéro de version, ici
-\textsf{1.0}. Cette macro peut prendre deux arguments supplémentaires:
-l'adresse électronique du mainteneur du paquetage (à contacter en cas
-de problèmes) et le nom de l'archive \texttt{tar}. Par défaut, le nom
-de l'archive sera celui du paquetage sans le préfixe \texttt{GNU}, mis
-en minuscule et dont tous les caractères autres qu'alphanumériques et
-tirets-bas sont changés en trait d'union (donc ici le nom de base de
-l'archive sera \texttt{fun-calc}). Une fois qu'on aura exécuté
-\textsf{autoconf}, on pourra récupérer une partie de ces informations
-en exécutant
+\textsf{Fun Calc}, et le second son numÃ©ro de version, ici
+\textsf{1.0}. Cette macro peut prendre deux arguments supplÃ©mentaires:
+l'adresse Ã©lectronique du mainteneur du paquetage (Ã  contacter en cas
+de problÃ¨mes) et le nom de l'archive \texttt{tar}. Par dÃ©faut, le nom
+de l'archive sera celui du paquetage sans le prÃ©fixe \texttt{GNU}, mis
+en minuscule et dont tous les caractÃ¨res autres qu'alphanumÃ©riques et
+tirets-bas sont changÃ©s en trait d'union (donc ici le nom de base de
+l'archive sera \texttt{fun-calc}). Une fois qu'on aura exÃ©cutÃ©
+\textsf{autoconf}, on pourra rÃ©cupÃ©rer une partie de ces informations
+en exÃ©cutant
 {\small
 \begin{alltt}
 ~/TP-Autotools/Projet/OCaml$ ./configure --version
 Fun Calc configure 1.0
-generated by GNU Autoconf 2.57 
+generated by GNU Autoconf 2.57
 \emph{[...]}
 ~/TP-Autotools/Projet/OCaml$ ./configure --help
-`configure' configures Fun Calc 1.0 to adapt to many kinds of 
+`configure' configures Fun Calc 1.0 to adapt to many kinds of
 systems.
- 
+
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 \emph{[...]}
 Report bugs to <Christian.Rinderknecht@devinci.fr>.
@@ -319,27 +315,27 @@ Report bugs to <Christian.Rinderknecht@devinci.fr>.
 }
 
 \noindent On remarque en passant qu'il est de bon aloi de toujours
-appeler \textsf{configure} en forçant le chemin d'accès
-(\texttt{./configure}) pour éviter de fâcheux malentendus dont on se
+appeler \textsf{configure} en forÃ§ant le chemin d'accÃ¨s
+(\texttt{./configure}) pour Ã©viter de fÃ¢cheux malentendus dont on se
 passe volontiers durant la phase de configuration.
 
 \medskip
 
-\noindent On peut référencer ces arguments dans la spécification
+\noindent On peut rÃ©fÃ©rencer ces arguments dans la spÃ©cification
 \texttt{configure.ac} par le biais des variables \emph{shell}
-prédéfinies, en suivant l'ordre d'écriture, \texttt{PACKAGE\_\-NAME},
+prÃ©dÃ©finies, en suivant l'ordre d'Ã©criture, \texttt{PACKAGE\_\-NAME},
 \texttt{PACKAGE\_VERSION}, \texttt{PACKAGE\_BUGREPORT} et
 \texttt{PACKAGE\_TARNAME}. On lit aussi dans notre
-\texttt{configure.ac} (première commande \texttt{echo}) l'emploi de la
-variable \texttt{PACKAGE\_STRING} qui vaut la concaténation de
+\texttt{configure.ac} (premiÃ¨re commande \texttt{echo}) l'emploi de la
+variable \texttt{PACKAGE\_STRING} qui vaut la concatÃ©nation de
 \texttt{PACKAGE\_NAME} et de \texttt{PACKAGE\_\-VERS\-ION}.
 
 \medskip
 
-\noindent Ensuite (toujours après \texttt{AC\_INIT}) nous appelons la
-macro \texttt{AC\_PREREQ} avec le numéro de version minimal de
+\noindent Ensuite (toujours aprÃ¨s \texttt{AC\_INIT}) nous appelons la
+macro \texttt{AC\_PREREQ} avec le numÃ©ro de version minimal de
 \textsf{Autoconf} dont le script a besoin, ici \textsf{2.53}. Si nous
-avions exigé \texttt{AC\_PREREQ(2.63)} alors que nous utilisons la
+avions exigÃ© \texttt{AC\_PREREQ(2.63)} alors que nous utilisons la
 version \textsf{2.57} de \textsf{Autoconf}, voici ce qui se passe:
 {\small
 \begin{verbatim}
@@ -351,12 +347,12 @@ autom4te: /usr/bin/m4 failed with exit status: 1
 }
 
 \noindent L'appel de macro suivant est
-\texttt{AC\_CONFIG\_SRCDIR(main.ml)}. L'unique argument doit être un
-fichier présent dans le répertoire des sources. Le script
-\textsf{configure} vérifiera alors l'existence de ce
-fichier. Puisqu'il faudra donner en argument à \textsf{configure} le
-répertoire des sources avec l'option \verb|--srcdir|, cet argument
-servira donc à détecter une éventuelle erreur avec cette option. Par
+\texttt{AC\_CONFIG\_SRCDIR(main.ml)}. L'unique argument doit Ãªtre un
+fichier prÃ©sent dans le rÃ©pertoire des sources. Le script
+\textsf{configure} vÃ©rifiera alors l'existence de ce
+fichier. Puisqu'il faudra donner en argument Ã  \textsf{configure} le
+rÃ©pertoire des sources avec l'option \verb|--srcdir|, cet argument
+servira donc Ã  dÃ©tecter une Ã©ventuelle erreur avec cette option. Par
 exemple, si nous saisissons
 
 {\small
@@ -368,10 +364,10 @@ configure: error: cannot find sources (ast.ml) in toto
 }
 
 \noindent Au passage, la variable \texttt{srcdir} est automatiquement
-initialisée par \textsf{configure} avec la valeur de l'option
-\verb|--srcdir| (s'il n'a en a pas, la valeur est par défaut
-\texttt{.}). Ensuite nous déterminons la version courante de
-\textsf{Autoconf} pour l'afficher. Pour cela nous lançons
+initialisÃ©e par \textsf{configure} avec la valeur de l'option
+\verb|--srcdir| (s'il n'a en a pas, la valeur est par dÃ©faut
+\texttt{.}). Ensuite nous dÃ©terminons la version courante de
+\textsf{Autoconf} pour l'afficher. Pour cela nous lanÃ§ons
 \textsf{autoconf} avec l'option \texttt{-V}, ce qui donne par exemple:
 
 {\small
@@ -381,15 +377,15 @@ autoconf (GNU Autoconf) 2.53
 Written by David J. MacKenzie and Akim Demaille.
 
 Copyright 2002 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  
-There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A 
+This is free software; see the source for copying conditions.
+There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.
 \end{verbatim}
 }
 
-\noindent Nous récupérons la ligne contenant le numéro de version à
-l'aide de \textsf{grep} et nous l'affichons. L'exécution de la portion
-de \textsf{configure} correspondant à cela donne:
+\noindent Nous rÃ©cupÃ©rons la ligne contenant le numÃ©ro de version Ã 
+l'aide de \textsf{grep} et nous l'affichons. L'exÃ©cution de la portion
+de \textsf{configure} correspondant Ã  cela donne:
 
 {\small
 \begin{alltt}
@@ -402,13 +398,13 @@ This is autoconf (GNU Autoconf) 2.53
 \end{alltt}
 }
 
-\noindent Voici la suite de la spécification dans \texttt{configure.ac}:
+\noindent Voici la suite de la spÃ©cification dans \texttt{configure.ac}:
 
 {\small
 \begin{alltt}
 \emph{[...]}
 # ------------------------------------------------------------------
-# Checking for files named core, core.* and *.core. 
+# Checking for files named core, core.* and *.core.
 #
 # These files are deleted by the configure script (feature of
 # autoconf), but core.* may be not a system core file. Hence this
@@ -440,19 +436,19 @@ fi
 \end{alltt}
 }
 
-\noindent \textsf{Autoconf} a pour particularité de supprimer d'office
-tout fichier dont le nom vérifie les motifs \emph{shell} \texttt{core
-*.core} et \texttt{core.*}. L'hypothèse est que ces fichiers ont été
+\noindent \textsf{Autoconf} a pour particularitÃ© de supprimer d'office
+tout fichier dont le nom vÃ©rifie les motifs \emph{shell} \texttt{core
+*.core} et \texttt{core.*}. L'hypothÃ¨se est que ces fichiers ont Ã©tÃ©
 produit par un plantage de l'application construite et donc qu'ils
 sont inutiles (et encombrants). Mais il se pourrait que ce ne soit pas
 le cas, en particulier si le nom de fichier a la forme
 \texttt{core.*}, par exemple \texttt{core.ml}. Le but de cette portion
-de script est d'éviter qu'un tel fichier soit perdu en le renommant et
+de script est d'Ã©viter qu'un tel fichier soit perdu en le renommant et
 en informant l'usager.
 
 \medskip
 
-\noindent Voyons maintenant comment spécifier la recherche des
+\noindent Voyons maintenant comment spÃ©cifier la recherche des
 compilateurs O'Caml.
 
 {\small
@@ -469,20 +465,20 @@ AC_PATH_PROG(OCAMLC_OPT,ocamlc.opt,none)
 \end{alltt}
 }
 
-\noindent La macro \textsf{M4} nommée \texttt{AC\_PATH\_PROG} prend
+\noindent La macro \textsf{M4} nommÃ©e \texttt{AC\_PATH\_PROG} prend
 deux arguments obligatoires et deux optionnels. Son but, lorsqu'elle
-sera expansée dans \textsf{configure}, est de rechercher parmi un
-ensemble de chemins prédéfinis (et optionnellement passés en argument)
-un programme. Si ce dernier est trouvé, une variable \emph{shell}
-donnée est initialisée avec le nom du programme préfixé par son chemin
-d'accès complet. Sinon la variable est vide ou alors prend une valeur
-passée en argument de la macro. Ainsi, dans notre premier exemple, la
-macro initialisera une variable \texttt{OCAMLC} en partant à la
-recherche du compilateur \textsf{ocamlc}. S'il n'est pas trouvé, la
+sera expansÃ©e dans \textsf{configure}, est de rechercher parmi un
+ensemble de chemins prÃ©dÃ©finis (et optionnellement passÃ©s en argument)
+un programme. Si ce dernier est trouvÃ©, une variable \emph{shell}
+donnÃ©e est initialisÃ©e avec le nom du programme prÃ©fixÃ© par son chemin
+d'accÃ¨s complet. Sinon la variable est vide ou alors prend une valeur
+passÃ©e en argument de la macro. Ainsi, dans notre premier exemple, la
+macro initialisera une variable \texttt{OCAMLC} en partant Ã  la
+recherche du compilateur \textsf{ocamlc}. S'il n'est pas trouvÃ©, la
 variable prendra la valeur \texttt{none}, sinon la valeur sera le
-chemin d'accès complet au compilateur. Les chemins de recherche
-prédéfinis sont ceux indiqués par la variable d'environnement
-\texttt{PATH}. L'exécution de la portion correspondante dans
+chemin d'accÃ¨s complet au compilateur. Les chemins de recherche
+prÃ©dÃ©finis sont ceux indiquÃ©s par la variable d'environnement
+\texttt{PATH}. L'exÃ©cution de la portion correspondante dans
 \textsf{configure} donne ici:
 
 {\small
@@ -503,9 +499,9 @@ checking for ocamlc.opt... /home/der_gi/rinderkn/bin/ocamlc.opt
 \begin{alltt}
 \emph{[...]}
 if test "$OCAMLC_OPT" = "none";
-then 
+then
   if test "$OCAMLC" != "none";
-  then 
+  then
     OCAMLC_VER=`$OCAMLC -version`
     echo "  => ocamlc" v$OCAMLC_VER \symbol{92}
          "is the default compiler to byte-code"
@@ -521,15 +517,15 @@ fi
 }
 
 \noindent Si les variantes du compilateur (vers le byte-code) en
-byte-code et en code natif ont été trouvés\footnote{Il existe en effet
+byte-code et en code natif ont Ã©tÃ© trouvÃ©s\footnote{Il existe en effet
 deux variantes du compilateur O'Caml vers du byte-code pour le
-programmeur: une composée de byte-code et une de code natif. Cela vient
-du fait que le compilateur O'Caml est autogénéré (ou
-\emph{bootstrapped} en anglais), c'est-à-dire qu'il est écrit en O'Caml
-lui-même.}, nous retenons celle en code natif car elle est plus rapide
+programmeur: une composÃ©e de byte-code et une de code natif. Cela vient
+du fait que le compilateur O'Caml est autogÃ©nÃ©rÃ© (ou
+\emph{bootstrapped} en anglais), c'est-Ã -dire qu'il est Ã©crit en O'Caml
+lui-mÃªme.}, nous retenons celle en code natif car elle est plus rapide
 et, si besoin, nous initialisons avec la variable
-\texttt{OCAMLC}. Puis la version du compilateur retenu est déterminée,
-stockée dans \texttt{OCAMLC\_VER} et affichée pour information. Cela
+\texttt{OCAMLC}. Puis la version du compilateur retenu est dÃ©terminÃ©e,
+stockÃ©e dans \texttt{OCAMLC\_VER} et affichÃ©e pour information. Cela
 donne par exemple:
 
 {\small
@@ -542,7 +538,7 @@ donne par exemple:
 }
 
 \noindent La suite de \texttt{configure.ac} porte sur la recherche des
-compilateurs O'Caml vers du code natif et possède la même structure:
+compilateurs O'Caml vers du code natif et possÃ¨de la mÃªme structure:
 
 {\small
 \begin{alltt}
@@ -552,7 +548,7 @@ compilateurs O'Caml vers du code natif et possède la même structure:
 AC_PATH_PROG(OCAMLOPT,ocamlopt,none)
 AC_PATH_PROG(OCAMLOPT_OPT,ocamlopt.opt,none)
 
-if test "$OCAMLOPT_OPT" = "none"; 
+if test "$OCAMLOPT_OPT" = "none";
 then
   if test "$OCAMLOPT" != "none";
   then
@@ -578,9 +574,9 @@ fi
 \end{alltt}
 }
 
-\noindent On notera la vérification d'identité entre les versions des
-compilateurs natif et byte-code. Si les numéros sont différents un
-avertissement est alors émis. L'exécution de cette portion de script
+\noindent On notera la vÃ©rification d'identitÃ© entre les versions des
+compilateurs natif et byte-code. Si les numÃ©ros sont diffÃ©rents un
+avertissement est alors Ã©mis. L'exÃ©cution de cette portion de script
 donne par exemple:
 
 {\small
@@ -620,10 +616,10 @@ AC_PATH_PROG(CAMLP4O,camlp4o,none)
 \end{alltt}
 }
 
-\noindent Son but est de localiser deux variantes du préprocesseur
-pour O'Caml (semblable à \textsf{cpp} pour les projets en
-langage~\textsf{C}) et d'afficher son numéro de version. si celui-ci
-est différent de celui du compilateur O'Caml, on affiche un message
+\noindent Son but est de localiser deux variantes du prÃ©processeur
+pour O'Caml (semblable Ã  \textsf{cpp} pour les projets en
+langage~\textsf{C}) et d'afficher son numÃ©ro de version. si celui-ci
+est diffÃ©rent de celui du compilateur O'Caml, on affiche un message
 d'avertissement. La suite est:
 
 {\small
@@ -650,8 +646,8 @@ fi
 }
 
 \noindent Son objectif est de localiser deux variantes de
-\textsf{ocamldep}, l'outil de recherche de dépendances entre modules
-fichiers O'Caml (semblable à \texttt{gcc -MM}). La suite de
+\textsf{ocamldep}, l'outil de recherche de dÃ©pendances entre modules
+fichiers O'Caml (semblable Ã  \texttt{gcc -MM}). La suite de
 \texttt{configure.ac} est:
 
 {\small
@@ -664,7 +660,7 @@ AC_PATH_PROG(OCAMLLEX,ocamllex,none)
 AC_PATH_PROG(OCAMLLEX_OPT,ocamllex.opt,none)
 
 if test "$OCAMLLEX_OPT" = "none";
-then 
+then
   if test "$OCAMLLEX" != "none";
   then
     echo "  => ocamllex is the default lexer generator"
@@ -677,8 +673,8 @@ fi
 \end{alltt}
 }
 
-\noindent Cette partie est dédiée à la recherche des variantes du
-générateur d'analyseurs lexicaux \textsf{ocamllex}. La suite de
+\noindent Cette partie est dÃ©diÃ©e Ã  la recherche des variantes du
+gÃ©nÃ©rateur d'analyseurs lexicaux \textsf{ocamllex}. La suite de
 \texttt{configure.ac} est:
 
 {\small
@@ -692,9 +688,9 @@ AC_PATH_PROG(OCAMLYACC,ocamlyacc,none)
 \end{alltt}
 }
 
-\noindent Cette partie recherche le générateur d'analyseurs
+\noindent Cette partie recherche le gÃ©nÃ©rateur d'analyseurs
 syntaxiques \textsf{ocamlyacc}. Elle est plus simple car il n'existe
-qu'en code natif donc il n'y a pas de choix éventuel à faire entre
+qu'en code natif donc il n'y a pas de choix Ã©ventuel Ã  faire entre
 deux variantes. La suite de \texttt{configure.ac} est:
 
 {\small
@@ -713,13 +709,13 @@ echo "  => The source directory is" \symbol{92}'$srcdir\symbol{92}'
 \end{alltt}
 }
 
-\noindent Dans cette section de script, si un compilateur O'Caml a été
-localisé nous l'interrogeons sur le lieu de la bibliothèque standard
+\noindent Dans cette section de script, si un compilateur O'Caml a Ã©tÃ©
+localisÃ© nous l'interrogeons sur le lieu de la bibliothÃ¨que standard
 et nous en informons l'usager. Au passage nous initialisons la
-variable \texttt{OCAMLIB} avec ce répertoire. Nous rappelons aussi le
-répertoire où se trouvent les fichiers sources en affichant le contenu
-de la variable \texttt{srcdir} (qui a été initialisée par l'option
-\verb|--srcdir| ou vaut par défaut \texttt{.}). Ensuite nous trouvons
+variable \texttt{OCAMLIB} avec ce rÃ©pertoire. Nous rappelons aussi le
+rÃ©pertoire oÃ¹ se trouvent les fichiers sources en affichant le contenu
+de la variable \texttt{srcdir} (qui a Ã©tÃ© initialisÃ©e par l'option
+\verb|--srcdir| ou vaut par dÃ©faut \texttt{.}). Ensuite nous trouvons
 dans \texttt{configure.ac}:
 
 {\small
@@ -742,15 +738,15 @@ AC_SUBST(ac_version)
 \end{alltt}
 }
 
-\noindent Cette section est différente des précédentes et très
-importante. Elle emploie la macro \textsf{M4} nommée
+\noindent Cette section est diffÃ©rente des prÃ©cÃ©dentes et trÃ¨s
+importante. Elle emploie la macro \textsf{M4} nommÃ©e
 \texttt{AC\_SUBST} qui prend en argument une variable du script
-(idéalement initialisée par celui-ci en fonction des résultats des
-tests effectués) et qui déclare la substitution textuelle future par sa
-valeur dans le fichier \emph{fichier}\texttt{.in}, où \emph{fichier}
-est l'argument de la macro \texttt{AC\_CONFIG\_FILES} 
-(ci-après). Typiquement, ce fichier dans lequel sont substituées les
-variables est \texttt{Makefile.in} et \textsf{configure} produit à
+(idÃ©alement initialisÃ©e par celui-ci en fonction des rÃ©sultats des
+tests effectuÃ©s) et qui dÃ©clare la substitution textuelle future par sa
+valeur dans le fichier \emph{fichier}\texttt{.in}, oÃ¹ \emph{fichier}
+est l'argument de la macro \texttt{AC\_CONFIG\_FILES}
+(ci-aprÃ¨s). Typiquement, ce fichier dans lequel sont substituÃ©es les
+variables est \texttt{Makefile.in} et \textsf{configure} produit Ã 
 partir de lui le fichier \texttt{Makefile}. La fin de
 \texttt{configure.ac} dit:
 
@@ -765,10 +761,10 @@ chmod a-w Makefile
 }
 
 \noindent C'est ici qu'on appelle donc \texttt{AC\_CONFIG\_FILES}. La
-macro \texttt{AC\_OUTPUT} exécute les substitutions et la production
-de \texttt{Makefile} (ici). La dernière commande assure que le
-makefile produit n'est pas modifiable, car, en théorie, on ne doit pas
-modifier soi-même un fichier produit automatiquement. À l'écran on
+macro \texttt{AC\_OUTPUT} exÃ©cute les substitutions et la production
+de \texttt{Makefile} (ici). La derniÃ¨re commande assure que le
+makefile produit n'est pas modifiable, car, en thÃ©orie, on ne doit pas
+modifier soi-mÃªme un fichier produit automatiquement. Ã€ l'Ã©cran on
 verrait:
 
 {\small
@@ -781,30 +777,30 @@ config.status: creating Makefile
 \end{alltt}
 }
 
-\noindent En réalité, comme le suggère l'affichage, \textsf{configure}
-produit un autre script nommé \textsf{config.status} qui, lui,
-fabrique \emph{in fine} \texttt{Makefile} à partir du fichier
-\texttt{Makefile.in} en réalisant les substitutions de variables
-spécifiées dans le fichier \texttt{configure.ac}.
+\noindent En rÃ©alitÃ©, comme le suggÃ¨re l'affichage, \textsf{configure}
+produit un autre script nommÃ© \textsf{config.status} qui, lui,
+fabrique \emph{in fine} \texttt{Makefile} Ã  partir du fichier
+\texttt{Makefile.in} en rÃ©alisant les substitutions de variables
+spÃ©cifiÃ©es dans le fichier \texttt{configure.ac}.
 
 \subsubsection{Le fichier \texttt{Makefile.in}}
 
-Dans le plus simple des cas, la différence entre un fichier
+Dans le plus simple des cas, la diffÃ©rence entre un fichier
 \texttt{Makefile.in} et un \texttt{Makefile} tient au fait que l'on
-n'écrit pas directement dans \texttt{Makefile} les chemins vers les
-programmes qui sont utilisés. Au lieu de cela, on écrit un
-\texttt{Makefile.in} qui correspond à un \texttt{Makefile} habituel
-mais où les variables définissant ces chemins sont destinées à être
-textuellement substituées par une valeur correcte pour la plateforme
-par le truchement de \textsf{configure} (plus précisément
-\textsf{config.status}). Ces variables sont alors notées entre
-arrobes\footnote{Il serait plus correct d'un point de vue étymologique
-de dire \emph{à rond bas-de-casse} comme le font les typographes pour
-désigner le symbole \symbol{64} (prononcé \emph{ad} en latin).} dans
+n'Ã©crit pas directement dans \texttt{Makefile} les chemins vers les
+programmes qui sont utilisÃ©s. Au lieu de cela, on Ã©crit un
+\texttt{Makefile.in} qui correspond Ã  un \texttt{Makefile} habituel
+mais oÃ¹ les variables dÃ©finissant ces chemins sont destinÃ©es Ã  Ãªtre
+textuellement substituÃ©es par une valeur correcte pour la plateforme
+par le truchement de \textsf{configure} (plus prÃ©cisÃ©ment
+\textsf{config.status}). Ces variables sont alors notÃ©es entre
+arrobes\footnote{Il serait plus correct d'un point de vue Ã©tymologique
+de dire \emph{Ã  rond bas-de-casse} comme le font les typographes pour
+dÃ©signer le symbole \symbol{64} (prononcÃ© \emph{ad} en latin).} dans
 \texttt{Makefile.in}.
 
-Le fichier \texttt{Makefile.in} dans l'archive, associé au
-\texttt{configure.ac} présenté précédemment, commence ainsi:
+Le fichier \texttt{Makefile.in} dans l'archive, associÃ© au
+\texttt{configure.ac} prÃ©sentÃ© prÃ©cÃ©demment, commence ainsi:
 
 {\small
 \begin{alltt}
@@ -823,43 +819,43 @@ SRCDIR := @srcdir@
 \end{alltt}
 }
 
-\noindent La nouveauté est donc la variable \texttt{SRCDIR} dont la
-valeur est textuellement définie par \textsf{config.status},
+\noindent La nouveautÃ© est donc la variable \texttt{SRCDIR} dont la
+valeur est textuellement dÃ©finie par \textsf{config.status},
 \emph{via} \textsf{configure}, en substituant \verb|@srcdir@| par la
-valeur de la variable \texttt{srcdir} définie dans
+valeur de la variable \texttt{srcdir} dÃ©finie dans
 \texttt{configure.ac}. En conclusion, le fichier \texttt{Makefile.in}
-ne présente aucune particularité si ce n'est la définition de
-variables \textsf{Make} à partir de «~variables \textsf{Autoconf}~».
+ne prÃ©sente aucune particularitÃ© si ce n'est la dÃ©finition de
+variables \textsf{Make} Ã  partir de Â«~variables \textsf{Autoconf}~Â».
 
 
 \subsection{Pour les projets en \textsf{C/\cpp}}
 
-Les langages C et \cpp{} posent beaucoup de problèmes de portabilité car
-de nombreux compilateurs ont été développés depuis les années 70,
+Les langages C et \cpp{} posent beaucoup de problÃ¨mes de portabilitÃ© car
+de nombreux compilateurs ont Ã©tÃ© dÃ©veloppÃ©s depuis les annÃ©es 70,
 chacun suivant sa route en fonction des ses objectifs et de son
-système d'exploitation. Malgré les normes ANSI pour le C, ISO pour le
-\cpp et POSIX pour les appels systèmes, certaines fonctionnalités sont
-donc soit absentes, soit mal implémentées. Pour gagner en
-portabilité, il convient donc de:
+systÃ¨me d'exploitation. MalgrÃ© les normes ANSI pour le C, ISO pour le
+\cpp et POSIX pour les appels systÃ¨mes, certaines fonctionnalitÃ©s sont
+donc soit absentes, soit mal implÃ©mentÃ©es. Pour gagner en
+portabilitÃ©, il convient donc de:
 
 \begin{itemize}
 \bitem S'informer sur l'environnement de compilation ;
-\bitem Détecter les problèmes ;
+\bitem DÃ©tecter les problÃ¨mes ;
 \bitem Adapter la compilation.
 \end{itemize}
 
 \subsubsection{Configuration standard pour un programme C/\cpp}
 
-Les informations à collecter pour compiler un programme C/\cpp sont au
-minimum le compilateur et les outils de création de
-bibliothèque. Considérons donc le fichier de configuration minimal
+Les informations Ã  collecter pour compiler un programme C/\cpp sont au
+minimum le compilateur et les outils de crÃ©ation de
+bibliothÃ¨que. ConsidÃ©rons donc le fichier de configuration minimal
 suivant:
 {\small
 \begin{verbatim}
 # Initialisation d'Autoconf.
 AC_INIT(configure.ac)
 
-# Quel est le compilateur C par défaut ?
+# Quel est le compilateur C par dÃ©faut ?
 AC_PROG_CC
 
 # Pas de fichier de configuration ici.
@@ -868,7 +864,7 @@ AC_OUTPUT
 \end{verbatim}
 }
 
-Après exécution d'Autoconf, puis du configure généré, on obtient:
+AprÃ¨s exÃ©cution d'Autoconf, puis du configure gÃ©nÃ©rÃ©, on obtient:
 {\small
 \begin{verbatim}
 checking for gcc... gcc
@@ -884,12 +880,12 @@ configure: creating ./config.status
 \end{verbatim}
 }
 
-On remarque que le premier compilateur recherché est gcc, qu'il est
-bien détecté sur le système. Ensuite, configure effectue quelques
-tests standards de manière à définir ses variables de configuration. 
+On remarque que le premier compilateur recherchÃ© est gcc, qu'il est
+bien dÃ©tectÃ© sur le systÃ¨me. Ensuite, configure effectue quelques
+tests standards de maniÃ¨re Ã  dÃ©finir ses variables de configuration.
 
 Pour tester l'existence d'un compilateur \cpp, on utilise la macro
-\texttt{AC\_PROG\_\-CXX} de façon similaire. Pour tester l'existence
+\texttt{AC\_PROG\_\-CXX} de faÃ§on similaire. Pour tester l'existence
 de l'utilitaire \textsf{ranlib}, on utilise \texttt{AC\_PROG\_RANLIB}.
 
 Voici donc un fichier de configuration standard pour tester un
@@ -906,7 +902,7 @@ AC_OUTPUT
 \end{verbatim}
 }
 
-Et l'exécution de configure donne:
+Et l'exÃ©cution de configure donne:
 {\small
 \begin{verbatim}
 checking for gcc... gcc
@@ -925,13 +921,13 @@ configure: creating ./config.status
 \end{verbatim}
 }
 
-Entre autres choses, ce configure définit automatiquement les
+Entre autres choses, ce configure dÃ©finit automatiquement les
 variables \texttt{CC}, \texttt{CXX}, \texttt{CFLAGS},
 \texttt{CPPFLAGS}, \texttt{CXXFLAGS}, \texttt{RANLIB}. Il est toujours
 possible de forcer la valeur de ces variables en suffixant la commande
 './configure' par une affectation de la forme 'VARIABLE=VALEUR'. Par
 exemple, si vous voulez utiliser la version 2.95 de gcc, qui n'est
-plus la version par défaut sur les systèmes GNU/Linux, voici la
+plus la version par dÃ©faut sur les systÃ¨mes GNU/Linux, voici la
 commande:
 
 {\small
@@ -940,14 +936,14 @@ commande:
 \end{verbatim}
 }
 
-\subsubsection{Détection de problèmes et leurs conséquences}
+\subsubsection{DÃ©tection de problÃ¨mes et leurs consÃ©quences}
 
-Autoconf nous donne plusieurs niveaux de granularité pour tester
-d'éventuels problèmes. Le principe général de fonctionnement, c'est de
-générer et d'essayer de compiler un petit bout de code qui teste
-précisément le point de portabilité en question. Tout d'abord, il faut
-définir le langage utilisé pour ces tests, c'est le rôle de la macro
-\texttt{AC\_LANG (LANGUAGE)}. Généralement, les macros de tests
+Autoconf nous donne plusieurs niveaux de granularitÃ© pour tester
+d'Ã©ventuels problÃ¨mes. Le principe gÃ©nÃ©ral de fonctionnement, c'est de
+gÃ©nÃ©rer et d'essayer de compiler un petit bout de code qui teste
+prÃ©cisÃ©ment le point de portabilitÃ© en question. Tout d'abord, il faut
+dÃ©finir le langage utilisÃ© pour ces tests, c'est le rÃ´le de la macro
+\texttt{AC\_LANG (LANGUAGE)}. GÃ©nÃ©ralement, les macros de tests
 suivent la forme: \texttt{NOM\_MACRO(A\_TESTER, [ACTION\_A\_FAIRE\_SI\_OK],
   [ACTION\_SINON])}.
 
@@ -957,40 +953,40 @@ Les actions sont de deux types:
 \bitem \textbf{Appel de macros Autoconf} comme \texttt{AC\_MSG\_RESULT},
 \texttt{AC\_MSG\_NOTICE}, \texttt{AC\_MSG\_ERROR} pour informer
 l'utilisateur, mais aussi toutes les macros de tests (on peut ainsi
-chaîner les tests).
+chaÃ®ner les tests).
 \bitem \textbf{Commande shell quelconque}
 \end{itemize}
 
-Pour récolter les informations et les injecter dans le programme, un
-header peut-être créé à la demande par la commande
+Pour rÃ©colter les informations et les injecter dans le programme, un
+header peut-Ãªtre crÃ©Ã© Ã  la demande par la commande
 \texttt{AC\_CONFIG\_HEADER(FICHIER)}. Usuellement, on appelle ce
 fichier 'config.h'.
 
-Le premier niveau de granularité consiste à tester l'existence de
+Le premier niveau de granularitÃ© consiste Ã  tester l'existence de
 headers par la macro \texttt{AC\_CHECK\_HEADER}. Voici sa signature:
 {\small
 \begin{verbatim}
  - Macro: AC_CHECK_HEADER (HEADER-FILE, [ACTION-IF-FOUND],
           [ACTION-IF-NOT-FOUND], [INCLUDES = `default-includes'])
 \end{verbatim}
-} 
+}
 
-Automatiquement, cette macro définit une macro C
+Automatiquement, cette macro dÃ©finit une macro C
 \texttt{HAVE\_NOM\_DU\_HEADER\_H} dans le config.h si le header
 existe. Ainsi, on peut compiler conditionnellement certaines parties
-du programme C/\cpp en utilisant le préprocesseur:
+du programme C/\cpp en utilisant le prÃ©processeur:
 
 {\small
 \begin{verbatim}
 #ifdef HAVE_MYHEADER_H
 # include "my_header.h"
 #else
-  // The function my_foo is not present, it does not matter: 
+  // The function my_foo is not present, it does not matter:
   //we just do as if it was here.
   void my_foo() { }
 #endif // HAVE_MYHEADER_H
 \end{verbatim}
-} 
+}
 
 Cependant, on veut parfois un comportement plus strict, on peut alors
 utiliser une action d'autoconf:
@@ -1002,34 +998,34 @@ AC_CHECK_HEADER(my_header.h, [], [AC_MSG_ERROR([my_header.h is not
 \end{verbatim}
 }
 
-De manière analogue, on peut tester l'existence d'une bibliothèque
-grâce à la macro:
+De maniÃ¨re analogue, on peut tester l'existence d'une bibliothÃ¨que
+grÃ¢ce Ã  la macro:
 {\small
 \begin{verbatim}
  - Macro: AC_CHECK_LIB (LIBRARY, FUNCTION [, ACTION-IF-FOUND [,
           ACTION-IF-NOT-FOUND [, OTHER-LIBRARIES]]])
 \end{verbatim}
-} 
+}
 
-La bibliothèque est spécifiée par le nom utilisé lors de la liaison
-par l'option '-l' du compilateur. Par exemple, si la bibliothèque est
-la libncurses (utilisée pour contrôler les terminaux UNIX), la
+La bibliothÃ¨que est spÃ©cifiÃ©e par le nom utilisÃ© lors de la liaison
+par l'option '-l' du compilateur. Par exemple, si la bibliothÃ¨que est
+la libncurses (utilisÃ©e pour contrÃ´ler les terminaux UNIX), la
 commande de liaison est '-lncurses'. Donc, pour tester l'existence de
-la fonction \texttt{initscr} dans cette bibliothèque:
+la fonction \texttt{initscr} dans cette bibliothÃ¨que:
 
 {\small
 \begin{verbatim}
 AC_CHECK_LIB(ncurses, initscr)
 \end{verbatim}
-} 
+}
 
-Si la bibliothèque est bien trouvée, une macro C
-\texttt{HAVE\_LIBNCURSES} est définie et la commande -lncurses est
-rajoutée automatiquement à la commande d'édition des liens.
+Si la bibliothÃ¨que est bien trouvÃ©e, une macro C
+\texttt{HAVE\_LIBNCURSES} est dÃ©finie et la commande -lncurses est
+rajoutÃ©e automatiquement Ã  la commande d'Ã©dition des liens.
 
-Enfin, on peut aussi générer soit-même ses propres tests pour vérifier
+Enfin, on peut aussi gÃ©nÃ©rer soit-mÃªme ses propres tests pour vÃ©rifier
 la bonne compilation ou/et le bon comportement de certaines fonctions
-du système. Pour cela, Autoconf nous fourni les macros suivantes:
+du systÃ¨me. Pour cela, Autoconf nous fourni les macros suivantes:
 
 {\small
 \begin{verbatim}
@@ -1042,7 +1038,7 @@ du système. Pour cela, Autoconf nous fourni les macros suivantes:
 \end{verbatim}
 }
 
-La première macro permet de tester la bonne compilation d'un
+La premiÃ¨re macro permet de tester la bonne compilation d'un
 programme, par exemple, on peut tester si la fonction C 'printf' se
 compile bien:
 {\small
@@ -1054,13 +1050,13 @@ AC_COMPILE_IFELSE(
    {
       (void)printf("%d%d%f", 10, 10, 10);
    }
-], 
-[echo Ok, printf works.], 
+],
+[echo Ok, printf works.],
 [echo Ko, printf is out of order.])
 \end{verbatim}
 }
 
-La seconde permet de tester si l'édition de lien se passe correctement:
+La seconde permet de tester si l'Ã©dition de lien se passe correctement:
 {\small
 \begin{verbatim}
 AC_LINK_IFELSE(
@@ -1077,9 +1073,9 @@ AC_LINK_IFELSE(
 \end{verbatim}
 }
 
-Cela ne veut pas dire que 'getopt' est bien utilisée ou qu'elle
-fonctionne correctement, la dernière macro permet de tester
-l'exécution du programme:
+Cela ne veut pas dire que 'getopt' est bien utilisÃ©e ou qu'elle
+fonctionne correctement, la derniÃ¨re macro permet de tester
+l'exÃ©cution du programme:
 
 {\small
 \begin{verbatim}
@@ -1104,21 +1100,21 @@ documentation d'Autoconf (\texttt{info autoconf}).
 
 \section{\textsf{Automake} pour les projets en \textsf{C/\cpp}}
 
-Automake est un outil de génération de Makefile. Les Makefiles générés
-fournissent des facilités pour le développement, la maintenance et la
-distribution de programmes. Comme expliqué précédemment, Automake
+Automake est un outil de gÃ©nÃ©ration de Makefile. Les Makefiles gÃ©nÃ©rÃ©s
+fournissent des facilitÃ©s pour le dÃ©veloppement, la maintenance et la
+distribution de programmes. Comme expliquÃ© prÃ©cÃ©demment, Automake
 fournit des fichiers \texttt{Makefile.in} qui sont des squelettes de
-Makefile qui attendent les valeurs de configuration calculé par
+Makefile qui attendent les valeurs de configuration calculÃ© par
 configure.
 
-Pour générer ses \texttt{Makefile.in}, \textsf{Automake} attend de
+Pour gÃ©nÃ©rer ses \texttt{Makefile.in}, \textsf{Automake} attend de
 l'utilisateur qu'il lui fournisse un ensemble de
-\texttt{Makefile.am}. Ces fichiers définissent de manière minimale les
-informations relatives à la compilation et l'installation du logiciel.
+\texttt{Makefile.am}. Ces fichiers dÃ©finissent de maniÃ¨re minimale les
+informations relatives Ã  la compilation et l'installation du logiciel.
 
 \subsection{Exemple minimaliste}
 
-Créons un fichier foo.c contenant:
+CrÃ©ons un fichier foo.c contenant:
 {\small
 \begin{verbatim}
 #include <stdio.h>
@@ -1130,7 +1126,7 @@ int main()
 \end{verbatim}
 }
 
-On commence par créer un fichier minimaliste de configuration,
+On commence par crÃ©er un fichier minimaliste de configuration,
 configure.ac: {\small
 \begin{verbatim}
 AC_INIT(configure.ac)
@@ -1141,8 +1137,8 @@ AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
 \end{verbatim}
 } Ce programme est le plus simple qu'il soit: on veut juste le
-compiler et créer un exécutable du même nom. Un \texttt{Makefile.am}
-possible pour définir sa compilation est le suivant:
+compiler et crÃ©er un exÃ©cutable du mÃªme nom. Un \texttt{Makefile.am}
+possible pour dÃ©finir sa compilation est le suivant:
 
 {\small
 \begin{verbatim}
@@ -1150,21 +1146,21 @@ bin_PROGRAMS=foo
 \end{verbatim}
 }
 
-On définit un programme qui se nomme 'foo' et qui est de la famille
-des programmes binaires. Par défaut, Automake essaye de trouver un
-fichier foo.c. Si on voulait spécifier précisément l'ensemble des
+On dÃ©finit un programme qui se nomme 'foo' et qui est de la famille
+des programmes binaires. Par dÃ©faut, Automake essaye de trouver un
+fichier foo.c. Si on voulait spÃ©cifier prÃ©cisÃ©ment l'ensemble des
 sources du programme, il suffirait d'utiliser la variable
-\texttt{SOURCES} (on pourrait alors spécifier plusieurs fichiers 
+\texttt{SOURCES} (on pourrait alors spÃ©cifier plusieurs fichiers
 sources) :
 
 {\small
 \begin{verbatim}
 bin_PROGRAMS=foo
-foo_SOURCES=foo.cc 
+foo_SOURCES=foo.cc
 \end{verbatim}
 }
 
-Il créé un fichier \texttt{Makefile.in} si on lance la commande:
+Il crÃ©Ã© un fichier \texttt{Makefile.in} si on lance la commande:
 
 {\small
 \begin{verbatim}
@@ -1204,7 +1200,7 @@ et lancer une compilation:
 }
 
 Pour finir cette introduction, vous pouvez lancer la commande 'make
-distcheck' qui termine son exécution par:
+distcheck' qui termine son exÃ©cution par:
 
 {\small
 \begin{verbatim}
@@ -1214,14 +1210,14 @@ foo-0.1.tar.gz is ready for distribution
 \end{verbatim}
 }
 
-Cette commande compile le programme, créé une tarball, simule son
-installation et lance sa batterie de tests si elle est présente.
+Cette commande compile le programme, crÃ©Ã© une tarball, simule son
+installation et lance sa batterie de tests si elle est prÃ©sente.
 
 \subsection{Compilation et maintenance}
 
-\subsubsection{Compilation d'une bibliothèque}
+\subsubsection{Compilation d'une bibliothÃ¨que}
 
-Créons un répertoire \texttt{src} dans lequel nous définissons les
+CrÃ©ons un rÃ©pertoire \texttt{src} dans lequel nous dÃ©finissons les
 fichiers suivants:
 {\small
 \begin{verbatim}
@@ -1259,9 +1255,9 @@ void display_message()
 \end{verbatim}
 }
 
-Ces fichiers vont constituer une bibliothèque fournissant la fonction
-'display\_message' appelée par notre programme foo. Automake va nous
-créer cette bibliothèque:
+Ces fichiers vont constituer une bibliothÃ¨que fournissant la fonction
+'display\_message' appelÃ©e par notre programme foo. Automake va nous
+crÃ©er cette bibliothÃ¨que:
 
 {\small
 \begin{verbatim}
@@ -1271,19 +1267,19 @@ noinst_HEADERS=display.h
 \end{verbatim}
 }
 
-On remplace le PROGRAMS par LIBRARIES et déclare cette bibliothèque
-comme appartenant à la famille des bibliothèques qui ne s'installent
-pas: elles sont juste utilisées pour compiler le programme foo. Si on
-voulait installer cette bibliothèque sur le système, il suffirait de
+On remplace le PROGRAMS par LIBRARIES et dÃ©clare cette bibliothÃ¨que
+comme appartenant Ã  la famille des bibliothÃ¨ques qui ne s'installent
+pas: elles sont juste utilisÃ©es pour compiler le programme foo. Si on
+voulait installer cette bibliothÃ¨que sur le systÃ¨me, il suffirait de
 changer \texttt{noinst} par \texttt{lib}. Ensuite, les sources sont
-définies comme pour un programme normal. On spécifie aussi l'existence
-de headers -- qu'on ne désire pas installer non plus -- grâce à la
+dÃ©finies comme pour un programme normal. On spÃ©cifie aussi l'existence
+de headers -- qu'on ne dÃ©sire pas installer non plus -- grÃ¢ce Ã  la
 variable \texttt{HEADERS}.
 
-Il reste à connecter ce répertoire et son \texttt{Makefile.am} au
-projet. Pour cela, deux choses à faire. D'abord, définir une variables
+Il reste Ã  connecter ce rÃ©pertoire et son \texttt{Makefile.am} au
+projet. Pour cela, deux choses Ã  faire. D'abord, dÃ©finir une variables
 \texttt{SUBDIRS} dans le \texttt{Makefile.am} de la racine pour lui
-permettre de rentrer dans le répertoire \texttt{src}. On rajoute donc
+permettre de rentrer dans le rÃ©pertoire \texttt{src}. On rajoute donc
 dans le \texttt{Makefile.am} de la racine du projet:
 
 {\small
@@ -1292,8 +1288,8 @@ SUBDIRS=src
 \end{verbatim}
 }
 
-Ensuite, il faut demander à configure de générer le Makefile du
-sous-répertoi\-re. On modifie donc la ligne suivante dans
+Ensuite, il faut demander Ã  configure de gÃ©nÃ©rer le Makefile du
+sous-rÃ©pertoi\-re. On modifie donc la ligne suivante dans
 \texttt{configure.ac}:
 {\small
 \begin{verbatim}
@@ -1301,14 +1297,14 @@ AC_CONFIG_FILES([Makefile] [src/Makefile])
 \end{verbatim}
 }
 
-On peut relancer les Autotools grâce à la commande
-\texttt{autoreconf}. Ensuite, lancer \texttt{make} à la racine permet
-de compiler la bibliothèque et le programme (qui ne l'utilise toujours
+On peut relancer les Autotools grÃ¢ce Ã  la commande
+\texttt{autoreconf}. Ensuite, lancer \texttt{make} Ã  la racine permet
+de compiler la bibliothÃ¨que et le programme (qui ne l'utilise toujours
 pas).
 
 \subsubsection{Compilation d'un programme}
 
-Pour utiliser une bibliothèque définie dans le projet, il suffit
+Pour utiliser une bibliothÃ¨que dÃ©finie dans le projet, il suffit
 d'augmenter la variable \texttt{foo\_LDADD} par
 src/libdisplay.a:
 
@@ -1318,28 +1314,28 @@ foo_LDADD= src/libdisplay.a
 \end{verbatim}
 }
 
-Notre bibliothèque utilise la libncurses, on doit donc spécifier une
-option à l'éditeur de lien. Or, la libncurses est externe à notre
-projet donc son intégration dépend de la configuration, c'est à dire
+Notre bibliothÃ¨que utilise la libncurses, on doit donc spÃ©cifier une
+option Ã  l'Ã©diteur de lien. Or, la libncurses est externe Ã  notre
+projet donc son intÃ©gration dÃ©pend de la configuration, c'est Ã  dire
 de configure. Il suffit donc de tester son existence dans le
 configure.ac par la macro \texttt{AC\_CHECK\_LIB} pour que l'option soit
-automatiquement définie par Autoconf.
+automatiquement dÃ©finie par Autoconf.
 
-\subsubsection{Définir une batterie de tests}
+\subsubsection{DÃ©finir une batterie de tests}
 
-Automake permet de mettre en place un système de tests unitaires
-lancable à partir de make par la commande \texttt{make check}. Il
-suffit simplement de définir dans une variable \texttt{TESTS},
-l'ensemble des programmes de tests et ensuite de déclarer pour chacun
-de ces \texttt{check\_PROGRAMS} les sources utilisés pour les
-compiler. Le processus de test consiste à compiler ces programmes et à
-les exécuter successivement : un test réussit ssi son status de sortie
+Automake permet de mettre en place un systÃ¨me de tests unitaires
+lancable Ã  partir de make par la commande \texttt{make check}. Il
+suffit simplement de dÃ©finir dans une variable \texttt{TESTS},
+l'ensemble des programmes de tests et ensuite de dÃ©clarer pour chacun
+de ces \texttt{check\_PROGRAMS} les sources utilisÃ©s pour les
+compiler. Le processus de test consiste Ã  compiler ces programmes et Ã 
+les exÃ©cuter successivement : un test rÃ©ussit ssi son status de sortie
 est \texttt{EXIT\_SUCCESS}.
 
-Par exemple, on créé un répertoire 'tests' à la racine du projet. On
-définit un source 'test1.c' qui se content de faire
-'exit(EXIT\_SUCCESS)'. On définit alors le \texttt{Makefile.am} de la
-façon suivante:
+Par exemple, on crÃ©Ã© un rÃ©pertoire 'tests' Ã  la racine du projet. On
+dÃ©finit un source 'test1.c' qui se content de faire
+'exit(EXIT\_SUCCESS)'. On dÃ©finit alors le \texttt{Makefile.am} de la
+faÃ§on suivante:
 
 {\small
 \begin{verbatim}
@@ -1349,9 +1345,9 @@ test1_SOURCES=test1.c
 \end{verbatim}
 }
 
-On met à jour le \texttt{SUBDIRS} du Makefile de la racine et on
-demande à configure de générer le nouveau Makefile. Ensuite, lancer
-'make check' à la racine donne:
+On met Ã  jour le \texttt{SUBDIRS} du Makefile de la racine et on
+demande Ã  configure de gÃ©nÃ©rer le nouveau Makefile. Ensuite, lancer
+'make check' Ã  la racine donne:
 
 {\small
 \begin{verbatim}
@@ -1365,17 +1361,17 @@ All 1 tests passed
 \end{verbatim}
 }
 
-On peut aussi définir des tests qui ne doivent pas réussir (pensez à
-un compilateur qui doit rejeter les programmes mal formés). Pour cela,
+On peut aussi dÃ©finir des tests qui ne doivent pas rÃ©ussir (pensez Ã 
+un compilateur qui doit rejeter les programmes mal formÃ©s). Pour cela,
 on utilise la variable \texttt{XFAIL\_TESTS}. Enfin, les programmes de tests
-peuvent aussi être des scripts shell par exemple.
+peuvent aussi Ãªtre des scripts shell par exemple.
 
 \subsection{Installation et distribution}
 
-\subsubsection{Paramètres d'installation}
+\subsubsection{ParamÃ¨tres d'installation}
 
-Grâce à 'configure', on peut spécifier l'emplacement exact où on veut
-installer un logiciel : ces binaires, ses bibliothèques, ses
+GrÃ¢ce Ã  'configure', on peut spÃ©cifier l'emplacement exact oÃ¹ on veut
+installer un logiciel : ces binaires, ses bibliothÃ¨ques, ses
 documentations et ses fichiers annexes (demos ...). On trouve donc des
 options:
 
@@ -1399,29 +1395,29 @@ options:
 \end{verbatim}
 }
 
-Il y a deux types d'options : celles qui permettent de contrôler
-finement les répertoires et celles qui sont plus
-globables. \texttt{--prefix} est la plus intéressante car elle permet
-de spécifier une racine à partir d'où on peut installer les différents
-composants du programme. Par exemple, si le préfixe est '/usr', les
-bibliothèques seront installées dans '/usr/lib', les binaires dans
+Il y a deux types d'options : celles qui permettent de contrÃ´ler
+finement les rÃ©pertoires et celles qui sont plus
+globables. \texttt{--prefix} est la plus intÃ©ressante car elle permet
+de spÃ©cifier une racine Ã  partir d'oÃ¹ on peut installer les diffÃ©rents
+composants du programme. Par exemple, si le prÃ©fixe est '/usr', les
+bibliothÃ¨ques seront installÃ©es dans '/usr/lib', les binaires dans
 '/usr/bin' ... etc.
 
-configure définit donc un certain nombre de variables qui
-correspondent à ces répertoires: (\texttt{\$\(bindir\)}, 
+configure dÃ©finit donc un certain nombre de variables qui
+correspondent Ã  ces rÃ©pertoires: (\texttt{\$\(bindir\)},
 \texttt{\$\(srcdir\)},\texttt{\$\(sbindir\)},\texttt{\$\(pkgdatadir\)},
 \texttt{\$\(datadir\)}...).
 
-\subsubsection{Définition de l'installation et de la distribution}
+\subsubsection{DÃ©finition de l'installation et de la distribution}
 
-D'une manière générale, on utilise un format de nommage des variables
-pour déterminer si l'objet qu'elle réfère doit être distribué et
-installé (en précisant où l'installer). Une variable se décompose donc
+D'une maniÃ¨re gÃ©nÃ©rale, on utilise un format de nommage des variables
+pour dÃ©terminer si l'objet qu'elle rÃ©fÃ¨re doit Ãªtre distribuÃ© et
+installÃ© (en prÃ©cisant oÃ¹ l'installer). Une variable se dÃ©compose donc
 en quatre parties:
 
 \begin{itemize}
-\bitem \texttt{dist/no\_dist}: qui précise si l'objet doit être distribué ;
-\bitem \texttt{le répertoire d'installation/no\_inst}: qui définit la cible
+\bitem \texttt{dist/no\_dist}: qui prÃ©cise si l'objet doit Ãªtre distribuÃ© ;
+\bitem \texttt{le rÃ©pertoire d'installation/no\_inst}: qui dÃ©finit la cible
 d'installation ou qui supprime l'installation de l'objet;
 \bitem \texttt{la famille de l'objet}: \texttt{PROGRAMS},
 \texttt{SCRIPTS}, \texttt{DATA}, \texttt{LIBRARIES}, \texttt{HEAD\-ERS}...
@@ -1430,28 +1426,28 @@ d'installation ou qui supprime l'installation de l'objet;
 \noindent Par exemple:
 {\small
 \begin{alltt}
-# Définit un programme à installer des /sbin
+# DÃ©finit un programme Ã  installer des /sbin
 sbin_PROGRAMS=foo
-# Définit un programme à ne pas installer
+# DÃ©finit un programme Ã  ne pas installer
 noinst_PROGRAMS=foo
-# Définit un fichier source à ne pas distribuer:
+# DÃ©finit un fichier source Ã  ne pas distribuer:
 nodist_SOURCES=foo.c
-# Attention ici, le fichier sera installé dans \$\(pkgdatadir\)/ 
+# Attention ici, le fichier sera installÃ© dans \$\(pkgdatadir\)/
 # et non \$\(pkgdatadir\)/html
 pkgdata_DATA=html/foo.html
 \end{alltt}
 }
 
-Pour voir le répertoire d'installation comme une racine, on utilise un
+Pour voir le rÃ©pertoire d'installation comme une racine, on utilise un
 modificateur 'nobase':
 {\small
 \begin{alltt}
-# Le fichier sera bien installé dans \$\(pkgdatadir\)/html
+# Le fichier sera bien installÃ© dans \$\(pkgdatadir\)/html
 nobase_pkgdata_DATA=html/foo.html
 \end{alltt}
 }
 
-On peut aussi créer ses propres répertoires:
+On peut aussi crÃ©er ses propres rÃ©pertoires:
 {\small
 \begin{alltt}
 htmldir=\$\(pkgdatadir\)/html
@@ -1459,8 +1455,8 @@ html_DATA=html/foo.html
 \end{alltt}
 }
 
-Enfin, lorsqu'un de vos fichiers doit juste être distribué dans la
-tarball et qu'il ne fait partie d'aucune des catégories citées, on
+Enfin, lorsqu'un de vos fichiers doit juste Ãªtre distribuÃ© dans la
+tarball et qu'il ne fait partie d'aucune des catÃ©gories citÃ©es, on
 utilise la variable \texttt{EXTRA\_DIST}:
 {\small
 \begin{verbatim}
@@ -1470,23 +1466,23 @@ EXTRA_DIST=BUGS INSTALL
 
 \subsubsection{make dist/distcheck/distclean/install}
 
-Le but de ces commandes est d'automatiser la création de
-tarball. Elles déterminent les dépendances du programme, c'est-à-dire
-l'ensemble des informations nécessaires à sa compilation et les
-intègrent dans la tarball. Une tarball ne contient donc pas tout ce
-qui se trouve dans votre répertoire de développement, si vous voulez
-rajouter un fichier, il faut le spécifier à l'aide de la variable
+Le but de ces commandes est d'automatiser la crÃ©ation de
+tarball. Elles dÃ©terminent les dÃ©pendances du programme, c'est-Ã -dire
+l'ensemble des informations nÃ©cessaires Ã  sa compilation et les
+intÃ¨grent dans la tarball. Une tarball ne contient donc pas tout ce
+qui se trouve dans votre rÃ©pertoire de dÃ©veloppement, si vous voulez
+rajouter un fichier, il faut le spÃ©cifier Ã  l'aide de la variable
 \texttt{EXTRA\_DIST}.
 
-'make dist' s'occupe seulement de créer la tarball sans la
+'make dist' s'occupe seulement de crÃ©er la tarball sans la
 tester. 'make distcheck' lui, s'occupe en plus d'installer la tarball
-avec un préfixe local au répertoire courant, compile le logiciel et
+avec un prÃ©fixe local au rÃ©pertoire courant, compile le logiciel et
 lance 'make check'. Si tout ce passe bien, il vous informe que votre
-tarball est bonne à distribuer. Enfin, 'make distclean' nettoie
-l'ensemble de l'arborescence de développement.
+tarball est bonne Ã  distribuer. Enfin, 'make distclean' nettoie
+l'ensemble de l'arborescence de dÃ©veloppement.
 
-La tarball ainsi créé contient un configure qui générera un
-Makefile. La commande essentielle à fournir à vos utilisateurs est
+La tarball ainsi crÃ©Ã© contient un configure qui gÃ©nÃ©rera un
+Makefile. La commande essentielle Ã  fournir Ã  vos utilisateurs est
 donc la suivante:
 {\small
 \begin{verbatim}
@@ -1494,7 +1490,7 @@ tar xvfz votre-tarball.tar.gz
 ./configure
 make
 make check
-make install 
+make install
 \end{verbatim}
 }
 
