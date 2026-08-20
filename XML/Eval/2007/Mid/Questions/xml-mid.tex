@@ -2,24 +2,22 @@
 
 \documentclass[11pt,a4paper]{article}
 
-\input{trace}
-
-\input{title}
-\author{Christian Rinderknecht}
-\date{16 October 2007}
-
-% Packages
-%
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
 \usepackage{verbatim}
 \usepackage{url,xspace}
 
-% xmllint
-%
-\input{xmllint}
+\title{Mid-term examination on XSLT}
+\author{Christian Rinderknecht}
+\date{16 October 2007}
 
 \newcommand\XML{\textsf{XML}\xspace}
 \newcommand\XSLT{\textsf{XSLT}\xspace}
 \newcommand\XHTML{\textsf{XHTML}\xspace}
+
+% xmllint
+%
+\input{xmllint}
 
 \begin{document}
 
@@ -29,10 +27,12 @@
 
 \section{Reversing a list}
 
-Given the following \XML document \smallXMLin{toc.xml} containing a
-flat list of the same element with the same attribute like
+Given the following \XML document
+
 \smallXMLin{toc.xml}
-\noindent output an \XHTML where the list is reversed:
+
+\noindent containing a flat list of the same element with the same
+attribute, output an \XHTML where the list is reversed:
 \begin{itemize}
 
   \item Instances and schemas
@@ -48,4 +48,3 @@ flat list of the same element with the same attribute like
 \end{itemize}
 
 \end{document}
-
