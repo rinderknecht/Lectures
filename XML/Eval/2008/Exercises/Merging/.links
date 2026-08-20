@@ -1,9 +1,8 @@
-#include "../.common_links"
+$HOME/git/LaTeX-build/Tools/xmllint.mk
+$HOME/git/LaTeX-build/Tools/saxon.mk
 
-../common.mk.in
-
-ordered_lists.xml merge1.xml 
-ordered_lists.xml merge2.xml 
+ordered_lists.xml merge1.xml
+ordered_lists.xml merge2.xml
 
 list.dtd merge1.dtd
 list.dtd merge2.dtd

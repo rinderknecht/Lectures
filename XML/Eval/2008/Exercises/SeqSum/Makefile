@@ -1,21 +1,22 @@
 #-*-makefile-*-
 
-HTML    := sum.html
-TARGETS := sum.txt
-XSL     := sum.xsl
-XML     := sum.xml
-DTD     := sum.dtd
+.RECIPEPREFIX = > # Use '>' instead of TAB for recipes
 
-include common.mk 
+XSL := sum.xsl
+XML := sum.xml
+DTD := sum.dtd
+
+include xmllint.mk
+include saxon.mk
 
 .sum.valid: sum.xml sum.dtd
-	${call xmllint,$<}
+> ${call xmllint,$<}
 
 sum.txt: .sum.valid sum.xsl
-	${call saxon,$@,sum.xml,sum.xsl}
+> ${call saxon,$@,sum.xml,sum.xsl}
 
 clean::
-	${RM} -f .sum.valid
+> \rm -f .sum.valid
 
 distclean::
 

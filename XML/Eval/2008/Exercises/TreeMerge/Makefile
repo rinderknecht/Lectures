@@ -1,17 +1,17 @@
 #-*-makefile-*-
 
-HTML    := merge.html
-BASE    := tmerge
-TARGETS := ${BASE:%=%.txt}
-XSL     := ${BASE:%=%.xsl}
-XML     := num.xml
+.RECIPEPREFIX = > # Use '>' instead of TAB for recipes
+
+BASE := tmerge
+XSL  := ${BASE:%=%.xsl}
+XML  := num.xml
 
 # Note: There is no DTD.
 
-include common.mk 
+include saxon.mk
 
 %.txt: %.xml %.xsl
-	${call saxon,$@,tmerge.xml,tmerge.xsl}
+> ${call saxon,$@,tmerge.xml,tmerge.xsl}
 
 distclean::
 

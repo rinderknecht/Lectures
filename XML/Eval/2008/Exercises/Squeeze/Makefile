@@ -1,19 +1,21 @@
 #-*-makefile-*-
 
-HTML    := squeeze.html
+.RECIPEPREFIX = > # Use '>' instead of TAB for recipes
+
 BASE    := squeeze
 TARGETS := ${BASE:%=%.xml}
 XSL     := squeeze.xsl
 XML     := numbers.xml
 DTD     := numbers.dtd
 
-include common.mk 
+include xmllint.mk
+include saxon.mk
 
 .numbers.valid: numbers.xml numbers.dtd
-	${call xmllint,$<}
+> ${call xmllint,$<}
 
 ${TARGETS}: .numbers.valid squeeze.xsl
-	${call saxon,$@,numbers.xml,squeeze.xsl}
+> ${call saxon,$@,numbers.xml,squeeze.xsl}
 
 distclean::
 

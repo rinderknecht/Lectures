@@ -1,19 +1,20 @@
 #-*-makefile-*-
 
-HTML    := penultimate.html
-BASE    := penult
-TARGETS := ${BASE:%=%.xml}
-XSL     := ${BASE:%=%.xsl}
-XML     := toc.xml
-DTD     := book.dtd
+.RECIPEPREFIX = > # Use '>' instead of TAB for recipes
 
-include common.mk 
+BASE := penult
+XSL  := ${BASE:%=%.xsl}
+XML  := toc.xml
+DTD  := book.dtd
+
+include xmllint.mk
+include saxon.mk
 
 .penult.valid: toc.xml book.dtd
-	${call xmllint,$<}
+> ${call xmllint,$<}
 
 penult.xml: .penult.valid penult.xsl
-	${call saxon,$@,toc.xml,penult.xsl}
+> ${call saxon,$@,toc.xml,penult.xsl}
 
 distclean::
 
