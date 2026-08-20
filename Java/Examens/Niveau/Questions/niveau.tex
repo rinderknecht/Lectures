@@ -1,13 +1,10 @@
 %%-*-latex-*-
 
-\documentclass[a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
-\usepackage[francais]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage[french]{babel}
 \usepackage{amssymb}
-
-\input{trace}
 
 \newcommand{\T}{\textrm{T}}
 \newtheorem{Def}{Definition}[section]
@@ -20,9 +17,9 @@
 
 \maketitle
 
-\section{Binôme de Pascal}
+\section{BinÃ´me de Pascal}
 
-\noindent Soit la fonction \verb+binome+ spécifiée ainsi:
+\noindent Soit la fonction \verb+binome+ spÃ©cifiÃ©e ainsi:
 
 \begin{verbatim}
 binome (n,p) {
@@ -32,7 +29,7 @@ binome (n,p) {
 \end{verbatim}
 \input{question_01}
 
-\section{Complexité et notations de Landau}
+\section{ComplexitÃ© et notations de Landau}
 
 \input{question_02}
 
@@ -45,7 +42,7 @@ binome (n,p) {
   \subsection{Arbres binaires}
 
   \input{question_04}
-        
+
   \subsection{Arbres binaires de recherche}
 
   \input{question_05}
@@ -56,25 +53,25 @@ binome (n,p) {
 
 \section{Indexation}
 
-On désire écrire un programme qui, à la lecture d'un programme, repère
-pour chaque identificateur les lignes où il apparaît. Un
-identificateur commence par une lettre et n'est composé que de lettres
-et de chiffres. Certains mots, dits réservés, ne peuvent pas être
-utilisés comme identificateurs.
+On dÃ©sire Ã©crire un programme qui, Ã  la lecture d'un programme, repÃ¨re
+pour chaque identificateur les lignes oÃ¹ il apparaÃ®t. Un
+identificateur commence par une lettre et n'est composÃ© que de lettres
+et de chiffres. Certains mots, dits rÃ©servÃ©s, ne peuvent pas Ãªtre
+utilisÃ©s comme identificateurs.
 
-Après la lecture, on demande d'imprimer le programme, puis la liste
-(triée par ordre alphabétique) des identificateurs suivis chacun de la
-liste des numéros de ligne où il apparaît, ces numéros de ligne étant
-rangés en ordre croissant.
+AprÃ¨s la lecture, on demande d'imprimer le programme, puis la liste
+(triÃ©e par ordre alphabÃ©tique) des identificateurs suivis chacun de la
+liste des numÃ©ros de ligne oÃ¹ il apparaÃ®t, ces numÃ©ros de ligne Ã©tant
+rangÃ©s en ordre croissant.
 
   \begin{enumerate}
 
-    \item Faites une analyse comparée des différentes structures de
-          données possibles;
+    \item Faites une analyse comparÃ©e des diffÃ©rentes structures de
+          donnÃ©es possibles;
 
-    \item programmez une méthode utilisant des arbres binaires de
-          recherche, et une méthode utilisant un tableau de hachage;
-          analysez les résultats.
+    \item programmez une mÃ©thode utilisant des arbres binaires de
+          recherche, et une mÃ©thode utilisant un tableau de hachage;
+          analysez les rÃ©sultats.
 
   \end{enumerate}
 
@@ -83,7 +80,7 @@ rangés en ordre croissant.
 
   \begin{enumerate}
 
-    \item Qu'est-ce qu'un graphe non-orienté? Orienté?
+    \item Qu'est-ce qu'un graphe non-orientÃ©? OrientÃ©?
 
     \item Qu'est-ce qu'un graphe connexe? Fortement connexe?
 
@@ -91,35 +88,35 @@ rangés en ordre croissant.
           d'abord?
 
     \item Donnez un algorithme de calcul des composantes fortement
-          connexes, et sa complexité temporelle et spatiale dans le
+          connexes, et sa complexitÃ© temporelle et spatiale dans le
           pire des cas.
 
-    \item Citez des cas où les graphes sont la structure de donnée
+    \item Citez des cas oÃ¹ les graphes sont la structure de donnÃ©e
           idoine.
 
   \end{enumerate}
 
 
-\section{Automates et langages réguliers}
+\section{Automates et langages rÃ©guliers}
 
   \begin{enumerate}
 
     \item Qu'est-ce qu'un automate fini?
 
-    \item Qu'est-ce qu'un automate fini déterministe et
-          non-déterministe? Quels sont les liens entre ces deux types
+    \item Qu'est-ce qu'un automate fini dÃ©terministe et
+          non-dÃ©terministe? Quels sont les liens entre ces deux types
           d'automates?
 
-    \item Qu'est-ce qu'un automate minimal? Y a-t-il unicité? Donnez
-          un algorithme de minimisation et discutez sa complexité.
+    \item Qu'est-ce qu'un automate minimal? Y a-t-il unicitÃ©? Donnez
+          un algorithme de minimisation et discutez sa complexitÃ©.
 
-    \item Qu'est-ce qu'un langage régulier? Une expression régulière?
- 
-    \item Quels liens y a-t-il entre les langages réguliers et les
+    \item Qu'est-ce qu'un langage rÃ©gulier? Une expression rÃ©guliÃ¨re?
+
+    \item Quels liens y a-t-il entre les langages rÃ©guliers et les
           automates finis?
 
-    \item Citez des applications intéressantes des automates finis et
-          des expressions régulières.
+    \item Citez des applications intÃ©ressantes des automates finis et
+          des expressions rÃ©guliÃ¨res.
 
   \end{enumerate}
 
