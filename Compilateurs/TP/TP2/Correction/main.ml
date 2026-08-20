@@ -8,7 +8,7 @@ module WithFunAppLetRec = struct
         Int n -> print_int n
       | Clos _ -> print_string "<fun>"
       end;
-      print_newline(); 
+      print_newline();
       exit 0
     with Err DivByZero ->
            print_endline "Error: division by zero."; exit 1
@@ -26,7 +26,7 @@ module WithAssign = struct
   let calc ast =
     try
       let v = eval empty_env empty_mem ast in
-        let () = print_string "The value is " 
+        let () = print_string "The value is "
       in begin match v with
         (Int n, _) -> print_int n
       | (Unit, _) -> print_string "()"
@@ -43,19 +43,19 @@ module WithAssign = struct
 end
 
 let main () =
-  let () = 
+  let () =
     print_endline "Saisissez une expression + RET + CTRL-D:";
     flush stdout in
   let lexbuf = Lexing.from_channel stdin in
-  let ast = 
-    try Parser.expression Lexer.token lexbuf with 
+  let ast =
+    try Parser.expression Lexer.token lexbuf with
       Lexer.Illegal_char s ->
-        print_endline ("Lexing error: Illegal character "^s^"."); 
-        exit 1 
+        print_endline ("Lexing error: Illegal character "^s^".");
+        exit 1
     | Lexer.Open_comment ->
         print_endline "Lexing error: Comment not terminated.";
         exit 1 in
-  let () = print_string "=> " 
+  let () = print_string "=> "
 in WithAssign.calc (ast)
 
 

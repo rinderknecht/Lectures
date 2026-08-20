@@ -1,7 +1,7 @@
 (* Nous donnons ici le contenu du module [Eval] (fichier
   \textsf{eval.ml}). Il contient plusieurs sous-modules correspondant
-  chacun à une calculette avec différen\-tes constructions qui sont
-  ajoutées au fur et à mesure des questions. *)
+  chacun Ã  une calculette avec diffÃ©ren\-tes constructions qui sont
+  ajoutÃ©es au fur et Ã  mesure des questions. *)
 
 open Ast
 
@@ -10,17 +10,17 @@ open Ast
 *)
 
 (* Le sous-module [Eval.WithFunAppLetRec] reprend le module
-  [Eval.WithCond] \emph{du TP précédent} et l'étend avec les
-  abstractions, les applications et les fonctions récursives
-  natives. Il répond aux questions~\ref{q2} et~\ref{q3}. L'ajout se
-  réduit à un cas supplémentaire dans le filtre de la fonction
+  [Eval.WithCond] \emph{du TP prÃ©cÃ©dent} et l'Ã©tend avec les
+  abstractions, les applications et les fonctions rÃ©cursives
+  natives. Il rÃ©pond aux questions~\ref{q2} et~\ref{q3}. L'ajout se
+  rÃ©duit Ã  un cas supplÃ©mentaire dans le filtre de la fonction
   [eval].
 *)
 
 module WithFunAppLetRec = struct
 
-  type value = 
-    Int of int 
+  type value =
+    Int of int
   | Clos of string * expr * environnement
 
   and environnement = string -> value
@@ -28,7 +28,7 @@ module WithFunAppLetRec = struct
   let empty_env = fun x -> raise Not_found
   let extend env (x,v) = fun y -> if x = y then v else env y
 
-  type error = 
+  type error =
     DivByZero
   | FreeVar of string
   | Typing of string
@@ -53,14 +53,14 @@ module WithFunAppLetRec = struct
              Int (
                match op with
                  Add -> n1 + n2 | Sub -> n1 - n2 | Mult -> n1 * n2
-               | Div -> 
+               | Div ->
                    if n2 = 0 then raise (Err DivByZero) else n1/n2
              )
          end
-  | Var x -> begin try env x with 
+  | Var x -> begin try env x with
                Not_found -> raise (Err (FreeVar x))
              end
-  | Let (x,e1,e2) -> 
+  | Let (x,e1,e2) ->
       let v1 = eval env e1 in eval (extend env (x,v1)) e2
   | LetRec (x,e1,e2) ->
       let rec env' = fun x -> extend env (x, v1 ()) x
@@ -70,7 +70,7 @@ module WithFunAppLetRec = struct
       begin match eval env e1 with
         Int (0) -> eval env e2
       | Int _ -> eval env e3
-      | Clos _ -> 
+      | Clos _ ->
           raise (Err (Typing "\"ifz\" condition must be integer"))
       end
   | If (b,e1,e2) -> if eval_bool b then eval env e1 else eval env e2
@@ -82,7 +82,7 @@ module WithFunAppLetRec = struct
           in eval (extend env0 (x,v2)) e0
       | _ -> raise (Err (Typing "Integers cannot be applied"))
       end
-  | _ -> failwith "Construction non traitée"
+  | _ -> failwith "Construction non traitÃ©e"
 end
 
 
