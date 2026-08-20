@@ -13,6 +13,13 @@
 
 %start system
 %type <Ast.system> system
+%type <Ast.system> subsystem
+%type <Ast.equation> equation
+%type <Ast.term> term
+%type <Ast.term list> combination
+%type <int> pnz
+%type <int> pos
+%type <'a -> 'a> sign
 
 %%
 
