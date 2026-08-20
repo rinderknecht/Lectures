@@ -1,8 +1,7 @@
-
 (* Nous donnons ici le contenu du module [Eval] (fichier
   \textsf{eval.ml}). Il contient plusieurs sous-modules correspondant
-  chacun ‡ une calculette avec diffÈren\-tes constructions qui sont
-  ajoutÈes au fur et ‡ mesure des questions. *)
+  chacun √† une calculette avec diff√©ren\-tes constructions qui sont
+  ajout√©es au fur et √† mesure des questions. *)
 
 open Ast
 
@@ -10,21 +9,21 @@ open Ast
 \subsection{Sous-module [Eval.Initial]}\label{Eval.Initial}
 *)
 
-(* Le sous-module [Eval.Initial] regroupe les dÈfinitions de type et
-  de valeurs correspondant ‡ la calculette avec constantes et
-  opÈrateurs arithmÈtiques. Il rÈpond ‡ la question~\ref{q1}. *)
+(* Le sous-module [Eval.Initial] regroupe les d√©finitions de type et
+  de valeurs correspondant √† la calculette avec constantes et
+  op√©rateurs arithm√©tiques. Il r√©pond √† la question~\ref{q1}. *)
 
 module Initial = struct
   type value = int
 
-  (* L'exception [DivByZero] sera dÈclanchÈe lorsqu'une division par
-     zÈro sera anticipÈe par la calculette.  *)
+  (* L'exception [DivByZero] sera d√©clanch√©e lorsqu'une division par
+     z√©ro sera anticip√©e par la calculette.  *)
 
   exception DivByZero
 
-  (* Le dernier cas du filtre de la fonction [eval] est nÈcessaire
-     car la syntaxe abstraite, c'est-‡-dire le type [Ast.expr],
-     inclut tous les constructeurs pour rÈaliser l'ensemble du
+  (* Le dernier cas du filtre de la fonction [eval] est n√©cessaire
+     car la syntaxe abstraite, c'est-√†-dire le type [Ast.expr],
+     inclut tous les constructeurs pour r√©aliser l'ensemble du
      travail pratique.  *)
 
   let rec eval e = match e with
@@ -35,7 +34,7 @@ module Initial = struct
            Add -> v1 + v2 | Sub -> v1 - v2 | Mult -> v1 * v2
          | Div -> if v2 = 0 then raise DivByZero else v1/v2
          end
-  | _ -> failwith "Construction non traitÈe"
+  | _ -> failwith "Construction non trait√©e"
 end (*c module Initial *)
 
 (*
@@ -43,13 +42,13 @@ end (*c module Initial *)
 *)
 
 (* Le module [Eval.WithLet] reprend le module [Eval.Initial] et
-  l'Ètend avec les variables et la liaison locale. Il rÈpond ‡ la
+  l'√©tend avec les variables et la liaison locale. Il r√©pond √† la
   question~\ref{q2}. *)
 
 module WithLet = struct
   type value = int
 
-  (* Les environnements $\rho$ sont codÈs de faÁon fonctionnelle. *)
+  (* Les environnements $\rho$ sont cod√©s de fa√ßon fonctionnelle. *)
 
   type environnement = string -> value
 
@@ -58,28 +57,28 @@ module WithLet = struct
   let empty_env = fun x -> raise Not_found
 
   (* La fonction [extend] implante l'extension des environnements par
-    une nouvelle liaison (il s'agit de l'opÈrateur $\oplus$). Ainsi
+    une nouvelle liaison (il s'agit de l'op√©rateur $\oplus$). Ainsi
     l'implantation de $\rho \oplus x \mapsto v$ est [extend env
     (x,v)]. *)
 
   let extend env (x,v) = fun y -> if x = y then v else env y
 
-  (* Il y a maintenant deux types d'erreurs: la division par zÈro et
-    les variables libres (c'est-‡-dire non introduites par un
+  (* Il y a maintenant deux types d'erreurs: la division par z√©ro et
+    les variables libres (c'est-√†-dire non introduites par un
     \textsf{let}). Il est alors utile de regrouper ces erreurs sous un
-    mÍme type. Ainsi, l'exception [Err (FreeVar x)] est dÈclanchÈe
+    m√™me type. Ainsi, l'exception [Err (FreeVar x)] est d√©clanch√©e
     quand la variable [x] est libre dans l'expression. Par exemple:
     \texttt{let a = 1 in b} (ici la variable libre est \texttt{b}).
     *)
 
-  type error = 
+  type error =
     DivByZero
   | FreeVar of string
 
   exception Err of error
 
-  (* La fonction [eval] prend ici un argument supplÈmentaire:
-    l'environ\-nement dans lequel l'expression doit Ítre ÈvaluÈe.  *)
+  (* La fonction [eval] prend ici un argument suppl√©mentaire:
+    l'environ\-nement dans lequel l'expression doit √™tre √©valu√©e.  *)
 
   let rec eval env e = match e with
     Const n -> n
@@ -89,27 +88,27 @@ module WithLet = struct
            Add -> v1 + v2 | Sub -> v1 - v2 | Mult -> v1 * v2
          | Div -> if v2 = 0 then raise (Err DivByZero) else v1/v2
          end
-  | Var x -> begin try env x with 
+  | Var x -> begin try env x with
                Not_found -> raise (Err (FreeVar x))
              end
-  | Let (x,e1,e2) -> 
+  | Let (x,e1,e2) ->
       let v1 = eval env e1 in eval (extend env (x,v1)) e2
-  | _ -> failwith "Construction non traitÈe"
+  | _ -> failwith "Construction non trait√©e"
 end (*c module WithLet*)
 
 (*
   \subsection{Sous-module [Eval.WithCondInt]}\label{Eval.WithCondInt}
 *)
 
-(* Le module [Eval.WithCondInt] reprend et Ètend le module
+(* Le module [Eval.WithCondInt] reprend et √©tend le module
   [Eval.WithLet] avec une construction conditionnelle discriminant les
-  branches avec un entier (‡ zÈro ou non), dans le style du langage
-  C. Il rÈpond ‡ la question~\ref{q3}. On nous donne:
+  branches avec un entier (√† z√©ro ou non), dans le style du langage
+  C. Il r√©pond √† la question~\ref{q3}. On nous donne:
 
   \begin{itemize}
 
-    \ibullet \textbf{Syntaxe concrËte}
-  {\small 
+    \ibullet \textbf{Syntaxe concr√®te}
+  {\small
    \begin{verbatim}
 Expression ::= ...
   | "ifz" Expression "then" Expression "else" Expression
@@ -136,14 +135,14 @@ module WithCondInt = struct
   let empty_env = fun x -> raise Not_found
   let extend env (x,v) = fun y -> if x = y then v else env (y)
 
-  type error = 
+  type error =
     DivByZero
   | FreeVar of string
 
   exception Err of error
 
-  (* 
-  \noindent Une sÈmantique opÈrationnelle pour notre conditionnelle est:
+  (*
+  \noindent Une s√©mantique op√©rationnelle pour notre conditionnelle est:
 
   \begin{mathpar}
   \inferlabel{if-then}
@@ -160,7 +159,7 @@ module WithCondInt = struct
 *)
 
 (* L'implantation par un nouveau cas dans le filtre de la fonction
-  [eval] est immÈdiat.  *)
+  [eval] est imm√©diat.  *)
 
   let rec eval env e = match e with
     Const n -> n
@@ -170,14 +169,14 @@ module WithCondInt = struct
            Add -> v1 + v2 | Sub -> v1 - v2 | Mult -> v1 * v2
          | Div -> if v2 = 0 then raise (Err DivByZero) else v1/v2
          end
-  | Var x -> begin try env x with 
+  | Var x -> begin try env x with
                Not_found -> raise (Err (FreeVar x))
              end
-  | Let (x,e1,e2) -> 
+  | Let (x,e1,e2) ->
       let v1 = eval env e1 in eval (extend env (x,v1)) e2
   | Ifz (e1,e2,e3) ->
       if eval env e1 = 0 then eval env e3 else eval env e2
-  | _ -> failwith "Construction non traitÈe"
+  | _ -> failwith "Construction non trait√©e"
 end (*c module WithCondInt *)
 
 (*
@@ -185,14 +184,14 @@ end (*c module WithCondInt *)
 *)
 
 (* Le module [Eval.WithCond] reprend le module [Eval.WithCondInt] et
-  l'Ètend avec une conditionnelle qui discrimine ses branches ‡ l'aide
-  d'une expression boolÈenne (comme en O'Caml, par exemple). Il rÈpond
-  ‡ la question~\ref{q4}. Nous devons ajouter au langage de la
-  calculette les expressions boolÈennes.  Pour faciliter le travail,
-  cela est dÈja fait au niveau de la syntaxe concrËte et abstraite --
+  l'√©tend avec une conditionnelle qui discrimine ses branches √† l'aide
+  d'une expression bool√©enne (comme en O'Caml, par exemple). Il r√©pond
+  √† la question~\ref{q4}. Nous devons ajouter au langage de la
+  calculette les expressions bool√©ennes.  Pour faciliter le travail,
+  cela est d√©ja fait au niveau de la syntaxe concr√®te et abstraite --
   cf. \textsf{lexer.mll}, \textsf{parser.mly} et \textsf{ast.ml}. Dans
-  ce dernier, la syntaxe abstraite contient la dÈfinition des
-  boolÈens.  *)
+  ce dernier, la syntaxe abstraite contient la d√©finition des
+  bool√©ens.  *)
 
 module WithCond = struct
   type value = int
@@ -201,25 +200,25 @@ module WithCond = struct
   let empty_env = fun x -> raise Not_found
   let extend env (x,v) = fun y -> if x = y then v else env y
 
-  type error = 
+  type error =
     DivByZero
   | FreeVar of string
 
   exception Err of error
 
 (*
-  Voici les syntaxes reconnues par dÈfaut par la calculette:
+  Voici les syntaxes reconnues par d√©faut par la calculette:
 
   \begin{itemize}
 
-    \ibullet \textbf{Syntaxe concrËte}
-  {\small 
+    \ibullet \textbf{Syntaxe concr√®te}
+  {\small
    \begin{verbatim}
-Boolean ::= true | false 
-      | Boolean "and" Boolean 
+Boolean ::= true | false
+      | Boolean "and" Boolean
       | Boolean "or" Boolean
       | "not" "(" Boolean ")"
-Expression ::=  ... 
+Expression ::=  ...
       | "if" Boolean "then" Expression "else" Expression
    \end{verbatim}
 }
@@ -230,14 +229,14 @@ Expression ::=  ...
   else 4)}
 
   \ibullet \textbf{Syntaxe abstraite}
-  
+
   \begin{tabbing}
     \kwd{type} \type{boolean} \= \equal{} \= \cst{True} \vbar{}
     \cst{False} \vbar{} \cst{Not} \kwd{of} \type{boolean}\\
     \> \vbar \> \cst{And} \kwd{of} \type{boolean} \(\times\)
     \type{boolean}\\
     \> \vbar \> \cst{Or} \kwd{of} \type{boolean}
-    \(\times\) \type{boolean}\\ 
+    \(\times\) \type{boolean}\\
     \kwd{type} \type{expr} \equal{} \texttt{...} \vbar{} \cst{If}
     \kwd{of} \type{boolean} \(\times\) \type{expr} \(\times\)
     \type{expr}
@@ -245,16 +244,16 @@ Expression ::=  ...
 
   \end{itemize}
 
-  On remarque que la solution prÈsentÈe ici ne permet pas qu'un
-  boolÈen soit une expression, donc le type des valeurs restera
-  inchangÈ dans la sÈmantique, mais il faudra une seconde relation
-  d'Èvaluation dÈdiÈe aux boolÈens. Donc, en thÈorie, il faudrait
+  On remarque que la solution pr√©sent√©e ici ne permet pas qu'un
+  bool√©en soit une expression, donc le type des valeurs restera
+  inchang√© dans la s√©mantique, mais il faudra une seconde relation
+  d'√©valuation d√©di√©e aux bool√©ens. Donc, en th√©orie, il faudrait
   choisir une autre notation que $\eval{\rho}{e}{v}$, mais en pratique
-  c'est commode de reprendre la mÍme, ‡ ceci prËs que les expressions
-  boolÈennes n'ont pas besoin d'un environnement pour s'Èvaluer car
+  c'est commode de reprendre la m√™me, √† ceci pr√®s que les expressions
+  bool√©ennes n'ont pas besoin d'un environnement pour s'√©valuer car
   nous n'avons pas permis au \texttt{let ... in ...} de lier des
-  boolÈens. Donc nous noterons la relation d'Èvaluation des boolÈens
-  $\evalb{b}{\overline{b}}$, o˘ $b$ est une valeur O'Caml de type
+  bool√©ens. Donc nous noterons la relation d'√©valuation des bool√©ens
+  $\evalb{b}{\overline{b}}$, o√π $b$ est une valeur O'Caml de type
   [Ast.bexpr] et $\overline{b}$ est de type \type{bool}.
 
   \begin{mathpar}
@@ -269,14 +268,14 @@ Expression ::=  ...
     {\eval{\rho}{\cst{If} \, (b,e_2,e_3)}{v_3}}
   \end{mathpar}
 
-  L'implantation de cette sÈmantique est directe (elle s'appuie
-  inductivement sur la syntaxe abstraite). 
+  L'implantation de cette s√©mantique est directe (elle s'appuie
+  inductivement sur la syntaxe abstraite).
 
-  Remarque: le code qui suit a ÈtÈ enjolivÈ par un outil (nommÈ
+  Remarque: le code qui suit a √©t√© enjoliv√© par un outil (nomm√©
   \textsf{ocamlweb}) qui produit $\land$ au lieu de \textsf{\&\&},
   $\lor$ au lieu de \textsf{||} et $\lnot$ au lieu de \textsf{not}.
   *)
-  
+
   let rec eval_bool b = match b with
     True -> true
   | False -> false
@@ -285,7 +284,7 @@ Expression ::=  ...
   | Not b -> not (eval_bool b)
 
 (* Maintenant l'implantation par un nouveau cas dans le filtre de la
-  fonction [eval] est immÈdiat.  *)
+  fonction [eval] est imm√©diat.  *)
 
   let rec eval env e = match e with
     Const n -> n
@@ -295,16 +294,16 @@ Expression ::=  ...
            Add -> v1 + v2 | Sub -> v1 - v2 | Mult -> v1 * v2
          | Div -> if v2 = 0 then raise (Err DivByZero) else v1/v2
          end
-  | Var x -> begin try env x with 
+  | Var x -> begin try env x with
                Not_found -> raise (Err (FreeVar x))
              end
-  | Let (x,e1,e2) -> 
+  | Let (x,e1,e2) ->
       let v1 = eval env e1 in eval (extend env (x,v1)) e2
   | Ifz (e1,e2,e3) ->
       if eval env e1 = 0 then eval env e3 else eval env e2
   | If (b,e1,e2) ->
       if eval_bool b then eval env e1 else eval env e2
-  | _ -> failwith "Construction non traitÈe"
+  | _ -> failwith "Construction non trait√©e"
 end (*c module WithCond *)
 
 (*
@@ -312,28 +311,28 @@ end (*c module WithCond *)
 *)
 
 (* Le module [Eval.WithEnvList] reprend le module [Eval.WithCond] en
-  remplaÁant le codage fonctionnel de l'environnement par un codage ‡
-  l'aide d'une structure de donnÈe nommÈe \emph{liste
-  d'association}. Il rÈpond ‡ la question~\ref{q5}. Une liste
-  d'association est une liste de paires qui modÈlisent les
-  liaisons. Ainsi, $\rho(x)$ est implantÈ non plus par [env x] ([env]
+  rempla√ßant le codage fonctionnel de l'environnement par un codage √†
+  l'aide d'une structure de donn√©e nomm√©e \emph{liste
+  d'association}. Il r√©pond √† la question~\ref{q5}. Une liste
+  d'association est une liste de paires qui mod√©lisent les
+  liaisons. Ainsi, $\rho(x)$ est implant√© non plus par [env x] ([env]
   est une fonction O'Caml) mais par [List.assoc x env] ([env] est une
-  liste d'association). La raison est essentiellement l'efficacitÈ de
+  liste d'association). La raison est essentiellement l'efficacit√© de
   la recherche d'une liaison, bien qu'il serait encore plus efficace
-  d'utiliser une autre structure de donnÈe, comme une table de
-  hachage, si le nombre de variable est ÈlevÈ en moyenne par
+  d'utiliser une autre structure de donn√©e, comme une table de
+  hachage, si le nombre de variable est √©lev√© en moyenne par
   programme. *)
 
 module WithEnvList = struct
   type value = int
 
-  (* Les environnements $\rho$ sont codÈs ‡ l'aide d'une liste
-     d'association. L'envi\-ron\-nement vide est alors simplement codÈ
+  (* Les environnements $\rho$ sont cod√©s √† l'aide d'une liste
+     d'association. L'envi\-ron\-nement vide est alors simplement cod√©
      par [[]] (plus besoin de [empty_env]). *)
 
   type environnement = (string * value) list
 
-  type error = 
+  type error =
     DivByZero
   | FreeVar of string
 
@@ -347,7 +346,7 @@ module WithEnvList = struct
       Not_found -> raise (Err (FreeVar x))
 
   (* L'ajout d'une nouvelle liaison devient l'ajout d'une paire an
-    tÍte de liste: $\rho \oplus x \mapsto v$ est codÈ par [(x,v)::env]
+    t√™te de liste: $\rho \oplus x \mapsto v$ est cod√© par [(x,v)::env]
     au lieu de [extend env (x,v)] avec un codage fonctionnel. On n'a
     donc plus besoin de la fonction [extend].  *)
 
@@ -358,8 +357,8 @@ module WithEnvList = struct
   | Or (b1,b2) -> (eval_bool b1) || (eval_bool b2)
   | Not b -> not (eval_bool b)
 
-  (* Dans la dÈfinition de la fonction [eval], le motif [Var x] change
-     et appelle [lookup x env] dorÈnavant, et le cas de la liaison
+  (* Dans la d√©finition de la fonction [eval], le motif [Var x] change
+     et appelle [lookup x env] dor√©navant, et le cas de la liaison
      locale est plus simple. *)
 
   let rec eval env e = match e with
@@ -376,6 +375,5 @@ module WithEnvList = struct
       if eval_bool b then eval env e1 else eval env e2
   | Var x -> lookup x env
   | Let (s,e1,e2) -> let v1 = eval env e1 in eval ((s,v1)::env) e2
-  | _ -> failwith "Construction non traitÈe"
+  | _ -> failwith "Construction non trait√©e"
 end (*c module WithEnvList*)
-
