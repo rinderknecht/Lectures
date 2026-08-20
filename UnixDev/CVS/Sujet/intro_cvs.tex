@@ -1,20 +1,18 @@
 %%-*-latex-*-
 
-\documentclass[a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{ae,aecompl}
+\usepackage[french]{babel}
+
 \usepackage[nottoc]{tocbibind}
 \usepackage{url}
 \usepackage{alltt}
 
-\input{trace}
 
-\title{Introduction \`a la gestion de configurations avec CVS}
+\title{Introduction Ã  la gestion de configurations avec CVS}
 \author{Christian Rinderknecht}
-%\date{4 décembre 2003}
+\date{4 dÃ©cembre 2003}
 
 \begin{document}
 
@@ -22,42 +20,42 @@
 
 \section{Introduction}
 
-CVS (\emph{Concurrent Versions System}) est un système de gestion de
-versions de fichiers textuels. Il archive de façon compacte les
-versions successives des fichiers placés sous son contrôle, ainsi que
-l'historique détaillé des modifications.
+CVS (\emph{Concurrent Versions System}) est un systÃ¨me de gestion de
+versions de fichiers textuels. Il archive de faÃ§on compacte les
+versions successives des fichiers placÃ©s sous son contrÃ´le, ainsi que
+l'historique dÃ©taillÃ© des modifications.
 
 \bigskip
 
-CVS est utile pour des programmeurs, même solitaires, mais aussi pour
-gérer la création d'un livre ou d'un site \emph{web} par exemple. Il
-s'impose lorsque plusieurs personnes travaillent indépendamment les
+CVS est utile pour des programmeurs, mÃªme solitaires, mais aussi pour
+gÃ©rer la crÃ©ation d'un livre ou d'un site \emph{web} par exemple. Il
+s'impose lorsque plusieurs personnes travaillent indÃ©pendamment les
 unes des autres.
 
 \bigskip
 
-CVS évite le problème de la multiplicité des copies de travail, il
+CVS Ã©vite le problÃ¨me de la multiplicitÃ© des copies de travail, il
 automatise la manipulation des arborescences de fichiers en permettant
-l'accès aux différentes versions d'un fichier, il permet de comparer
-deux versions entre elles et de consulter les commentaires associés.
+l'accÃ¨s aux diffÃ©rentes versions d'un fichier, il permet de comparer
+deux versions entre elles et de consulter les commentaires associÃ©s.
 
 \bigskip
 
-CVS conserve ses données dans une base centralisée, concrètement un
-répertoire avec des fichiers d'administration. Chaque usager y importe
+CVS conserve ses donnÃ©es dans une base centralisÃ©e, concrÃ¨tement un
+rÃ©pertoire avec des fichiers d'administration. Chaque usager y importe
 ses fichiers initiaux, s'il y en a, puis en extrait une copie sur
-laquelle il travaille, et finalement l'archive à nouveau dans la
-base. Cette méthode permet le travail en équipe et CVS fournit un
-mécanisme de fusion pour gérer les conflits potentiels entre deux
-modifications en parallèle d'un même fichier, sinon l'usager doit
-lui-même réaliser la fusion avant d'archiver sa nouvelle version à
+laquelle il travaille, et finalement l'archive Ã  nouveau dans la
+base. Cette mÃ©thode permet le travail en Ã©quipe et CVS fournit un
+mÃ©canisme de fusion pour gÃ©rer les conflits potentiels entre deux
+modifications en parallÃ¨le d'un mÃªme fichier, sinon l'usager doit
+lui-mÃªme rÃ©aliser la fusion avant d'archiver sa nouvelle version Ã 
 jour.
 
 \bigskip
 
 CVS peut fonctionner en mode client-serveur, permettant un travail
-coopératif distribué, c'est-à-dire qu'il n'est pas nécessaire de
-partager le même espace disque, ou le même lieu.
+coopÃ©ratif distribuÃ©, c'est-Ã -dire qu'il n'est pas nÃ©cessaire de
+partager le mÃªme espace disque, ou le mÃªme lieu.
 
 \bigskip
 
@@ -76,9 +74,9 @@ Le but de ce TP est de vous familiariser avec un usage simple de CVS
 sur un petit exemple: la gestion de quelques pages web.
 
 
-\section{Création et peuplement initial de la base}
+\section{CrÃ©ation et peuplement initial de la base}
 
-À la racine de votre compte, créez le répertoire qui contiendra la
+Ã€ la racine de votre compte, crÃ©ez le rÃ©pertoire qui contiendra la
 base CVS:
 
 {\small
@@ -87,15 +85,15 @@ base CVS:
 \end{verbatim}
 }
 
-\noindent Lors de travail en équipe, il faut prendre soin que tous les
-membres aient les droits de lecture et d'écriture dans ce répertoire
-(c'est-à-dire dans la base). On peut pour cela créer un groupe Unix
+\noindent Lors de travail en Ã©quipe, il faut prendre soin que tous les
+membres aient les droits de lecture et d'Ã©criture dans ce rÃ©pertoire
+(c'est-Ã -dire dans la base). On peut pour cela crÃ©er un groupe Unix
 commun par exemple.
 
 \bigskip
 
-\noindent Ensuite définissez la variable d'environnement qui donne le
-mode d'accès et le chemin absolu de cette base:
+\noindent Ensuite dÃ©finissez la variable d'environnement qui donne le
+mode d'accÃ¨s et le chemin absolu de cette base:
 
 {\small
 \begin{verbatim}
@@ -104,15 +102,15 @@ mode d'accès et le chemin absolu de cette base:
 }
 
 \noindent
-(Ceci vaut pour les usagers du Bourne Shell et dérivés. Le mieux est
-de placer cette définition dans un fichier qui est exécuté à chaque
-fois qu'un shell est lancé, par exemple dans \texttt{.bashrc}). Le
-mode d'accès \textsf{local} signifie que les fichiers de la base sont
-directement accessibles au travers du système de fichiers.
+(Ceci vaut pour les usagers du Bourne Shell et dÃ©rivÃ©s. Le mieux est
+de placer cette dÃ©finition dans un fichier qui est exÃ©cutÃ© Ã  chaque
+fois qu'un shell est lancÃ©, par exemple dans \texttt{.bashrc}). Le
+mode d'accÃ¨s \textsf{local} signifie que les fichiers de la base sont
+directement accessibles au travers du systÃ¨me de fichiers.
 
 \bigskip
 
-\noindent Maintenant vous pouvez créer votre base CVS:
+\noindent Maintenant vous pouvez crÃ©er votre base CVS:
 
 {\small
 \begin{verbatim}
@@ -120,20 +118,20 @@ directement accessibles au travers du système de fichiers.
 \end{verbatim}
 }
 
-\noindent La sous-commande \textsf{init} de cvs a créé un répertoire
+\noindent La sous-commande \textsf{init} de cvs a crÃ©Ã© un rÃ©pertoire
 \verb|$HOME/cvsroot/CVSROOT| qui contient tous les fichiers
-d'administration de la base, et qui contiendra les archives à venir.
+d'administration de la base, et qui contiendra les archives Ã  venir.
 
 \bigskip
 
-On parle de sous-commande plutôt que de commande pour distinguer, dans
+On parle de sous-commande plutÃ´t que de commande pour distinguer, dans
 le premier cas, une commande de CVS et, dans le dernier cas, une
-commande Unix (elle peuvent en effet avoir le même nom).
+commande Unix (elle peuvent en effet avoir le mÃªme nom).
 
 \bigskip
 
-\noindent Si vous souhaitez que CVS vous propose Emacs comme éditeur
-de texte, alors définissez la variable d'environnement:
+\noindent Si vous souhaitez que CVS vous propose Emacs comme Ã©diteur
+de texte, alors dÃ©finissez la variable d'environnement:
 
 {\small
 \begin{verbatim}
@@ -142,13 +140,13 @@ de texte, alors définissez la variable d'environnement:
 }
 
 \noindent
-Téléchargez l'archive \texttt{gi108.tgz} qui se trouve dans
-l'arborescence à partir de
+TÃ©lÃ©chargez l'archive \texttt{gi108.tgz} qui se trouve dans
+l'arborescence Ã  partir de
 
-\url{http://aldebaran.devinci.fr/~rinderkn/Teaching/index.html} 
+\url{http://aldebaran.devinci.fr/~rinderkn/Teaching/index.html}
 
 \noindent
-et ouvrez-là dans \verb|~/tmp|:
+et ouvrez-lÃ  dans \verb|~/tmp|:
 
 {\small
 \begin{verbatim}
@@ -159,13 +157,13 @@ et ouvrez-là dans \verb|~/tmp|:
 }
 
 \noindent Il s'agit de la correction de deux travaux pratiques que
-vous allez reprendre à votre compte le temps d'apprendre l'usage de
+vous allez reprendre Ã  votre compte le temps d'apprendre l'usage de
 base de CVS.
 
 \bigskip
 
-\noindent Placez-vous dans le répertoire où se trouvent les
-répertoires et fichiers à archiver:
+\noindent Placez-vous dans le rÃ©pertoire oÃ¹ se trouvent les
+rÃ©pertoires et fichiers Ã  archiver:
 
 {\small
 \begin{verbatim}
@@ -174,7 +172,7 @@ répertoires et fichiers à archiver:
 }
 
 Pour importer dans la base CVS les premiers fichiers, on utilise la
-sous-commande \textsf{import}. La syntaxe simplifiée est
+sous-commande \textsf{import}. La syntaxe simplifiÃ©e est
 
 {\small
 \begin{alltt}
@@ -182,21 +180,21 @@ sous-commande \textsf{import}. La syntaxe simplifiée est
 \end{alltt}
 }
 
-Le message (une chaîne de caractères) explique le but de la sous-commande;
-un module est un chemin dénotant le répertoire où les fichiers
-importés sont insérés dans la base CVS; une branche est une direction
-de développement et une version caractérise tous les fichiers
-importés.
+Le message (une chaÃ®ne de caractÃ¨res) explique le but de la sous-commande;
+un module est un chemin dÃ©notant le rÃ©pertoire oÃ¹ les fichiers
+importÃ©s sont insÃ©rÃ©s dans la base CVS; une branche est une direction
+de dÃ©veloppement et une version caractÃ©rise tous les fichiers
+importÃ©s.
 
 \bigskip
 
 Pour l'instant, seul le choix du module est vraiment important. Il ne
-faut pas prendre le même chemin où se trouvent les sources à importer
-(voilà le pourquoi de votre présence dans \verb|~/tmp|), ni le
-répertoire racine (\verb|$HOME|). Lorsque l'on extrayera le module
-hors de la base, cela se fera sous le chemin de répertoire donné lors
-de l'importation. Choisissez \verb|WWW/TD| et vérifiez donc que vous
-n'avez aucun répertoire déjà existant avec ce nom-là. Ensuite:
+faut pas prendre le mÃªme chemin oÃ¹ se trouvent les sources Ã  importer
+(voilÃ  le pourquoi de votre prÃ©sence dans \verb|~/tmp|), ni le
+rÃ©pertoire racine (\verb|$HOME|). Lorsque l'on extrayera le module
+hors de la base, cela se fera sous le chemin de rÃ©pertoire donnÃ© lors
+de l'importation. Choisissez \verb|WWW/TD| et vÃ©rifiez donc que vous
+n'avez aucun rÃ©pertoire dÃ©jÃ  existant avec ce nom-lÃ . Ensuite:
 
 {\small
 \begin{verbatim}
@@ -214,23 +212,23 @@ No conflicts created by this import
 
 L'annotation \texttt{N} indique que le fichier correspondant est
 nouveau (\textsf{New}). Si l'option \texttt{-m} (signifiant
-«~message~») n'avait pas été donnée, CVS aurait ouvert une fenêtre
+Â«~message~Â») n'avait pas Ã©tÃ© donnÃ©e, CVS aurait ouvert une fenÃªtre
 avec Emacs.
 
 \bigskip
- 
-D'éventuels liens symboliques auraient été ignorés (annotation
-\texttt{I}) car ils n'ont pas de contenu en eux-même, or CVS se base
+
+D'Ã©ventuels liens symboliques auraient Ã©tÃ© ignorÃ©s (annotation
+\texttt{I}) car ils n'ont pas de contenu en eux-mÃªme, or CVS se base
 sur le contenu des fichiers pour travailler.
 
 \section{Utilisation courante}
 
-\subsection{Création d'une copie de travail}
+\subsection{CrÃ©ation d'une copie de travail}
 
-La première étape après l'importation initiale est d'extraire une
-version de travail à partir de laquelle les développements seront
-faits. Pour cela, créez le répertoire qui vous convient, allez-y (ici
-nous allons à la racine):
+La premiÃ¨re Ã©tape aprÃ¨s l'importation initiale est d'extraire une
+version de travail Ã  partir de laquelle les dÃ©veloppements seront
+faits. Pour cela, crÃ©ez le rÃ©pertoire qui vous convient, allez-y (ici
+nous allons Ã  la racine):
 
 {\small
 \begin{verbatim}
@@ -256,10 +254,10 @@ U WWW/TD/TD2/td2.html
 }
 
 \noindent
-L'annotation \texttt{U} indique que le fichier correspondant est mis à
-jour (\textsf{Updated}) --- ici il est en fait créé car il n'y avait
-pas de version précédente. Cette sous-commande \textsf{checkout} a
-créé une arborescence \texttt{WWW} enracinée en \verb|~| (lieu où vous
+L'annotation \texttt{U} indique que le fichier correspondant est mis Ã 
+jour (\textsf{Updated}) --- ici il est en fait crÃ©Ã© car il n'y avait
+pas de version prÃ©cÃ©dente. Cette sous-commande \textsf{checkout} a
+crÃ©Ã© une arborescence \texttt{WWW} enracinÃ©e en \verb|~| (lieu oÃ¹ vous
 appelez la sous-commande). Si vous faites maintenant:
 
 {\small
@@ -275,39 +273,39 @@ appelez la sous-commande). Si vous faites maintenant:
 }
 
 \noindent
-Vous voyez alors qu'en plus de vos fichiers, il y a à chaque niveau de
-l'arborescence un répertoire nommé CVS. Ces répertoires ne doivent en
-aucun cas être modifiés car ils servent à l'administration de votre
-archive et ne sont modifiés que par CVS. C'est pour cette raison aussi
-qu'il ne fallait pas importer le module initial avec le même chemin
-que le répertoire où vous étiez.
+Vous voyez alors qu'en plus de vos fichiers, il y a Ã  chaque niveau de
+l'arborescence un rÃ©pertoire nommÃ© CVS. Ces rÃ©pertoires ne doivent en
+aucun cas Ãªtre modifiÃ©s car ils servent Ã  l'administration de votre
+archive et ne sont modifiÃ©s que par CVS. C'est pour cette raison aussi
+qu'il ne fallait pas importer le module initial avec le mÃªme chemin
+que le rÃ©pertoire oÃ¹ vous Ã©tiez.
 
 \bigskip
 
 \noindent
-\textbf{Règle d'or}: il ne faut faire un \textsf{checkout} que dans un
+\textbf{RÃ¨gle d'or}: il ne faut faire un \textsf{checkout} que dans un
 espace neuf ou dans une copie de travail.
 
 \bigskip
 
-\noindent Si une sous-commande \textsf{checkout} échoue, en général
+\noindent Si une sous-commande \textsf{checkout} Ã©choue, en gÃ©nÃ©ral
 vous devez vous assurer que:
 
 \begin{itemize}
 
-  \item vous avez le droit d'écrire dans le répertoire courant,
+  \item vous avez le droit d'Ã©crire dans le rÃ©pertoire courant,
 
   \item la variable d'environnement \textsc{cvsroot} indique la bonne
-   base CVS et la bonne méthode d'accès (local, client-serveur etc.),
+   base CVS et la bonne mÃ©thode d'accÃ¨s (local, client-serveur etc.),
 
-  \item vous avez les droits d'accès aux fichiers de la base.
+  \item vous avez les droits d'accÃ¨s aux fichiers de la base.
 
 \end{itemize}
 
 
 \subsection{Archivage}
 
-\noindent Éditez \verb|~/WWW/TD/TD2/td2.html|:
+\noindent Ã‰ditez \verb|~/WWW/TD/TD2/td2.html|:
 
 {\small
 \begin{verbatim}
@@ -317,12 +315,12 @@ vous devez vous assurer que:
 }
 
 \noindent
-et ajoutez quelques lignes à la fin. Pour archiver votre modification,
-tapez (en vérifiant d'abord que vous êtes dans \verb|~/WWW|):
+et ajoutez quelques lignes Ã  la fin. Pour archiver votre modification,
+tapez (en vÃ©rifiant d'abord que vous Ãªtes dans \verb|~/WWW|):
 
 {\small
 \begin{verbatim}
-~/WWW$ cvs commit -m "Ajout de quelques lignes à la fin" 
+~/WWW$ cvs commit -m "Ajout de quelques lignes Ã  la fin"
 cvs commit: Examining .
 cvs commit: Examining TD
 cvs commit: Examining TD/TD2
@@ -333,16 +331,16 @@ done
 \end{verbatim}
 }
 
-CVS a déterminé que \verb|~/WWW/TD/TD2/td2.html| avait été modifié et
-devait être archivé. Le fichier \texttt{td2.html,v} qui apparaît à la
-cinquième ligne est le fichier d'administration associé à
-\texttt{td2.html}. Nous apprenons au passage que la version précédente
-était \texttt{1.1} et que la nouvelle version est \texttt{1.2}. En
-effet, la version initiale est toujours numérotée \texttt{1.1}.
+CVS a dÃ©terminÃ© que \verb|~/WWW/TD/TD2/td2.html| avait Ã©tÃ© modifiÃ© et
+devait Ãªtre archivÃ©. Le fichier \texttt{td2.html,v} qui apparaÃ®t Ã  la
+cinquiÃ¨me ligne est le fichier d'administration associÃ© Ã 
+\texttt{td2.html}. Nous apprenons au passage que la version prÃ©cÃ©dente
+Ã©tait \texttt{1.1} et que la nouvelle version est \texttt{1.2}. En
+effet, la version initiale est toujours numÃ©rotÃ©e \texttt{1.1}.
 
 \bigskip
 
-\noindent Il aurait été possible de préciser quel fichier vous vouliez
+\noindent Il aurait Ã©tÃ© possible de prÃ©ciser quel fichier vous vouliez
 archiver:
 
 {\small
@@ -352,44 +350,44 @@ archiver:
 }
 
 \noindent
-En effet, s'il n'y a pas de nom de fichier, alors CVS opère
-récursivement à partir du répertoire courant, comme vous l'avez
-constaté. Toutes les sous-commandes opérant sur des fichiers, si elles
-n'ont pas de nom de fichier en argument, opèrent ainsi, de même que si
-vous passez un nom de répertoire.
+En effet, s'il n'y a pas de nom de fichier, alors CVS opÃ¨re
+rÃ©cursivement Ã  partir du rÃ©pertoire courant, comme vous l'avez
+constatÃ©. Toutes les sous-commandes opÃ©rant sur des fichiers, si elles
+n'ont pas de nom de fichier en argument, opÃ¨rent ainsi, de mÃªme que si
+vous passez un nom de rÃ©pertoire.
 
 \bigskip
 
-\noindent \textbf{Règles d'or} 
+\noindent \textbf{RÃ¨gles d'or}
 
 \begin{itemize}
 
-  \item Si vous développez un programme, n'archivez jamais des
-  fichiers qui ne compilent pas. Dans le cas de pages web, vérifiez
-  que vous pouver visualisez sans erreur les pages concernées avant de
+  \item Si vous dÃ©veloppez un programme, n'archivez jamais des
+  fichiers qui ne compilent pas. Dans le cas de pages web, vÃ©rifiez
+  que vous pouver visualisez sans erreur les pages concernÃ©es avant de
   les archiver.
 
   \item Archivez toujours un fichier avant une modification
-  importante, de façon à pouvoir éventuellement revenir sur vos pas.
+  importante, de faÃ§on Ã  pouvoir Ã©ventuellement revenir sur vos pas.
 
 \end{itemize}
 
 \noindent \textbf{Note} CVS n'archive pas le texte complet de votre
-fichier, mais les différences avec la version précédente.
+fichier, mais les diffÃ©rences avec la version prÃ©cÃ©dente.
 
 
 \subsection{Conflit}
 
-Imaginez maintenant que vous soyez plusieurs personnes à travailler
-sur les fichiers archivés. Il se peut que vous et un collègue
-exportiez une copie de travail d'un \emph{même} fichier. Chacun
-modifie alors sa copie, votre collègue archive sa modification d'abord
-et puis vous tentez d'en faire de même. Il se peut alors qu'il y ait
-un conflit entre vos deux versions si vous avez modifié les mêmes
+Imaginez maintenant que vous soyez plusieurs personnes Ã  travailler
+sur les fichiers archivÃ©s. Il se peut que vous et un collÃ¨gue
+exportiez une copie de travail d'un \emph{mÃªme} fichier. Chacun
+modifie alors sa copie, votre collÃ¨gue archive sa modification d'abord
+et puis vous tentez d'en faire de mÃªme. Il se peut alors qu'il y ait
+un conflit entre vos deux versions si vous avez modifiÃ© les mÃªmes
 parties du fichier en question. Vous allez simuler cette situation.
 
-Placez-vous dans un répertoire quelconque (ici \verb|~/tmp|) et
-extrayez une autre copie de travail (correspondant au collègue):
+Placez-vous dans un rÃ©pertoire quelconque (ici \verb|~/tmp|) et
+extrayez une autre copie de travail (correspondant au collÃ¨gue):
 
 {\small
 \begin{verbatim}
@@ -406,11 +404,11 @@ U WWW/TD/TD2/td2.html
 \end{verbatim}
 }
 
-Éditez \verb|~/tmp/WWW/TD/TD2/td2.html| et profitez de l'occasion pour
-vérifier la présence des lignes que vous avez précédemment ajoutées à
+Ã‰ditez \verb|~/tmp/WWW/TD/TD2/td2.html| et profitez de l'occasion pour
+vÃ©rifier la prÃ©sence des lignes que vous avez prÃ©cÃ©demment ajoutÃ©es Ã 
 la fin. Ensuite, modifiez \verb|~/tmp/WWW/TD/TD2/td2.html| en
-supprimant un bloc de texte dont vous repérez bien la position. Par
-exemple, dans la première partie intitulée \textsl{Partie Emacs},
+supprimant un bloc de texte dont vous repÃ©rez bien la position. Par
+exemple, dans la premiÃ¨re partie intitulÃ©e \textsl{Partie Emacs},
 supprimez les items~2 et~3 et sauvegardez le fichier. Puis archivez
 votre modification:
 
@@ -425,9 +423,9 @@ done
 \end{verbatim}
 }
 
-Revenez dans votre répertoire de travail initial et supprimez un bloc
+Revenez dans votre rÃ©pertoire de travail initial et supprimez un bloc
 de texte dans \verb|~/WWW/TD/TD2/td2.html| qui recouvre en partie
-celui supprimé par votre pseudo-collègue. Par exemple, supprimez les
+celui supprimÃ© par votre pseudo-collÃ¨gue. Par exemple, supprimez les
 items~1 et~2 puis sauvegardez et tentez d'archiver:
 
 {\small
@@ -439,7 +437,7 @@ cvs [commit aborted]: correct above errors first!
 \end{verbatim}
 }
 
-\noindent CVS vous oblige donc à mettre à jour vous-même le fichier
+\noindent CVS vous oblige donc Ã  mettre Ã  jour vous-mÃªme le fichier
 \texttt{td2.html} avant de l'archiver. Pour cela il faut lui dire
 notre intention:
 
@@ -457,11 +455,11 @@ C td2.html
 }
 
 Vous lisez clairement qu'il y a un conflit entre les versions 1.2 (la
-vôtre avant modification) et 1.3 (la version archivée de votre
-pseudo-collègue). L'annotation \texttt{C} signifie \textsf{Conflict}.
+vÃ´tre avant modification) et 1.3 (la version archivÃ©e de votre
+pseudo-collÃ¨gue). L'annotation \texttt{C} signifie \textsf{Conflict}.
 
-CVS a maintenant inséré dans le fichier conflictuel des marques entre
-les portions du texte en conflit (rafraîchissez votre \emph{buffer}
+CVS a maintenant insÃ©rÃ© dans le fichier conflictuel des marques entre
+les portions du texte en conflit (rafraÃ®chissez votre \emph{buffer}
 emacs avec \textsf{M-x revert-buffer} suivi de \textsf{yes}):
 
 {\small
@@ -469,9 +467,9 @@ emacs avec \textsf{M-x revert-buffer} suivi de \textsf{yes}):
 <<<<<<< td2.html
 3. lorsque l'on ouvre dans un buffer un fichier de type html, on passe
    en <b>mode HTML</b>" ("<tt>(HTML)</tt>" apparait dans la "modeline")
-   alors noter la présence de menus spécifiques à  ce mode, avec des
+   alors noter la prÃ©sence de menus spÃ©cifiques Ã Â  ce mode, avec des
    items comme par exemple "<tt>Href Anchor</tt> (C-c C-c h)</tt>"
-   d'insérer la balise <tt>"&lt;a href="</tt> dans son buffer.
+   d'insÃ©rer la balise <tt>"&lt;a href="</tt> dans son buffer.
 </p>
 
 <p>
@@ -484,7 +482,7 @@ emacs avec \textsf{M-x revert-buffer} suivi de \textsf{yes}):
 \end{verbatim}
 }
 
-Votre version de la zone en conflit est toujours présentée en premier
+Votre version de la zone en conflit est toujours prÃ©sentÃ©e en premier
 entre les marques \verb|<<<<<<<| et \verb|=======|. La version de la
 base vient en second entre les marques \verb|=======| et
 \verb|>>>>>>>|, suivies de la version dans la base (\texttt{1.3}). En
@@ -492,7 +490,7 @@ effet, dans la base, les items~2 et~3 sont absents, et nous voulons
 supprimer~1 et~2: le conflit porte donc sur~1 et~3 (tout le monde
 semble d'accord pour supprimer~2).
 
-CVS empêche tout archivage avant que le conflit n'aie été résolu:
+CVS empÃªche tout archivage avant que le conflit n'aie Ã©tÃ© rÃ©solu:
 
 {\small
 \begin{verbatim}
@@ -502,7 +500,7 @@ cvs [commit aborted]: correct above errors first!
 \end{verbatim}
 }
 
-\noindent Décidez de supprimer 1 et 3 et recommencez
+\noindent DÃ©cidez de supprimer 1 et 3 et recommencez
 
 {\small
 \begin{verbatim}
@@ -516,12 +514,12 @@ done
 
 Vous devez donc vous rappeler qu'\emph{il faut toujours faire un
 \textsf{update} avant un \textsf{commit}} (rigoureusement, ce n'est
-réellement nécessaire que si l'on travaille à plusieurs, mais c'est
-une excellente habitude à prendre dès maintenant).
+rÃ©ellement nÃ©cessaire que si l'on travaille Ã  plusieurs, mais c'est
+une excellente habitude Ã  prendre dÃ¨s maintenant).
 
-Si vous ne voulez pas vous retrouver tout de suite après le
-\textsf{update} avec des conflits à résoudre dans vos fichiers, pensez
-à utiliser l'option \texttt{-n} de la sous-commande \textsf{update},
+Si vous ne voulez pas vous retrouver tout de suite aprÃ¨s le
+\textsf{update} avec des conflits Ã  rÃ©soudre dans vos fichiers, pensez
+Ã  utiliser l'option \texttt{-n} de la sous-commande \textsf{update},
 en saisissant
 
 {\small
@@ -530,24 +528,24 @@ en saisissant
 \end{verbatim}
 }
 
-Cette option inhibe en effet toute écriture sur le disque (elle est
-comparable en ce sens à la même option de l'utilitaire
-\textsf{make}). Elle est très souvent utilisée car elle permet aussi
-d'obtenir l'état des fichiers à mettre à jour dans un répertoire de
+Cette option inhibe en effet toute Ã©criture sur le disque (elle est
+comparable en ce sens Ã  la mÃªme option de l'utilitaire
+\textsf{make}). Elle est trÃ¨s souvent utilisÃ©e car elle permet aussi
+d'obtenir l'Ã©tat des fichiers Ã  mettre Ã  jour dans un rÃ©pertoire de
 travail (\texttt{cvs -n update}) plus compendieusement qu'avec la
-sous-commande \textsf{status}. C'est donc une bonne habitude à
+sous-commande \textsf{status}. C'est donc une bonne habitude Ã 
 prendre.
 
-Il n'y a pas de règle générale (en tout cas, pas imposée par CVS) pour
-savoir quand faire une mise à jour de vos fichier: si vous le faites
-trop souvent, vous risquez de récupérer trop d'erreurs d'autrui, et si
+Il n'y a pas de rÃ¨gle gÃ©nÃ©rale (en tout cas, pas imposÃ©e par CVS) pour
+savoir quand faire une mise Ã  jour de vos fichier: si vous le faites
+trop souvent, vous risquez de rÃ©cupÃ©rer trop d'erreurs d'autrui, et si
 vous ne le faites pas assez souvent, vous risquez de trop diverger et
-donc d'avoir beaucoup de conflits complexes à régler.
+donc d'avoir beaucoup de conflits complexes Ã  rÃ©gler.
 
 
 \subsection{Historique}\label{historique}
 
-Il est possible de consulter l'historique des versions d'un fichier à
+Il est possible de consulter l'historique des versions d'un fichier Ã 
 l'aide de la sous-commande \textsf{log}:
 
 {\small
@@ -577,7 +575,7 @@ Suppression des items 2 & 3
 ----------------------------
 revision 1.2
 date: 2003/05/15 09:12:43;  author: rinderkn;  state: Exp;  lines: +4 -0
-Ajout de quelques lignes à la fin
+Ajout de quelques lignes Ã  la fin
 ----------------------------
 revision 1.1
 date: 2003/05/15 08:57:43;  author: rinderkn;  state: Exp;
@@ -592,12 +590,12 @@ Originaux
 }
 
 Vous pouvez ainsi lire toutes les informations concernant les auteurs
-des changements (ici il n'y a qu'un auteur), les dates de création,
-les numéros utilisés, la description des changements etc.
+des changements (ici il n'y a qu'un auteur), les dates de crÃ©ation,
+les numÃ©ros utilisÃ©s, la description des changements etc.
 
-À tout moment vous pouvez aussi consulter l'état de votre copie de
-travail pour savoir si vous l'avez modifié, si elle est à jour par
-rapport à la base ou si une nouvelle version est disponible dans la
+Ã€ tout moment vous pouvez aussi consulter l'Ã©tat de votre copie de
+travail pour savoir si vous l'avez modifiÃ©, si elle est Ã  jour par
+rapport Ã  la base ou si une nouvelle version est disponible dans la
 base:
 
 {\small
@@ -614,12 +612,12 @@ File: td2.html          Status: Up-to-date
 \end{alltt}
 }
 
-\noindent Votre version de travail est donc la même que celle dans la
+\noindent Votre version de travail est donc la mÃªme que celle dans la
 base (cf. \textsf{Up-to-date}).
 
 Si vous modifiez \verb|~/WWW/TD/TD2/td2.html| (en ajoutant quelques
-espaces avant la balise \textsl{<html>} par exemple), et demandez à
-nouveau l'état du fichier par rapport à la base:
+espaces avant la balise \textsl{<html>} par exemple), et demandez Ã 
+nouveau l'Ã©tat du fichier par rapport Ã  la base:
 
 {\small
 \begin{alltt}
@@ -636,8 +634,8 @@ File: td2.html          Status: Locally Modified
 }
 
 \noindent
-Vous lisez alors que son état est \texttt{Locally Modified} et non
-plus \texttt{Up-to-date}, comme précédemment. Si vous faites:
+Vous lisez alors que son Ã©tat est \texttt{Locally Modified} et non
+plus \texttt{Up-to-date}, comme prÃ©cÃ©demment. Si vous faites:
 
 {\small
 \begin{verbatim}
@@ -648,28 +646,28 @@ M td2.html
 }
 
 \noindent
-vous lisez que CVS a mis à jour sans problème votre copie
+vous lisez que CVS a mis Ã  jour sans problÃ¨me votre copie
 locale. L'annotation \textsf{M} signifie \textsf{Modified}. Vous
-pouvez vérifier la présence des espaces en première ligne de votre
-fichier. Votre modification ne sera archivée que si vous faites
+pouvez vÃ©rifier la prÃ©sence des espaces en premiÃ¨re ligne de votre
+fichier. Votre modification ne sera archivÃ©e que si vous faites
 \textsf{commit}.
 
 
 \subsection{Suppression}
 
 Vous souhaitez maintenant supprimer le fichier
-\verb|~/WWW/TD/TD2/emacs.txt| qui est désormais inutile. Pour cela, la
-procédure est la suivante.
+\verb|~/WWW/TD/TD2/emacs.txt| qui est dÃ©sormais inutile. Pour cela, la
+procÃ©dure est la suivante.
 
 \begin{itemize}
 
   \item Supprimez la version de travail;
 
   \item utilisez la sous-commande \textsf{remove} pour signifier votre
-        intention à CVS;
+        intention Ã  CVS;
 
   \item utilisez la sous-commande \textsf{commit} pour effectivement
-        éliminer le fichier de la base.
+        Ã©liminer le fichier de la base.
 
 \end{itemize}
 
@@ -701,28 +699,28 @@ done
 \end{verbatim}
 }
 
-\textbf{Attention} \emph{Toutes les mises à jour de ce fichier par
-d'autres collègues verront sa disparition de leur copie de
-travail}. Les versions antérieures sont néanmoins toujours
-disponibles, et vous pouvez éventuellement les extraire à nouveau (à
-l'aide du numéro de version ou de la date). Vous pouvez aussi ajouter
-un nouveau fichier qui porte le même nom qu'un fichier supprimé.
+\textbf{Attention} \emph{Toutes les mises Ã  jour de ce fichier par
+d'autres collÃ¨gues verront sa disparition de leur copie de
+travail}. Les versions antÃ©rieures sont nÃ©anmoins toujours
+disponibles, et vous pouvez Ã©ventuellement les extraire Ã  nouveau (Ã 
+l'aide du numÃ©ro de version ou de la date). Vous pouvez aussi ajouter
+un nouveau fichier qui porte le mÃªme nom qu'un fichier supprimÃ©.
 
 \textbf{Note} il n'est pas possible de supprimer directement des
-répertoires. Pour y parvenir indirectement, vous devez supprimer tous
-les fichiers qu'il contient, puis lors des mises à jour
+rÃ©pertoires. Pour y parvenir indirectement, vous devez supprimer tous
+les fichiers qu'il contient, puis lors des mises Ã  jour
 (\textsf{update}) ou des extractions (\textsf{checkout}), utilisez
-l'option \texttt{-P} qui inhibe la création des répertoires vides. Ce
-peut être une bonne habitude à prendre que d'utiliser systématiquement
+l'option \texttt{-P} qui inhibe la crÃ©ation des rÃ©pertoires vides. Ce
+peut Ãªtre une bonne habitude Ã  prendre que d'utiliser systÃ©matiquement
 cette option.
 
 \subsection{Ajout}
 
 Copiez maintenant le fichier \texttt{copyright} se trouvant dans le
-répertoire \texttt{gi108} vers \verb|~/WWW/TD|.
+rÃ©pertoire \texttt{gi108} vers \verb|~/WWW/TD|.
 
-Vous devez ensuite dire à CVS votre intention de l'ajouter
-dans la base à l'aide de la sous-commande \textsf{add}:
+Vous devez ensuite dire Ã  CVS votre intention de l'ajouter
+dans la base Ã  l'aide de la sous-commande \textsf{add}:
 
 {\small
 \begin{verbatim}
@@ -738,7 +736,7 @@ Puis utilisez la sous-commande \textsf{commit} pour l'archiver:
 
 {\small
 \begin{verbatim}
-~/WWW/TD$ cvs commit -m "Première version" copyright
+~/WWW/TD$ cvs commit -m "PremiÃ¨re version" copyright
 RCS file: /home/der_gi/rinderkn/cvsroot/WWW/TD/copyright,v
 done
 Checking in copyright;
@@ -749,10 +747,10 @@ done
 }
 
 \noindent
-Note: \emph{la sous-commande \textsf{add} n'est pas récursive.}
+Note: \emph{la sous-commande \textsf{add} n'est pas rÃ©cursive.}
 
 \noindent
-Placez le fichier \texttt{td3.tar} se trouvant dans le répertoire
+Placez le fichier \texttt{td3.tar} se trouvant dans le rÃ©pertoire
 \texttt{gi108} \emph{hors d'une copie de travail}, par exemple
 \verb|~/tmp|:
 
@@ -764,13 +762,13 @@ Placez le fichier \texttt{td3.tar} se trouvant dans le répertoire
 }
 
 \noindent Cette archive \textsf{tar} contient une arborescence que
-nous voulons archiver dans la base CVS --- précédemment nous avons
-ajouté un seul fichier, c'est-à-dire \textsf{copyright}.
+nous voulons archiver dans la base CVS --- prÃ©cÃ©demment nous avons
+ajoutÃ© un seul fichier, c'est-Ã -dire \textsf{copyright}.
 
 {\small
 \begin{verbatim}
 ~/tmp$ cd TD3
-~/tmp/TD3$ cvs import -m "Première version du TD3" WWW/TD/TD3 Start V0
+~/tmp/TD3$ cvs import -m "PremiÃ¨re version du TD3" WWW/TD/TD3 Start V0
 N WWW/TD/TD3/td3.html
 N WWW/TD/TD3/simple_man_ar.html
 N WWW/TD/TD3/simple_man_find.html
@@ -783,7 +781,7 @@ No conflicts created by this import
 }
 
 \noindent
-Puis revenez à votre copie de travail:
+Puis revenez Ã  votre copie de travail:
 
 {\small
 \begin{verbatim}
@@ -801,17 +799,17 @@ U TD3/td3.html
 \end{verbatim}
 }
 
-Par défaut, la sous-commande \textsf{update} ne créé pas les répertoires
-éventuellement archivés depuis l'extraction de la copie de travail ou
-la dernière mise à jour avec l'option \texttt{-d}. Cette option
-(\textsl{directories}) demande la création éventuelle de ces
-répertoires. Vous pouvez d'autre part remarquer que
-\texttt{TD2/td2.html} a été modifié (annotation \textsf{M}): ce sont
-les espaces supplémentaires que vous aviez ajoutés à la
+Par dÃ©faut, la sous-commande \textsf{update} ne crÃ©Ã© pas les rÃ©pertoires
+Ã©ventuellement archivÃ©s depuis l'extraction de la copie de travail ou
+la derniÃ¨re mise Ã  jour avec l'option \texttt{-d}. Cette option
+(\textsl{directories}) demande la crÃ©ation Ã©ventuelle de ces
+rÃ©pertoires. Vous pouvez d'autre part remarquer que
+\texttt{TD2/td2.html} a Ã©tÃ© modifiÃ© (annotation \textsf{M}): ce sont
+les espaces supplÃ©mentaires que vous aviez ajoutÃ©s Ã  la
 section~\ref{historique}.
 
-Vous auriez pu procéder autrement. Pour vous en rendre compte par
-vous-même, rendez-vous dans \verb|~/tmp| où votre pseudo-collègue
+Vous auriez pu procÃ©der autrement. Pour vous en rendre compte par
+vous-mÃªme, rendez-vous dans \verb|~/tmp| oÃ¹ votre pseudo-collÃ¨gue
 avait extrait une copie de travail et saisissez
 
 {\small
@@ -827,15 +825,15 @@ U WWW/TD/TD3/td3.html
 \end{verbatim}
 }
 
-Concernant le choix des fichiers à ajouter, il convient de n'archiver
-que les fichiers textuels qui ne peuvent être produits dynamiquement
+Concernant le choix des fichiers Ã  ajouter, il convient de n'archiver
+que les fichiers textuels qui ne peuvent Ãªtre produits dynamiquement
 (par un outil). En effet, CVS utilise l'utilitaire \textsf{diff} pour
-l'archivage dans le but de réduire ainsi considérablement la taille de
-la base. Les binaires ne sont pas en général des fichiers que l'on
-ajoute sans bonne raison. Les liens symboliques ne peuvent être
-ajoutés (un contournement consiste à archiver un script qui les créé).
+l'archivage dans le but de rÃ©duire ainsi considÃ©rablement la taille de
+la base. Les binaires ne sont pas en gÃ©nÃ©ral des fichiers que l'on
+ajoute sans bonne raison. Les liens symboliques ne peuvent Ãªtre
+ajoutÃ©s (un contournement consiste Ã  archiver un script qui les crÃ©Ã©).
 
-%% \section{Travail à remettre}
+%% \section{Travail Ã  remettre}
 
 %% Veuillez me remettre votre base CVS sous forme d'une archive
 %% \textsf{tar}:
@@ -847,21 +845,21 @@ ajoutés (un contournement consiste à archiver un script qui les créé).
 %% }
 
 %% \noindent
-%% soit directement, sur une disquette, soit par courrier électronique à
+%% soit directement, sur une disquette, soit par courrier Ã©lectronique Ã 
 %% l'adresse \url{Christian.Rinderknecht@devinci.fr}.
 
-\subsection{Différence entre deux versions archivées}
+\subsection{DiffÃ©rence entre deux versions archivÃ©es}
 
-Il est fréquent que l'on ne se souvienne plus des différences entre la
-version de travail d'un fichier et une de ses versions archivées (en
+Il est frÃ©quent que l'on ne se souvienne plus des diffÃ©rences entre la
+version de travail d'un fichier et une de ses versions archivÃ©es (en
 particulier si on travaille en groupe et que l'on doive comprendre le
-code d'un autre). Supposons que nous voulions ici voir les différences
+code d'un autre). Supposons que nous voulions ici voir les diffÃ©rences
 entre les versions 1.2 et 1.3 du fichier
 \texttt{~/WWW/TD/TD2/td2.html}. Nous savons par la sous-commande
 \textsf{log} (cf. section~\ref{historique}) que le message indique la
-suppression des items~2 et~3. Pour vérifier que le commentaire est
+suppression des items~2 et~3. Pour vÃ©rifier que le commentaire est
 pertinent on utilise la sous-commande \textsf{diff} avec deux options
-\texttt{-r} (\textsf{Release}) indiquant les versions à comparer à
+\texttt{-r} (\textsf{Release}) indiquant les versions Ã  comparer Ã 
 l'aide de la commande Unix \texttt{diff}:
 
 {\small
@@ -874,13 +872,13 @@ retrieving revision 1.2
 retrieving revision 1.3
 diff -r1.2 -r1.3
 16,40d15
-< 2. on a remplacé le mot 'buffer' par '"buffer" en anglais' en
+< 2. on a remplacÃ© le mot 'buffer' par '"buffer" en anglais' en
 <
 < <ul>
 <   <li>
-<     se positionnant au debut du buffer avec la sous-commande nommée
-<     '<tt><b>beginning-of-buffer</b></tt>', "bindée" (associée [...]
-<     de touches) à  <tt><b>M-&lt;</b></tt> (Meta-inferieur)
+<     se positionnant au debut du buffer avec la sous-commande nommÃ©e
+<     '<tt><b>beginning-of-buffer</b></tt>', "bindÃ©e" (associÃ©e [...]
+<     de touches) Ã   <tt><b>M-&lt;</b></tt> (Meta-inferieur)
 <   </li>
 <
 <   <li>
@@ -892,7 +890,7 @@ diff -r1.2 -r1.3
 < <p>
 < 3. lorsque l'on ouvre dans un buffer un fichier de type html, on passe
 <    en <b>mode HTML</b>" ("<tt>(HTML)</tt>" apparait dans [...]
-<    alors noter la présence de menus spécifiques à  ce mode, avec des
+<    alors noter la prÃ©sence de menus spÃ©cifiques Ã   ce mode, avec des
 <    items comme par exemple "<tt>Href Anchor</tt> (C-c C-c h) [...]
 < </p>
 <
@@ -902,13 +900,13 @@ diff -r1.2 -r1.3
 
 \subsection{Extraction d'une ancienne version}
 
-Un des grands intérêts de CVS est qu'il est possible d'extraire une
-version antérieure, même si l'unique répertoire de travail a été
-effacé. Cela se fait bien sûr par le biais de la sous-commande
-\textsf{checkout}, mais avec l'option \texttt{-r} suivie du numéro de
-la version désirée. Supposons dans notre cas que l'on veuille extraire
-la version initialement importée dans la base et la mettre dans un
-sous-répertoire \texttt{Depart}. On saisit alors:
+Un des grands intÃ©rÃªts de CVS est qu'il est possible d'extraire une
+version antÃ©rieure, mÃªme si l'unique rÃ©pertoire de travail a Ã©tÃ©
+effacÃ©. Cela se fait bien sÃ»r par le biais de la sous-commande
+\textsf{checkout}, mais avec l'option \texttt{-r} suivie du numÃ©ro de
+la version dÃ©sirÃ©e. Supposons dans notre cas que l'on veuille extraire
+la version initialement importÃ©e dans la base et la mettre dans un
+sous-rÃ©pertoire \texttt{Depart}. On saisit alors:
 
 {\small
 \begin{verbatim}
@@ -933,8 +931,8 @@ CVS  datef.sh  emacs.txt  lecture  td2.html
 \end{verbatim}
 }
 
-\noindent L'option supplémentaire \texttt{-N} fait que le module (ici
-\texttt{WWW}) est extrait dans le répertoire spécifié par \texttt{-d}
+\noindent L'option supplÃ©mentaire \texttt{-N} fait que le module (ici
+\texttt{WWW}) est extrait dans le rÃ©pertoire spÃ©cifiÃ© par \texttt{-d}
 (ici \texttt{Depart}) au lieu de remplacer le nom du module par
 l'argument de \texttt{-d}. Autrement dit:
 
@@ -962,23 +960,23 @@ U Depart/TD/TD3/td3.html
 
 \subsection{Repentir}
 
-Après avoir extrait une ancienne version, nous pouvons éprouver un
-repentir et décider de recommencer notre travail à partir de
-celle-ci. CVS permet de replacer la version antérieure à la suite de
-la dernière version dans la base. La marche à suivre consiste à 
+AprÃ¨s avoir extrait une ancienne version, nous pouvons Ã©prouver un
+repentir et dÃ©cider de recommencer notre travail Ã  partir de
+celle-ci. CVS permet de replacer la version antÃ©rieure Ã  la suite de
+la derniÃ¨re version dans la base. La marche Ã  suivre consiste Ã 
 
 \begin{enumerate}
 
-  \item mettre à jour la dernière version, 
+  \item mettre Ã  jour la derniÃ¨re version,
 
-  \item remplacer le fichier par sa version antérieure,
+  \item remplacer le fichier par sa version antÃ©rieure,
 
   \item replacer finalement celle-ci dans la base.
 
 \end{enumerate}
 
-\noindent Supposons ici que l'on veuille repartir de la première
-version de \texttt{td2.html}. Commençons par la première étape:
+\noindent Supposons ici que l'on veuille repartir de la premiÃ¨re
+version de \texttt{td2.html}. CommenÃ§ons par la premiÃ¨re Ã©tape:
 
 {\small
 \begin{verbatim}
@@ -988,10 +986,10 @@ M td2.html
 \end{verbatim}
 }
 
-La première chose à remarquer est l'option \texttt{-A}. Elle permet de
-lever d'éventuelles contraintes posées sur le fichier (nous n'avons
-pas abordé ce sujet dans ce tutoriel). La seconde est qu'effectivement
-nous n'avons pas archivé notre dernière modification de
+La premiÃ¨re chose Ã  remarquer est l'option \texttt{-A}. Elle permet de
+lever d'Ã©ventuelles contraintes posÃ©es sur le fichier (nous n'avons
+pas abordÃ© ce sujet dans ce tutoriel). La seconde est qu'effectivement
+nous n'avons pas archivÃ© notre derniÃ¨re modification de
 \texttt{td2.html} (cf. section~\ref{historique}). Donc:
 
 {\small
@@ -1004,7 +1002,7 @@ done
 \end{verbatim}
 }
 
-\noindent La seconde étape est:
+\noindent La seconde Ã©tape est:
 
 {\small
 \begin{verbatim}
@@ -1018,16 +1016,16 @@ VERS: 1.1
 \end{verbatim}
 }
 
-\noindent L'option \texttt{-p} envoie le résultat de la commande
+\noindent L'option \texttt{-p} envoie le rÃ©sultat de la commande
 \textsf{update} sur la sortie standard, dans le but de contourner
-d'éventuelles contraintes sur le fichier concerné. C'est pourquoi il
+d'Ã©ventuelles contraintes sur le fichier concernÃ©. C'est pourquoi il
 faut rediriger la sortie standard dans un nouveau fichier
-\texttt{td2.html}. L'option \texttt{-r} précise le numéro de version
-(\textsf{Release}) que l'on souhaite mettre à jour (ici il s'agit en
+\texttt{td2.html}. L'option \texttt{-r} prÃ©cise le numÃ©ro de version
+(\textsf{Release}) que l'on souhaite mettre Ã  jour (ici il s'agit en
 fait d'une mise au jour).
 
-\noindent La dernière étape consiste à archiver la version ainsi
-obtenue, de façon à ce qu'elle devienne la version courante:
+\noindent La derniÃ¨re Ã©tape consiste Ã  archiver la version ainsi
+obtenue, de faÃ§on Ã  ce qu'elle devienne la version courante:
 
 {\small
 \begin{verbatim}
@@ -1042,13 +1040,13 @@ done
 \end{verbatim}
 }
 
-\subsection{Renommage et déplacement}
+\subsection{Renommage et dÃ©placement}
 
-Il n'y a pas de procédure simple (atomique) pour renommer ou déplacer
-un fichier ou un répertoire. La règle générale et sûre consiste à
-renommer le fichier visé dans la copie de travail, puis d'effectuer
-les opérations de suppression, suivi de celles d'ajout. En résumé, la
-procédure est:
+Il n'y a pas de procÃ©dure simple (atomique) pour renommer ou dÃ©placer
+un fichier ou un rÃ©pertoire. La rÃ¨gle gÃ©nÃ©rale et sÃ»re consiste Ã 
+renommer le fichier visÃ© dans la copie de travail, puis d'effectuer
+les opÃ©rations de suppression, suivi de celles d'ajout. En rÃ©sumÃ©, la
+procÃ©dure est:
 
 \begin{enumerate}
 
@@ -1057,7 +1055,7 @@ procédure est:
   \item informer CVS de notre intention de supprimer le fichier
   ancien,
 
-  \item informer CVS de notre volonté d'ajouter le fichier nouveau,
+  \item informer CVS de notre volontÃ© d'ajouter le fichier nouveau,
 
   \item archiver ce dernier.
 
